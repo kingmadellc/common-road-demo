@@ -1,6 +1,6 @@
-import {VERSION,TITLE,ITEMS,PARTY,NODES,EDGES,EVENTS,OFFERS,WORK_PLANS,nodeById,itemById} from './content.js';
-import {newGame,act,advance,loadCampaign,saveCampaign,snapshot,usedSlots,timeLabel,currentDay,travelQuote,choiceStatus,serviceQuote,housingStatus,rounded} from './simulation.js';
-import {drawScene,portrait,itemIcon,artReady,artStatus,sceneName} from './art.js';
+import {VERSION,TITLE,ITEMS,PARTY,NODES,EDGES,EVENTS,OFFERS,WORK_PLANS,nodeById,itemById} from './content.js?v=0.2.0';
+import {newGame,act,advance,loadCampaign,saveCampaign,snapshot,usedSlots,timeLabel,currentDay,travelQuote,choiceStatus,serviceQuote,housingStatus,rounded} from './simulation.js?v=0.2.0';
+import {drawScene,portrait,itemIcon,artReady,artStatus,sceneName} from './art.js?v=0.2.0';
 const $=s=>document.querySelector(s);
 const loaded=loadCampaign(localStorage);let state=loaded.state||newGame(42);let active=false;let hasJourney=!!loaded.state;let overlay=null;let lastFocus=null;let manual=false;let artTime=0;let selectedItem=null;let selectedOffer=null;let savedWarning=false;let sound=false;let audioContext=null;let toastTimer;let lastSave=0;let renderVersion=0;
 const icons=Object.fromEntries(ITEMS.map(i=>[i.id,itemIcon(i.id)]));

@@ -1,4 +1,4 @@
-import {ITEMS,nodeById} from './content.js';
+import {ITEMS,nodeById} from './content.js?v=0.2.0';
 const C={ink:'#142023',cream:'#c8c3af',yellow:'#b89a58',rust:'#986249',sage:'#627d70'};
 function poly(c,points,fill,stroke=null,width=2){c.beginPath();points.forEach(([x,y],i)=>i?c.lineTo(x,y):c.moveTo(x,y));c.closePath();c.fillStyle=fill;c.fill();if(stroke){c.strokeStyle=stroke;c.lineWidth=width;c.stroke();}}
 function ellipse(c,x,y,rx,ry,color){c.beginPath();c.ellipse(x,y,rx,ry,0,0,Math.PI*2);c.fillStyle=color;c.fill();}

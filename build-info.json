@@ -1,6 +1,6 @@
 {
   "version": "0.2.0",
-  "source_commit": "bd9c01cab25c493dd2cca8f5ae1918100e45113c",
+  "source_commit": "2a6ee77b265206c20d2cf191351f848cf58bac03",
   "files": {
     "assets/atmosphere/camp-v02.jpg": "385ce809410dde185d2073661963697ce35fbc3c35033b9fb39936babca9db07",
     "assets/atmosphere/garage-v02.jpg": "cc36fea41c62c856b6290340a9930e968c64a53551864f0aa7e68e187297d8d0",
@@ -15,19 +15,20 @@
     "assets/fonts/OFL.txt": "13831d02389d917d22fcfa6c79f98f8acbf61d230add0e73a4d4dc5f3bfb9e56",
     "assets/fonts/provenance.json": "2c3f5f40496a9a8638c0cdeaabe58d6a0251c2c4c335b25fe0e3c1d086844d42",
     "assets/icon.svg": "6b88e3ebe35bc7234ed0deef83b9b0047420b6c69dafb315350d76c60274cb19",
-    "index.html": "86737389a553a78ab9d9c20d2e348a2ec52a1dab03d2ddb8b23520abfc8d1e25",
+    "index.html": "f933af32c80181194b9ea2ad3c07568b930994e8e5dd25d105ccb3a845430b74",
     "manifest.webmanifest": "3ddd2c158210e758dd26af8ae1f80dd60e253cdd078d434cd5fc2cdcf42d1fa0",
-    "src/app.js": "52192df4aa7b88b8b866c0a6d55701381bca30f1454f2cbad7fb158c28a750b1",
-    "src/art.js": "1c15cd8dcf776a2ddd70a0a800c82b264a053c29c0e4f6e3bed60271073febdf",
+    "src/app.js": "072747da6cf1de0bc576985012793d3c536a4eee03a08722c73a526d60789a9b",
+    "src/art.js": "7da8e9b091b1635b17a11b1702a5bacbc69337c6d844f5ee374f94244abf21d2",
     "src/content.js": "719903f4f153b814c753311de8ad72ddbc0f7ac203373a254908e00e37700d94",
-    "src/simulation.js": "3ad1bab0061053dcd704c8941239196fa7829a91740a31f169976909312372ea",
+    "src/simulation.js": "f320767a04c45330828f4e5618ac91d59350495f85841eccfad37b97069f90c1",
     "style.css": "8380ecc6617a63f002d75e10c19359d8c1347db3f82900c4f7d19a81ab1aad4b",
-    "sw.js": "ab0abd69d0b34ca468243fca22258c4a97d5d6b4f1ec364549d47febaad9e487"
+    "sw.js": "75af939717e3bf32e55fec465cf58593656baa6ec1e2c784f63fcb223481cd1e"
   },
   "checks": {
     "simulation": 22,
     "browser": 44,
     "webkit": 5,
-    "art_typography_migration": 28
+    "art_typography_migration": 28,
+    "cached_upgrade": 4
   }
 }

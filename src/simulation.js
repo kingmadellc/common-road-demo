@@ -1,4 +1,4 @@
-import {VERSION,ITEMS,EDGES,EVENTS,NODE_EVENTS,OFFERS,WORK_PLANS,nodeById,itemById} from './content.js';
+import {VERSION,ITEMS,EDGES,EVENTS,NODE_EVENTS,OFFERS,WORK_PLANS,nodeById,itemById} from './content.js?v=0.2.0';
 export const SAVE_KEY='common-road-save-v1';
 export const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
 export const rounded=x=>Math.round(x*100)/100;
