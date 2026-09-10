@@ -1,6 +1,6 @@
 {
   "version": "0.2.0",
-  "source_commit": "2a6ee77b265206c20d2cf191351f848cf58bac03",
+  "source_commit": "c58baf8c99df994d90c4a135f658b423356f4a6f",
   "files": {
     "assets/atmosphere/camp-v02.jpg": "385ce809410dde185d2073661963697ce35fbc3c35033b9fb39936babca9db07",
     "assets/atmosphere/garage-v02.jpg": "cc36fea41c62c856b6290340a9930e968c64a53551864f0aa7e68e187297d8d0",
@@ -22,13 +22,13 @@
     "src/content.js": "719903f4f153b814c753311de8ad72ddbc0f7ac203373a254908e00e37700d94",
     "src/simulation.js": "f320767a04c45330828f4e5618ac91d59350495f85841eccfad37b97069f90c1",
     "style.css": "8380ecc6617a63f002d75e10c19359d8c1347db3f82900c4f7d19a81ab1aad4b",
-    "sw.js": "75af939717e3bf32e55fec465cf58593656baa6ec1e2c784f63fcb223481cd1e"
+    "sw.js": "248d1bcd82af792f14b37139fff9e505fdfcd84967a33dbb24f3a36415c4c546"
   },
   "checks": {
     "simulation": 22,
     "browser": 44,
     "webkit": 5,
     "art_typography_migration": 28,
-    "cached_upgrade": 4
+    "cached_upgrade": 7
   }
 }
