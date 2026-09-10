@@ -1,0 +1,20 @@
+{
+  "version": "0.1.0",
+  "source_commit": "a01802fa7a724196dff9d55813e1952ac9dd78fc",
+  "files": {
+    "assets/icon.svg": "6b88e3ebe35bc7234ed0deef83b9b0047420b6c69dafb315350d76c60274cb19",
+    "index.html": "b6600cb4c253802fc74e61e539c3247713a291f4586399fd201e8666c64478ab",
+    "manifest.webmanifest": "f8540aafffdb4de0d22540413a72ade470c3d6a4d69a0c4cb616b697a2419620",
+    "src/app.js": "5ec0ec9ef4f7376f44129d77fb8c744e54b0f8609797afb5843ad06ecb6f1b28",
+    "src/art.js": "bf9ce27248bdbcd9760bc0c31018f686a19c65ee12c69313097c4a553d4d6df1",
+    "src/content.js": "be0b684de81d9d445b86f83391bc69e90a326e7bf8e0ab467b52aecdf6820204",
+    "src/simulation.js": "030f0bbcb614459a5e8a615a89bae63f2742c97c4cf146fde8cd41f63ff1847e",
+    "style.css": "b84d6ba9f4e5e2afd3d02598a1b884a72610076ab9bc7d3c22453cd80322f042",
+    "sw.js": "1670bf071d7e7b29e40abfb87c143aa088deb88275f60a7556e272c80a16343f"
+  },
+  "checks": {
+    "simulation": 20,
+    "browser": 44,
+    "webkit": 5
+  }
+}
