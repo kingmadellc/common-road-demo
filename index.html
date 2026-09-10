@@ -2,19 +2,21 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#f1ebdb"><meta name="description" content="A warm, witty road-trip game about packing a van and finding a life you can afford. A playable near-future journey.">
+<meta name="theme-color" content="#101b1e"><meta name="description" content="A moody road journey through a future of expired access and failing machines. Keep your van running. Find somewhere worth staying.">
+<link rel="preload" as="font" type="font/ttf" href="assets/fonts/ChakraPetch-Regular.ttf" crossorigin><link rel="preload" as="font" type="font/ttf" href="assets/fonts/ChakraPetch-Bold.ttf" crossorigin>
+<link rel="preload" as="image" href="assets/atmosphere/road-v02.jpg"><link rel="preload" as="image" href="assets/atmosphere/van-v02.png">
 <link rel="icon" href="assets/icon.svg" type="image/svg+xml"><link rel="manifest" href="manifest.webmanifest"><link rel="stylesheet" href="style.css">
-<title>The Last Affordable Place · a road trip about enough</title>
+<title>The Last Affordable Place · keep the keys</title>
 </head>
 <body>
 <div id="app">
-<header class="masthead"><a class="wordmark" href="#" id="brand" aria-label="Pause or return to opening"><span class="brand-icon">↗</span><span>COMMON ROAD<span class="brand-sub">A FIELD GUIDE TO STARTING OVER</span></span></a><div class="edition">THE LAST AFFORDABLE PLACE <span>PLAYTEST 01 · 2032</span></div><nav><button class="quiet" id="sound" aria-label="Turn sound on">Sound off</button><button class="quiet" id="journal" hidden>Journal</button><button class="quiet" id="pause" hidden>Pause</button></nav></header>
+<header class="masthead"><a class="wordmark" href="#" id="brand" aria-label="Pause or return to opening"><span class="brand-icon">↗</span><span>COMMON ROAD<span class="brand-sub">OWNER MAINTAINED</span></span></a><div class="edition">THE LAST AFFORDABLE PLACE <span>PLAYTEST 02 · 2032</span></div><nav><button class="quiet" id="sound" aria-label="Turn sound on">Sound off</button><button class="quiet" id="journal" hidden>Journal</button><button class="quiet" id="pause" hidden>Pause</button></nav></header>
 <div id="resources" hidden></div>
 <main class="layout" id="layout">
-<section class="stage" aria-label="Illustrated journey"><canvas id="scene" aria-label="The group’s van in an illustrated landscape"></canvas><div class="stage-top"><span id="chapter">PACIFIC NORTHWEST → THE GREAT LAKES</span><span class="roundstamp" id="stamp">TAKE<br>THE<br>LONG VIEW</span></div><div id="scene-caption"><span class="eyebrow">FOUR PEOPLE. ONE DOG. SIX CARGO SLOTS.</span><p>Maybe home is a place.<br>Maybe it’s a plan that finally fits.</p></div><div id="roadmap"></div></section>
+<section class="stage" aria-label="Illustrated journey"><canvas id="scene" aria-label="The group’s van in an illustrated landscape"></canvas><div class="stage-top"><span id="chapter">PACIFIC NORTHWEST → THE GREAT LAKES</span><span class="roundstamp" id="stamp">TAKE<br>THE<br>LONG VIEW</span></div><div id="scene-caption"><span class="eyebrow">FOUR PEOPLE. ONE DOG. SIX CARGO SLOTS.</span><p>The future broke down.<br>You kept the keys.</p></div><div id="roadmap"></div></section>
 <section id="panel" class="panel" aria-label="Journey decisions"></section>
 </main>
-<footer><span id="footer-left">AN ORDINARY VAN. AN EXTRAORDINARY AMOUNT OF STUFF.</span><button class="text-button" id="help">How to play</button><span class="footer-version">0.1 · FICTIONAL ROADS, REAL TRADEOFFS</span></footer>
+<footer><span id="footer-left">NO REMOTE LOCK. NO RENEWAL. JUST KEEP IT RUNNING.</span><button class="text-button" id="help">How to play</button><span class="footer-version">0.2 · OWNER MAINTAINED</span></footer>
 </div>
 <div id="overlay" class="overlay" hidden></div><div id="toast" role="status" aria-live="polite"></div>
 <script type="module" src="src/app.js"></script>
