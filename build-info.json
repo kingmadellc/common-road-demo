@@ -2,8 +2,8 @@
   "version": "0.3.0",
   "title": "Common Road \u2014 The Line",
   "sourceRepository": "https://github.com/kingmadellc/common-road",
-  "sourceCommit": "718ce976d86886d3cf8439edc5758e45de83a90a",
-  "builtAt": "2026-09-11T00:02:28.232218+00:00",
+  "sourceCommit": "6859899b846b270d7c5697f7184cf9e459028d6d",
+  "builtAt": "2026-09-11T00:05:09.290434+00:00",
   "bytes": 14489479,
   "files": {
     "index.html": {
@@ -24,7 +24,7 @@
     },
     "v03/world.js": {
       "bytes": 4838,
-      "sha256": "5acefe83e51be2f4b360ed32067f1444da0fd32f4b18c7ba3ede3659c485d7cf"
+      "sha256": "3fd7a70f1ae6649cfc480b7d92ab076823cc4db9145d5cbd554c682e3553b477"
     },
     "v03/sim.js": {
       "bytes": 20718,

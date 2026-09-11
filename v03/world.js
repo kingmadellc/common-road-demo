@@ -37,7 +37,7 @@ export const roads=id=>ROADS.filter(r=>r.from===id);
 export function random(seed){let a=seed>>>0;return ()=>{a+=0x6D2B79F5;let t=a;t=Math.imul(t^t>>>15,t|1);t^=t+Math.imul(t^t>>>7,t|61);return ((t^t>>>14)>>>0)/4294967296;};}
 export function siteItems(seed,id){const r=random(seed+id.split('').reduce((a,c)=>a+c.charCodeAt(0),0));return [
  {id:'a',type:id==='yard'?'fan':'relay',name:id==='yard'?'Cooling fan':'Power relay',x:.18,y:.28,quality:88,taken:false},
- {id:'b',type:'tire',name:'Spare tire',x:.75,y:.25,quality:65+Math.floor(r()*25),taken:false},
+ {id:'b',type:'tire',name:'Spare tire',x:.75,y:.44,quality:65+Math.floor(r()*25),taken:false},
  {id:'c',type:'food',name:'Sealed provisions',x:.44,y:.48,quality:100,taken:false},
  {id:'d',type:'fuel',name:'Sealed fuel can',x:.8,y:.62,quality:100,taken:false},
  {id:'e',type:'relay',name:'Power relay',x:.16,y:.63,quality:55+Math.floor(r()*40),taken:false}
