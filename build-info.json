@@ -1,34 +1,215 @@
 {
-  "version": "0.2.0",
-  "source_commit": "c58baf8c99df994d90c4a135f658b423356f4a6f",
+  "version": "0.3.0",
+  "title": "Common Road \u2014 The Line",
+  "sourceRepository": "https://github.com/kingmadellc/common-road",
+  "sourceCommit": "718ce976d86886d3cf8439edc5758e45de83a90a",
+  "builtAt": "2026-09-11T00:02:28.232218+00:00",
+  "bytes": 14489479,
   "files": {
-    "assets/atmosphere/camp-v02.jpg": "385ce809410dde185d2073661963697ce35fbc3c35033b9fb39936babca9db07",
-    "assets/atmosphere/garage-v02.jpg": "cc36fea41c62c856b6290340a9930e968c64a53551864f0aa7e68e187297d8d0",
-    "assets/atmosphere/home-v02.jpg": "2ae8dc7a70a684b07bf9e061450861fa8583a878dcb7be06fa8a46ded7a50805",
-    "assets/atmosphere/plateau-v02.jpg": "a7a46e2b8ff7d1a62d78d82dbefd905b5d01b571800f9ec8b188ebcb784713ea",
-    "assets/atmosphere/portraits-v02.jpg": "e2588c44b8434f1ee97c1d4afb7401279af9ac9a10cb161960aa9f1414cd2949",
-    "assets/atmosphere/road-v02.jpg": "7e13000eea96ea396ed52c53c371ed053941d1623010c16546764259dd617f20",
-    "assets/atmosphere/van-v02.png": "7ad98bc15f9c3ebe174cd7890955bd10ecb5b2fc6dca2359109cd8a48239b790",
-    "assets/fonts/ChakraPetch-Bold.ttf": "65fbf76d95651697275e19db4d717c0e95a789ddd3476478b05292104db278a0",
-    "assets/fonts/ChakraPetch-Medium.ttf": "d480f4f97405fac3600652e2e14fd0b14339031c0af4da11582994878f04d919",
-    "assets/fonts/ChakraPetch-Regular.ttf": "98fcd638baa5c81ff0316b7538ce330ee3b23b1302726de3526d5933a8ecf986",
-    "assets/fonts/OFL.txt": "13831d02389d917d22fcfa6c79f98f8acbf61d230add0e73a4d4dc5f3bfb9e56",
-    "assets/fonts/provenance.json": "2c3f5f40496a9a8638c0cdeaabe58d6a0251c2c4c335b25fe0e3c1d086844d42",
-    "assets/icon.svg": "6b88e3ebe35bc7234ed0deef83b9b0047420b6c69dafb315350d76c60274cb19",
-    "index.html": "f933af32c80181194b9ea2ad3c07568b930994e8e5dd25d105ccb3a845430b74",
-    "manifest.webmanifest": "3ddd2c158210e758dd26af8ae1f80dd60e253cdd078d434cd5fc2cdcf42d1fa0",
-    "src/app.js": "072747da6cf1de0bc576985012793d3c536a4eee03a08722c73a526d60789a9b",
-    "src/art.js": "7da8e9b091b1635b17a11b1702a5bacbc69337c6d844f5ee374f94244abf21d2",
-    "src/content.js": "719903f4f153b814c753311de8ad72ddbc0f7ac203373a254908e00e37700d94",
-    "src/simulation.js": "f320767a04c45330828f4e5618ac91d59350495f85841eccfad37b97069f90c1",
-    "style.css": "8380ecc6617a63f002d75e10c19359d8c1347db3f82900c4f7d19a81ab1aad4b",
-    "sw.js": "248d1bcd82af792f14b37139fff9e505fdfcd84967a33dbb24f3a36415c4c546"
+    "index.html": {
+      "bytes": 1696,
+      "sha256": "414a7accaf4e011897ca215c0ee48e709e5b257c78d72182eb73206a02ecdf9f"
+    },
+    "style.css": {
+      "bytes": 23685,
+      "sha256": "8380ecc6617a63f002d75e10c19359d8c1347db3f82900c4f7d19a81ab1aad4b"
+    },
+    "manifest.webmanifest": {
+      "bytes": 392,
+      "sha256": "513ce739fe98a2b0d2a7250894a42e22e0f86024621114759a7ac86b4b039562"
+    },
+    "sw.js": {
+      "bytes": 2862,
+      "sha256": "5ccc21cd5661a9b234cd8877e5985808c24dde073b41861a5152a2497ba076e7"
+    },
+    "v03/world.js": {
+      "bytes": 4838,
+      "sha256": "5acefe83e51be2f4b360ed32067f1444da0fd32f4b18c7ba3ede3659c485d7cf"
+    },
+    "v03/sim.js": {
+      "bytes": 20718,
+      "sha256": "caba8068719ed6e7455606e85dbe7d79cd93a45f5fc73f00b2c3abbc27e91984"
+    },
+    "v03/style.css": {
+      "bytes": 9096,
+      "sha256": "5a53bbb82030c58bc3ce69da70290798faf7bddbb91385fa48f5b0c2b3ee8728"
+    },
+    "v03/art.js": {
+      "bytes": 9824,
+      "sha256": "84eb644c1817a492ed2d5b1601d81854aa4a22413feac8ed658a92f3685a2ca3"
+    },
+    "v03/app.js": {
+      "bytes": 33984,
+      "sha256": "cf301684c65fa566f2f4a4231bbc3516e6f7eac86ab14b7162d287bc94000066"
+    },
+    "v02/index.html": {
+      "bytes": 2492,
+      "sha256": "f933af32c80181194b9ea2ad3c07568b930994e8e5dd25d105ccb3a845430b74"
+    },
+    "v02/style.css": {
+      "bytes": 23685,
+      "sha256": "8380ecc6617a63f002d75e10c19359d8c1347db3f82900c4f7d19a81ab1aad4b"
+    },
+    "v02/manifest.webmanifest": {
+      "bytes": 246,
+      "sha256": "3ddd2c158210e758dd26af8ae1f80dd60e253cdd078d434cd5fc2cdcf42d1fa0"
+    },
+    "v02/assets/icon.svg": {
+      "bytes": 188,
+      "sha256": "6b88e3ebe35bc7234ed0deef83b9b0047420b6c69dafb315350d76c60274cb19"
+    },
+    "v02/assets/atmosphere/van-v02.png": {
+      "bytes": 2322182,
+      "sha256": "7ad98bc15f9c3ebe174cd7890955bd10ecb5b2fc6dca2359109cd8a48239b790"
+    },
+    "v02/assets/atmosphere/garage-v02.jpg": {
+      "bytes": 587069,
+      "sha256": "cc36fea41c62c856b6290340a9930e968c64a53551864f0aa7e68e187297d8d0"
+    },
+    "v02/assets/atmosphere/road-v02.jpg": {
+      "bytes": 547736,
+      "sha256": "7e13000eea96ea396ed52c53c371ed053941d1623010c16546764259dd617f20"
+    },
+    "v02/assets/atmosphere/home-v02.jpg": {
+      "bytes": 651320,
+      "sha256": "2ae8dc7a70a684b07bf9e061450861fa8583a878dcb7be06fa8a46ded7a50805"
+    },
+    "v02/assets/atmosphere/plateau-v02.jpg": {
+      "bytes": 560986,
+      "sha256": "a7a46e2b8ff7d1a62d78d82dbefd905b5d01b571800f9ec8b188ebcb784713ea"
+    },
+    "v02/assets/atmosphere/camp-v02.jpg": {
+      "bytes": 715858,
+      "sha256": "385ce809410dde185d2073661963697ce35fbc3c35033b9fb39936babca9db07"
+    },
+    "v02/assets/atmosphere/portraits-v02.jpg": {
+      "bytes": 555113,
+      "sha256": "e2588c44b8434f1ee97c1d4afb7401279af9ac9a10cb161960aa9f1414cd2949"
+    },
+    "v02/assets/fonts/ChakraPetch-Regular.ttf": {
+      "bytes": 78488,
+      "sha256": "98fcd638baa5c81ff0316b7538ce330ee3b23b1302726de3526d5933a8ecf986"
+    },
+    "v02/assets/fonts/provenance.json": {
+      "bytes": 915,
+      "sha256": "2c3f5f40496a9a8638c0cdeaabe58d6a0251c2c4c335b25fe0e3c1d086844d42"
+    },
+    "v02/assets/fonts/ChakraPetch-Bold.ttf": {
+      "bytes": 78384,
+      "sha256": "65fbf76d95651697275e19db4d717c0e95a789ddd3476478b05292104db278a0"
+    },
+    "v02/assets/fonts/OFL.txt": {
+      "bytes": 4396,
+      "sha256": "13831d02389d917d22fcfa6c79f98f8acbf61d230add0e73a4d4dc5f3bfb9e56"
+    },
+    "v02/assets/fonts/ChakraPetch-Medium.ttf": {
+      "bytes": 78600,
+      "sha256": "d480f4f97405fac3600652e2e14fd0b14339031c0af4da11582994878f04d919"
+    },
+    "v02/src/simulation.js": {
+      "bytes": 21126,
+      "sha256": "f320767a04c45330828f4e5618ac91d59350495f85841eccfad37b97069f90c1"
+    },
+    "v02/src/content.js": {
+      "bytes": 21346,
+      "sha256": "719903f4f153b814c753311de8ad72ddbc0f7ac203373a254908e00e37700d94"
+    },
+    "v02/src/art.js": {
+      "bytes": 6619,
+      "sha256": "7da8e9b091b1635b17a11b1702a5bacbc69337c6d844f5ee374f94244abf21d2"
+    },
+    "v02/src/app.js": {
+      "bytes": 28595,
+      "sha256": "cf7c1697f83a4be3d6757aa2493142be52de95bc8e8dbc8d13244291a5f2fd13"
+    },
+    "assets/icon.svg": {
+      "bytes": 188,
+      "sha256": "6b88e3ebe35bc7234ed0deef83b9b0047420b6c69dafb315350d76c60274cb19"
+    },
+    "assets/atmosphere/van-v02.png": {
+      "bytes": 2322182,
+      "sha256": "7ad98bc15f9c3ebe174cd7890955bd10ecb5b2fc6dca2359109cd8a48239b790"
+    },
+    "assets/atmosphere/garage-v02.jpg": {
+      "bytes": 587069,
+      "sha256": "cc36fea41c62c856b6290340a9930e968c64a53551864f0aa7e68e187297d8d0"
+    },
+    "assets/atmosphere/road-v02.jpg": {
+      "bytes": 547736,
+      "sha256": "7e13000eea96ea396ed52c53c371ed053941d1623010c16546764259dd617f20"
+    },
+    "assets/atmosphere/home-v02.jpg": {
+      "bytes": 651320,
+      "sha256": "2ae8dc7a70a684b07bf9e061450861fa8583a878dcb7be06fa8a46ded7a50805"
+    },
+    "assets/atmosphere/plateau-v02.jpg": {
+      "bytes": 560986,
+      "sha256": "a7a46e2b8ff7d1a62d78d82dbefd905b5d01b571800f9ec8b188ebcb784713ea"
+    },
+    "assets/atmosphere/camp-v02.jpg": {
+      "bytes": 715858,
+      "sha256": "385ce809410dde185d2073661963697ce35fbc3c35033b9fb39936babca9db07"
+    },
+    "assets/atmosphere/portraits-v02.jpg": {
+      "bytes": 555113,
+      "sha256": "e2588c44b8434f1ee97c1d4afb7401279af9ac9a10cb161960aa9f1414cd2949"
+    },
+    "assets/pilgrimage/gate.jpg": {
+      "bytes": 442231,
+      "sha256": "5e10a35b42305bf04279e43765a091f13eca5bfb98a335b4d5f7a2fbb9ef2be6"
+    },
+    "assets/pilgrimage/family.jpg": {
+      "bytes": 282044,
+      "sha256": "48ae057a37241d7f611b345f61c0d3075033406f53281815b6c47294f7ea24f9"
+    },
+    "assets/pilgrimage/home.jpg": {
+      "bytes": 371419,
+      "sha256": "3831cac0e0d79c7b0ef3c2c5b141e3392dd59cabbdacfcf295c1672773844df6"
+    },
+    "assets/pilgrimage/fishing.jpg": {
+      "bytes": 339895,
+      "sha256": "9ea37749af4ef66508bb51c4ac564610b7a2a0acf91052ce4cedb8f11b9dc735"
+    },
+    "assets/pilgrimage/chair.png": {
+      "bytes": 402383,
+      "sha256": "9392914b66a5463896b9d13d1f182840a19926c85123a7ab55f397fbd928d9be"
+    },
+    "assets/fonts/ChakraPetch-Regular.ttf": {
+      "bytes": 78488,
+      "sha256": "98fcd638baa5c81ff0316b7538ce330ee3b23b1302726de3526d5933a8ecf986"
+    },
+    "assets/fonts/provenance.json": {
+      "bytes": 915,
+      "sha256": "2c3f5f40496a9a8638c0cdeaabe58d6a0251c2c4c335b25fe0e3c1d086844d42"
+    },
+    "assets/fonts/ChakraPetch-Bold.ttf": {
+      "bytes": 78384,
+      "sha256": "65fbf76d95651697275e19db4d717c0e95a789ddd3476478b05292104db278a0"
+    },
+    "assets/fonts/OFL.txt": {
+      "bytes": 4396,
+      "sha256": "13831d02389d917d22fcfa6c79f98f8acbf61d230add0e73a4d4dc5f3bfb9e56"
+    },
+    "assets/fonts/ChakraPetch-Medium.ttf": {
+      "bytes": 78600,
+      "sha256": "d480f4f97405fac3600652e2e14fd0b14339031c0af4da11582994878f04d919"
+    },
+    "src/simulation.js": {
+      "bytes": 21126,
+      "sha256": "f320767a04c45330828f4e5618ac91d59350495f85841eccfad37b97069f90c1"
+    },
+    "src/content.js": {
+      "bytes": 21346,
+      "sha256": "719903f4f153b814c753311de8ad72ddbc0f7ac203373a254908e00e37700d94"
+    },
+    "src/art.js": {
+      "bytes": 6619,
+      "sha256": "7da8e9b091b1635b17a11b1702a5bacbc69337c6d844f5ee374f94244abf21d2"
+    },
+    "src/app.js": {
+      "bytes": 28742,
+      "sha256": "072747da6cf1de0bc576985012793d3c536a4eee03a08722c73a526d60789a9b"
+    }
   },
-  "checks": {
-    "simulation": 22,
-    "browser": 44,
-    "webkit": 5,
-    "art_typography_migration": 28,
-    "cached_upgrade": 7
-  }
+  "validation": "Two complete UI journeys, 39 simulation checks including 17 pilgrimage cases, Chromium/WebKit touch, synthetic controller navigation, legacy save and offline upgrade."
 }

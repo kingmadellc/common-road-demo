@@ -1,1 +1,17 @@
-{"name":"The Last Affordable Place","short_name":"Common Road","start_url":"./","display":"standalone","background_color":"#101b1e","theme_color":"#101b1e","icons":[{"src":"assets/icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any"}]}
+{
+  "name": "Common Road \u2014 The Line",
+  "short_name": "Common Road",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#101b1e",
+  "theme_color": "#101b1e",
+  "icons": [
+    {
+      "src": "assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "description": "A survival pilgrimage toward a place of your own."
+}

@@ -1,23 +1,25 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#101b1e"><meta name="description" content="A moody road journey through a future of expired access and failing machines. Keep your van running. Find somewhere worth staying.">
-<link rel="preload" as="font" type="font/ttf" href="assets/fonts/ChakraPetch-Regular.ttf" crossorigin><link rel="preload" as="font" type="font/ttf" href="assets/fonts/ChakraPetch-Bold.ttf" crossorigin>
-<link rel="preload" as="image" href="assets/atmosphere/road-v02.jpg"><link rel="preload" as="image" href="assets/atmosphere/van-v02.png">
-<link rel="icon" href="assets/icon.svg" type="image/svg+xml"><link rel="manifest" href="manifest.webmanifest"><link rel="stylesheet" href="style.css?v=0.2.0">
-<title>The Last Affordable Place · keep the keys</title>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#101d20"><meta name="description" content="A family, a failing van, and three days to a place of your own. A playable survival pilgrimage.">
+<title>Common Road — The Line</title>
+<link rel="icon" href="assets/icon.svg"><link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="v03/style.css?v=0.3.0">
 </head>
 <body>
-<div id="app">
-<header class="masthead"><a class="wordmark" href="#" id="brand" aria-label="Pause or return to opening"><span class="brand-icon">↗</span><span>COMMON ROAD<span class="brand-sub">OWNER MAINTAINED</span></span></a><div class="edition">THE LAST AFFORDABLE PLACE <span>PLAYTEST 02 · 2032</span></div><nav><button class="quiet" id="sound" aria-label="Turn sound on">Sound off</button><button class="quiet" id="journal" hidden>Journal</button><button class="quiet" id="pause" hidden>Pause</button></nav></header>
-<div id="resources" hidden></div>
-<main class="layout" id="layout">
-<section class="stage" aria-label="Illustrated journey"><canvas id="scene" aria-label="The group’s van in an illustrated landscape"></canvas><div class="stage-top"><span id="chapter">PACIFIC NORTHWEST → THE GREAT LAKES</span><span class="roundstamp" id="stamp">TAKE<br>THE<br>LONG VIEW</span></div><div id="scene-caption"><span class="eyebrow">FOUR PEOPLE. ONE DOG. SIX CARGO SLOTS.</span><p>The future broke down.<br>You kept the keys.</p></div><div id="roadmap"></div></section>
-<section id="panel" class="panel" aria-label="Journey decisions"></section>
+<header><a class="brand" href="./" aria-label="Common Road home">COMMON <span>ROAD</span><small>THE LINE · PLAYTEST 03</small></a><nav><button id="map" aria-label="Route map">⌁ <span>Route</span></button><button id="journal" aria-label="Journal">▤ <span>Journal</span></button><button id="pause" aria-label="Pause">Ⅱ</button></nav></header>
+<main id="game">
+<div id="resources" aria-label="Household supplies"></div>
+<section id="stage" aria-label="Interactive game scene">
+<canvas id="scene" tabindex="0" aria-label="Game scene. Touch or use the controls below."></canvas>
+<div id="sceneheading"></div><div id="scenestatus"></div><div id="scenehint"></div>
+<div id="opening" hidden></div>
+</section>
+<section id="family" aria-label="The Mercer household"></section>
+<section id="console"><div id="notice" role="status" aria-live="polite"></div><div id="actions"></div></section>
+<footer><span id="save-status">Saved on this device</span><span>Touch · controller · keyboard</span><button id="help">How to play</button></footer>
 </main>
-<footer><span id="footer-left">NO REMOTE LOCK. NO RENEWAL. JUST KEEP IT RUNNING.</span><button class="text-button" id="help">How to play</button><span class="footer-version">0.2 · OWNER MAINTAINED</span></footer>
-</div>
-<div id="overlay" class="overlay" hidden></div><div id="toast" role="status" aria-live="polite"></div>
-<script type="module" src="src/app.js?v=0.2.0"></script>
+<dialog id="dialog"><div id="dialogbody"></div></dialog>
+<script type="module" src="v03/app.js?v=0.3.0"></script>
 </body></html>

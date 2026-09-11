@@ -1,15 +1,11 @@
-# The Last Affordable Place
+# Common Road — The Line
 
-[Play the game](https://kingmadellc.github.io/common-road-demo/)
+[Play the survival pilgrimage](https://kingmadellc.github.io/common-road-demo/?v=0.3).
 
-An adult road journey through a future of expiring access and failing machines. Your old van is still yours. Pack six slots, keep your people close, and find somewhere you can afford to stay.
+A family, a failing van, and three days to a place of your own. Salvage parts, repair old machines, fish for dinner, earn admission to Morrow, and bring the family through the final crossing. Touch first, with controller and keyboard controls. Progress saves in this browser.
 
-Browser playtest 0.2.0 has five original atmospheric environments, a battered van, twelve character/pet portraits, and a rebuilt dark interface. Chakra Petch is the single game typeface, with large reading text and consistent bold headers. The full route map opens at a readable size.
+This repository contains the public browser demo and its delivery artwork. It is an illustrated 2D playtest, not a signed native iOS release. [The earlier v0.2 game and its local save remain available](https://kingmadellc.github.io/common-road-demo/v02/).
 
-17 encounters, eight cargo objects, branching routes and four endings. Touch supports portrait or landscape. Controller: D-pad/stick, south button to choose, east button to go back, Start to pause. Keyboard: arrows/Tab/Enter and Escape.
+Generated artwork and original game content are part of this project. Chakra Petch is bundled under the SIL Open Font License; see assets/fonts/OFL.txt.
 
-Your journey saves in this browser. v0.1 saves migrate forward. Once the offline shell has installed, the game and its artwork/fonts can reopen without a connection. About 6.29 MB. No login, payments, live services, or remote font requests.
-
-This repository contains public browser assets and JavaScript source. The larger planning history and original image sources are maintained separately. Original generated artwork and fictional story content are part of the prototype. Chakra Petch is distributed under the SIL Open Font License; copyright, license and provenance are in `assets/fonts/`.
-
-Physical Apple device performance, hardware controllers, and independent human fun assessment remain pending. This is a browser prototype.
+Build provenance and runtime hashes are in build-info.json.
