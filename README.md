@@ -1,11 +1,13 @@
 # Common Road — The Line
 
-[Play the survival pilgrimage](https://kingmadellc.github.io/common-road-demo/?v=0.4).
+[Play the survival pilgrimage · v0.5](https://kingmadellc.github.io/common-road-demo/?v=0.5).
 
-A family, a failing van, and three days to a place of your own. Salvage parts, repair old machines, fish for dinner, earn admission to Morrow, and bring the family through the final crossing. The revised opening includes road motion and a journey photo reel, pull/tap fishing, and warned Collector patrols with cover and escape. Touch first, with dedicated controller fishing and keyboard fallback. Progress saves in this browser.
+A family, a failing van, and two days to a place of your own. Recover parts, repair old machines, fish for dinner, earn admission to Morrow, and bring everyone through the final crossing.
 
-This repository contains the public browser demo and its delivery artwork. It is an illustrated 2D playtest, not a signed native iOS release. [The previous v0.3 journey](https://kingmadellc.github.io/common-road-demo/v03/) and [the earlier v0.2 game and its local save remain available](https://kingmadellc.github.io/common-road-demo/v02/).
+v0.5 has three main actions at ordinary stops, meaningful food and fuel pressure, close-up salvage, lasting injuries, one-use permits and recurring Collector checkpoints. Highway motion links wheel rotation to road distance. Twenty original art assets, four landscape assemblies and six short 720p motion clips form a faster journey reel.
 
-Generated artwork and original game content are part of this project. Chakra Petch is bundled under the SIL Open Font License; see assets/fonts/OFL.txt.
+Touch is primary, with dedicated controller fishing and keyboard fallback. Progress saves in this browser. Core artwork and film posters cache for offline play after installation; clips cache on first playback. This is an illustrated browser concept playtest. It is not a signed native iOS release.
 
-Build provenance and runtime hashes are in build-info.json.
+Earlier journeys and their separate local saves remain available: [v0.4](https://kingmadellc.github.io/common-road-demo/v04/), [v0.3](https://kingmadellc.github.io/common-road-demo/v03/), and [v0.2](https://kingmadellc.github.io/common-road-demo/v02/).
+
+Generated artwork and original game content belong to this project. Chakra Petch is bundled under the SIL Open Font License; see `assets/fonts/OFL.txt`. Motion clips are authored renders from game art, not live-action footage. Tested source and runtime SHA-256 hashes are in `build-info.json`.

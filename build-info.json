@@ -1,10 +1,10 @@
 {
-  "version": "0.4.0",
+  "version": "0.5.0",
   "title": "Common Road — The Line",
   "sourceRepository": "https://github.com/kingmadellc/common-road",
-  "sourceCommit": "a93f37a84c15d63a9eabca1622c37d948bc0c196",
-  "builtAt": "2026-09-11T04:03:56.966Z",
-  "bytes": 19761891,
+  "sourceCommit": "1a8c98b8a327327d75209442db9747341784aaf5",
+  "builtAt": "2026-09-11T23:23:42.114Z",
+  "bytes": 31668207,
   "files": {
     "assets/atmosphere/camp-v02.jpg": {
       "bytes": 715858,
@@ -110,6 +110,134 @@
       "bytes": 679998,
       "sha256": "b80fae2b338f74ae5c2c43576c327978d346ff38e09248438b69fc2d30a81ba1"
     },
+    "assets/journey-v05/basin.webp": {
+      "bytes": 382204,
+      "sha256": "07c4e95092fa819fdab4cb17e123c4f8cdf276f495d50d6bd3b150a3a362d857"
+    },
+    "assets/journey-v05/blocked.webp": {
+      "bytes": 272492,
+      "sha256": "196ba73c92f973f439c6d6a17d10fba55da2a2cce1674bff5c5d7eeb43960c6e"
+    },
+    "assets/journey-v05/campus.webp": {
+      "bytes": 511422,
+      "sha256": "f896a95b7537e51513b91af282ce6021593ea9c7b618d0307de515ac7941b60c"
+    },
+    "assets/journey-v05/film-barrier-poster.webp": {
+      "bytes": 102762,
+      "sha256": "a70e31b9dc83b05fd6e64e8397a49c733b17a04fcfcd88da56d838f8cf144295"
+    },
+    "assets/journey-v05/film-barrier.mp4": {
+      "bytes": 826485,
+      "sha256": "7f988cf53cfd0804c2a3794c751b32cc335edc2a581bd66cdf823a19dd302ee0"
+    },
+    "assets/journey-v05/film-highway-poster.webp": {
+      "bytes": 139492,
+      "sha256": "9841489c841353afe3e0a4ef6d4f7858808223048396058c5c2582254096c845"
+    },
+    "assets/journey-v05/film-highway.mp4": {
+      "bytes": 557842,
+      "sha256": "da4cac442aaa3769b0259539162da4f8d813b43311c8c28592adbf0d6633c9cb"
+    },
+    "assets/journey-v05/film-overtake-poster.webp": {
+      "bytes": 150442,
+      "sha256": "8bb11081db25c479e4d728e58f78257993fa93560b6116d11e0319cb956364cb"
+    },
+    "assets/journey-v05/film-overtake.mp4": {
+      "bytes": 851755,
+      "sha256": "31eae1769ea8b6826437d2ef1addcc99e8f44beaeef1650240e3c61dddb054b5"
+    },
+    "assets/journey-v05/film-rain-poster.webp": {
+      "bytes": 116760,
+      "sha256": "83a53b7a25b47e0a2412e1f715154960ec2f4212895f28dbd91646ab0dfe2780"
+    },
+    "assets/journey-v05/film-rain.mp4": {
+      "bytes": 784630,
+      "sha256": "21610ee76d839cdae81e779623d7d407e40040001207ff1473a52c35c88e1a8d"
+    },
+    "assets/journey-v05/film-scanner-poster.webp": {
+      "bytes": 100674,
+      "sha256": "16308884cdcb002dc8e73046a7b7674c28b636cbffb7fb09eb0804d30f0a9c85"
+    },
+    "assets/journey-v05/film-scanner.mp4": {
+      "bytes": 489537,
+      "sha256": "1370581c00cc81606fc9a24241c044f82c7a3fca2707ee15e3eac26eb91dce0e"
+    },
+    "assets/journey-v05/film-viaduct-poster.webp": {
+      "bytes": 163564,
+      "sha256": "ef1e4a617cf61b9d5d145fe341b42d841e441081381aa765ae3d54ab1808ac2f"
+    },
+    "assets/journey-v05/film-viaduct.mp4": {
+      "bytes": 807866,
+      "sha256": "6371ef5350c49e97350ef9c84688a79e181f677eeb146c834411673dbda3a6a5"
+    },
+    "assets/journey-v05/highway.webp": {
+      "bytes": 270654,
+      "sha256": "b59e23cb3ef54f7ae0999d2329c4407913b1556a01adccd5a8bf8d8db02abd4c"
+    },
+    "assets/journey-v05/inventory.webp": {
+      "bytes": 267012,
+      "sha256": "2cb633371d552312c678e5ba22b509e673575fb79f3fa4748395b8f26968da8b"
+    },
+    "assets/journey-v05/logistics.webp": {
+      "bytes": 448710,
+      "sha256": "c6c23ec8579d830e4813372473f24a4bcaa71e0f4928d0505284114a2a5879f5"
+    },
+    "assets/journey-v05/market.webp": {
+      "bytes": 407102,
+      "sha256": "31796ccee1bc56682c92e7f9808b6629ef92418138eda563eaaddc815b5edfee"
+    },
+    "assets/journey-v05/meal-family.webp": {
+      "bytes": 393574,
+      "sha256": "88bc64b1d4d1736ae399fa9f0dd6aa30ba67cb8a50dd4b35dd5bcb1d0b595b9a"
+    },
+    "assets/journey-v05/mirror.webp": {
+      "bytes": 251442,
+      "sha256": "c58e83df445bcf9a8c39e9efeb56ea2459ef71f537cb66861cfeff86dd15cb93"
+    },
+    "assets/journey-v05/night-family.webp": {
+      "bytes": 303208,
+      "sha256": "ce36625a970e451bd9b9aa82b159a310dc751efdc6ab78f01d301b6e1745c33f"
+    },
+    "assets/journey-v05/plaza.webp": {
+      "bytes": 330650,
+      "sha256": "5efd7dc6597d8654f805f0db0320e23fa8aaaafd23846dc2e18f2792bef73fa2"
+    },
+    "assets/journey-v05/prairie.webp": {
+      "bytes": 464784,
+      "sha256": "2bbd5bdb41677ab1b230b581d6650741724dd0b36572eaed8139339144fb3fa0"
+    },
+    "assets/journey-v05/repair-family.webp": {
+      "bytes": 323612,
+      "sha256": "eaa79f045e8741eb4a47c6c73cd500d01766be96b49bbd81ec29de9bdfc6ea1d"
+    },
+    "assets/journey-v05/scanner.webp": {
+      "bytes": 261662,
+      "sha256": "96493d1b5e1372f18f4758b25fa6bc651cad9aaa58d65fd7b118332637f816f7"
+    },
+    "assets/journey-v05/seized.webp": {
+      "bytes": 338366,
+      "sha256": "724470f4658338dabdf5ff4836c38add438f1e6986c4d60fd0603e7952a7d859"
+    },
+    "assets/journey-v05/squad.webp": {
+      "bytes": 360978,
+      "sha256": "40756c42b63f62871b64a8f4ff67790951ea7c635bd75c400d1f96c6709ffee6"
+    },
+    "assets/journey-v05/storm.webp": {
+      "bytes": 221748,
+      "sha256": "5d3bf48e7cceb41a41dac720b517b963e7e4cb27c41dfb19fccc29bb9231b070"
+    },
+    "assets/journey-v05/toll.webp": {
+      "bytes": 311952,
+      "sha256": "c0aa28d2056f821e4497c385460b201984b6cd98a01807c053417abf593f07a0"
+    },
+    "assets/journey-v05/transport-body.webp": {
+      "bytes": 292838,
+      "sha256": "c449cdbc21ac712a832ada4d65517753017d6f612e5a575700f1411b00e02db8"
+    },
+    "assets/journey-v05/windshield.webp": {
+      "bytes": 260974,
+      "sha256": "0e71df3c12de992234965aa8ee5be2372adb0a1adce8aacc6552d1ed12aca2db"
+    },
     "assets/pilgrimage/chair.png": {
       "bytes": 402383,
       "sha256": "9392914b66a5463896b9d13d1f182840a19926c85123a7ab55f397fbd928d9be"
@@ -131,8 +259,8 @@
       "sha256": "3831cac0e0d79c7b0ef3c2c5b141e3392dd59cabbdacfcf295c1672773844df6"
     },
     "index.html": {
-      "bytes": 1744,
-      "sha256": "d8b73383a8e27082abffa6fc0e0e2265aeb17a0980f707173c9c0c78d903a828"
+      "bytes": 1742,
+      "sha256": "9db4e3c05f408af8e7f8bdb886e1f8dc63bd55dced9e223e6dbb408258d84243"
     },
     "manifest.webmanifest": {
       "bytes": 392,
@@ -159,8 +287,8 @@
       "sha256": "8380ecc6617a63f002d75e10c19359d8c1347db3f82900c4f7d19a81ab1aad4b"
     },
     "sw.js": {
-      "bytes": 3946,
-      "sha256": "81e02a986c242d48da5a8020a484fd5014e243432872e2af83faa4d65722ebfe"
+      "bytes": 5822,
+      "sha256": "165266f9004376fce8686845709368f55a6743c5ad11c613cfa1c75f5c5bf8f3"
     },
     "v02/assets/atmosphere/camp-v02.jpg": {
       "bytes": 715858,
@@ -278,6 +406,10 @@
       "bytes": 7469,
       "sha256": "0346836916a751c229de390f266ff05531c281b661b2ff8fbfae976f9b893030"
     },
+    "v04/index.html": {
+      "bytes": 1762,
+      "sha256": "22bbe3b728e52ba632388281311b0a90186a56339bf880212b847f8048367da6"
+    },
     "v04/journey.js": {
       "bytes": 1789,
       "sha256": "b90dc33efb11be2654f7e092c98c6aa688585da8dbae1dd292764343bbbaa3a4"
@@ -309,9 +441,73 @@
     "v04/world.js": {
       "bytes": 5167,
       "sha256": "5ae5a9ea644098268a9de90b91641bca60403b4ab79c77f72efe4e19f094b223"
+    },
+    "v05/app.js": {
+      "bytes": 40567,
+      "sha256": "cd410871477dabd3ef6d458529d4ee39374f1353c6f212c327e0672ee245c5d2"
+    },
+    "v05/art.js": {
+      "bytes": 10050,
+      "sha256": "ff0f88198d9e006d4eb1e9ef433eed1de4eb40becde16badd69ebd37e66d2c1f"
+    },
+    "v05/conflict.js": {
+      "bytes": 5664,
+      "sha256": "8003ce239d71b88803ff04747754a429d5dab5df97a6706059ececca3294202f"
+    },
+    "v05/drive.js": {
+      "bytes": 424,
+      "sha256": "e0c9a538d3fb4f29dc4bcd2cbf24b9b4a20d5523eed3fdf0715054db57cf8296"
+    },
+    "v05/film.js": {
+      "bytes": 4472,
+      "sha256": "ace97d22c4ee65522e16b06c879cff2f9d7d83cd95f05d61668f9bc41275cdbc"
+    },
+    "v05/fishing.js": {
+      "bytes": 7445,
+      "sha256": "7d85d38f2f98cc52292f7b4b214ce67fc50ad065195773e5e457266724e4fb86"
+    },
+    "v05/journey.js": {
+      "bytes": 4193,
+      "sha256": "dafbb18a7a8c1d42c01bad3553a14ac0f8f91c268f40c59322b0d4717d445fa8"
+    },
+    "v05/motion.js": {
+      "bytes": 4937,
+      "sha256": "156d70015677d1b3d659153db93535fdf8ee22c1553b5f54a14e41e423f294f4"
+    },
+    "v05/salvage.js": {
+      "bytes": 6805,
+      "sha256": "7360210b573534859c73c9efe09777665769b29699033e6faf679320a4ec5456"
+    },
+    "v05/scenes.js": {
+      "bytes": 6457,
+      "sha256": "45688694c3862f6701b957547d425cb7f9bd33ac6c86221442a64b8d6074cabe"
+    },
+    "v05/sim.js": {
+      "bytes": 18577,
+      "sha256": "537e78845dc6a1a046e791ee830021b9e1c9dc946d591b4618087591f5bff2b1"
+    },
+    "v05/sound.js": {
+      "bytes": 1915,
+      "sha256": "320ed7d8aca3b5329998694ba290ec0819675aee68be3ad9604008570be05697"
+    },
+    "v05/state.js": {
+      "bytes": 1688,
+      "sha256": "6abf2d9811e0646e3b49455c785d581382d414a3b8915e601302a82901d5e7f8"
+    },
+    "v05/style.css": {
+      "bytes": 16214,
+      "sha256": "70cd39cd675a1d11bbdb7072f778c49d139b20b206c16f49e9695c010f8c55db"
+    },
+    "v05/video.js": {
+      "bytes": 816,
+      "sha256": "8065e2abe998a65b1a1c3684535690f68722d6f05ec435483930cc027e5d9545"
+    },
+    "v05/world.js": {
+      "bytes": 5263,
+      "sha256": "9be1fa84a4d637fcc76aa6110a8867de450f0d6d8ce00a21c6e9e74dfc824c64"
     }
   },
-  "validation": "59 simulation tests; two admission routes through browser UI; touch casting A/B; synthetic controller fishing; WebKit touch; legacy cache/save and offline upgrade.",
+  "validation": "83 simulation tests; two admission routes through browser UI; touch tap/pull; synthetic controller fishing; WebKit touch; six motion clips decode/seek in Chromium and WebKit; legacy cache/save and offline upgrade with video byte ranges.",
   "nativeAppleBuild": false,
   "physicalAppleDeviceTested": false,
   "humanFunTested": false
