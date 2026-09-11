@@ -1,0 +1,231 @@
+import {VERSION,SAVE_KEY,FAMILY,NODES,ROADS,PACKING,PARTS,node,roads} from './world.js?v=0.4.0';
+import {fresh,load,save,act,update,summary,slots,clamp} from './sim.js?v=0.4.0';
+import {render,ready,HAZARDS,HOME_POINTS} from './art.js?v=0.4.0';
+import {castEndpoint} from './fishing.js?v=0.4.0';
+import {yardView} from './scenes.js?v=0.4.0';
+import {SITE_NAMES} from './salvage.js?v=0.4.0';
+import {SHOTS} from './journey.js?v=0.4.0';
+import {enableAudio,soundFrame} from './sound.js?v=0.4.0';
+const $=id=>document.getElementById(id),canvas=$('scene');
+let saved=load(localStorage),s=saved||fresh(Math.floor(Math.random()*100000)),manual=false,last=performance.now(),saveClock=0,panelKey='',statusKey='',resourceKey='';
+const ui={grip:null,title:true,paused:false,dialog:null,hits:[],drag:null,wire:null,cast:null,padCursor:null};
+const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const button=(type,id,label,small='',cls='',extra='')=>`<button data-action="${type}" ${id!==undefined?`data-id="${id}"`:''} class="${cls}" ${extra}>${label}${small?`<small>${small}</small>`:''}</button>`;
+const group=(title,content,wide=false)=>`<div class="actiongroup${wide?' wide':''}"><h2>${title}</h2>${content}</div>`;
+const bars=(label,value,color='')=>`${label}<div class="meter ${color}"><i style="width:${clamp(value,0,1)*100}%"></i></div>`;
+const count=n=>Math.max(0,Math.round(n*10)/10);
+function persist(){try{save(localStorage,s);saved=structuredClone(s);$('save-status').textContent='Saved on this device';}catch{$('save-status').textContent='Saving unavailable · keep this tab open';}}
+function resetInput(){ui.drag=null;ui.wire=null;ui.cast=null;ui.grip=null;pointer=null;if(s.activity){s.activity.reel=false;s.activity.carry=null;if(s.mode==='crossing')s.activity.speed=.65;}document.querySelectorAll('.held').forEach(x=>x.classList.remove('held'));}
+function dispatch(action){try{const beforeMode=s.mode;const next=structuredClone(s);act(next,action);s=next;if(!['reel','tune','steer','slow','fishAim'].includes(action.type))persist();drawUI();if(beforeMode!==s.mode&&!ui.paused)$('stage').scrollIntoView({block:'start',behavior:'instant'});}catch(e){s.message=e.message;$('notice').textContent=e.message;}}
+function startNew(){resetInput();s=fresh(Math.floor(Math.random()*100000));ui.title=false;ui.dialog=null;ui.paused=false;if($('dialog').open)$('dialog').close();persist();drawUI(true);}
+function resume(){s=structuredClone(saved||s);resetInput();ui.title=false;drawUI(true);}
+function packCount(){return s.packed.reduce((v,id)=>v+PACKING.find(p=>p.id===id).slots,0);}
+function portrait(id,cls=''){const i=FAMILY.findIndex(p=>p.id===id);return `<span class="portrait ${cls}"><img src="assets/pilgrimage/family.jpg" style="left:-${i*100}%" alt="${FAMILY[i]?.name||''}" loading="eager"></span>`;}
+function drawFamily(){ $('family').innerHTML=FAMILY.map(p=>`<button class="person" data-action="person" data-id="${p.id}" aria-label="${p.full}, ${p.role}">${portrait(p.id)}<span><strong>${p.name}</strong><small>${p.id==='rusty'?'Good company':'Mercer'}</small></span></button>`).join('');}
+function panel(){
+ const g=s.activity,n=node(s.node);
+ if(s.mode==='packing')return group(`Six spaces. What comes with you? <span class="pill">${packCount()} / 6</span>`,`<p>Tools, a fishing rod, blankets, and basic food are aboard. Choose the rest.</p><div class="packing">${PACKING.map(i=>button('pack',i.id,`${i.icon} ${i.name} · ${i.slots}`,i.text,s.packed.includes(i.id)?'selected':'',`aria-pressed="${s.packed.includes(i.id)}"`)).join('')}</div>`,true)+group('The last three days',`<p>The Mercers left Everett after their home and work became subscriptions. Frank says there’s a place across the Line where a deed still means something.</p>`,false)+group('Keep one another going',`<div class="buttons">${button('depart',undefined,'Begin the pilgrimage','Reach Morrow before intake closes.','primary')}</div>`);
+ if(s.mode==='stop'){
+  let primary=button('activity','repair','▧ Repair van',s.fan?'Tire work restores condition.':'Cooling fan is failing.');
+  if(n.salvage)primary=button('activity','salvage','▣ Search the site','Inspect machinery. Watch the road.')+primary;
+  if(n.fish)primary+=button('activity','fishing','⌁ Go fishing','Read the water. Catch dinner.');
+  if(n.id==='pump'&&!s.sponsor)primary+=button('activity','repair','⚡ Restore the pump','Earn Glenn’s sponsorship.','primary','data-target="pump"');
+  if(['freight','ridge'].includes(n.id)&&!s.cargo)primary+=button('delivery',undefined,'Take the delivery','Three spaces. Keep the filters above 45%.',!s.sponsor?'primary':'');
+  if(s.cargo&&!s.flags.tarp)primary+=button('weatherproof',undefined,'Secure the filters','1.5 hours · protects against the storm.');
+  if(n.id==='line')primary=button('gate',undefined,'Approach the crossing',s.hour>72?'Intake has closed.':s.sponsor?'Glenn has vouched for the Mercers.':s.cargo?`Filter delivery: ${Math.round(s.cargo.condition)}% · need 45%.`:'You still need a sponsor or delivery.','primary')+button('returnRidge',undefined,'Return to the ridge','5 hours · 5 fuel · find the convoy.')+button('outer',undefined,'Stay in the outer camp','End the journey safely outside Morrow.');
+  return group(n.id==='line'?'Your place across the water':'Make this stop count',`<p>${n.desc}</p><div class="buttons">${primary}</div>`)+group('The road ahead',roads(s.node).length?`<div class="route-buttons">${roads(s.node).map(r=>button('travel',r.id,`<strong>${r.name} →</strong>`,`${r.hours} hours · ${r.fuel} fuel · ${r.wear} van wear<br>${r.text}`,'primary')).join('')}</div>`:`<p>The Morrow Compact protects this basin’s water, roads, and workshops. Admission is a written agreement. It isn’t a lottery.</p>`)+group('Family & supplies',`<div class="buttons">${button('meal',undefined,'Cook a meal','1 meal · +15 rest · +12 health')}${button('rest',undefined,'Sleep at camp','6 hours · +42 rest · +8 health')}${n.shop?button('shop',undefined,'Trade','Fuel, food, spare parts.'):''}${button('inventory',undefined,'Parts locker',`${slots(s)} / 7 spaces`)}</div>`)+group('Admission',`<p>${s.sponsor?'✓ Glenn Holt’s sponsorship is signed.':s.cargo?`✓ On the delivery manifest. Filters: ${Math.round(s.cargo.condition)}%. ${s.flags.tarp?'Covered and tied down.':'The crate is exposed.'}`:'Restore the Blackwater pump, or deliver filters for the Pruitts. Either gives your household a way in.'}</p>${s.packed.includes('radio')?'<p class="label">Frank’s radio: storm closure in '+count(72-s.hour)+' hours.</p>':''}`);
+ }
+ if(s.mode==='salvage'){
+  const item=s.sites[s.node].find(i=>i.id===g.selected&&!i.taken),working=!!g.working;
+  if(g.phase==='intercept')return group('“We have a return order.”',`<p>${g.notice}</p><div class="buttons">${button('collectorChoice','permit','Show the county permit','1.5 hours · your plate is recorded.','primary')}${button('collectorChoice','escape','Take the rear lane','8 van condition · escape with your parts.')}</div>`,true);
+  let actions='';
+  if(working)actions=button('cancelWork',undefined,'Tools down','Stop working and watch the road.');
+  else if(item){const wait=g.player.target?'disabled':'';actions=(!item.safe?button('makeSafe',undefined,item.hazard==='alarm'?'Disconnect alarm':item.hazard==='shelf'?'Brace the rack':'Free the bracket','4 seconds · makes extraction safe.','',wait):'')+button('extract','quiet','Use the tools','9 seconds · quiet.','primary',wait)+button('extract','force','Force it loose','3 seconds · noisy; unsafe parts can break.','',wait);}
+  else actions=button('selectNext',undefined,'Inspect a machine','Tap a real object in the scene.','primary');
+  return group(item?item.object:working?'Steady hands':'A useful thing. A way out.',`<p class="activity-copy">${g.notice}</p><div class="buttons">${actions}${button('hide',undefined,g.player.hiding?'Stay in cover':'Take cover','Break their view.')}${button('exitSite','rear','Rear gate ↗','Leave with what you have.')}</div>`,true);
+ }
+ if(s.mode==='repair'){
+  let controls='';
+  if(g.phase==='diagnose')controls=['fan','relay','tire'].map(id=>button('test',id,`Inspect ${id}`,g.tested.includes(id)?'Checked.':'Trace the fault.')).join('');
+  if(g.phase==='replace')controls=button('fit',g.fault,`Fit ${PARTS[g.fault].name}`,`${s.parts[g.fault].length} spare${s.parts[g.fault].length===1?'':'s'} aboard.`,'primary',s.parts[g.fault].length?'':'disabled');
+  if(g.phase==='connect')controls=[0,1,2].filter(i=>!g.connections.includes(i)).map(i=>button('chooseLead',String(i),`Lead ${['I','II','III'][i]}`,ui.wire?.index===i?'Selected · choose a socket.':'Pick up this loose lead.')).join('')+(ui.wire?[0,1,2].map(i=>button('socket',String(i),`Socket ${['I','II','III'][i]}`)).join(''):'');
+  if(g.phase==='tune')controls=`<label for="tune">${g.fault==='tire'?'Lug wrench':'Regulator'} · aim between 58 and 76</label><input id="tune" type="range" min="0" max="100" value="${g.tune*100}" aria-label="${g.fault==='tire'?'Lug wrench':'Engine regulator'}">`;
+  if(g.phase==='done')controls=button('leaveActivity',undefined,g.target==='pump'?'Take the signed papers':'Close the hood','The repair is complete.','primary');
+  return group(g.target==='pump'?'Blackwater needs water':'Keep the old van alive',`<p>${g.notice}</p><div class="buttons">${controls}</div>`,true)+(g.phase!=='done'?group('Leave the hood open?',`<div class="buttons">${button('leaveActivity',undefined,'Return to the stop','Your repair progress stays in place.')}</div>`):'');
+ }
+ if(s.mode==='fishing'){
+  let actions='';
+  if(g.phase==='aim')actions=button('fishCastMode',undefined,s.settings.castMode==='pull'?'Try tap casting':'Try pull casting','Switch controls for this comparison.')+button('leaveActivity',undefined,'Back to the van',`${g.catch} portions kept.`);
+  else if(g.phase==='empty')actions=button('fishRetry',undefined,'Try another rise','','primary')+button('leaveActivity',undefined,'Head back');
+  else if(g.phase==='landed')actions=button('fishKeep',undefined,`Keep ${g.catchResult.portions} portions`,'Dinner for the family.','primary')+button('fishRelease',undefined,'Let it swim','A good fight is enough.');
+  else if(['fight','wait','cast','bite'].includes(g.phase))actions=button('fishCutConfirm',undefined,g.phase==='fight'?'Bring the line in':'Cancel this cast','You can leave the bank at any time.');
+  return group(g.phase==='landed'?'Ben has it.':g.phase==='fight'?'Feel the line':'Dinner is out there',`<p class="activity-copy">${g.notice}</p><div class="buttons">${actions}</div>`,true);
+ }
+ if(s.mode==='story'){const shot=SHOTS[s.story.id];return group(shot.title,`<p>${shot.line}</p><div class="buttons">${button('storyContinue',undefined,'Back to the journey','','primary')}</div>`,true);}
+ if(s.mode==='travel'){const shot=s.road.shot&&SHOTS[s.road.shot.id];return group(shot?shot.title:s.fan?'A steady engine':'Watch the temperature',`<p>${shot?shot.line:s.threat.identified?'The Collectors recorded your plate. Keep to the county roads.':'The family settles in. The next stop is a little closer.'}</p><div class="buttons">${s.road.shot?button('skipShot',undefined,'Continue the drive'):''}${button('pause',undefined,'Pause')}</div>`,true);}
+ if(s.mode==='incident')return group(s.incident.title,`<p>${s.incident.body}</p><div class="buttons">${s.incident.collectors?button('incident','detour','Take the county lane','2 hours · 5 van condition · avoid the scan.','primary')+button('incident','papers','Show the county permit','1 hour · your plate is recorded.'):button('incident','careful','Take the safe line',`${s.incident.delay} hours · protect the load.`,'primary')+button('incident','push','Keep going',`${s.incident.damage} van damage${s.cargo?' · cargo at risk':''}`)}</div>`,true);
+ if(s.mode==='crossing')return group('Bring everyone across',`<p>Drag across the bridge to steer around the wreckage. Slow down when the gap is tight. The warm lights are real.</p><div class="buttons">${button('nudge','left','← Steer left')}${button('holdSlow',undefined,'Hold to slow','Release to accelerate.','hold')}${button('nudge','right','Steer right →')}</div>`,true);
+ if(s.mode==='home')return group('Make yourselves at home',`<p>Four small things you never had permission to do. Touch the numbered places in the room.</p><div class="buttons">${HOME_POINTS.map(p=>button('homeItem',p.id,`${s.home.placed.includes(p.id)?'✓ ':''}${p.label}`,'',s.home.placed.includes(p.id)?'selected':'')).join('')}</div>`,true)+group('A place for the chair',`<p>${s.packed.includes('chair')?'Grandad’s chair made it all this way.':'The previous owner left a good armchair.'} Where does it belong?</p><div class="buttons">${button('homeSpot','window','By the window','',s.home.spot==='window'?'selected':'')}${button('homeSpot','workshop','By the workbench','',s.home.spot==='workshop'?'selected':'')}</div>`)+group('The first evening',`<div class="buttons">${button('finishHome',undefined,'Sit with the family',`${s.home.placed.length} / 4 things in place`,'primary',s.home.placed.length<4?'disabled':'')}</div>`);
+ if(s.mode==='ending')return group(s.ending.title,`<p>${s.ending.text}</p>${s.ending.owned?`<div class="deed"><div class="label">MORROW COMPACT · RECORDED OWNERSHIP</div><h3>JACK & SARAH MERCER</h3><p>One home. A garden. A place to work with your hands.<br>No rent. No employer tied to your door. Local dues are public, voted on, and capped by the charter.</p><p>${s.packed.includes('chair')?'Grandad’s chair':'Your armchair'} sits ${s.home.spot==='window'?'beside the window':'by the workbench'}. Ben wants to learn the pump. Annie and Rusty are choosing a room.</p></div>`:''}<p>${s.stats.salvaged} items recovered · ${s.stats.fish} fish landed · ${s.stats.repairs} repairs completed · ${count(s.hour)} hours</p><div class="buttons">${button('newConfirm',undefined,'Another pilgrimage','Try the other road.','primary')}${button('journal',undefined,'Read the journey')}</div>`,true);
+ return '';
+}
+function inventoryHTML(){return Object.entries(s.parts).map(([id,list])=>`<span class="pill">${PARTS[id].name}: ${list.length}${list.length?' · '+list.map(q=>q+'%').join(', '):''}</span>`).join('')+(s.cargo?`<span class="pill">Filters: ${Math.round(s.cargo.condition)}% · 3 spaces</span>`:'');}
+function drawUI(force=false){
+ document.body.dataset.mode=ui.title?'title':s.mode;document.body.classList.toggle('reduced',s.settings.reducedMotion);
+ if($('grip')){const g=s.activity,show=!ui.title&&s.mode==='fishing'&&['aim','wait','bite','fight'].includes(g?.phase);$('grip').hidden=!show; if(show){$('grip').textContent=g.phase==='aim'?(s.settings.castMode==='pull'?'PULL BACK TO CAST':'TAP A RISE TO CAST'):g.phase==='bite'?'STRIKE':g.phase==='fight'?(g.reel?'REELING · SLIDE TO ANGLE':'HOLD TO REEL'):'WAIT FOR THE BITE';$('grip').classList.toggle('strike',g.phase==='bite');}}
+ document.body.classList.toggle('title',ui.title);$('opening').hidden=!ui.title;
+ if(ui.title){const key='title'+!!saved;if(force||panelKey!==key){$('opening').innerHTML=`<div class="label">A SURVIVAL PILGRIMAGE</div><h1>Somewhere,<br><em>still ours.</em></h1><p>A family. A van we actually own. Three days to a place beyond Continuum’s reach — where a home and a life can still be yours.</p><div class="buttons">${saved?button('resume',undefined,'Continue the journey','','primary'):''}${button('new',undefined,saved?'Start fresh':'Play Common Road','',saved?'':'primary','id="start"')}</div><div class="legacy">THE LINE · PLAYABLE CHAPTER 04<br><a href="v03/">Continue the previous v0.3 journey</a></div>`;panelKey=key;}return;}
+ const res=[['INTAKE',count(72-s.hour),'hrs',s.hour>60],['FUEL',count(s.fuel),'/ 50',s.fuel<10],['MEALS',count(s.meals),'family',s.meals<2],['REST',Math.round(s.energy),'%',s.energy<25],['HEALTH',Math.round(s.health),'%',s.health<35],['VAN',Math.round(s.condition),'%',s.condition<30],['CASH','$'+s.cash,'',s.cash<30]];
+ const rk=JSON.stringify(res);if(rk!==resourceKey){$('resources').innerHTML=res.map(([label,v,u,warn])=>`<div class="resource ${warn?'warn':''}"><span>${label}</span><strong>${v}</strong><small>${u}</small></div>`).join('');resourceKey=rk;}
+ const g=s.activity;const key=JSON.stringify([s.mode,s.node,g?.phase,g?.selected,g?.connections,g?.notice,g?.catch,g?.working?.id,!!g?.player?.target,g?.player?.hiding,g?.patrol?.state,s.road?.shot?.id,s.story?.id,s.settings,s.packed,s.parts,s.cargo,s.sponsor,s.home,s.flags,s.cash,ui.wire?.index]);
+ if(force||key!==panelKey){const active=document.activeElement;const token=active?.dataset?.action?[active.dataset.action,active.dataset.id]:null;const id=active?.id;$('actions').innerHTML=panel();panelKey=key;if(token){const el=[...$('actions').querySelectorAll('button')].find(x=>x.dataset.action===token[0]&&x.dataset.id===token[1]);el?.focus({preventScroll:true});}else if(id&&$(id)&&document.activeElement===document.body)$(id).focus({preventScroll:true});}
+ if($('notice').textContent!==s.message)$('notice').textContent=s.message;
+ const title=s.mode==='story'?SHOTS[s.story.id].title:s.mode==='packing'?'Everything we can carry':s.mode==='salvage'?SITE_NAMES[s.node]:s.mode==='repair'?(g.target==='pump'?'Bring the water back':'A machine worth saving'):s.mode==='fishing'?'Dinner is out there':s.mode==='crossing'?'The last crossing':s.mode==='home'?'A door of our own':s.mode==='ending'?s.ending.title:s.mode==='travel'||s.mode==='incident'?s.road.name:node(s.node).name;
+ const region=s.mode==='home'||s.ending?.owned?'MORROW · THE FIRST EVENING':s.mode==='packing'?'THE MERCER HOUSEHOLD':node(s.node).region;
+ const heading=`<div class="eyebrow">${region}</div><h1>${title}</h1>`;if($('sceneheading').innerHTML!==heading)$('sceneheading').innerHTML=heading;
+ let status='',hint='';
+ if(s.mode==='salvage'){const p=g.patrol;status=p.state==='warning'?`COLLECTORS · ${Math.max(0,Math.ceil(12-p.elapsed))}s away`:p.state==='search'?'SEARCHING THE YARD':p.state==='watch'?'FRONT GATE BLOCKED':p.state==='gone'?'ROAD CLEAR':'WATCH THE ROAD';if(g.working)status+=bars(g.working.type==='makeSafe'?'Making safe':'Recovering',g.working.elapsed/g.working.duration);hint=g.player.hiding?'IN COVER · OUT OF SIGHT':g.phase==='intercept'?'THE REAR LANE IS STILL AN OPTION':'';}
+ if(s.mode==='repair'){status=`${['diagnose','replace','connect','tune','done'].indexOf(g.phase)+1} / 5 · ${g.phase.toUpperCase()}`;hint=g.phase==='connect'?'MATCH I → I, II → II, III → III':g.phase==='tune'?'KEEP THE NEEDLE INSIDE THE BRASS BAND':'';}
+ if(s.mode==='fishing'){status=g.phase==='fight'?bars(g.tension>.83?'STRAIN · EASE OFF':g.slack>.8?'SLACK · REEL':'LINE STRAIN',g.tension,g.tension>.83?'red':'')+bars('TO THE BANK',g.progress):g.phase==='bite'?'FLOAT UNDER · STRIKE':g.phase==='landed'?`${g.catchResult.portions} FRESH PORTIONS`:`${g.catch} portions kept`;hint=g.phase==='fight'?(g.behavior==='run'?'LET IT RUN':g.slack>.8?'TAKE UP THE SLACK':'REEL WHILE IT RECOVERS'):g.phase==='aim'?(s.settings.castMode==='pull'?'DRAG BACK FROM THE GRIP · PREVIEW THE LANDING':'TAP THE WATER · AIM NEAR A RISE'):'';}
+ if(s.mode==='travel'){status=bars('ON THE ROAD',s.road.elapsed/s.road.duration);hint=s.road.id==='opening'?'THE FINAL THREE DAYS':`${s.road.hours} hours of travel · ${s.road.fuel} fuel`;}
+ if(s.mode==='crossing'){status=bars('THE FAR BANK',g.distance)+`${g.speed<.5?'SLOW':'CRUISING'} · ${g.hits.length} scrapes`;hint='DRAG TO STEER · AVOID THE BROKEN TIMBERS';}
+ if(s.mode==='home'){status=`${s.home.placed.length} / 4 · MAKING IT OURS`;hint=s.home.placed.length===4?'THE FAMILY IS WAITING AT THE TABLE':'TOUCH A NUMBER TO SETTLE IN';}
+ const sk=status+hint;if(sk!==statusKey){$('scenestatus').innerHTML=status;$('scenehint').textContent=hint;statusKey=sk;}
+}
+function modal(kind,content){resetInput();ui.paused=true;ui.dialog=kind;$('dialogbody').innerHTML=content+`<div class="buttons">${button('close',undefined,'Back to the journey','','primary')}</div>`;if(!$('dialog').open)$('dialog').showModal();$('dialog').querySelector('button')?.focus();persist();}
+function closeModal(){if($('dialog').open)$('dialog').close();ui.paused=false;ui.dialog=null;drawUI(true);}
+function openPause(){modal('pause',`<div class="label">THE ROAD CAN WAIT</div><h2>Take a breath.</h2><p>Your journey is saved on this device. Time stops while this panel is open.</p><div class="buttons">${button('title',undefined,'Opening screen')}${button('help',undefined,'Controls')}${button('sound',undefined,s.settings.sound?'Mute sound':'Enable sound')}${button('settings',undefined,'Touch & accessibility')}${button('fullscreen',undefined,'Full screen')}</div>${s.mode==='stop'?`<div class="buttons">${button('aid',undefined,'Ask for emergency help','Once per journey · 4 hours, if supplies are low.')}${button('rescueConfirm',undefined,'Call relief transport','Ends this attempt safely.','danger')}</div>`:''}`);}
+function showMap(){const map=`<svg class="route-map" viewBox="0 0 650 320" role="img" aria-label="Two roads to Morrow: pump sponsorship or freight delivery">${ROADS.map(r=>{const a=node(r.from),b=node(r.to);return `<line x1="${60+a.x*530}" y1="${15+a.y*270}" x2="${60+b.x*530}" y2="${15+b.y*270}" stroke="#647870" stroke-width="3"/>`;}).join('')}${NODES.map(n=>`<circle cx="${60+n.x*530}" cy="${15+n.y*270}" r="${n.id===s.node?9:5}" fill="${n.id===s.node?'#f6c77c':'#8aaa9e'}"/><text x="${60+n.x*530+13}" y="${15+n.y*270+4}">${n.id==='pump'?'Pump house':n.id==='freight'?'Freight stop':n.id==='yard'?'Service yard':n.name}</text>`).join('')}</svg>`;modal('map',`<div class="label">THE FINAL LEG · FICTIONAL OZARK ROUTE</div><h2>All roads ask something.</h2>${map}<p><strong>Repair road:</strong> restore Glenn’s pump with a relay. His household sponsorship follows you.</p><p><strong>Convoy road:</strong> carry the Pruitts’ filters in three locker spaces. Deliver at least 45% intact.</p><p><strong>The Line:</strong> a controlled reservoir crossing, backed by a network of towns and repair crews. Storm intake closes after 72 hours.</p>`);}
+function showShop(){modal('shop',`<div class="label">CASH $${s.cash} · LOCKER ${slots(s)} / 7</div><h2>Keep something in reserve.</h2><div class="buttons">${[['fuel','14 fuel','$50'],['food','4 family meals','$30'],['fan','Cooling fan','$55'],['relay','Power relay','$45'],['tire','Spare tire','$50']].map(([id,t,c])=>button('buy',id,t,c)).join('')}</div><h3>Trade a spare · $25 each</h3><div class="buttons">${Object.keys(PARTS).map(id=>button('sell',id,PARTS[id].name,`${s.parts[id].length} aboard`,'',s.parts[id].length?'':'disabled')).join('')}</div>`);}
+function showSettings(){modal('settings',`<h2>Make it feel right.</h2><p>Fishing uses the lower grip. Your thumb stays below the fish.</p><div class="buttons">${button('fishCastMode',undefined,s.settings.castMode==='pull'?'Casting: pull back':'Casting: tap water')}${[['autoHook','Automatic hook'],['toggleReel','Tap to toggle reeling'],['reducedMotion','Reduced motion']].map(([id,label])=>button('settingToggle',id,`${s.settings[id]?'✓ ':''}${label}`)).join('')}</div>`);}
+function showHelp(){modal('help',`<h2>Keep the family moving.</h2><h3>Search</h3><p>Tap a machine, inspect the hazard, then use tools or force. The bus blocks the Collectors’ view. The rear lane is a way out.</p><h3>Fish</h3><p>Pull backward from the lower grip to preview a cast, or switch to tap casting. Wait for the float to sink, then strike. Hold the grip to reel, slide sideways to angle the rod, and release during a run. Take up prolonged slack.</p><h3>Controller</h3><p>Fishing: left stick aims and angles; right trigger or A casts, hooks, and reels. A keeps a landed fish; X releases it. B brings in the line. Start pauses. Menus: D-pad and A.</p><h3>Your way in</h3><p>Restore Glenn’s pump for a sponsor, or keep the Pruitts’ filters at least 45% intact. The ridge has a return road to the pump if the delivery fails.</p>${button('settings',undefined,'Touch & accessibility')}`);}
+let audioOn=false,audioCtx=null;
+function sound(){if(!audioOn)return;try{audioCtx??=new(window.AudioContext||window.webkitAudioContext)();const o=audioCtx.createOscillator(),gain=audioCtx.createGain();o.type='sine';o.frequency.value=s.mode==='home'?330:180;gain.gain.setValueAtTime(.022,audioCtx.currentTime);gain.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+.16);o.connect(gain).connect(audioCtx.destination);o.start();o.stop(audioCtx.currentTime+.18);}catch{}}
+function perform(type,id,target){
+ if(type==='new'){if(saved)modal('new',`<h2>Start another pilgrimage?</h2><p>This replaces the v0.4 journey saved in this browser. Your previous v0.3 journey stays separate.</p>${button('confirmNew',undefined,'Start fresh','','danger')}`);else startNew();return;}
+ if(type==='newConfirm'){modal('new',`<h2>Take another road?</h2><p>The next pilgrimage replaces this local save.</p>${button('confirmNew',undefined,'Start fresh','','primary')}`);return;}
+ if(type==='confirmNew'){startNew();return;}if(type==='resume'){resume();return;}
+ if(type==='close'){closeModal();return;}if(type==='pause'){openPause();return;}
+ if(type==='title'){closeModal();ui.title=true;persist();drawUI(true);return;}
+ if(type==='fullscreen'){document.fullscreenElement?document.exitFullscreen?.():document.documentElement.requestFullscreen?.().catch(()=>{});return;}
+ if(type==='help'){showHelp();return;}if(type==='shop'){showShop();return;}
+ if(type==='sound'){dispatch({type:'setting',id:'sound',value:!s.settings.sound});enableAudio(s.settings.sound);openPause();return;}
+ if(type==='journal'){modal('journal',`<h2>What we carried.</h2><div class="gallery">${s.reel.gallery.map(id=>`<figure><img src="assets/journey/${({family:'family-photo',relief:'cabin',home:'family-photo'})[id]||id}.webp" alt="${SHOTS[id].title}"><figcaption>${SHOTS[id].title}</figcaption></figure>`).join('')}</div>${s.journal.length?s.journal.map(e=>`<div class="journal-entry"><div class="label">${e.hour} HOURS INTO THE FINAL LEG</div><h3>${esc(e.title)}</h3><p>${esc(e.body)}</p></div>`).join(''):'<p>The final leg is still ahead.</p>'}`);return;}
+ if(type==='inventory'){modal('inventory',`<h2>What’s in the van.</h2><div class="part-list">${inventoryHTML()}</div><p>${slots(s)} / 7 locker spaces. A filter delivery needs three.</p><h3>What you brought</h3><p>${s.packed.map(id=>PACKING.find(i=>i.id===id).name).join(' · ')}</p>`);return;}
+ if(type==='person'){const p=FAMILY.find(p=>p.id===id);modal('person',`<h2>${p.full}</h2>${portrait(id,'large')}<p>${p.role}</p><p>“${p.line}”</p>`);return;}
+ if(type==='rescueConfirm'){modal('rescue',`<h2>Leave the van?</h2><p>Relief transport takes the family to safety. This ends the pilgrimage.</p>${button('rescue',undefined,'End this attempt','','danger')}`);return;}
+ if(['buy','sell'].includes(type)){dispatch({type,id});const msg=s.message||$('notice').textContent;showShop();$('dialogbody').insertAdjacentHTML('afterbegin',`<p role="status">${esc(msg)}</p>`);return;}
+ if(type==='chooseLead'){ui.wire={index:Number(id),x:.25,y:.44+Number(id)*.13};drawUI(true);return;}
+ if(type==='socket'){if(ui.wire){dispatch({type:'connect',from:ui.wire.index,to:Number(id)});ui.wire=null;drawUI(true);}return;}
+ if(type==='selectNext'){const items=s.sites[s.node].filter(i=>!i.taken);if(items.length){let ix=items.findIndex(i=>i.id===s.activity.selected);dispatch({type:'inspect',id:items[(ix+1)%items.length].id});}return;}
+ if(type==='extract'){dispatch({type,id,method:id==='force'?'force':'quiet'});return;}
+ if(type==='fishCastMode'){dispatch({type:'setting',id:'castMode',value:s.settings.castMode==='pull'?'tap':'pull'});if(ui.dialog==='settings')showSettings();return;}
+ if(type==='fishCutConfirm'){modal('cut',`<h2>Bring the line in?</h2><p>${s.activity.phase==='fight'?'The fish gets away. You keep your tackle.':'This cast ends without a catch.'}</p>${button('confirmCut',undefined,'Bring it in','','primary')}`);return;}
+ if(type==='confirmCut'){closeModal();dispatch({type:'fishCut'});return;}
+ if(type==='settings'){showSettings();return;}
+ if(type==='settingToggle'){dispatch({type:'setting',id,value:!s.settings[id]});showSettings();return;}
+ if(type==='nudge'){dispatch({type:'steer',value:s.activity.target+(id==='left'?-.18:.18)});return;}
+ if(['holdReel','holdSlow'].includes(type))return;
+ if(['aid','rescue'].includes(type))closeModal();
+ dispatch({type,id,target});sound();
+}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-action]');if(b&&!b.disabled)perform(b.dataset.action,b.dataset.id,b.dataset.target);});
+$('pause').onclick=openPause;$('map').onclick=showMap;$('journal').onclick=()=>perform('journal');$('help').onclick=showHelp;
+$('dialog').addEventListener('cancel',e=>{e.preventDefault();closeModal();});
+document.addEventListener('input',e=>{if(e.target.id==='tune')dispatch({type:'tune',value:Number(e.target.value)/100});if(e.target.id==='rod')dispatch({type:'reel',value:s.activity.reel,x:Number(e.target.value)/100});});
+function point(e){const r=canvas.getBoundingClientRect();return {x:clamp((e.clientX-r.left)/r.width,0,1),y:clamp((e.clientY-r.top)/r.height,0,1)};}
+function at(p){return [...ui.hits].reverse().find(hit=>Math.hypot((p.x-hit.x)*canvas.clientWidth,(p.y-hit.y)*canvas.clientHeight)<hit.r);}
+function sceneDown(p){if(ui.title||ui.paused)return;const h=at(p),g=s.activity;
+ if(s.mode==='salvage'){if(h?.type==='item')dispatch({type:'inspect',id:h.id});else if(h?.type==='exit')dispatch({type:'exitSite',id:h.id});else if(h?.type==='cover')dispatch({type:'hide'});}
+ if(s.mode==='repair'){
+  if(g.phase==='diagnose'&&h?.type==='part')dispatch({type:'test',id:h.id});
+  else if(g.phase==='replace'&&h?.id===g.fault)dispatch({type:'fit',id:g.fault});
+  else if(g.phase==='connect'&&h?.type==='lead')ui.wire={index:h.index,...p};
+  else if(g.phase==='tune'&&p.y>.42&&p.y<.7)dispatch({type:'tune',value:(p.x-.18)/.64});
+ }
+ if(s.mode==='fishing'){
+  if(g.phase==='aim'){
+   if(s.settings.castMode==='tap'&&p.y>.24&&p.y<.78)dispatch({type:'cast',x:p.x,y:p.y,method:'tap'});
+   else if(s.settings.castMode==='pull'&&p.y>.71)ui.cast={...p,lastX:p.x,lastY:p.y};
+  }else if(g.phase==='bite')dispatch({type:'hook'});
+  else if(g.phase==='fight'&&p.y>.70){ui.grip={x:p.x,rod:g.rod};dispatch({type:'reel',value:s.settings.toggleReel?!g.reel:true});}
+ }
+ if(s.mode==='crossing')dispatch({type:'steer',value:p.x});
+ if(s.mode==='home'&&h)dispatch({type:'homeItem',id:h.id});
+}
+function sceneMove(p){if(ui.title||ui.paused)return;
+ if(ui.wire)ui.wire={...ui.wire,...p};
+ if(ui.cast){ui.cast.lastX=p.x;ui.cast.lastY=p.y;const target=castEndpoint(ui.cast,{x:p.x,y:p.y});s.activity.aim={x:target.x,y:target.y};}
+ if(ui.grip&&s.mode==='fishing'&&s.activity.phase==='fight')dispatch({type:'reel',value:s.activity.reel,x:ui.grip.rod+(p.x-ui.grip.x)*2});
+ if(s.mode==='repair'&&s.activity.phase==='tune'&&p.y>.4&&p.y<.73)dispatch({type:'tune',value:(p.x-.18)/.64});
+ if(s.mode==='crossing')dispatch({type:'steer',value:p.x});
+}
+function sceneUp(p,cancel=false){
+ if(ui.wire&&s.mode==='repair'){const h=at(p);if(!cancel&&h?.type==='socket')dispatch({type:'connect',from:ui.wire.index,to:h.index});ui.wire=null;}
+ if(ui.cast&&s.mode==='fishing'){
+  const target=castEndpoint(ui.cast,{x:p.x,y:p.y});ui.cast=null;
+  if(!cancel&&target.valid)dispatch({type:'cast',x:target.x,y:target.y,method:'pull'});
+ }
+ if(ui.grip&&s.mode==='fishing'&&(!s.settings.toggleReel||cancel))dispatch({type:'reel',value:false});ui.grip=null;drawUI(true);
+}
+let pointer=null;
+canvas.addEventListener('pointerdown',e=>{if(ui.title||ui.paused||pointer!==null)return;pointer=e.pointerId;canvas.setPointerCapture(e.pointerId);sceneDown(point(e));e.preventDefault();});
+canvas.addEventListener('pointermove',e=>{if(e.pointerId===pointer)sceneMove(point(e));});
+canvas.addEventListener('pointerup',e=>{if(e.pointerId===pointer){sceneUp(point(e));pointer=null;}});
+canvas.addEventListener('pointercancel',e=>{if(e.pointerId===pointer){sceneUp(point(e),true);pointer=null;}});
+canvas.addEventListener('lostpointercapture',()=>{if(pointer!==null){resetInput();pointer=null;}});
+let heldControl=null;
+document.addEventListener('pointerdown',e=>{const b=e.target.closest('.hold');if(!b||ui.paused)return;heldControl=b;b.setPointerCapture(e.pointerId);b.classList.add('held');dispatch({type:b.dataset.action==='holdReel'?'reel':'slow',value:true});});
+function releaseHold(){if(heldControl){heldControl.classList.remove('held');dispatch({type:heldControl.dataset.action==='holdReel'?'reel':'slow',value:false});heldControl=null;}}
+document.addEventListener('pointerup',releaseHold);document.addEventListener('pointercancel',releaseHold);
+window.addEventListener('blur',()=>{resetInput();if(!ui.title&&!ui.paused)openPause();});
+document.addEventListener('visibilitychange',()=>{if(document.hidden){resetInput();if(!ui.title&&!ui.paused)openPause();persist();}});
+window.addEventListener('pagehide',()=>{if(!ui.title)persist();});
+function focusStep(dir){const root=$('dialog').open?$('dialog'):document;const choices=[...root.querySelectorAll('button:not(:disabled),a,input')].filter(e=>e.getClientRects().length);let i=choices.indexOf(document.activeElement);choices[(i+dir+choices.length)%choices.length]?.focus();}
+const keys=new Set();
+document.addEventListener('keydown',e=>{
+ if(e.key==='Escape'){e.preventDefault();ui.dialog?closeModal():!ui.title&&openPause();return;}
+ if(e.key.toLowerCase()==='f'&&!['INPUT','TEXTAREA'].includes(e.target.tagName)){e.preventDefault();perform('fullscreen');return;}
+ if(ui.paused||ui.title)return;
+ if(['ArrowLeft','ArrowRight'].includes(e.key)&&s.mode==='crossing'){e.preventDefault();keys.add(e.key);}
+ if(e.code==='Space'&&(s.mode==='fishing'&&s.activity.phase==='fight'||s.mode==='crossing')){e.preventDefault();dispatch({type:s.mode==='fishing'?'reel':'slow',value:true});}
+});
+document.addEventListener('keyup',e=>{keys.delete(e.key);if(e.code==='Space'){if(s.mode==='fishing')dispatch({type:'reel',value:false});if(s.mode==='crossing')dispatch({type:'slow',value:false});}});
+let prevButtons=[],padWasScene=false;
+function gamepad(dt){
+ const pad=[...(navigator.getGamepads?.()||[])].find(p=>p?.connected);
+ if(!pad){if(prevButtons.length&&s.mode==='fishing')s.activity.reel=false;prevButtons=[];return;}
+ const b=pad.buttons.map(x=>x.pressed),edge=i=>b[i]&&!prevButtons[i],ax=pad.axes[0]||0,ay=pad.axes[1]||0;
+ if(edge(9)){ui.dialog?closeModal():openPause();prevButtons=b;return;}
+ if(!ui.title&&!ui.paused&&s.mode==='fishing'){
+  const g=s.activity,trigger=b[7]||b[0],before=prevButtons[7]||prevButtons[0];
+  if(g.phase==='aim'){
+   g.aim.x=clamp(g.aim.x+(Math.abs(ax)>.15?ax:0)*dt*.45,.1,.9);g.aim.y=clamp(g.aim.y+(Math.abs(ay)>.15?ay:0)*dt*.3,.25,.76);
+   if(trigger&&!before)dispatch({type:'cast',...g.aim,method:'controller'});
+  }else if(g.phase==='bite'&&trigger&&!before)dispatch({type:'hook'});
+  else if(g.phase==='fight'){g.rod=clamp(.5+ax*.45,.08,.92);g.reel=s.settings.toggleReel?(trigger&&!before?!g.reel:g.reel):trigger;}
+  else if(g.phase==='landed'){if(edge(0))dispatch({type:'fishKeep'});else if(edge(2))dispatch({type:'fishRelease'});}
+  else if(g.phase==='empty'&&edge(0))dispatch({type:'fishRetry'});
+  if(edge(1)){if(['fight','wait','bite','cast'].includes(g.phase))perform('fishCutConfirm');else dispatch({type:'leaveActivity'});}
+  prevButtons=b;return;
+ }
+ if(edge(1)){if(ui.dialog)closeModal();else if(s.mode==='salvage')dispatch({type:'exitSite',id:'rear'});else if(s.activity&&!['home','crossing'].includes(s.mode)){resetInput();dispatch({type:'leaveActivity'});}else openPause();}
+ if(edge(12)||edge(14))focusStep(-1);if(edge(13)||edge(15))focusStep(1);
+ const moving=Math.hypot(ax,ay)>.18;
+ if(!ui.title&&!ui.paused&&moving){
+  if(s.mode==='crossing')s.activity.target=clamp(s.activity.target+ax*dt*.6,.12,.88);
+  else if(['salvage','repair'].includes(s.mode)&&document.activeElement?.tagName!=='INPUT'){ui.padCursor??={x:.5,y:.5};ui.padCursor.x=clamp(ui.padCursor.x+ax*dt*.4,.04,.96);ui.padCursor.y=clamp(ui.padCursor.y+ay*dt*.4,.2,.88);canvas.focus({preventScroll:true});if(b[0])sceneMove(ui.padCursor);}
+ }
+ if(edge(0)){if(document.activeElement===canvas&&ui.padCursor&&!ui.paused){sceneDown(ui.padCursor);padWasScene=true;}else{const active=document.activeElement;if(active?.tagName==='INPUT'){active.value=Number(active.value)+10;active.dispatchEvent(new Event('input',{bubbles:true}));}else active?.click();}}
+ if(!b[0]&&prevButtons[0]&&padWasScene){sceneUp(ui.padCursor);padWasScene=false;}
+ if(!ui.paused&&document.activeElement?.tagName==='INPUT'&&moving){const el=document.activeElement;el.value=clamp(Number(el.value)+ax*dt*50,0,100);el.dispatchEvent(new Event('input',{bubbles:true}));}
+ if(!ui.paused&&s.mode==='crossing')s.activity.speed=b[6]?.36:.7;
+ prevButtons=b;
+}
+function tick(dt){if(!ui.title&&!ui.paused){update(s,dt);saveClock+=dt;if(saveClock>2){persist();saveClock=0;}}}
+function frame(now){const dt=Math.min(.05,(now-last)/1000);last=now;gamepad(dt);if(!manual){if(s.mode==='crossing'&&!ui.paused){const dir=(keys.has('ArrowRight')?1:0)-(keys.has('ArrowLeft')?1:0);s.activity.target=clamp(s.activity.target+dir*dt*.55,.12,.88);}tick(dt);}drawUI();render(canvas,s,ui);soundFrame(s,ui);requestAnimationFrame(frame);}
+window.render_game_to_text=()=>JSON.stringify({...summary(s),mode:ui.title?'intro':s.mode,storedMode:s.mode,overlay:ui.dialog,paused:ui.paused,coordinates:'Scene x and y are normalized 0..1 from the top left; r is a CSS-pixel hit radius.',hitTargets:ui.hits,weatherRadio:s.packed.includes('radio'),controls:[...document.querySelectorAll('button:not(:disabled)')].filter(x=>x.getClientRects().length).map(x=>({action:x.dataset.action||x.id,id:x.dataset.id,label:x.innerText}))});
+window.advanceTime=ms=>{manual=true;for(let t=0;t<ms;t+=1000/60)tick(Math.min(1000/60,ms-t)/1000);drawUI();render(canvas,s,ui);if(!ui.title)persist();};
+window.artReady=ready;
+drawFamily();drawUI(true);ready.then(()=>render(canvas,s,ui));requestAnimationFrame(frame);
+if('serviceWorker'in navigator&&!['localhost','127.0.0.1'].includes(location.hostname))navigator.serviceWorker.register('./sw.js').catch(()=>{$('save-status').textContent='Saved locally · offline cache unavailable';});

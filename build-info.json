@@ -1,142 +1,18 @@
 {
-  "version": "0.3.0",
-  "title": "Common Road \u2014 The Line",
+  "version": "0.4.0",
+  "title": "Common Road — The Line",
   "sourceRepository": "https://github.com/kingmadellc/common-road",
-  "sourceCommit": "6859899b846b270d7c5697f7184cf9e459028d6d",
-  "builtAt": "2026-09-11T00:05:09.290434+00:00",
-  "bytes": 14489479,
+  "sourceCommit": "a93f37a84c15d63a9eabca1622c37d948bc0c196",
+  "builtAt": "2026-09-11T04:03:56.966Z",
+  "bytes": 19761891,
   "files": {
-    "index.html": {
-      "bytes": 1696,
-      "sha256": "414a7accaf4e011897ca215c0ee48e709e5b257c78d72182eb73206a02ecdf9f"
-    },
-    "style.css": {
-      "bytes": 23685,
-      "sha256": "8380ecc6617a63f002d75e10c19359d8c1347db3f82900c4f7d19a81ab1aad4b"
-    },
-    "manifest.webmanifest": {
-      "bytes": 392,
-      "sha256": "513ce739fe98a2b0d2a7250894a42e22e0f86024621114759a7ac86b4b039562"
-    },
-    "sw.js": {
-      "bytes": 2862,
-      "sha256": "5ccc21cd5661a9b234cd8877e5985808c24dde073b41861a5152a2497ba076e7"
-    },
-    "v03/world.js": {
-      "bytes": 4838,
-      "sha256": "3fd7a70f1ae6649cfc480b7d92ab076823cc4db9145d5cbd554c682e3553b477"
-    },
-    "v03/sim.js": {
-      "bytes": 20718,
-      "sha256": "caba8068719ed6e7455606e85dbe7d79cd93a45f5fc73f00b2c3abbc27e91984"
-    },
-    "v03/style.css": {
-      "bytes": 9096,
-      "sha256": "5a53bbb82030c58bc3ce69da70290798faf7bddbb91385fa48f5b0c2b3ee8728"
-    },
-    "v03/art.js": {
-      "bytes": 9824,
-      "sha256": "84eb644c1817a492ed2d5b1601d81854aa4a22413feac8ed658a92f3685a2ca3"
-    },
-    "v03/app.js": {
-      "bytes": 33984,
-      "sha256": "cf301684c65fa566f2f4a4231bbc3516e6f7eac86ab14b7162d287bc94000066"
-    },
-    "v02/index.html": {
-      "bytes": 2492,
-      "sha256": "f933af32c80181194b9ea2ad3c07568b930994e8e5dd25d105ccb3a845430b74"
-    },
-    "v02/style.css": {
-      "bytes": 23685,
-      "sha256": "8380ecc6617a63f002d75e10c19359d8c1347db3f82900c4f7d19a81ab1aad4b"
-    },
-    "v02/manifest.webmanifest": {
-      "bytes": 246,
-      "sha256": "3ddd2c158210e758dd26af8ae1f80dd60e253cdd078d434cd5fc2cdcf42d1fa0"
-    },
-    "v02/assets/icon.svg": {
-      "bytes": 188,
-      "sha256": "6b88e3ebe35bc7234ed0deef83b9b0047420b6c69dafb315350d76c60274cb19"
-    },
-    "v02/assets/atmosphere/van-v02.png": {
-      "bytes": 2322182,
-      "sha256": "7ad98bc15f9c3ebe174cd7890955bd10ecb5b2fc6dca2359109cd8a48239b790"
-    },
-    "v02/assets/atmosphere/garage-v02.jpg": {
-      "bytes": 587069,
-      "sha256": "cc36fea41c62c856b6290340a9930e968c64a53551864f0aa7e68e187297d8d0"
-    },
-    "v02/assets/atmosphere/road-v02.jpg": {
-      "bytes": 547736,
-      "sha256": "7e13000eea96ea396ed52c53c371ed053941d1623010c16546764259dd617f20"
-    },
-    "v02/assets/atmosphere/home-v02.jpg": {
-      "bytes": 651320,
-      "sha256": "2ae8dc7a70a684b07bf9e061450861fa8583a878dcb7be06fa8a46ded7a50805"
-    },
-    "v02/assets/atmosphere/plateau-v02.jpg": {
-      "bytes": 560986,
-      "sha256": "a7a46e2b8ff7d1a62d78d82dbefd905b5d01b571800f9ec8b188ebcb784713ea"
-    },
-    "v02/assets/atmosphere/camp-v02.jpg": {
+    "assets/atmosphere/camp-v02.jpg": {
       "bytes": 715858,
       "sha256": "385ce809410dde185d2073661963697ce35fbc3c35033b9fb39936babca9db07"
-    },
-    "v02/assets/atmosphere/portraits-v02.jpg": {
-      "bytes": 555113,
-      "sha256": "e2588c44b8434f1ee97c1d4afb7401279af9ac9a10cb161960aa9f1414cd2949"
-    },
-    "v02/assets/fonts/ChakraPetch-Regular.ttf": {
-      "bytes": 78488,
-      "sha256": "98fcd638baa5c81ff0316b7538ce330ee3b23b1302726de3526d5933a8ecf986"
-    },
-    "v02/assets/fonts/provenance.json": {
-      "bytes": 915,
-      "sha256": "2c3f5f40496a9a8638c0cdeaabe58d6a0251c2c4c335b25fe0e3c1d086844d42"
-    },
-    "v02/assets/fonts/ChakraPetch-Bold.ttf": {
-      "bytes": 78384,
-      "sha256": "65fbf76d95651697275e19db4d717c0e95a789ddd3476478b05292104db278a0"
-    },
-    "v02/assets/fonts/OFL.txt": {
-      "bytes": 4396,
-      "sha256": "13831d02389d917d22fcfa6c79f98f8acbf61d230add0e73a4d4dc5f3bfb9e56"
-    },
-    "v02/assets/fonts/ChakraPetch-Medium.ttf": {
-      "bytes": 78600,
-      "sha256": "d480f4f97405fac3600652e2e14fd0b14339031c0af4da11582994878f04d919"
-    },
-    "v02/src/simulation.js": {
-      "bytes": 21126,
-      "sha256": "f320767a04c45330828f4e5618ac91d59350495f85841eccfad37b97069f90c1"
-    },
-    "v02/src/content.js": {
-      "bytes": 21346,
-      "sha256": "719903f4f153b814c753311de8ad72ddbc0f7ac203373a254908e00e37700d94"
-    },
-    "v02/src/art.js": {
-      "bytes": 6619,
-      "sha256": "7da8e9b091b1635b17a11b1702a5bacbc69337c6d844f5ee374f94244abf21d2"
-    },
-    "v02/src/app.js": {
-      "bytes": 28595,
-      "sha256": "cf7c1697f83a4be3d6757aa2493142be52de95bc8e8dbc8d13244291a5f2fd13"
-    },
-    "assets/icon.svg": {
-      "bytes": 188,
-      "sha256": "6b88e3ebe35bc7234ed0deef83b9b0047420b6c69dafb315350d76c60274cb19"
-    },
-    "assets/atmosphere/van-v02.png": {
-      "bytes": 2322182,
-      "sha256": "7ad98bc15f9c3ebe174cd7890955bd10ecb5b2fc6dca2359109cd8a48239b790"
     },
     "assets/atmosphere/garage-v02.jpg": {
       "bytes": 587069,
       "sha256": "cc36fea41c62c856b6290340a9930e968c64a53551864f0aa7e68e187297d8d0"
-    },
-    "assets/atmosphere/road-v02.jpg": {
-      "bytes": 547736,
-      "sha256": "7e13000eea96ea396ed52c53c371ed053941d1623010c16546764259dd617f20"
     },
     "assets/atmosphere/home-v02.jpg": {
       "bytes": 651320,
@@ -146,70 +22,297 @@
       "bytes": 560986,
       "sha256": "a7a46e2b8ff7d1a62d78d82dbefd905b5d01b571800f9ec8b188ebcb784713ea"
     },
-    "assets/atmosphere/camp-v02.jpg": {
-      "bytes": 715858,
-      "sha256": "385ce809410dde185d2073661963697ce35fbc3c35033b9fb39936babca9db07"
-    },
     "assets/atmosphere/portraits-v02.jpg": {
       "bytes": 555113,
       "sha256": "e2588c44b8434f1ee97c1d4afb7401279af9ac9a10cb161960aa9f1414cd2949"
     },
-    "assets/pilgrimage/gate.jpg": {
-      "bytes": 442231,
-      "sha256": "5e10a35b42305bf04279e43765a091f13eca5bfb98a335b4d5f7a2fbb9ef2be6"
+    "assets/atmosphere/road-v02.jpg": {
+      "bytes": 547736,
+      "sha256": "7e13000eea96ea396ed52c53c371ed053941d1623010c16546764259dd617f20"
     },
-    "assets/pilgrimage/family.jpg": {
-      "bytes": 282044,
-      "sha256": "48ae057a37241d7f611b345f61c0d3075033406f53281815b6c47294f7ea24f9"
-    },
-    "assets/pilgrimage/home.jpg": {
-      "bytes": 371419,
-      "sha256": "3831cac0e0d79c7b0ef3c2c5b141e3392dd59cabbdacfcf295c1672773844df6"
-    },
-    "assets/pilgrimage/fishing.jpg": {
-      "bytes": 339895,
-      "sha256": "9ea37749af4ef66508bb51c4ac564610b7a2a0acf91052ce4cedb8f11b9dc735"
-    },
-    "assets/pilgrimage/chair.png": {
-      "bytes": 402383,
-      "sha256": "9392914b66a5463896b9d13d1f182840a19926c85123a7ab55f397fbd928d9be"
-    },
-    "assets/fonts/ChakraPetch-Regular.ttf": {
-      "bytes": 78488,
-      "sha256": "98fcd638baa5c81ff0316b7538ce330ee3b23b1302726de3526d5933a8ecf986"
-    },
-    "assets/fonts/provenance.json": {
-      "bytes": 915,
-      "sha256": "2c3f5f40496a9a8638c0cdeaabe58d6a0251c2c4c335b25fe0e3c1d086844d42"
+    "assets/atmosphere/van-v02.png": {
+      "bytes": 2322182,
+      "sha256": "7ad98bc15f9c3ebe174cd7890955bd10ecb5b2fc6dca2359109cd8a48239b790"
     },
     "assets/fonts/ChakraPetch-Bold.ttf": {
       "bytes": 78384,
       "sha256": "65fbf76d95651697275e19db4d717c0e95a789ddd3476478b05292104db278a0"
     },
-    "assets/fonts/OFL.txt": {
-      "bytes": 4396,
-      "sha256": "13831d02389d917d22fcfa6c79f98f8acbf61d230add0e73a4d4dc5f3bfb9e56"
-    },
     "assets/fonts/ChakraPetch-Medium.ttf": {
       "bytes": 78600,
       "sha256": "d480f4f97405fac3600652e2e14fd0b14339031c0af4da11582994878f04d919"
     },
-    "src/simulation.js": {
-      "bytes": 21126,
-      "sha256": "f320767a04c45330828f4e5618ac91d59350495f85841eccfad37b97069f90c1"
+    "assets/fonts/ChakraPetch-Regular.ttf": {
+      "bytes": 78488,
+      "sha256": "98fcd638baa5c81ff0316b7538ce330ee3b23b1302726de3526d5933a8ecf986"
     },
-    "src/content.js": {
-      "bytes": 21346,
-      "sha256": "719903f4f153b814c753311de8ad72ddbc0f7ac203373a254908e00e37700d94"
+    "assets/fonts/OFL.txt": {
+      "bytes": 4396,
+      "sha256": "13831d02389d917d22fcfa6c79f98f8acbf61d230add0e73a4d4dc5f3bfb9e56"
+    },
+    "assets/fonts/provenance.json": {
+      "bytes": 915,
+      "sha256": "2c3f5f40496a9a8638c0cdeaabe58d6a0251c2c4c335b25fe0e3c1d086844d42"
+    },
+    "assets/icon.svg": {
+      "bytes": 188,
+      "sha256": "6b88e3ebe35bc7234ed0deef83b9b0047420b6c69dafb315350d76c60274cb19"
+    },
+    "assets/journey/cabin.webp": {
+      "bytes": 283772,
+      "sha256": "354964a5f17b569aca14d0103de17d47e6ada1f5007e1cfba80a8d5c42eb819e"
+    },
+    "assets/journey/catch.webp": {
+      "bytes": 292108,
+      "sha256": "690c6f4f0c94b79e089e6ac2bbcb52e3d31874b189af86ce8e30738d7c93b1df"
+    },
+    "assets/journey/collector-sprite.webp": {
+      "bytes": 169846,
+      "sha256": "00587c30d0a2a626bbe2f87c6b9ad40928c0fcb853054ca051db1908a85f3133"
+    },
+    "assets/journey/collector-truck.webp": {
+      "bytes": 373696,
+      "sha256": "e981289556a6164f69699a8aaec0eb05720d75d34ca803b5a919d71c502d23f3"
+    },
+    "assets/journey/collectors.webp": {
+      "bytes": 395814,
+      "sha256": "a8fedc4e8386ab11db4cf4608d1704c83faca6c2d4555f95c93858c9488ae73b"
+    },
+    "assets/journey/dinner.webp": {
+      "bytes": 358098,
+      "sha256": "bf65bf24b91edf158cc39647c042f8e495d2429ffed192d770a757e1a0f3c3b3"
+    },
+    "assets/journey/family-photo.webp": {
+      "bytes": 401824,
+      "sha256": "4ca036ce59ae528f96c4dd92378944ffab171a76f67c30181068a9d781c57d48"
+    },
+    "assets/journey/fuel-yard.webp": {
+      "bytes": 622578,
+      "sha256": "7e5d4d7ed24920e8844cd13919cc547090426b90ed62e50ae236c2d9e04f3531"
+    },
+    "assets/journey/jack-sprite.webp": {
+      "bytes": 208420,
+      "sha256": "3f7b97e5e4e798b9923c8e1cbfdc10c7952385532e10169951943655c465b581"
+    },
+    "assets/journey/road-landscape.webp": {
+      "bytes": 498650,
+      "sha256": "bdb997b440e466ecb8daa25c7f3af901ae347210ac20910891d15efb5ba4a1b6"
+    },
+    "assets/journey/roadside.webp": {
+      "bytes": 355142,
+      "sha256": "aa967a77785c25f44e1cce186bcf53bf46e1f304206949790649ac269f1697a0"
+    },
+    "assets/journey/van-body.webp": {
+      "bytes": 503870,
+      "sha256": "2c22a4c277d2039718a8dfe00950e9728c93fff5afc31e7ab915b2254cd4ac20"
+    },
+    "assets/journey/yard.webp": {
+      "bytes": 679998,
+      "sha256": "b80fae2b338f74ae5c2c43576c327978d346ff38e09248438b69fc2d30a81ba1"
+    },
+    "assets/pilgrimage/chair.png": {
+      "bytes": 402383,
+      "sha256": "9392914b66a5463896b9d13d1f182840a19926c85123a7ab55f397fbd928d9be"
+    },
+    "assets/pilgrimage/family.jpg": {
+      "bytes": 282044,
+      "sha256": "48ae057a37241d7f611b345f61c0d3075033406f53281815b6c47294f7ea24f9"
+    },
+    "assets/pilgrimage/fishing.jpg": {
+      "bytes": 339895,
+      "sha256": "9ea37749af4ef66508bb51c4ac564610b7a2a0acf91052ce4cedb8f11b9dc735"
+    },
+    "assets/pilgrimage/gate.jpg": {
+      "bytes": 442231,
+      "sha256": "5e10a35b42305bf04279e43765a091f13eca5bfb98a335b4d5f7a2fbb9ef2be6"
+    },
+    "assets/pilgrimage/home.jpg": {
+      "bytes": 371419,
+      "sha256": "3831cac0e0d79c7b0ef3c2c5b141e3392dd59cabbdacfcf295c1672773844df6"
+    },
+    "index.html": {
+      "bytes": 1744,
+      "sha256": "d8b73383a8e27082abffa6fc0e0e2265aeb17a0980f707173c9c0c78d903a828"
+    },
+    "manifest.webmanifest": {
+      "bytes": 392,
+      "sha256": "513ce739fe98a2b0d2a7250894a42e22e0f86024621114759a7ac86b4b039562"
+    },
+    "src/app.js": {
+      "bytes": 28742,
+      "sha256": "072747da6cf1de0bc576985012793d3c536a4eee03a08722c73a526d60789a9b"
     },
     "src/art.js": {
       "bytes": 6619,
       "sha256": "7da8e9b091b1635b17a11b1702a5bacbc69337c6d844f5ee374f94244abf21d2"
     },
-    "src/app.js": {
-      "bytes": 28742,
-      "sha256": "072747da6cf1de0bc576985012793d3c536a4eee03a08722c73a526d60789a9b"
+    "src/content.js": {
+      "bytes": 21346,
+      "sha256": "719903f4f153b814c753311de8ad72ddbc0f7ac203373a254908e00e37700d94"
+    },
+    "src/simulation.js": {
+      "bytes": 21126,
+      "sha256": "f320767a04c45330828f4e5618ac91d59350495f85841eccfad37b97069f90c1"
+    },
+    "style.css": {
+      "bytes": 23685,
+      "sha256": "8380ecc6617a63f002d75e10c19359d8c1347db3f82900c4f7d19a81ab1aad4b"
+    },
+    "sw.js": {
+      "bytes": 3946,
+      "sha256": "81e02a986c242d48da5a8020a484fd5014e243432872e2af83faa4d65722ebfe"
+    },
+    "v02/assets/atmosphere/camp-v02.jpg": {
+      "bytes": 715858,
+      "sha256": "385ce809410dde185d2073661963697ce35fbc3c35033b9fb39936babca9db07"
+    },
+    "v02/assets/atmosphere/garage-v02.jpg": {
+      "bytes": 587069,
+      "sha256": "cc36fea41c62c856b6290340a9930e968c64a53551864f0aa7e68e187297d8d0"
+    },
+    "v02/assets/atmosphere/home-v02.jpg": {
+      "bytes": 651320,
+      "sha256": "2ae8dc7a70a684b07bf9e061450861fa8583a878dcb7be06fa8a46ded7a50805"
+    },
+    "v02/assets/atmosphere/plateau-v02.jpg": {
+      "bytes": 560986,
+      "sha256": "a7a46e2b8ff7d1a62d78d82dbefd905b5d01b571800f9ec8b188ebcb784713ea"
+    },
+    "v02/assets/atmosphere/portraits-v02.jpg": {
+      "bytes": 555113,
+      "sha256": "e2588c44b8434f1ee97c1d4afb7401279af9ac9a10cb161960aa9f1414cd2949"
+    },
+    "v02/assets/atmosphere/road-v02.jpg": {
+      "bytes": 547736,
+      "sha256": "7e13000eea96ea396ed52c53c371ed053941d1623010c16546764259dd617f20"
+    },
+    "v02/assets/atmosphere/van-v02.png": {
+      "bytes": 2322182,
+      "sha256": "7ad98bc15f9c3ebe174cd7890955bd10ecb5b2fc6dca2359109cd8a48239b790"
+    },
+    "v02/assets/fonts/ChakraPetch-Bold.ttf": {
+      "bytes": 78384,
+      "sha256": "65fbf76d95651697275e19db4d717c0e95a789ddd3476478b05292104db278a0"
+    },
+    "v02/assets/fonts/ChakraPetch-Medium.ttf": {
+      "bytes": 78600,
+      "sha256": "d480f4f97405fac3600652e2e14fd0b14339031c0af4da11582994878f04d919"
+    },
+    "v02/assets/fonts/ChakraPetch-Regular.ttf": {
+      "bytes": 78488,
+      "sha256": "98fcd638baa5c81ff0316b7538ce330ee3b23b1302726de3526d5933a8ecf986"
+    },
+    "v02/assets/fonts/OFL.txt": {
+      "bytes": 4396,
+      "sha256": "13831d02389d917d22fcfa6c79f98f8acbf61d230add0e73a4d4dc5f3bfb9e56"
+    },
+    "v02/assets/fonts/provenance.json": {
+      "bytes": 915,
+      "sha256": "2c3f5f40496a9a8638c0cdeaabe58d6a0251c2c4c335b25fe0e3c1d086844d42"
+    },
+    "v02/assets/icon.svg": {
+      "bytes": 188,
+      "sha256": "6b88e3ebe35bc7234ed0deef83b9b0047420b6c69dafb315350d76c60274cb19"
+    },
+    "v02/index.html": {
+      "bytes": 2492,
+      "sha256": "f933af32c80181194b9ea2ad3c07568b930994e8e5dd25d105ccb3a845430b74"
+    },
+    "v02/manifest.webmanifest": {
+      "bytes": 246,
+      "sha256": "3ddd2c158210e758dd26af8ae1f80dd60e253cdd078d434cd5fc2cdcf42d1fa0"
+    },
+    "v02/src/app.js": {
+      "bytes": 28595,
+      "sha256": "cf7c1697f83a4be3d6757aa2493142be52de95bc8e8dbc8d13244291a5f2fd13"
+    },
+    "v02/src/art.js": {
+      "bytes": 6619,
+      "sha256": "7da8e9b091b1635b17a11b1702a5bacbc69337c6d844f5ee374f94244abf21d2"
+    },
+    "v02/src/content.js": {
+      "bytes": 21346,
+      "sha256": "719903f4f153b814c753311de8ad72ddbc0f7ac203373a254908e00e37700d94"
+    },
+    "v02/src/simulation.js": {
+      "bytes": 21126,
+      "sha256": "f320767a04c45330828f4e5618ac91d59350495f85841eccfad37b97069f90c1"
+    },
+    "v02/style.css": {
+      "bytes": 23685,
+      "sha256": "8380ecc6617a63f002d75e10c19359d8c1347db3f82900c4f7d19a81ab1aad4b"
+    },
+    "v03/app.js": {
+      "bytes": 33984,
+      "sha256": "cf301684c65fa566f2f4a4231bbc3516e6f7eac86ab14b7162d287bc94000066"
+    },
+    "v03/art.js": {
+      "bytes": 9824,
+      "sha256": "84eb644c1817a492ed2d5b1601d81854aa4a22413feac8ed658a92f3685a2ca3"
+    },
+    "v03/index.html": {
+      "bytes": 1714,
+      "sha256": "ec1b1d4b4f0281deb8f709e24cf5d76d8266728a364c0d2f48fd10c29f6e266b"
+    },
+    "v03/sim.js": {
+      "bytes": 20718,
+      "sha256": "caba8068719ed6e7455606e85dbe7d79cd93a45f5fc73f00b2c3abbc27e91984"
+    },
+    "v03/style.css": {
+      "bytes": 9096,
+      "sha256": "5a53bbb82030c58bc3ce69da70290798faf7bddbb91385fa48f5b0c2b3ee8728"
+    },
+    "v03/world.js": {
+      "bytes": 4838,
+      "sha256": "3fd7a70f1ae6649cfc480b7d92ab076823cc4db9145d5cbd554c682e3553b477"
+    },
+    "v04/app.js": {
+      "bytes": 38250,
+      "sha256": "dfad27dd60de9cffa75808e722c8aa67c56fe594e16cf0e5b95e3908a64c64c8"
+    },
+    "v04/art.js": {
+      "bytes": 8917,
+      "sha256": "7c551144b368c15dbe2875ebdd3518dacfb2a03afb157356795f4ed253acbd04"
+    },
+    "v04/fishing.js": {
+      "bytes": 7469,
+      "sha256": "0346836916a751c229de390f266ff05531c281b661b2ff8fbfae976f9b893030"
+    },
+    "v04/journey.js": {
+      "bytes": 1789,
+      "sha256": "b90dc33efb11be2654f7e092c98c6aa688585da8dbae1dd292764343bbbaa3a4"
+    },
+    "v04/motion.js": {
+      "bytes": 5074,
+      "sha256": "21232c3c0cd1320ccc8dac0642ec8f2e073e6098f0aab105d3a0a1c22e5e0f24"
+    },
+    "v04/salvage.js": {
+      "bytes": 12078,
+      "sha256": "25438eb8fa69ee40ca5956c3659410ecd947ddc409bde4a1016ff16c6e10631b"
+    },
+    "v04/scenes.js": {
+      "bytes": 9242,
+      "sha256": "393db3481ca237765bdd7df492181332669abd8f817e2c5f88e98cbc6c5f6dc8"
+    },
+    "v04/sim.js": {
+      "bytes": 20423,
+      "sha256": "42ebc3f588f42f7e5692505c8ef7f3fe69fdefc587b7a135fd321602f745e10a"
+    },
+    "v04/sound.js": {
+      "bytes": 1895,
+      "sha256": "d9c2374d8288dc39ac3759cd6040be7d064761dd06e7c24fa5050966aa8d1721"
+    },
+    "v04/style.css": {
+      "bytes": 15446,
+      "sha256": "9552065cd1b4bc92741f36d70a3cf17d042ba32044d28d5ec1630bdfc572b564"
+    },
+    "v04/world.js": {
+      "bytes": 5167,
+      "sha256": "5ae5a9ea644098268a9de90b91641bca60403b4ab79c77f72efe4e19f094b223"
     }
   },
-  "validation": "Two complete UI journeys, 39 simulation checks including 17 pilgrimage cases, Chromium/WebKit touch, synthetic controller navigation, legacy save and offline upgrade."
+  "validation": "59 simulation tests; two admission routes through browser UI; touch casting A/B; synthetic controller fishing; WebKit touch; legacy cache/save and offline upgrade.",
+  "nativeAppleBuild": false,
+  "physicalAppleDeviceTested": false,
+  "humanFunTested": false
 }
