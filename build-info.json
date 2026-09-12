@@ -1,10 +1,10 @@
 {
-  "version": "0.5.0",
-  "title": "Common Road — The Line",
+  "version": "0.6.0",
+  "title": "Last Free County — working title",
   "sourceRepository": "https://github.com/kingmadellc/common-road",
-  "sourceCommit": "1a8c98b8a327327d75209442db9747341784aaf5",
-  "builtAt": "2026-09-11T23:23:42.114Z",
-  "bytes": 31668207,
+  "sourceCommit": "1c5e37db8b5261083f20fd076c5d3b36c9c8bc1f",
+  "builtAt": "2026-09-12T05:35:24.965Z",
+  "bytes": 35368795,
   "files": {
     "assets/atmosphere/camp-v02.jpg": {
       "bytes": 715858,
@@ -57,6 +57,46 @@
     "assets/icon.svg": {
       "bytes": 188,
       "sha256": "6b88e3ebe35bc7234ed0deef83b9b0047420b6c69dafb315350d76c60274cb19"
+    },
+    "assets/intro-v06/city.webp": {
+      "bytes": 394026,
+      "sha256": "ee483da403d043cfa8040a6d78051c637f99a3583fc2cf78aa4759f081f50667"
+    },
+    "assets/intro-v06/crew.webp": {
+      "bytes": 640154,
+      "sha256": "029b47fc76070a5a3542a9ae2165473516e88fe122cc2e4b584a18ba13adb036"
+    },
+    "assets/intro-v06/departure.webp": {
+      "bytes": 532256,
+      "sha256": "d0508724c312b01e03fae611e30168f1cf2aa8ec023c025e41876c314c0ca5a4"
+    },
+    "assets/intro-v06/garage.webp": {
+      "bytes": 453138,
+      "sha256": "624265a9ae1d2e4c3d62e48a4cb4157c289fcb915b675bfb6ab9eb02166e2564"
+    },
+    "assets/intro-v06/icon.svg": {
+      "bytes": 472,
+      "sha256": "96029b1348f0339fcb52041890d26b2a90d1bfebe515e6dc38ff71c18e45acc8"
+    },
+    "assets/intro-v06/kitchen.webp": {
+      "bytes": 316570,
+      "sha256": "209d67241682fd0db494e1511336c20f2dfab48d853dc3e8655a08e76d9538c9"
+    },
+    "assets/intro-v06/last-free-county.webp": {
+      "bytes": 262696,
+      "sha256": "1fffcf530a3881efa2e14caa85a426649e8e92b1f9c7d214e2f5a76213d8d6bf"
+    },
+    "assets/intro-v06/terms-of-survival.webp": {
+      "bytes": 460316,
+      "sha256": "cce14549bc7078dd3bb89ebc946c5b80ccad7ed01ae2330d19583e79c0968113"
+    },
+    "assets/intro-v06/void-the-warranty.webp": {
+      "bytes": 211188,
+      "sha256": "db81c259937e6adf1e151e5f28dfa93268221115818f2dddbbd0374fa9d0aa7f"
+    },
+    "assets/intro-v06/wordmark.webp": {
+      "bytes": 262696,
+      "sha256": "1fffcf530a3881efa2e14caa85a426649e8e92b1f9c7d214e2f5a76213d8d6bf"
     },
     "assets/journey/cabin.webp": {
       "bytes": 283772,
@@ -259,12 +299,16 @@
       "sha256": "3831cac0e0d79c7b0ef3c2c5b141e3392dd59cabbdacfcf295c1672773844df6"
     },
     "index.html": {
-      "bytes": 1742,
-      "sha256": "9db4e3c05f408af8e7f8bdb886e1f8dc63bd55dced9e223e6dbb408258d84243"
+      "bytes": 1834,
+      "sha256": "4c6dc3f2d1c5f0da11860a64745d6d27ccdcc6a4ead7b962821712da644e7851"
     },
     "manifest.webmanifest": {
-      "bytes": 392,
-      "sha256": "513ce739fe98a2b0d2a7250894a42e22e0f86024621114759a7ac86b4b039562"
+      "bytes": 420,
+      "sha256": "715cfe305bf6bf785f0ba02c5e17421fecc234975f8a782c4828fd25459c50bd"
+    },
+    "names/index.html": {
+      "bytes": 4955,
+      "sha256": "4e1b92dd9320184e45824db637da9aba0924feccad946022807bd9f30d7f15eb"
     },
     "src/app.js": {
       "bytes": 28742,
@@ -287,8 +331,8 @@
       "sha256": "8380ecc6617a63f002d75e10c19359d8c1347db3f82900c4f7d19a81ab1aad4b"
     },
     "sw.js": {
-      "bytes": 5822,
-      "sha256": "165266f9004376fce8686845709368f55a6743c5ad11c613cfa1c75f5c5bf8f3"
+      "bytes": 6657,
+      "sha256": "69f6b0b50706457700a05f890a6e8812c2cfd429e8126d0041e048157c49e4ed"
     },
     "v02/assets/atmosphere/camp-v02.jpg": {
       "bytes": 715858,
@@ -466,6 +510,10 @@
       "bytes": 7445,
       "sha256": "7d85d38f2f98cc52292f7b4b214ce67fc50ad065195773e5e457266724e4fb86"
     },
+    "v05/index.html": {
+      "bytes": 1760,
+      "sha256": "5f6be427e3b47a5a1d64e1fda1dd84c231e916c9e884b74d6e80221b386636bd"
+    },
     "v05/journey.js": {
       "bytes": 4193,
       "sha256": "dafbb18a7a8c1d42c01bad3553a14ac0f8f91c268f40c59322b0d4717d445fa8"
@@ -505,9 +553,85 @@
     "v05/world.js": {
       "bytes": 5263,
       "sha256": "9be1fa84a4d637fcc76aa6110a8867de450f0d6d8ce00a21c6e9e74dfc824c64"
+    },
+    "v06/app.js": {
+      "bytes": 47124,
+      "sha256": "b3b5134213a07f3ec5fd736586b90549ad288eaff6aa22c0be146060e962be9e"
+    },
+    "v06/art.js": {
+      "bytes": 10386,
+      "sha256": "74b4e3e657189ffe22844e27da33bd7b5c50c81d42e0043d49b54570282b95b5"
+    },
+    "v06/brand.js": {
+      "bytes": 1461,
+      "sha256": "359e0a781349138c47c13ea7e4edef3eeb8173de64e73f6845726c592b6b8f6d"
+    },
+    "v06/conflict.js": {
+      "bytes": 5664,
+      "sha256": "4f372b2d373ea82311182cbcd347563f650f620b6e78fc537454933786e04c4b"
+    },
+    "v06/drive.js": {
+      "bytes": 424,
+      "sha256": "e0c9a538d3fb4f29dc4bcd2cbf24b9b4a20d5523eed3fdf0715054db57cf8296"
+    },
+    "v06/film.js": {
+      "bytes": 4472,
+      "sha256": "0c80a80b955796b5e5f9e7da31e65b622237cb9eb2c6af64ca27b6a0e0acd897"
+    },
+    "v06/fishing.js": {
+      "bytes": 7445,
+      "sha256": "acee91e87bce828c27b8bb333b5d71e85e25e9a1f24718af466782e58192ec61"
+    },
+    "v06/intro.css": {
+      "bytes": 6658,
+      "sha256": "4d053fe039091274b789bc4df8121df90b26518dd9be770eb933595aac2170d0"
+    },
+    "v06/journey.js": {
+      "bytes": 4312,
+      "sha256": "d471c7fb8d8523be172ba60ec940bb54543091258f6663eaf982566cd95f2854"
+    },
+    "v06/motion.js": {
+      "bytes": 4937,
+      "sha256": "949b3803c51e8872e4cdc91baf0e8289a6f11e85e0e37c8a8988944d760e3474"
+    },
+    "v06/prologue.js": {
+      "bytes": 6629,
+      "sha256": "fb907922cf502e743da7f90786ecbdd8b4363b03723591b801599f168c7fea60"
+    },
+    "v06/salvage.js": {
+      "bytes": 6805,
+      "sha256": "c4e2f3d8f0a0e171ec7e9f281237873200759bd07be52b8f1b349b5902ff7b8e"
+    },
+    "v06/scenes.js": {
+      "bytes": 6457,
+      "sha256": "731d4faa9298b07fe046c2c8dbc874fb4b4403dc0b6db29e4382aa665642697c"
+    },
+    "v06/sim.js": {
+      "bytes": 18577,
+      "sha256": "ba5ec80d665027ed07dc8b72a0354012d93ff63f6e06129ece30e17c90af9c28"
+    },
+    "v06/sound.js": {
+      "bytes": 2241,
+      "sha256": "cea594e751ef5ecbfffb4a5fb02473705aaf5a100ab33418c23d0fd38c0ec98b"
+    },
+    "v06/state.js": {
+      "bytes": 1688,
+      "sha256": "6abf2d9811e0646e3b49455c785d581382d414a3b8915e601302a82901d5e7f8"
+    },
+    "v06/style.css": {
+      "bytes": 16208,
+      "sha256": "971fbfeb05f72290a626bc61fe5dd32294a0f0b9cff59344feb38875947f2091"
+    },
+    "v06/video.js": {
+      "bytes": 816,
+      "sha256": "8065e2abe998a65b1a1c3684535690f68722d6f05ec435483930cc027e5d9545"
+    },
+    "v06/world.js": {
+      "bytes": 7102,
+      "sha256": "97880e1cdd2b089b226cc7f4a496073fb17876e1c112f053bb05074afea2fa1d"
     }
   },
-  "validation": "83 simulation tests; two admission routes through browser UI; touch tap/pull; synthetic controller fishing; WebKit touch; six motion clips decode/seek in Chromium and WebKit; legacy cache/save and offline upgrade with video byte ranges.",
+  "validation": "113 simulation tests; two complete admission routes; touch and synthetic controller; seven-scene responsive prologue, skip/replay/pause/restore; real-time motion; v0.5 copy/worker upgrade; offline art, names and legacy saves; original image and wordmark concepts.",
   "nativeAppleBuild": false,
   "physicalAppleDeviceTested": false,
   "humanFunTested": false

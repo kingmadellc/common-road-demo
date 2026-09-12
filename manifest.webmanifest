@@ -1,13 +1,13 @@
 {
-  "name": "Common Road \u2014 The Line",
-  "short_name": "Common Road",
+  "name": "Last Free County \u2014 A Survival Trail",
+  "short_name": "Last Free County",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#101b1e",
   "theme_color": "#101b1e",
   "icons": [
     {
-      "src": "assets/icon.svg",
+      "src": "assets/intro-v06/icon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any"

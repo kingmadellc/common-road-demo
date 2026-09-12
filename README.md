@@ -1,13 +1,15 @@
-# Common Road — The Line
+# Last Free County · working title
 
-[Play the survival pilgrimage · v0.5](https://kingmadellc.github.io/common-road-demo/?v=0.5).
+[Play the story — v0.6](https://kingmadellc.github.io/common-road-demo/?v=0.6) · [Name and wordmark directions](https://kingmadellc.github.io/common-road-demo/names/)
 
-A family, a failing van, and two days to a place of your own. Recover parts, repair old machines, fish for dinner, earn admission to Morrow, and bring everyone through the final crossing.
+A darkly comic modern survival trail. In America, 2041, the Mercer family leaves account-controlled life in a van they can repair. Their destination is Morrow: a protected basin where a home can belong to a household rather than its employer.
 
-v0.5 has three main actions at ordinary stops, meaningful food and fuel pressure, close-up salvage, lasting injuries, one-use permits and recurring Collector checkpoints. Highway motion links wheel rotation to road distance. Twenty original art assets, four landscape assemblies and six short 720p motion clips form a faster journey reel.
+Playtest 06 adds a seven-scene illustrated motion opening, gruffer character portraits and backstories, revised road/stop dialogue, and three original wordmark concepts. Pause, skip, replay, or use still frames with manual advance. Optional sound uses synthesized cues. The opening takes no campaign time.
 
-Touch is primary, with dedicated controller fishing and keyboard fallback. Progress saves in this browser. Core artwork and film posters cache for offline play after installation; clips cache on first playback. This is an illustrated browser concept playtest. It is not a signed native iOS release.
+Pack six spaces. Fish for dinner. Recover parts, keep the van running and avoid Continuum’s Collectors. Earn a sponsor or deliver water filters before the storm closes the crossing. Two routes lead to a home of your own.
 
-Earlier journeys and their separate local saves remain available: [v0.4](https://kingmadellc.github.io/common-road-demo/v04/), [v0.3](https://kingmadellc.github.io/common-road-demo/v03/), and [v0.2](https://kingmadellc.github.io/common-road-demo/v02/).
+Touch is primary, with controller and keyboard support. This is a browser prototype, not a native iOS release. Saves are local to this browser. You can copy a v0.5 save into v0.6 while preserving the original. Core artwork, the opening and the name board cache for offline use; short driving clips cache on first play.
 
-Generated artwork and original game content belong to this project. Chakra Petch is bundled under the SIL Open Font License; see `assets/fonts/OFL.txt`. Motion clips are authored renders from game art, not live-action footage. Tested source and runtime SHA-256 hashes are in `build-info.json`.
+[Original v0.5 journey](https://kingmadellc.github.io/common-road-demo/v05/) · [v0.4](https://kingmadellc.github.io/common-road-demo/v04/) · [v0.3](https://kingmadellc.github.io/common-road-demo/v03/) · [v0.2](https://kingmadellc.github.io/common-road-demo/v02/)
+
+Last Free County is provisional. Existing repository and URL identifiers remain stable while a title is selected. The illustrated game world and characters are fictional. Artwork was generated for this project; motion graphics and game code are authored. Chakra Petch is bundled under the SIL Open Font License, included in `assets/fonts/OFL.txt`. `build-info.json` identifies the tested source and deployed file hashes.
