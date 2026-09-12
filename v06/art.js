@@ -1,9 +1,9 @@
-import {drawPrologue} from './prologue.js?v=0.6.0-family-02';
-import {node} from './world.js?v=0.6.0-family-02';
-import {drawRoad} from './motion.js?v=0.6.0-family-02';
-import {drawSalvage,drawFishing} from './scenes.js?v=0.6.0-family-02';
-import {filmPlayer,pauseFilms} from './video.js?v=0.6.0-family-02';
-import {SHOTS} from './journey.js?v=0.6.0-family-02';
+import {drawPrologue} from './prologue.js?v=0.6.0-candid-04';
+import {node} from './world.js?v=0.6.0-candid-04';
+import {drawRoad} from './motion.js?v=0.6.0-candid-04';
+import {drawSalvage,drawFishing} from './scenes.js?v=0.6.0-candid-04';
+import {filmPlayer,pauseFilms} from './video.js?v=0.6.0-candid-04';
+import {SHOTS} from './journey.js?v=0.6.0-candid-04';
 export const images={};
 export const sources={jackSprite:'assets/journey/jack-sprite.webp',collectorSprite:'assets/journey/collector-sprite.webp',collectorTruck:'assets/journey/collector-truck.webp',landscape:'assets/journey/road-landscape.webp',fuelYard:'assets/journey/fuel-yard.webp',catchPhoto:'assets/journey/catch.webp',yard:'assets/journey/yard.webp',cabin:'assets/journey/cabin.webp',familyPhoto:'assets/journey/family-photo.webp',dinner:'assets/journey/dinner.webp',roadside:'assets/journey/roadside.webp',collectors:'assets/journey/collectors.webp',vanBody:'assets/journey/van-body.webp',chair:'assets/pilgrimage/chair.png',road:'assets/atmosphere/road-v02.jpg',garage:'assets/atmosphere/garage-v02.jpg',camp:'assets/atmosphere/camp-v02.jpg',plateau:'assets/atmosphere/plateau-v02.jpg',van:'assets/atmosphere/van-v02.png',fishing:'assets/pilgrimage/fishing.jpg',gate:'assets/pilgrimage/gate.jpg',home:'assets/pilgrimage/home.jpg',family:'assets/pilgrimage/family.jpg'};
 for(const id of ['highway','logistics','prairie','storm','plaza','toll','campus','market','seized','basin','squad','scanner','inventory','blocked','mirror','repair-family','night-family','meal-family','transport-body','windshield'])sources[id]='assets/journey-v05/'+id+'.webp';
@@ -11,8 +11,10 @@ sources.collectors=sources.squad;
 for(const id of ['city','kitchen','garage','crew','departure'])sources['intro-'+id]='assets/intro-v06/'+id+'.webp';
 for(const id of ['crew','departure','kitchen','garage'])sources['intro-'+id]='assets/family-02/'+id+'.webp';
 for(const id of ['meal-family','repair-family'])sources[id]='assets/family-02/'+id+'.webp';
-sources['night-family']=sources['intro-departure'];
-sources.familyPhoto=sources['intro-departure'];
+for(const id of ['departure','kitchen'])sources['intro-'+id]='assets/disconnection/'+id+'.webp';
+for(const id of ['departure','crew'])sources['intro-'+id]='assets/candid-04/'+id+'.webp';
+for(const id of ['meal-family','repair-family','open-country'])sources[id]='assets/candid-04/'+id+'.webp';
+sources.familyPhoto=sources['open-country'];
 for(const id of ['highway','viaduct','rain','overtake','scanner','barrier'])sources['poster-'+id]='assets/journey-v05/film-'+id+'-poster.webp';
 export const ready=Promise.all(Object.entries(sources).map(([id,url])=>new Promise(resolve=>{const im=new Image();im.onload=()=>resolve(id);im.onerror=()=>resolve(id);im.src=url;images[id]=im;})));
 export const HAZARDS=[{x:.31,y:.37,w:.17,h:.045},{x:.55,y:.56,w:.16,h:.045},{x:.28,y:.73,w:.18,h:.04}];
@@ -26,7 +28,7 @@ export function render(canvas,s,ui){
  const circle=(x,y,r,color,stroke)=>{ctx.beginPath();ctx.arc(x*w,y*h,r,0,Math.PI*2);ctx.fillStyle=color;ctx.fill();if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=2;ctx.stroke();}};
  const line=(x1,y1,x2,y2,color,width=2)=>{ctx.strokeStyle=color;ctx.lineWidth=width;ctx.beginPath();ctx.moveTo(x1*w,y1*h);ctx.lineTo(x2*w,y2*h);ctx.stroke();};
  const text=(t,x,y,size=14,color='#f7e9d0',align='center')=>{ctx.font=`500 ${size}px Road, sans-serif`;ctx.textAlign=align;ctx.textBaseline='middle';ctx.fillStyle=color;ctx.fillText(t,x*w,y*h);};
- const cover=(im)=>{if(!im?.complete||!im.naturalWidth){ctx.fillStyle='#1e343a';ctx.fillRect(0,0,w,h);return;}let k=Math.max(w/im.naturalWidth,h/im.naturalHeight);ctx.drawImage(im,(w-im.naturalWidth*k)/2,(h-im.naturalHeight*k)/2,im.naturalWidth*k,im.naturalHeight*k);};
+ const cover=(im,focus=.5)=>{if(!im?.complete||!im.naturalWidth){ctx.fillStyle='#1e343a';ctx.fillRect(0,0,w,h);return;}let k=Math.max(w/im.naturalWidth,h/im.naturalHeight),iw=im.naturalWidth*k;ctx.drawImage(im,Math.max(w-iw,Math.min(0,w*.5-iw*focus)),(h-im.naturalHeight*k)/2,iw,im.naturalHeight*k);};
  let art=ui.title?'intro-departure':s.mode==='home'||s.ending?.owned?'home':s.mode==='crossing'?'gate':s.mode==='fishing'?'fishing':['travel','incident'].includes(s.mode)?'road':s.mode==='salvage'||s.mode==='repair'?'garage':s.mode==='packing'?'road':node(s.node).art;
  const shot=s.mode==='story'?SHOTS[s.story.id]:s.mode==='travel'&&s.road.shot?SHOTS[s.road.shot.id]:s.mode==='incident'?{image:s.incident.image||'collectors'}:null;
  if(shot)art=shot.film?'poster-'+shot.film:shot.image;
@@ -34,8 +36,9 @@ export function render(canvas,s,ui){
  if(shot&&images[art]?.naturalWidth&&w<h*1.2){
   const im=images[art],k=h/im.naturalHeight,iw=im.naturalWidth*k,elapsed=s.mode==='story'?s.story.elapsed:s.road.shot?.elapsed||0;
   if(s.settings.reducedMotion){ctx.fillStyle='#102225';ctx.fillRect(0,0,w,h);const ch=w*im.naturalHeight/im.naturalWidth;ctx.drawImage(im,0,(h-ch)/2,w,ch);}
-  else {const range=art==='night-family'?[.72,.90]:art==='dinner'?[.23,.75]:art==='cabin'?[.29,.63]:[.30,.57],phase=Math.min(1,elapsed/(s.mode==='story'?9:4.6)),focus=range[0]+(range[1]-range[0])*(phase*phase*(3-2*phase));ctx.drawImage(im,Math.min(0,Math.max(w-iw,w*.5-iw*focus)),0,iw,h);}
- }else cover(images[art]);
+  else if(art==='open-country'){ctx.fillStyle='#102225';ctx.fillRect(0,0,w,h);const ch=Math.min(h,w),scale=Math.max(w/im.naturalWidth,ch/im.naturalHeight),sw=w/scale,phase=Math.min(1,elapsed/(s.mode==='story'?9:3)),focus=.49+.13*phase,sx=Math.max(0,Math.min(im.naturalWidth-sw,im.naturalWidth*focus-sw/2));ctx.drawImage(im,sx,0,sw,im.naturalHeight,0,(h-ch)/2,w,ch);}
+  else {const ranges={'night-family':[.40,.56],'meal-family':[.36,.58],'repair-family':[.38,.62],mirror:[.42,.56]};const range=ranges[art]||[.30,.57],phase=Math.min(1,elapsed/(s.mode==='story'?9:4.6)),focus=range[0]+(range[1]-range[0])*(phase*phase*(3-2*phase));ctx.drawImage(im,Math.min(0,Math.max(w-iw,w*.5-iw*focus)),0,iw,h);}
+ }else cover(images[art],ui.title&&w<h*1.2?.72:.5);
  if(movie){const k=Math.max(w/movie.videoWidth,h/movie.videoHeight);ctx.drawImage(movie,(w-movie.videoWidth*k)/2,(h-movie.videoHeight*k)/2,movie.videoWidth*k,movie.videoHeight*k);}
  const shade=ctx.createLinearGradient(0,0,0,h);shade.addColorStop(0,'#041317a6');shade.addColorStop(.35,'#04131700');shade.addColorStop(.9,'#04131700');shade.addColorStop(1,'#0413178a');ctx.fillStyle=shade;ctx.fillRect(0,0,w,h);
  ui.hits=[];

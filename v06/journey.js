@@ -3,10 +3,11 @@ export const SHOTS={
  cabin:shot('night-family','One room, no login','Annie: “At the new place, can the house kick us out?”'),
  roadside:shot('plaza','Service suspended','Jack: “A wrench and a lamp. Best customer support we’ve had in years.”'),
  dinner:shot('meal-family','Food we caught ourselves','Ben: “Food from a river. Terms and conditions: cook it.”'),
- family:shot('familyPhoto','Everyone who needs to make it','Sarah: “We look like hell. Keep it. We earned this one.”'),
+ family:shot('open-country','Something worth keeping','Sarah: “Take that one. I want to remember there was more than the road.”'),
+ wonder:shot('open-country','More sky than we remembered','Annie: “Was all this here the whole time?”'),
  collectors:shot('squad','Workforce recovery','The city calls it a return to stability. The families call it being taken back.'),
- relief:shot('night-family','No lights behind us','Sarah: “They took the other road. Breathe.”'),
- home:shot('basin','The basin keeps its own lights on','A reservoir. Local switches. Paper deeds. The right to fix your own mistakes.'),
+ relief:shot('mirror','No lights behind us','Sarah: “They took the other road. Breathe.”'),
+ home:shot('basin','The basin keeps its own lights on','A reservoir. Paper deeds. No phones or computers beyond the Line. They chose to stay disconnected.'),
  plaza:shot('plaza','The last service stall','Old pumps. One working lamp. Someone who knows how to fix things.'),
  toll:shot('toll','The road remembers your plate','A private gantry. Public roads, rented back by the mile.'),
  campus:shot('campus','Your future has been discontinued','The shuttle still arrives. The doors stopped opening last winter. Excellent attendance figures.'),
@@ -16,7 +17,7 @@ export const SHOTS={
  inventory:shot('inventory','Property retained','Keys, papers, shoes. An entire household reduced to an inventory.'),
  blocked:shot('blocked','The exit is occupied','The truck shuts down. The white work lights stay on.'),
  mirror:shot('mirror','Sarah checks the mirror again','Amber lights, two miles back. She waits for the next county turn.'),
- repair:shot('repair-family','Something Ben can learn','Jack: “A broken wire. Finally, a problem without a help desk.”'),
+ repair:shot('repair-family','Something Ben can learn','Jack: “A loose belt. Finally, a problem without a help desk.”'),
  night:shot('night-family','The quiet between stops','Annie: “If we get there, can we leave the lights on because we want to?”'),
  'film-highway':shot('highway','County line','The interstate cuts across the country. Keep the van moving.',{film:'highway'}),
  'film-viaduct':shot('logistics','Under the freight viaduct','The trains stopped. The road found a way around.',{film:'viaduct'}),
@@ -26,6 +27,6 @@ export const SHOTS={
  'film-barrier':shot('blocked','A lane closes behind you','The barrier drops. Find the road that is still open.',{film:'barrier'})
 };
 export function showStory(s,id,returnMode='stop'){s.story={id,returnMode,elapsed:0};s.mode='story';if(!s.reel.seen.includes(id))s.reel.seen.push(id);if(!s.reel.gallery.includes(id))s.reel.gallery.push(id);}
-export function roadShots(s,r){const ids=r.id==='opening'?['film-highway','cabin']:r.id==='r1'?['film-viaduct',s.threat.identified?'mirror':'plaza']:r.id==='r2'?['market','repair']:r.id==='r3'?['film-scanner','campus']:r.id==='r4'?['film-rain',s.flags.fishDinner?'dinner':'night']:r.id==='r5'?['film-overtake',s.threat.identified?'inventory':'seized']:r.id==='r6'?['film-barrier','home']:['toll','family'];return ids.map((id,i)=>({id,at:i?17:5,shown:false}));}
+export function roadShots(s,r){const ids=r.id==='opening'?['film-highway','cabin']:r.id==='r1'?['film-viaduct',s.threat.identified?'mirror':'wonder']:r.id==='r2'?['market','repair']:r.id==='r3'?['film-scanner','campus']:r.id==='r4'?['film-rain',s.flags.fishDinner?'dinner':'night']:r.id==='r5'?['film-overtake',s.threat.identified?'inventory':'seized']:r.id==='r6'?['film-barrier','home']:['toll','family'];return ids.map((id,i)=>({id,at:i?17:5,shown:false}));}
 export function updateReel(s,dt){const r=s.road;if(!r)return;if(r.shot){r.shot.elapsed+=dt;if(r.shot.elapsed>=3)r.shot=null;return;}const next=r.shots?.find(x=>!x.shown&&r.elapsed>=x.at);if(next){next.shown=true;r.shot={id:next.id,elapsed:0};if(!s.reel.gallery.includes(next.id))s.reel.gallery.push(next.id);}}
 export function landscapeFor(r){const sequence=r?.kind==='storm'?['storm','highway','storm','prairie']:r?.kind==='rough'?['prairie','storm','prairie','highway']:['highway','logistics','prairie','highway'];return sequence[Math.floor((r?.elapsed||0)/4)%sequence.length];}
