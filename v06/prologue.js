@@ -18,7 +18,7 @@ export const prologueState=p=>p?{...p,beat:BEATS[p.index].id,title:BEATS[p.index
 export function drawPrologue(ctx,w,h,p,images,reduced){
  const b=BEATS[p.index],im=images[b.image],phase=reduced?0:Math.min(1,p.elapsed/(b.duration||12)),ease=phase*phase*(3-2*phase);
  ctx.fillStyle='#111b1c';ctx.fillRect(0,0,w,h);
- if(im?.naturalWidth){const k=Math.max(w/im.naturalWidth,h/im.naturalHeight)*(1+ease*.045),iw=im.naturalWidth*k,ih=im.naturalHeight*k;const focus=b.focus+(reduced?0:(ease-.5)*.035);ctx.drawImage(im,Math.max(w-iw,Math.min(0,w*.5-iw*focus)),(h-ih)*.35,iw,ih);}
+ if(im?.naturalWidth){const familyFrame=w<h*1.2&&['family','analog'].includes(b.id),artHeight=familyFrame?h*.63:h;const k=Math.max(w/im.naturalWidth,artHeight/im.naturalHeight)*(1+ease*.045),iw=im.naturalWidth*k,ih=im.naturalHeight*k;const focus=(familyFrame?.47:b.focus)+(reduced?0:(ease-.5)*.035);ctx.drawImage(im,Math.max(w-iw,Math.min(0,w*.5-iw*focus)),familyFrame?h*.04:(h-ih)*.35,iw,ih);}
  ctx.save();
  // Corporate signal interference gives way to a disconnected cable and a paper route.
  if(b.motion==='signal'){ctx.fillStyle=`rgba(124,195,188,${reduced?.025:.025+Math.sin(p.elapsed*.7)*.009})`;for(let y=0;y<h;y+=6)ctx.fillRect(0,y,w,1);if(!reduced){ctx.fillStyle='#bad7d21c';ctx.fillRect(0,(p.elapsed*20)%h,w,2);}}
@@ -34,6 +34,6 @@ export function drawPrologue(ctx,w,h,p,images,reduced){
  }
  const g=ctx.createLinearGradient(0,0,0,h);g.addColorStop(0,'#080e1455');g.addColorStop(.28,'#080e1400');g.addColorStop(.52,'#0a141833');g.addColorStop(1,'#081114ed');ctx.fillStyle=g;ctx.fillRect(0,0,w,h);
  // A brief film dissolve, never a flash or rapid flicker.
- if(!reduced&&p.elapsed<.5){ctx.fillStyle=`rgba(8,15,18,${(.5-p.elapsed)*1.3})`;ctx.fillRect(0,0,w,h);}
+ if(!reduced&&!p.paused&&p.elapsed<.5){ctx.fillStyle=`rgba(8,15,18,${(.5-p.elapsed)*1.3})`;ctx.fillRect(0,0,w,h);}
  ctx.restore();
 }

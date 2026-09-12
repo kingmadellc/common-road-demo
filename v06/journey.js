@@ -17,7 +17,7 @@ export const SHOTS={
  blocked:shot('blocked','The exit is occupied','The truck shuts down. The white work lights stay on.'),
  mirror:shot('mirror','Sarah checks the mirror again','Amber lights, two miles back. She waits for the next county turn.'),
  repair:shot('repair-family','Something Ben can learn','Jack: “A broken wire. Finally, a problem without a help desk.”'),
- night:shot('night-family','The quiet in the back seat','Annie: “If we get there, can we leave the lights on because we want to?”'),
+ night:shot('night-family','The quiet between stops','Annie: “If we get there, can we leave the lights on because we want to?”'),
  'film-highway':shot('highway','County line','The interstate cuts across the country. Keep the van moving.',{film:'highway'}),
  'film-viaduct':shot('logistics','Under the freight viaduct','The trains stopped. The road found a way around.',{film:'viaduct'}),
  'film-rain':shot('plaza','The weather is catching up','Rain moves across the shuttered service yard.',{film:'rain'}),

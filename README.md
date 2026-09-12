@@ -1,10 +1,12 @@
 # Last Free County · working title
 
-[Play the story — v0.6](https://kingmadellc.github.io/common-road-demo/?v=0.6) · [Name and wordmark directions](https://kingmadellc.github.io/common-road-demo/names/)
+[Play the story — revised family art](https://kingmadellc.github.io/common-road-demo/?v=0.6&art=2) · [Name and wordmark directions](https://kingmadellc.github.io/common-road-demo/names/)
 
 A darkly comic modern survival trail. In America, 2041, the Mercer family leaves account-controlled life in a van they can repair. Their destination is Morrow: a protected basin where a home can belong to a household rather than its employer.
 
 Playtest 06 adds a seven-scene illustrated motion opening, gruffer character portraits and backstories, revised road/stop dialogue, and three original wordmark concepts. Pause, skip, replay, or use still frames with manual advance. Optional sound uses synthesized cues. The opening takes no campaign time.
+
+The family-art update gives the Mercers visibly sad, exhausted expressions across portraits, opening scenes and the road reel. Phone framing keeps the parents’ faces visible. Current saves remain compatible.
 
 Pack six spaces. Fish for dinner. Recover parts, keep the van running and avoid Continuum’s Collectors. Earn a sponsor or deliver water filters before the storm closes the crossing. Two routes lead to a home of your own.
 
