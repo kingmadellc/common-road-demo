@@ -23,3 +23,5 @@ a{color:#cad3b6}.actiongroup h2{color:#f1eadb}#opening .title-tagline{color:#e1e
 .sound-mix label {display:flex;justify-content:space-between;font:500 16px Road,sans-serif;}
 .sound-mix input {width:100%;min-height:44px;accent-color:#a0ad7b;}
 @media(max-width:460px){header {gap:6px;}header .brand img {max-width:112px;}header nav {gap:5px;}header nav button {padding:0 8px;}}
+
+@media(max-width:460px){#map span {display:none;}#map {min-width:44px;white-space:nowrap;}}
