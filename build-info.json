@@ -1,11 +1,11 @@
 {
   "version": "0.6.0",
-  "assetRevision": "signals-end-02",
+  "assetRevision": "human-nature-1",
   "title": "Signals End",
   "sourceRepository": "https://github.com/kingmadellc/common-road",
-  "sourceCommit": "0622f7d83cbc0a697e4a541c56880670bc578126",
-  "builtAt": "2026-09-13T00:35:01.023Z",
-  "bytes": 41784493,
+  "sourceCommit": "71f09b069c31e6a08440de9a44d4ed6d2ac5bd02",
+  "builtAt": "2026-09-13T00:56:56.955Z",
+  "bytes": 103363720,
   "files": {
     "assets/atmosphere/camp-v02.jpg": {
       "bytes": 715858,
@@ -363,6 +363,98 @@
       "bytes": 371419,
       "sha256": "3831cac0e0d79c7b0ef3c2c5b141e3392dd59cabbdacfcf295c1672773844df6"
     },
+    "assets/signals-end/Atkinson-OFL.txt": {
+      "bytes": 4431,
+      "sha256": "aca6a428580965d2297d1b718042dd427c2a9443ece3b0d02d758e161e0c4030"
+    },
+    "assets/signals-end/AtkinsonHyperlegibleNext.ttf": {
+      "bytes": 114552,
+      "sha256": "5a455d1cfa099b601ab70751bb9673e8fe1854dc4500c80e1a220d0d75e31745"
+    },
+    "assets/signals-end/AtkinsonHyperlegibleNext.woff2": {
+      "bytes": 48272,
+      "sha256": "8066d776ecf3c41794d9ad37c5e12cf1bd2a707a90e5bc20f5abfa40b8ed1e0f"
+    },
+    "assets/signals-end/SignalsEndDisplay-OFL.txt": {
+      "bytes": 4391,
+      "sha256": "bdf4c22802eaf804f998195871c6b8938aac2ac14b2d78a8bd66a6f1eced833b"
+    },
+    "assets/signals-end/SignalsEndDisplay-Regular.ttf": {
+      "bytes": 68496,
+      "sha256": "bb42a2d23cc952ee9fee02f3b5bea434e696688c25ddb2019795e5108ed4bf3d"
+    },
+    "assets/signals-end/SignalsEndDisplay-Regular.woff2": {
+      "bytes": 31356,
+      "sha256": "78d9e38e2e02dabf5970a111a9a49a7a34cabbab1bff9bce5b5f561c13b998d0"
+    },
+    "assets/signals-end/app-icon-180.png": {
+      "bytes": 4117,
+      "sha256": "b2f998987e3e6a1046e2fc59f32920f2971fe1004544391d509b731f72ebea82"
+    },
+    "assets/signals-end/app-icon-192.png": {
+      "bytes": 4365,
+      "sha256": "d9d7e145f5ec1194f9b1ec7f2c0c6d89060e5767afb3c5e18b833f7a0e77e061"
+    },
+    "assets/signals-end/app-icon-512.png": {
+      "bytes": 12488,
+      "sha256": "17b29187f9294f35239a08918dea36ebacbeb8cfafc4ba1a225ff7f8c923aa57"
+    },
+    "assets/signals-end/cover-preview.webp": {
+      "bytes": 253456,
+      "sha256": "11824c621ffa69e367b309fca33af39017896f9d9fbaeadd49f4139b0d0e0804"
+    },
+    "assets/signals-end/signals-end-app-icon.svg": {
+      "bytes": 4649,
+      "sha256": "bab482cf4ea93d7e0ce1baf6e390ab79c5fdef61a91b8940e22fa7a9d0c76254"
+    },
+    "assets/signals-end/signals-end-horizontal-dark.svg": {
+      "bytes": 17034,
+      "sha256": "0cfe296afe40ef7e6e52c29068d2a182420a122f9b913b32a49edb6d8615b14c"
+    },
+    "assets/signals-end/signals-end-horizontal-light.svg": {
+      "bytes": 17034,
+      "sha256": "563ca8b869056881b467fc70358cec8be5d2aa8a73d7f66a62e56069a76256e4"
+    },
+    "assets/signals-end/signals-end-stacked-dark.svg": {
+      "bytes": 22823,
+      "sha256": "3b73bb1b2537ebbb1137dc30bc65cb154f9250af87475234759eca9b5baa6ee7"
+    },
+    "assets/signals-end/signals-end-stacked-light.svg": {
+      "bytes": 22823,
+      "sha256": "48769ba6a02babdf61617e6feef686e73460f80ae7a548a61a7f7c03e2a13ab1"
+    },
+    "assets/signals-end/signals-end-stacked-mono-dark.svg": {
+      "bytes": 22823,
+      "sha256": "cf228761d767519ed230d5b9c4fc34b004d318455ede8e26c1f66d9a011b62e0"
+    },
+    "assets/signals-end/signals-end-stacked-mono-light.svg": {
+      "bytes": 22823,
+      "sha256": "156256f40d5040e8fe4c5cf093bbcf8ebb0da3b08b1bc116f3201a01177a592e"
+    },
+    "assets/signals-end/signals-end-symbol-dark.svg": {
+      "bytes": 4526,
+      "sha256": "e8d5c1730969e5045d0a9ae475cc5327cd3155dd22f5fdd7b3131123d952787f"
+    },
+    "assets/signals-end/signals-end-symbol-light.svg": {
+      "bytes": 4526,
+      "sha256": "371c94adf964e111b87588ccb6b044ef7099a70b5534c5cc0209fcac869680d4"
+    },
+    "assets/signals-end/signals-end-symbol-mono-dark.svg": {
+      "bytes": 4526,
+      "sha256": "5ca2a2d59ccca63295ed466abe67afeed3274da93309ee7a78e9c906153b7f33"
+    },
+    "assets/signals-end/signals-end-symbol-mono-light.svg": {
+      "bytes": 4526,
+      "sha256": "2442513a36825dc3e3263bc572163219a9876ec095a247cda4959156ac9b9bd6"
+    },
+    "assets/signals-end/social-preview.webp": {
+      "bytes": 146604,
+      "sha256": "733d245fa8fec9439b55635768f6967442e3da90d74285b140521d508344c2b5"
+    },
+    "assets/signals-end/story-preview.webp": {
+      "bytes": 185822,
+      "sha256": "546463adc0b1b1483f1128b6ce06dbb33e536f17cb55489220343e8914c8cf99"
+    },
     "assets/signals-end-02/01-modern-trail.webp": {
       "bytes": 137508,
       "sha256": "4341874488895e8163827e832db012c6b42ff84233e94e02801c7771c8450a5a"
@@ -384,28 +476,88 @@
       "sha256": "f3d85f3f1835ad03e02afd647a7ecd584487b26184dbb03186e2f1aae705888e"
     },
     "brand/directions.js": {
-      "bytes": 2257,
-      "sha256": "5598b1f4e81cdda9cd8746be7c3a928328301ce4db77f8ed5dfec5a77513c9fd"
+      "bytes": 2279,
+      "sha256": "657a60ef010380f3d7c06f6ac3f746adab873d1395927a0682f98845a0dca07e"
+    },
+    "brand/downloads/Signals-End-Brand-Guide.pdf": {
+      "bytes": 20797764,
+      "sha256": "0355af841d4f56bbbebf3bec451a98f385827e87286ad2eafb4dde27521f049c"
+    },
+    "brand/downloads/Signals-End-Brand-Kit-v1.zip": {
+      "bytes": 33824589,
+      "sha256": "42059f58fb0b33153f527c828030a6c75c4f2fe44ce02030b098a07372d6c4a4"
+    },
+    "brand/downloads/signals-end-app-icon-1024.png": {
+      "bytes": 27147,
+      "sha256": "84105e9f2822d4c7f57554311479b7c50abdda5a9036be2aba50d6effa617ab5"
+    },
+    "brand/downloads/signals-end-cover-1920x1080.png": {
+      "bytes": 2456478,
+      "sha256": "3154bd80a624dc2c3b0e29e9161ca96e46a680a262d35eaaef3aab79207b39ac"
+    },
+    "brand/downloads/signals-end-social-1080.png": {
+      "bytes": 1418778,
+      "sha256": "45876f073f6561fe4184b02da33149990bef41b52863ca2c6e533ecb4b762ef6"
+    },
+    "brand/downloads/signals-end-story-1080x1920.png": {
+      "bytes": 1210333,
+      "sha256": "7fb3bbab283433b9625dad2d2334116b0d656fa4c23bcd6f3c45db14aaac1ed6"
+    },
+    "brand/downloads/signals-end-symbol-dark.png": {
+      "bytes": 41266,
+      "sha256": "7c8af98d4dd7d9277fc45abaa5634e462b1825ab262667ccd3f2f393f626bcd4"
+    },
+    "brand/downloads/signals-end-symbol-light.png": {
+      "bytes": 41056,
+      "sha256": "1de6568f4452016dcf2a716894d11dd18acb3282a20872623c5a13377a270287"
+    },
+    "brand/downloads/signals-end-title-reveal.mp4": {
+      "bytes": 376207,
+      "sha256": "9fdd39c8f6169177401307251fb6c1d502ba5fabb8eb63443dbc20fd8872976a"
+    },
+    "brand/downloads/signals-end-wordmark-dark.png": {
+      "bytes": 166171,
+      "sha256": "9169fd211ee0a22f9d3fd8e473b791fbac9601594a5b930bce13afd6b12453df"
+    },
+    "brand/downloads/signals-end-wordmark-light.png": {
+      "bytes": 165342,
+      "sha256": "b38aba64ae45629797ac2889edbf54e10d4d69d612573c116b7c01e4dc14a7bd"
     },
     "brand/index.html": {
-      "bytes": 4798,
-      "sha256": "b241cbb97cba0b507778933987f4ce1f6c42175fd020cb842a45e3a6e7ecebac"
+      "bytes": 10144,
+      "sha256": "7e05bc4bc82f08c6ad8fe716c63c342dabc3fcb37af6f552df5d8921cca847db"
+    },
+    "brand/kit.css": {
+      "bytes": 9528,
+      "sha256": "6d92eaea5f2ac2393c7992ad4dd39daee77e5d7a701b1a0fc24475e79bb840f4"
+    },
+    "brand/kit.js": {
+      "bytes": 1139,
+      "sha256": "080616cca8f6f9168116a7007e53d1380bc20731f0447656996d112b7a1880a9"
     },
     "brand/review.css": {
       "bytes": 6969,
       "sha256": "3de455f38444315d89911947bf9a8e37a0a98ccb2e065e567500a30173130269"
     },
     "brand/review.js": {
-      "bytes": 3022,
-      "sha256": "8e734589b2b79736f89e4b1083517e36506290f1fb9e36555af094710aec6df3"
+      "bytes": 3042,
+      "sha256": "c795ec3bc362ad02310366bf3f530d3ec9950c322891fd4f9cdbfca1e8f00631"
+    },
+    "brand/studies.html": {
+      "bytes": 4712,
+      "sha256": "16b411425c437db355ea0e3e2ee65267fd51a1cc2a0a04a196fd5995e44efd19"
+    },
+    "brand/templates.html": {
+      "bytes": 3388,
+      "sha256": "85287967f1ae7cb00ee578db38932ee86b2b8aa5b6181d2f210a553e4d52b33a"
     },
     "index.html": {
-      "bytes": 1864,
-      "sha256": "f466a4c6075b030d32a870b1b65587e2de08245a1d4c9719035f50463359dfd1"
+      "bytes": 2076,
+      "sha256": "727a6e7190228ae8496e34ed32544816bc024317ec01afaf73213808a1661034"
     },
     "manifest.webmanifest": {
-      "bytes": 410,
-      "sha256": "dc3020aa848cd3583c390d99ba51738c1f5305c488bd68ccf619b68e17dc97f4"
+      "bytes": 570,
+      "sha256": "019ff31027cf3cf09125c7e7a7832cfbc7800e313e56199b38aecf24e94dbc00"
     },
     "names/index.html": {
       "bytes": 474,
@@ -432,8 +584,8 @@
       "sha256": "8380ecc6617a63f002d75e10c19359d8c1347db3f82900c4f7d19a81ab1aad4b"
     },
     "sw.js": {
-      "bytes": 7649,
-      "sha256": "b72aadab84034e9c7b0517f71abd95a5e5234c6e370c022da665aca644f1d2c4"
+      "bytes": 8898,
+      "sha256": "8db2d3487724052de7109a3e1f01ee77a8b02a03e1d05b68a910c19fe9e7b37d"
     },
     "v02/assets/atmosphere/camp-v02.jpg": {
       "bytes": 715858,
@@ -656,20 +808,20 @@
       "sha256": "9be1fa84a4d637fcc76aa6110a8867de450f0d6d8ce00a21c6e9e74dfc824c64"
     },
     "v06/app.js": {
-      "bytes": 47865,
-      "sha256": "33cb2d2ab4aa20ba7a73e2e6bae6a03f29ae9e019f48b868cb2b82394f53b1fb"
+      "bytes": 47838,
+      "sha256": "c3b9905ef740b2cb91a0fbec0cc7937e7d957edd76d5a38ac5de716f03ab1984"
     },
     "v06/art.js": {
       "bytes": 11463,
-      "sha256": "95e85b1ec04afc9c82fb0d8b9d33b6aa1300ee78421bf51bb02b01c535a7fd22"
+      "sha256": "f74950f270746c6c4dabdfbde3c0ac047c4be2c83f3ca6e941fb15caf7722b65"
     },
     "v06/brand.js": {
-      "bytes": 1827,
-      "sha256": "9c62dd1114ebc4870ad1f6cae485e2bbacc81e7ddff5c39001ecc5a3f4e6042d"
+      "bytes": 1874,
+      "sha256": "d79041911bce2a6890ff1ad0bb1405f61cdf11ec3e1ac0a08f08ed9bf7c497bf"
     },
     "v06/conflict.js": {
       "bytes": 5679,
-      "sha256": "d59ffcb2723386661b219b72ee50d7034103f8947e050398036438fd07a1df7d"
+      "sha256": "ed5a999d9a8c9bdd91a13e7caff6152e257f7b381f8cff3d266ddbad7716238b"
     },
     "v06/drive.js": {
       "bytes": 424,
@@ -677,15 +829,19 @@
     },
     "v06/film.js": {
       "bytes": 4487,
-      "sha256": "c3bf3cc5e75eaa222fd88b84b26725be6b3e54a0731f642a1df0329ef9a34ac7"
+      "sha256": "630989ee338e25d08a489e0bc8d56ca6628687b0aeaef6c1ac621b41614dae8d"
     },
     "v06/fishing.js": {
       "bytes": 7460,
-      "sha256": "a096a9612d12be69e32cc5f1309e0250ba8bffae605fb401d4e075d462751259"
+      "sha256": "90d7a489353e01864b85dbfbb3de301046c5c0d8e7725a8a1db852d9677502c7"
+    },
+    "v06/identity.css": {
+      "bytes": 2283,
+      "sha256": "cba33c4a7cbf7c31c3b66767e4765b63ad8f00826f12856a5826b353e5d1fb00"
     },
     "v06/intro.css": {
-      "bytes": 7099,
-      "sha256": "7a01f97396e69302a855989aa5e925da4c740a1ddb0959d352dd3b9e21b27330"
+      "bytes": 6658,
+      "sha256": "4d053fe039091274b789bc4df8121df90b26518dd9be770eb933595aac2170d0"
     },
     "v06/journey.js": {
       "bytes": 4444,
@@ -693,7 +849,7 @@
     },
     "v06/motion.js": {
       "bytes": 4967,
-      "sha256": "3c4c55e443bfb14e0eab85c80c71f5e662b4abb2d048ea72914cdedd9dc8ecbb"
+      "sha256": "b0b848a1fbce682da23d6e8168207f3479c5a4ee3fcb17500b1868eae073ad11"
     },
     "v06/prologue.js": {
       "bytes": 6823,
@@ -701,15 +857,15 @@
     },
     "v06/salvage.js": {
       "bytes": 6850,
-      "sha256": "d55caacb50769e67492a92934a630a239fb2708f39aeb05f70eaa78176da4cde"
+      "sha256": "a7953a443fa1e804bd6e0d54d7fceb5d471202795b9a3e74c7876f5a986e32cc"
     },
     "v06/scenes.js": {
       "bytes": 6487,
-      "sha256": "68cd702b6c5c156e7d43bdfab06c0c8ac12b1513bf418d140f569e1a96871624"
+      "sha256": "6f72d5d2ed205773460bfa56c9286042e5dc572e6aa48436cb9ba9198cf0189a"
     },
     "v06/sim.js": {
       "bytes": 18729,
-      "sha256": "19f4d5f8be5d9a6417c97317b6de3037cd9b8f0fb57e3f061f13d0551293bc7d"
+      "sha256": "1c10fb1be66ebca23f4fb6ab2f795409e9d57aa266f686496a0b97e29ce53633"
     },
     "v06/sound.js": {
       "bytes": 2241,
@@ -720,8 +876,8 @@
       "sha256": "6abf2d9811e0646e3b49455c785d581382d414a3b8915e601302a82901d5e7f8"
     },
     "v06/style.css": {
-      "bytes": 16208,
-      "sha256": "971fbfeb05f72290a626bc61fe5dd32294a0f0b9cff59344feb38875947f2091"
+      "bytes": 16203,
+      "sha256": "d7040de5cc2d2ff42f2205dfa5b8518b1c28cbd779104dcfa1d5ad0c64c90638"
     },
     "v06/video.js": {
       "bytes": 816,
@@ -732,7 +888,7 @@
       "sha256": "44e2fa3140b0eefd23c42b34cc59aa460633f5e12f7485621cf9902e608be8a4"
     }
   },
-  "validation": "Signals End name selected; five custom lettering/wordmark/symbol concept sheets and interactive art applications. Identity selection remains pending. Desktop/phone/WebKit review, standard game client, current-save and offline checks. Gameplay rules unchanged.",
+  "validation": "Human Nature selected: outlined identity, custom OFL display derivative, readable UI font, app icons, full downloadable kit and game integration. Desktop/phone/landscape typography, opening, saved drive, offline assets and download integrity checks. Gameplay rules unchanged.",
   "nativeAppleBuild": false,
   "physicalAppleDeviceTested": false,
   "humanFunTested": false

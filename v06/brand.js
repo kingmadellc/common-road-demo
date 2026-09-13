@@ -1,4 +1,4 @@
-export const BRAND={title:'Signals End',short:'SIGNALS END',tagline:'A home. A deed. Nobody’s permission.',mark:null,provisional:false,identityPending:true};
+export const BRAND={title:'Signals End',short:'SIGNALS END',tagline:'A home. A deed. Nobody’s permission.',mark:'assets/signals-end/signals-end-stacked-light.svg',provisional:false,identityPending:false};
 export const NAMES=[
  {id:'quiet-country',name:'Quiet Country',tag:'THE PROMISE · RECOMMENDED',line:'Leave the signal. Keep your life.',note:'The frontier feeling of Last Free County, with something left unsaid. Quiet means a place that has chosen to disappear.',direction:'Two heavy frontier lines, worn ivory ink and a broken rust horizon. Let the empty space carry the disconnection.'},
  {id:'after-the-signal',name:'After the Signal',tag:'THE LIFE BEYOND',line:'There is a life after being watched.',note:'A more cinematic title. The journey leads toward the life that begins when the digital world ends for this family.',direction:'Stacked slab lettering with a small THE. The last rule stops short, as though the transmission ended.'},

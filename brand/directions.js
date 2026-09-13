@@ -29,6 +29,7 @@ export const DIRECTIONS = [
   },
   {
     "id": "03-human-nature",
+    "selected": true,
     "titleCropHeight": 760,
     "name": "Human Nature",
     "type": "Soft custom lowercase",
