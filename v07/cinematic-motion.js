@@ -1,4 +1,4 @@
-import {drawService} from './service-marks.js?v=0.8.5-safety-1';
+import {drawService} from './service-marks.js?v=0.8.6-media-1';
 // Fixed photographic framing. Motion belongs to objects/light, never a zoomed still.
 const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
 export function fixedShot(c,im,w,h,focus=.5){

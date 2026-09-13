@@ -1,5 +1,5 @@
-import {drawService} from './service-marks.js?v=0.8.5-safety-1';
-import {APPS} from './institutions.js?v=0.8.5-safety-1';
+import {drawService} from './service-marks.js?v=0.8.6-media-1';
+import {APPS} from './institutions.js?v=0.8.6-media-1';
 // Positions measured against the native 1672 × 941 scene. These are physical signs,
 // not screen-space UI. Each plate inherits the perspective of its existing surface.
 export const SIGNAGE={

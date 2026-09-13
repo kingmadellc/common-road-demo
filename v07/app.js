@@ -1,21 +1,21 @@
-import {serviceBadge} from './service-marks.js?v=0.8.5-safety-1';
-import {startDeparture,departureAction,updateDeparture,departureScene,departureSummary,DECISION_INDEX,NOTICE} from './departure.js?v=0.8.5-safety-1';
-import {freshCapacity} from './hunting.js?v=0.8.5-safety-1';
-import {APPS,WORLD_PREMISE} from './institutions.js?v=0.8.5-safety-1';
-import {BRAND} from './brand.js?v=0.8.5-safety-1';
-import {INTRO_KEY,newPrologue,prologueState,readOpeningHistory,rememberOpening,shouldAutoOpen} from './prologue.js?v=0.8.5-safety-1';
-import {OpeningPlayer} from './opening-player.js?v=0.8.5-safety-1';
-import {VERSION,SAVE_KEY,FAMILY,NODES,ROADS,PACKING,PARTS,CAMPAIGN,objective,admission,node,roads} from './world.js?v=0.8.5-safety-1';
-import {fresh,load,save,act,update,summary,slots,clamp} from './sim.js?v=0.8.5-safety-1';
-import {render,ready,HAZARDS,HOME_POINTS,sources} from './art.js?v=0.8.5-safety-1';
-import {castEndpoint} from './fishing.js?v=0.8.5-safety-1';
-import {yardView} from './scenes.js?v=0.8.5-safety-1';
-import {SITE_NAMES} from './salvage.js?v=0.8.5-safety-1';
-import {collectorOptions,incidentOptions,threatLabel,checkpointFuel} from './conflict.js?v=0.8.5-safety-1';
-import {hurt,shopStock,OFFERS} from './state.js?v=0.8.5-safety-1';
-import {SHOTS} from './journey.js?v=0.8.5-safety-1';
-import {enableAudio,soundFrame} from './sound.js?v=0.8.5-safety-1';
-import {knowledge,ORIGIN,RADIO_MESSAGE,arriveNarrative} from './narrative.js?v=0.8.5-safety-1';
+import {serviceBadge} from './service-marks.js?v=0.8.6-media-1';
+import {startDeparture,departureAction,updateDeparture,departureScene,departureSummary,DECISION_INDEX,NOTICE} from './departure.js?v=0.8.6-media-1';
+import {freshCapacity} from './hunting.js?v=0.8.6-media-1';
+import {APPS,WORLD_PREMISE} from './institutions.js?v=0.8.6-media-1';
+import {BRAND} from './brand.js?v=0.8.6-media-1';
+import {INTRO_KEY,newPrologue,prologueState,readOpeningHistory,rememberOpening,shouldAutoOpen} from './prologue.js?v=0.8.6-media-1';
+import {OpeningPlayer} from './opening-player.js?v=0.8.6-media-1';
+import {VERSION,SAVE_KEY,FAMILY,NODES,ROADS,PACKING,PARTS,CAMPAIGN,objective,admission,node,roads} from './world.js?v=0.8.6-media-1';
+import {fresh,load,save,act,update,summary,slots,clamp} from './sim.js?v=0.8.6-media-1';
+import {render,ready,HAZARDS,HOME_POINTS,sources} from './art.js?v=0.8.6-media-1';
+import {castEndpoint,fishingBounds} from './fishing.js?v=0.8.6-media-1';
+import {yardView} from './scenes.js?v=0.8.6-media-1';
+import {SITE_NAMES} from './salvage.js?v=0.8.6-media-1';
+import {collectorOptions,incidentOptions,threatLabel,checkpointFuel} from './conflict.js?v=0.8.6-media-1';
+import {hurt,shopStock,OFFERS} from './state.js?v=0.8.6-media-1';
+import {SHOTS} from './journey.js?v=0.8.6-media-1';
+import {enableAudio,unlockAudio,silence,soundFrame,soundAction,audioState} from './sound.js?v=0.8.6-media-1';
+import {knowledge,ORIGIN,RADIO_MESSAGE,arriveNarrative} from './narrative.js?v=0.8.6-media-1';
 const $=id=>document.getElementById(id),canvas=$('scene');
 const departurePreview=new URL(location.href).searchParams.get('departure')==='1';
 const safetyPreview=new URL(location.href).searchParams.get('safety')==='1';
@@ -41,7 +41,7 @@ const bars=(label,value,color='')=>`${label}<div class="meter ${color}"><i style
 const count=n=>Math.max(0,Math.round(n*10)/10);
 function persist(){if(safetyPreview){$('save-status').textContent='Safety preview · journey save untouched';return;}if(departurePreview){$('save-status').textContent='Departure preview · journey save untouched';return;}if(huntingPreview){$('save-status').textContent='Hunting preview · journey save untouched';return;}if(ui.prologue||ui.title&&!saved)return;try{save(localStorage,s);saved=structuredClone(s);$('save-status').textContent='Saved on this device';}catch{$('save-status').textContent='Saving unavailable · keep this tab open';}}
 function resetInput(){ui.drag=null;ui.wire=null;ui.cast=null;ui.grip=null;ui.hunt=null;pointer=null;if(s.activity){s.activity.reel=false;if(s.mode==='hunting'){s.activity.aiming=false;s.activity.steady=0;}s.activity.carry=null;if(s.mode==='crossing')s.activity.speed=.65;}document.querySelectorAll('.held').forEach(x=>x.classList.remove('held'));}
-function dispatch(action){try{const beforeMode=s.mode,beforePhase=s.activity?.phase;const next=structuredClone(s);act(next,action);s=next;if(!['reel','tune','steer','slow','fishAim','huntAim','huntViewport'].includes(action.type))persist();drawUI();if((s.mode==='hunting'&&beforePhase!==s.activity.phase||action.type==='incident')&&!ui.paused)$('actions').querySelector('button:not(:disabled)')?.focus({preventScroll:true});if((beforeMode!==s.mode||action.type==='incident')&&!ui.paused)$('stage').scrollIntoView({block:'start',behavior:'instant'});}catch(e){s.message=e.message;$('notice').textContent=e.message;}}
+function dispatch(action){try{const before=s,beforeMode=s.mode,beforePhase=s.activity?.phase;const next=structuredClone(s);act(next,action);s=next;soundAction(action,before,s);if(!['reel','tune','steer','slow','fishAim','huntAim','huntViewport'].includes(action.type))persist();drawUI();if((s.mode==='hunting'&&beforePhase!==s.activity.phase||action.type==='incident')&&!ui.paused)$('actions').querySelector('button:not(:disabled)')?.focus({preventScroll:true});if((beforeMode!==s.mode||action.type==='incident')&&!ui.paused)$('stage').scrollIntoView({block:'start',behavior:'instant'});}catch(e){s.message=e.message;$('notice').textContent=e.message;}}
 function startNew(){finishNew();}
 function finishNew(){if(safetyPreview){location.href='./';return;}if(huntingPreview){location.href='./?v=0.8.0';return;}const settings={...s.settings};resetInput();s=fresh(Math.floor(Math.random()*100000));s.settings=settings;startDeparture(s);ui.title=false;ui.dialog=null;ui.paused=false;if($('dialog').open)$('dialog').close();persist();drawUI(true);}
 function resume(){if(safetyPreview){location.href='./';return;}if(huntingPreview){location.href='./?v=0.8.0';return;}s=structuredClone(saved||s);resetInput();ui.title=false;drawUI(true);}
@@ -132,10 +132,11 @@ function doDeparture(type){
  if(s.mode==='packing')$('actions').querySelector('button')?.focus({preventScroll:true});
 }
 function drawUI(force=false){
+ const audioButton=$('sfx');audioButton.textContent=s.settings.sound?'SFX on':'SFX off';audioButton.setAttribute('aria-pressed',String(s.settings.sound));
  document.body.dataset.huntPhase=s.mode==='hunting'?s.activity.phase:'';document.body.dataset.mode=ui.prologue?'prologue':ui.title?'title':s.mode;const departing=s.mode==='departure'&&!ui.title&&!ui.prologue;document.body.classList.toggle('departure',departing);document.body.classList.toggle('cinematic',!!ui.prologue||departing);document.body.classList.toggle('title',ui.title||!!ui.prologue);if(ui.prologue){$('opening').hidden=false;drawOpeningFilm(force);return;}document.body.classList.toggle('reduced',s.settings.reducedMotion);if(departing){$('opening').hidden=false;drawDepartureUI(force);return;}
  if($('grip')){const g=s.activity,show=!ui.title&&s.mode==='fishing'&&['aim','wait','bite','fight'].includes(g?.phase);$('grip').hidden=!show; if(show){$('grip').textContent=g.phase==='aim'?(s.settings.castMode==='pull'?'PULL BACK TO CAST':'TAP A RISE TO CAST'):g.phase==='bite'?'STRIKE':g.phase==='fight'?(g.reel?'REELING · SLIDE TO ANGLE':'HOLD TO REEL'):'WAIT FOR THE BITE';$('grip').classList.toggle('strike',g.phase==='bite');}}
  document.body.classList.toggle('title',ui.title);$('opening').hidden=!ui.title;
- if(ui.title){const key='title'+!!saved+!!oldSave;if(force||panelKey!==key){$('opening').innerHTML=`<h1 class="title-wordmark${BRAND.mark?'':' title-type-pending'}">${BRAND.mark?`<img src="${BRAND.mark}" alt="${BRAND.title}">`:`<span>SIGNALS</span><span>END</span>`}</h1><p class="title-tagline">${BRAND.tagline}</p><p class="title-deck">San Francisco → somewhere free.</p><div class="buttons">${saved?button('resume',undefined,'Continue the journey','','primary'):''}${button('new',undefined,saved?'Start fresh':'Make the run','',saved?'':'primary','id="start"')}</div><div class="title-extras">${button('replayIntro',undefined,'Replay opening') }<a href="?v=0.8.5&departure=1">Replay the departure</a><a href="?v=0.8.5&hunt=1">Try hunting</a><a href="?v=0.8.5&safety=1">Try the Safety checkpoint</a><a href="brand/">Brand kit ↗</a></div><div class="legacy"><a href="v06/">Previous demo & saved journey</a></div>`;panelKey=key;}return;}
+ if(ui.title){const key='title'+!!saved+!!oldSave;if(force||panelKey!==key){$('opening').innerHTML=`<h1 class="title-wordmark${BRAND.mark?'':' title-type-pending'}">${BRAND.mark?`<img src="${BRAND.mark}" alt="${BRAND.title}">`:`<span>SIGNALS</span><span>END</span>`}</h1><p class="title-tagline">${BRAND.tagline}</p><p class="title-deck">San Francisco → somewhere free.</p><div class="buttons">${saved?button('resume',undefined,'Continue the journey','','primary'):''}${button('new',undefined,saved?'Start fresh':'Make the run','',saved?'':'primary','id="start"')}</div><div class="title-extras">${button('replayIntro',undefined,'Replay opening') }<a href="?v=0.8.6&departure=1">Replay the departure</a><a href="?v=0.8.6&hunt=1">Try hunting</a><a href="?v=0.8.6&safety=1">Try the Safety checkpoint</a><a href="brand/">Brand kit ↗</a></div><div class="legacy"><a href="v06/">Previous demo & saved journey</a></div>`;panelKey=key;}return;}
  const res=[['FUEL',count(s.fuel),'/ 50',s.fuel<12],['FOOD',count(s.meals*8),'hours',s.meals<1],['VAN',Math.round(s.condition),'%',s.condition<35],['FAMILY',hurt(s)?'Hurt':s.meals<.1?'Hungry':s.energy<25?'Weary':'Steady','',s.health<50||s.energy<25]];
  const rk=JSON.stringify(res);if(rk!==resourceKey){$('resources').innerHTML=res.map(([label,v,u,warn])=>`<div class="resource ${warn?'warn':''}"><span>${label}</span><strong>${v}</strong><small>${u}</small></div>`).join('');resourceKey=rk;}
  const g=s.activity;const key=JSON.stringify([s.mode,s.node,g?.phase,g?.selected,g?.connections,g?.notice,g?.catch,g?.working?.id,g?.pending,g?.cooked,g?.kept,g?.preserved,g?.shared,!!g?.player?.target,g?.player?.hiding,g?.patrol?.state,s.road?.shot?.id,s.incident?.result?.choice,s.story?.id,s.settings,s.packed,s.parts,s.cargo,s.sponsor,s.home,s.flags,s.cash,Math.floor(s.hour),s.threat.permitUsed,s.threat.heat,ui.wire?.index]);
@@ -156,7 +157,7 @@ function drawUI(force=false){
 }
 function modal(kind,content){resetInput();ui.paused=true;ui.dialog=kind;$('dialogbody').innerHTML=`<div class="modal-tools">${button('close',undefined,'← Back')}</div>`+content+`<div class="buttons">${button('close',undefined,'Back to the journey','','primary')}</div>`;if(!$('dialog').open)$('dialog').showModal();$('dialog').scrollTop=0;$('dialog').querySelector('button')?.focus({preventScroll:true});persist();}
 function closeModal(){if($('dialog').open)$('dialog').close();ui.paused=false;ui.dialog=null;drawUI(true);}
-function openPause(){modal('pause',`<div class="label">THE ROAD CAN WAIT</div><h2>Take a breath.</h2><p>Your journey is saved on this device. Time stops while this panel is open.</p><div class="buttons">${button('title',undefined,'Opening screen')}${button('replayIntro',undefined,'Replay opening')}${button('world',undefined,'What is Signals End?')}${button('help',undefined,'Controls')}${button('sound',undefined,s.settings.sound?'Mute sound':'Enable sound')}${button('settings',undefined,'Touch & accessibility')}${button('fullscreen',undefined,'Full screen')}</div>${s.mode==='stop'?`<div class="buttons">${button('aid',undefined,'Ask for emergency help','Once per journey · 4 hours, if supplies are low.')}${button('rescueConfirm',undefined,'Call relief transport','Ends this attempt safely.','danger')}</div>`:''}`);}
+function openPause(){modal('pause',`<div class="label">THE ROAD CAN WAIT</div><h2>Take a breath.</h2><p>Your journey is saved on this device. Time stops while this panel is open.</p><div class="buttons">${button('title',undefined,'Opening screen')}${button('replayIntro',undefined,'Replay opening')}${button('world',undefined,'What is Signals End?')}${button('help',undefined,'Controls')}${button('sound',undefined,s.settings.sound?'Mute sound effects':'Enable sound effects')}${button('settings',undefined,'Touch & accessibility')}${button('fullscreen',undefined,'Full screen')}</div><div class="sound-mix"><label for="sfxVolume">Actions & signals <output>${Math.round((s.settings.sfxVolume??.8)*100)}%</output></label><input id="sfxVolume" type="range" min="0" max="100" value="${(s.settings.sfxVolume??.8)*100}"><label for="ambienceVolume">Environment <output>${Math.round((s.settings.ambienceVolume??.7)*100)}%</output></label><input id="ambienceVolume" type="range" min="0" max="100" value="${(s.settings.ambienceVolume??.7)*100}"></div>${s.mode==='stop'?`<div class="buttons">${button('aid',undefined,'Ask for emergency help','Once per journey · 4 hours, if supplies are low.')}${button('rescueConfirm',undefined,'Call relief transport','Ends this attempt safely.','danger')}</div>`:''}`);}
 function showMap(){
  const current=node(s.node),complete=s.mode==='home'||s.ending?.owned;
  const chapters=[['The city','San Francisco Bay',['yard']],['The Sierra','Truckee, California',['river']],['The dry country','Wells, Nevada',['desert']],['The high country','Rawlins, Wyoming · via Utah',['divide']],['The paper network','North Platte, Nebraska',['plains']],['A way in','Kansas · Topeka or Salina',['pump','freight']],['A real key','Ava, Missouri',['ridge']],['Signals End','The Missouri–Arkansas Ozarks',['line']]];
@@ -170,13 +171,12 @@ function showRoads(){const next=roads(s.node);modal('roads',`<div class="label">
 function showFood(){modal('food',`<h2>Dinner without a login.</h2><p>Food takes authenticated digital payments only. The independent camp takes cash, parts and work.</p><div class="buttons">${button('activity','hunting','Hunt the clearing',s.hunting.outfitted?s.hunting.ammo+' rounds left':'Help June · borrow a rifle','primary',s.hunting.outfitted&&(!s.hunting.ammo||s.hunting.taken.length>=2)?'disabled':'')}${button('activity','fishing','Fish the river','Keep what you can carry')}${button('shop',undefined,'Trade at camp',`$${s.cash} · limited stock`)}</div>`);}
 function showSettings(){modal('settings',`<h2>Make it feel right.</h2><p>Fishing uses the lower grip. Your thumb stays below the fish.</p><div class="buttons">${button('fishCastMode',undefined,s.settings.castMode==='pull'?'Casting: pull back':'Casting: tap water')}${[['autoHook','Automatic hook'],['toggleReel','Tap to toggle reeling'],['reducedMotion','Reduced motion']].map(([id,label])=>button('settingToggle',id,`${s.settings[id]?'✓ ':''}${label}`)).join('')}</div>`);}
 function showHelp(){modal('help',`<h2>Keep the family moving.</h2><h3>Search</h3><p>Choose an object. Work quietly or force it loose. Watch the patrol countdown. Hiding keeps you safe, but the Collectors seal the yard. Leave with what you need.</p><h3>Fish</h3><p>Tap a rise to cast. You can switch to pull casting in settings. Wait for the float to sink, then strike. Hold the grip to reel, slide sideways to angle the rod, and release during a run. Take up prolonged slack.</p><h3>Hunt</h3><p>Drag the lower aim pad, hold still to steady the sight, then release to shoot. A quick tap cancels. Three rounds, two animals. Cook, preserve, pack or share what you recover. On a controller, aim with the left stick; hold A or the right trigger to steady, then release. B leaves. Start pauses.</p><h3>Controller</h3><p>Fishing: left stick aims and angles; right trigger or A casts, hooks, and reels. A keeps a landed fish; X releases it. B brings in the line. Start pauses. Menus: D-pad and A.</p><h3>${s.flags.reservationConfirmed?'Your way in':'Your next step'}</h3><p>${s.flags.reservationConfirmed?'Restore Glenn’s pump for a sponsor, or keep the Pruitts’ filters at least 45% intact. The Pruitts have one replacement crate at the ridge if your filters fall below 45%. Returning to Glenn is a longer fallback.':esc(s.mode==='departure'?'Get the family into the van. Ask Bea across the Bay.':objective(s))}</p>${button('settings',undefined,'Touch & accessibility')}`);}
-let audioOn=false,audioCtx=null;
-function sound(){if(!audioOn)return;try{audioCtx??=new(window.AudioContext||window.webkitAudioContext)();const o=audioCtx.createOscillator(),gain=audioCtx.createGain();o.type='sine';o.frequency.value=s.mode==='home'?330:180;gain.gain.setValueAtTime(.022,audioCtx.currentTime);gain.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+.16);o.connect(gain).connect(audioCtx.destination);o.start();o.stop(audioCtx.currentTime+.18);}catch{}}
 function perform(type,id,target){
+ unlockAudio(s.settings.sound);
  if(type.startsWith('dep')){if(type!=='depart'){doDeparture(type);return;}}
  if(type.startsWith('intro')){prologueAction(type);return;}
  if(type==='replayIntro'){beginPrologue(true);return;}
- if(type==='huntSound'){dispatch({type:'setting',id:'sound',value:!s.settings.sound});enableAudio(s.settings.sound);return;}
+ if(type==='sfxQuick'||type==='huntSound'){dispatch({type:'setting',id:'sound',value:!s.settings.sound});enableAudio(s.settings.sound);return;}
  if(type==='huntPreviewAgain'){location.reload();return;}
  if(type==='food'){showFood();return;}
  if(type==='new'){if(saved)modal('new',`<h2>Start another pilgrimage?</h2><p>This replaces this edition’s saved journey. Earlier edition saves stay separate.</p>${button('confirmNew',undefined,'Start fresh','','danger')}`);else startNew();return;}
@@ -207,15 +207,16 @@ function perform(type,id,target){
  if(type==='nudge'){dispatch({type:'steer',value:s.activity.target+(id==='left'?-.18:.18)});return;}
  if(['holdReel','holdSlow'].includes(type))return;
  if(['activity','travel','rest','meal','hideout','delivery','returnRidge','outer','aid','rescue','gate'].includes(type)&&$('dialog').open)closeModal();
- dispatch({type,id,target});sound();
+ dispatch({type,id,target});
 }
 document.addEventListener('click',e=>{const b=e.target.closest('[data-action]');if(b&&!b.disabled)perform(b.dataset.action,b.dataset.id,b.dataset.target);});
+$('sfx').onclick=()=>perform('sfxQuick');
 $('pause').onclick=()=>ui.prologue?prologueAction('introPause'):openPause();$('map').onclick=showMap;$('journal').onclick=()=>perform('journal');$('help').onclick=showHelp;
 $('dialog').addEventListener('cancel',e=>{e.preventDefault();closeModal();});
-document.addEventListener('input',e=>{if(e.target.id==='tune')dispatch({type:'tune',value:Number(e.target.value)/100});if(e.target.id==='rod')dispatch({type:'reel',value:s.activity.reel,x:Number(e.target.value)/100});});
+document.addEventListener('input',e=>{if(['sfxVolume','ambienceVolume'].includes(e.target.id)){dispatch({type:'setting',id:e.target.id,value:Number(e.target.value)/100});e.target.previousElementSibling.querySelector('output').textContent=e.target.value+'%';return;}if(e.target.id==='tune')dispatch({type:'tune',value:Number(e.target.value)/100});if(e.target.id==='rod')dispatch({type:'reel',value:s.activity.reel,x:Number(e.target.value)/100});});
 function point(e){const r=canvas.getBoundingClientRect();return {pointerType:e.pointerType,x:clamp((e.clientX-r.left)/r.width,0,1),y:clamp((e.clientY-r.top)/r.height,0,1)};}
 function at(p){return [...ui.hits].reverse().find(hit=>Math.hypot((p.x-hit.x)*canvas.clientWidth,(p.y-hit.y)*canvas.clientHeight)<hit.r);}
-function sceneDown(p){if(ui.title||ui.paused)return;const h=at(p),g=s.activity;
+function sceneDown(p){unlockAudio(s.settings.sound);if(ui.title||ui.paused)return;const h=at(p),g=s.activity;
  if(s.mode==='salvage'){if(h?.type==='item')dispatch({type:'inspect',id:h.id});else if(h?.type==='exit')dispatch({type:'exitSite',id:h.id});else if(h?.type==='cover')dispatch({type:'hide'});}
  if(s.mode==='repair'){
   if(g.phase==='diagnose'&&h?.type==='part')dispatch({type:'test',id:h.id});
@@ -263,8 +264,8 @@ let heldControl=null;
 document.addEventListener('pointerdown',e=>{const b=e.target.closest('.hold');if(!b||ui.paused)return;heldControl=b;b.setPointerCapture(e.pointerId);b.classList.add('held');dispatch({type:b.dataset.action==='holdReel'?'reel':'slow',value:true});});
 function releaseHold(){if(heldControl){heldControl.classList.remove('held');dispatch({type:heldControl.dataset.action==='holdReel'?'reel':'slow',value:false});heldControl=null;}}
 document.addEventListener('pointerup',releaseHold);document.addEventListener('pointercancel',releaseHold);
-window.addEventListener('blur',()=>{if(s.mode==='departure'&&!ui.title&&!ui.prologue){ui.paused=true;drawUI();persist();return;}if(ui.prologue){openingPlayer?.pause();return;}resetInput();if(!ui.title&&!ui.paused)openPause();});
-document.addEventListener('visibilitychange',()=>{if(document.hidden){if(s.mode==='departure'&&!ui.title&&!ui.prologue){ui.paused=true;drawUI();persist();return;}if(ui.prologue){openingPlayer?.pause();return;}resetInput();if(!ui.title&&!ui.paused)openPause();persist();}});
+window.addEventListener('blur',()=>{silence();if(s.mode==='departure'&&!ui.title&&!ui.prologue){ui.paused=true;drawUI();persist();return;}if(ui.prologue){openingPlayer?.pause();return;}resetInput();if(!ui.title&&!ui.paused)openPause();});
+document.addEventListener('visibilitychange',()=>{if(document.hidden){silence();if(s.mode==='departure'&&!ui.title&&!ui.prologue){ui.paused=true;drawUI();persist();return;}if(ui.prologue){openingPlayer?.pause();return;}resetInput();if(!ui.title&&!ui.paused)openPause();persist();}});
 window.addEventListener('pagehide',()=>{openingPlayer?.pause();if(!ui.title)persist();});
 function focusStep(dir){const root=$('dialog').open?$('dialog'):document;const choices=[...root.querySelectorAll('button:not(:disabled),a,input,summary')].filter(e=>e.getClientRects().length);let i=choices.indexOf(document.activeElement);choices[(i+dir+choices.length)%choices.length]?.focus();}
 const keys=new Set();
@@ -323,7 +324,7 @@ let assetsLoaded=false;ready.then(()=>assetsLoaded=true);
 function tick(dt){if(s.mode==='departure'&&!ui.title&&!ui.prologue){if(!assetsLoaded)return;const previous=s.mode+':'+s.departure.index;updateDeparture(s,dt,{paused:ui.paused,reduced:s.settings.reducedMotion});saveClock+=dt;if(previous!==s.mode+':'+s.departure?.index||saveClock>2){persist();saveClock=0;}if(s.mode==='packing'){drawUI(true);$('actions').querySelector('button')?.focus({preventScroll:true});}return;}if(ui.prologue){if(!assetsLoaded)return;openingPlayer?.tick(dt);return;}if(!ui.title&&!ui.paused){update(s,dt);saveClock+=dt;if(saveClock>2){persist();saveClock=0;}}}
 function frame(now){if(s.mode==='hunting'&&Math.abs((s.activity.aspect||0)-canvas.clientWidth/canvas.clientHeight)>.001){dispatch({type:'huntViewport',aspect:canvas.clientWidth/canvas.clientHeight});}
 const dt=Math.min(.05,(now-last)/1000);last=now;gamepad(dt);if(!manual){if(s.mode==='crossing'&&!ui.paused){const dir=(keys.has('ArrowRight')?1:0)-(keys.has('ArrowLeft')?1:0);s.activity.target=clamp(s.activity.target+dir*dt*.55,.12,.88);}tick(dt);}drawUI();render(canvas,s,ui);soundFrame(s,ui);requestAnimationFrame(frame);}
-window.render_game_to_text=()=>JSON.stringify({...summary(s),mode:ui.prologue?'prologue':ui.title?'intro':s.mode,prologue:prologueState(ui.prologue),departure:departureSummary(s),departurePreview,title:BRAND.title,storedMode:s.mode,overlay:ui.dialog,paused:ui.paused,coordinates:'Scene x and y are normalized 0..1 from the top left; r is a CSS-pixel hit radius.',hitTargets:ui.hits,weatherRadio:s.packed.includes('radio'),huntingPreview,safetyPreview,controls:[...document.querySelectorAll('button:not(:disabled)')].filter(x=>x.getClientRects().length).map(x=>({action:x.dataset.action||x.id,id:x.dataset.id,label:x.innerText}))});
+window.render_game_to_text=()=>JSON.stringify({...summary(s),audio:audioState(),mode:ui.prologue?'prologue':ui.title?'intro':s.mode,prologue:prologueState(ui.prologue),departure:departureSummary(s),departurePreview,title:BRAND.title,storedMode:s.mode,overlay:ui.dialog,paused:ui.paused,coordinates:'Scene x and y are normalized 0..1 from the top left; r is a CSS-pixel hit radius.',hitTargets:ui.hits,weatherRadio:s.packed.includes('radio'),huntingPreview,safetyPreview,controls:[...document.querySelectorAll('button:not(:disabled)')].filter(x=>x.getClientRects().length).map(x=>({action:x.dataset.action||x.id,id:x.dataset.id,label:x.innerText}))});
 window.advanceTime=ms=>{manual=true;if(ui.prologue){openingPlayer?.advance(ms/1000);drawUI();render(canvas,s,ui);return;}for(let t=0;t<ms;t+=1000/60)tick(Math.min(1000/60,ms-t)/1000);drawUI();render(canvas,s,ui);if(!ui.title)persist();};
 window.artReady=ready;
 drawFamily();drawUI(true);ready.then(()=>render(canvas,s,ui));requestAnimationFrame(frame);

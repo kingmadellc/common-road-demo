@@ -1,13 +1,15 @@
-import {VAN_LENGTH,WHEEL_RADIUS} from './drive.js?v=0.8.5-safety-1';
-import {landscapeFor} from './journey.js?v=0.8.5-safety-1';
+import {VAN_LENGTH,WHEEL_RADIUS} from './drive.js?v=0.8.6-media-1';
+import {landscapeFor} from './journey.js?v=0.8.6-media-1';
 const TAU=Math.PI*2,mod=(x,m)=>(x%m+m)%m;
 export function drawRoad(c,w,h,s,ui,images){
  const r=s.road,moving=s.mode==='travel'&&!s.settings.reducedMotion,t=s.settings.reducedMotion?0:r?.elapsed||0,width=Math.min(w*.7,h*1.12,730),ppm=width/VAN_LENGTH,distance=s.settings.reducedMotion?0:(r?.meters||0)*ppm;
  const sky=c.createLinearGradient(0,0,0,h);sky.addColorStop(0,'#172e38');sky.addColorStop(.55,'#ae936c');sky.addColorStop(1,'#263b3b');c.fillStyle=sky;c.fillRect(0,0,w,h);
- const landscape=images[landscapeFor(r)]||images.landscape;
- if(landscape?.naturalWidth){const dh=h*.755,dw=Math.max(w,dh*landscape.naturalWidth/landscape.naturalHeight),offset=distance*.008;
- c.save();c.beginPath();c.rect(0,0,w,dh);c.clip();for(let i=Math.floor(offset/dw)-1;i<Math.ceil((w+offset)/dw)+1;i++){const x=i*dw-offset;c.save();if(i%2){c.translate(x+dw,0);c.scale(-1,1);c.drawImage(landscape,0,0,dw,dh);}else c.drawImage(landscape,x,0,dw,dh);c.restore();}c.restore();
- const sw=landscape.naturalWidth,sh=landscape.naturalHeight*.12,gh=h*.04,gw=gh*sw/sh,goff=distance*.17;c.save();c.beginPath();c.rect(0,h*.72,w,gh);c.clip();for(let i=Math.floor(goff/gw)-1;i<Math.ceil((w+goff)/gw)+1;i++)c.drawImage(landscape,0,landscape.naturalHeight-sh,sw,sh,i*gw-goff,h*.72,gw,gh);c.restore();}
+ const landscape=images[landscapeFor(r)];
+ if(landscape?.naturalWidth){const dh=h*.755,k=Math.max(w/landscape.naturalWidth,dh/landscape.naturalHeight);c.save();c.beginPath();c.rect(0,0,w,dh);c.clip();c.drawImage(landscape,(w-landscape.naturalWidth*k)/2,(dh-landscape.naturalHeight*k)/2,landscape.naturalWidth*k,landscape.naturalHeight*k);c.restore();}
+ else {for(let row=0;row<3;row++){c.fillStyle=['#5c7068','#344e49','#263e36'][row];c.beginPath();c.moveTo(0,h*.76);for(let x=0;x<=w+20;x+=20)c.lineTo(x,h*(.48+row*.075)+Math.sin(x/w*9+(s.seed||0)+row)*h*.035);c.lineTo(w,h*.76);c.fill();}}
+ // The camera stays fixed. Wind and nearby roadside objects provide depth.
+ const shoulder=h*.74;c.fillStyle='#475441';c.fillRect(0,shoulder,w,h*.015);
+ if(moving){for(let i=0;i<36;i++){const x=mod(i*71-distance*.36,w+70)-35,y=h*(.721+(i%4)*.006);c.strokeStyle=i%3?'#72826a88':'#ac9e7366';c.lineWidth=1;c.beginPath();c.moveTo(x,y+12);c.quadraticCurveTo(x-8,y+5,x-13+Math.sin(t*3+i)*3,y-5);c.stroke();}}
  const road=c.createLinearGradient(0,h*.74,0,h);road.addColorStop(0,'#454b48');road.addColorStop(1,'#202b2d');c.fillStyle=road;c.fillRect(0,h*.748,w,h*.252);
  c.fillStyle='#b1ad96';c.fillRect(0,h*.755,w,2);c.fillStyle='#ac9a72';c.fillRect(0,h*.96,w,3);
  const gap=12*ppm,dash=3*ppm,shift=mod(distance,gap);c.save();c.fillStyle='#c7bda078';for(let x=-gap-shift;x<w+gap;x+=gap)c.fillRect(x,h*.913,dash,4);

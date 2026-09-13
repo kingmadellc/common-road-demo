@@ -15,3 +15,11 @@ a{color:#cad3b6}.actiongroup h2{color:#f1eadb}#opening .title-tagline{color:#e1e
 @media(max-width:700px){.chapter-list{grid-template-columns:1fr}.journey-next{padding-left:13px}.journey-next h3{font-size:23px}.journey-map text{font-size:14px}.journey-map .map-caption{display:none}.brand img{width:123px}.brand small{font-size:6.5px}nav button{padding:9px 7px}}
 
 .modal-tools{position:sticky;top:-26px;background:#17282b;z-index:3;padding:6px 0 10px;margin-bottom:8px}.modal-tools button{min-height:44px;padding:8px 14px;min-width:86px}#map span{display:inline}@media(max-width:700px){.modal-tools{top:-26px}#map{font-size:13px}#map span{display:inline}}
+
+/* Sound is a first-class touch control, independent of future music. */
+#sfx {font:600 12px Road,sans-serif;min-width:62px;padding:0 9px;white-space:nowrap;}
+#sfx[aria-pressed="true"] {color:#dfd7b4;border-color:#96a677;}
+.sound-mix {display:grid;gap:10px;margin:24px 0;}
+.sound-mix label {display:flex;justify-content:space-between;font:500 16px Road,sans-serif;}
+.sound-mix input {width:100%;min-height:44px;accent-color:#a0ad7b;}
+@media(max-width:460px){header {gap:6px;}header .brand img {max-width:112px;}header nav {gap:5px;}header nav button {padding:0 8px;}}

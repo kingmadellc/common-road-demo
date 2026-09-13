@@ -1,5 +1,5 @@
-import {clamp,log,spend} from './state.js?v=0.8.5-safety-1';
-import {showStory} from './journey.js?v=0.8.5-safety-1';
+import {clamp,log,spend} from './state.js?v=0.8.6-media-1';
+import {showStory} from './journey.js?v=0.8.6-media-1';
 
 export const HUNT_SITE='river';
 export const HUNT_SECONDS=75;

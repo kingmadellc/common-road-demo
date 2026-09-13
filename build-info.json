@@ -1,11 +1,11 @@
 {
-  "version": "0.8.5",
-  "assetRevision": "safety-1",
+  "version": "0.8.6",
+  "assetRevision": "media-1",
   "title": "Signals End",
   "sourceRepository": "https://github.com/kingmadellc/common-road",
-  "sourceCommit": "e847239eb379dcd46c7303997493f114fd33c110",
-  "builtAt": "2026-09-13T22:51:05.263Z",
-  "bytes": 252910840,
+  "sourceCommit": "eab331ddb26dd44eda91f8c4b01169a3db612e7e",
+  "builtAt": "2026-09-13T23:42:39.551Z",
+  "bytes": 260861177,
   "files": {
     "assets/apps-084/cash-icon.svg": {
       "bytes": 351,
@@ -491,6 +491,106 @@
       "bytes": 679998,
       "sha256": "b80fae2b338f74ae5c2c43576c327978d346ff38e09248438b69fc2d30a81ba1"
     },
+    "assets/journey-086/annie-sky.webp": {
+      "bytes": 361238,
+      "sha256": "a86f6ba7990b54a1812c4268c7e8863e23566f3cb03322b780cedd816e520ea8"
+    },
+    "assets/journey-086/ava-camp.webp": {
+      "bytes": 392540,
+      "sha256": "75416ee7a226e22421d3ff21fb92eec245f907e059936724e4b6bc0f0343ee45"
+    },
+    "assets/journey-086/bea-road.webp": {
+      "bytes": 217516,
+      "sha256": "4f4f510a08cf7cb9528454a9983fd188fc6ed19f814678969ed460a425fc760e"
+    },
+    "assets/journey-086/filter-delivery.webp": {
+      "bytes": 316958,
+      "sha256": "2d199b731880df6562489261b0dc73625d29d187c56417b5e2b441543386989d"
+    },
+    "assets/journey-086/freight-stop.webp": {
+      "bytes": 422324,
+      "sha256": "c932407463d72f33eef0835c9a6fccbf865c33a101c8ddcb925fbf28bed5926b"
+    },
+    "assets/journey-086/glenn-station.webp": {
+      "bytes": 416796,
+      "sha256": "0de0167d5aac6276490399100b80201252d76a34d6b52b9ee165aa0580a2738d"
+    },
+    "assets/journey-086/headlamp.webp": {
+      "bytes": 296146,
+      "sha256": "eae9a5800b91bb84dbee7277760f2e5812deae27c5b9ba311f9580cc34bf4638"
+    },
+    "assets/journey-086/hunt-meal.webp": {
+      "bytes": 290376,
+      "sha256": "1155c4b12e25a344af2f594cb7614b43f374fda3965aea559644424d575edbd0"
+    },
+    "assets/journey-086/night-watch.webp": {
+      "bytes": 289682,
+      "sha256": "79145988e812a4829818f88093ad1dc054c4ae2b05e6facc92f51cb42d92a576"
+    },
+    "assets/journey-086/ozark-water.webp": {
+      "bytes": 335356,
+      "sha256": "fa3dd82fcb59f5018e3c64176d96bf8f4872f21e2ebeae27c64d00728c480f75"
+    },
+    "assets/journey-086/plains-water.webp": {
+      "bytes": 403588,
+      "sha256": "3e0a9a064a8ede22a3e7fb21ebf700db3da6710d7a624e32ee0d25d66d65a9bd"
+    },
+    "assets/journey-086/pump-water.webp": {
+      "bytes": 452880,
+      "sha256": "d3d02ad1f90895c2cfd8723b14c0dbc997fee278c97383bdea5cf5db95c83a94"
+    },
+    "assets/journey-086/pump-work.webp": {
+      "bytes": 320698,
+      "sha256": "994b0be9e7851393b344488915d54081912d67c94c05b263541eba9ad3888fb9"
+    },
+    "assets/journey-086/rawlins-shelter.webp": {
+      "bytes": 480898,
+      "sha256": "7fcc37fc7e46b64d7ccd7ccd259f94ab0c1fb05fb08b763904d099fc3b4dba3b"
+    },
+    "assets/journey-086/reply.webp": {
+      "bytes": 182354,
+      "sha256": "2d53ad5d970b1b0d0aed9be55e5cffd259d1cc0ae2c1546cf2f656d78795a8b2"
+    },
+    "assets/journey-086/reunion.webp": {
+      "bytes": 264704,
+      "sha256": "243552d18dbd084965b5e414016b0acc6d7536bdc9959d9c7def86f97f0458a6"
+    },
+    "assets/journey-086/road-convoy.webp": {
+      "bytes": 218072,
+      "sha256": "3f977c17a58bc36374b59618adc98c0375e1470a5a82cb2ed0d688a8044cbef3"
+    },
+    "assets/journey-086/road-freight-country-v2.webp": {
+      "bytes": 316538,
+      "sha256": "674912faa02dabf641f4818f7dac669dcc36c3eacba0f495580b2a65bbf5310b"
+    },
+    "assets/journey-086/road-high-country.webp": {
+      "bytes": 312098,
+      "sha256": "3e37a7a3d2f2f7356a4b95b843fd9a66b5f2a82a7921a1439f3c6206f8b47648"
+    },
+    "assets/journey-086/road-ozark-woods.webp": {
+      "bytes": 233428,
+      "sha256": "03adb8d66c8de7b093f91271651c87dc702d3ca685a4d044443c01455c279b15"
+    },
+    "assets/journey-086/road-repair-country.webp": {
+      "bytes": 448650,
+      "sha256": "ae618f37cab752215938ffdab5d81560b7b8581c87737cc32b27da8254e65dc0"
+    },
+    "assets/journey-086/room-key.webp": {
+      "bytes": 163730,
+      "sha256": "146ac365cb90ecc2ace24a5d18e9b61270c5ee03bab5137b40869cd0ef2ed4ab"
+    },
+    "assets/journey-086/truckee-camp.webp": {
+      "bytes": 507332,
+      "sha256": "dce32230a3793765d8394997da54355fe96d1e134c6fad568c180d9d4086d10f"
+    },
+    "assets/journey-086/wells-court.webp": {
+      "bytes": 386854,
+      "sha256": "fd3abf4d4c737396a1b1cbec9438982ea8fc2104336528d56ceee2cd8fae5545"
+    },
+    "assets/journey-086/witness.webp": {
+      "bytes": 285948,
+      "sha256": "9d31f08f4d7f8d3bccb93d944ba815764696b01b71ca41450f009ed18854518d"
+    },
     "assets/journey-v05/basin.webp": {
       "bytes": 382204,
       "sha256": "07c4e95092fa819fdab4cb17e123c4f8cdf276f495d50d6bd3b150a3a362d857"
@@ -624,12 +724,12 @@
       "sha256": "e22c946b298f5cbce719b583b45f8415402321b9af120eb23cdcab8b6693d050"
     },
     "assets/opening-08/run-for-it-landscape.mp4": {
-      "bytes": 14133858,
-      "sha256": "a3b3195d6e1287759bf9dd3d828e4515daa98a2896ec3f82bd589fb6cacfb9ae"
+      "bytes": 13858540,
+      "sha256": "f4e0a219990ada68d0716938de2be1ec411a621ab6d3ef7dbb22342f8e21afae"
     },
     "assets/opening-08/run-for-it-portrait.mp4": {
-      "bytes": 12433135,
-      "sha256": "990a58426820970b5a44691cc8b96d2c9cb029302b6ef9245f373d5fec30aa98"
+      "bytes": 12157817,
+      "sha256": "9603ba7e0e04b2402f453b2cb14ad14071aabbbde5043fb1f0d5c337f26ab9f8"
     },
     "assets/pilgrimage/chair.png": {
       "bytes": 402383,
@@ -650,6 +750,98 @@
     "assets/pilgrimage/home.jpg": {
       "bytes": 371419,
       "sha256": "3831cac0e0d79c7b0ef3c2c5b141e3392dd59cabbdacfcf295c1672773844df6"
+    },
+    "assets/sfx-086/cloth-1.wav": {
+      "bytes": 5604,
+      "sha256": "3979610daa3e9ad55c3fc1ecceb5d7302d71ca891601cd14a6ca1973c5c2430c"
+    },
+    "assets/sfx-086/cloth-2.wav": {
+      "bytes": 8736,
+      "sha256": "f4c1479ef7a7d57342e717cbc69c5ddb13e4d613b0db5df86411894a1eb0df65"
+    },
+    "assets/sfx-086/cloth-3.wav": {
+      "bytes": 6428,
+      "sha256": "a71a63b22345f26c4fd727e23051febd9741bb24a41e08d199d84ae749739ca9"
+    },
+    "assets/sfx-086/impact-LICENSE.txt": {
+      "bytes": 586,
+      "sha256": "48d20ed2f4fd9146e76b7f558d09a1c27e62554d9897beb93dee57d269006d02"
+    },
+    "assets/sfx-086/interface-LICENSE.txt": {
+      "bytes": 553,
+      "sha256": "f7e58f21a053c54110a27e7da3510d73e50640a0dc85328afe077fc36191702f"
+    },
+    "assets/sfx-086/latch-1.wav": {
+      "bytes": 12984,
+      "sha256": "09b0a750cb6f4e5d0e6630447bdd1b0cb2dbd940e69134d9046d80ce8a0a50f8"
+    },
+    "assets/sfx-086/latch-2.wav": {
+      "bytes": 6824,
+      "sha256": "687aa25965b985ee0ff0f49781fe548ee5fe997a81d3451483b2f0243309d831"
+    },
+    "assets/sfx-086/manifest.json": {
+      "bytes": 2962,
+      "sha256": "2e3e550297ffe69987b4c397dfa5439c2f70fa5be2e38e11fb2e5bedbed3a9cd"
+    },
+    "assets/sfx-086/metal-1.wav": {
+      "bytes": 17980,
+      "sha256": "ab12d79e3d740f58b2de88fd31af501a15feff7ee0e8f315235163f10556d6d7"
+    },
+    "assets/sfx-086/metal-2.wav": {
+      "bytes": 12028,
+      "sha256": "62f9d945782d984b92721af0be5965bb7a91da0bc9cbc20af129fa359ce46716"
+    },
+    "assets/sfx-086/metal-3.wav": {
+      "bytes": 11256,
+      "sha256": "38e45ea3f15d8734935b56dcdedf330c55c62373a741f69c9611c836ae6188d3"
+    },
+    "assets/sfx-086/paper-1.wav": {
+      "bytes": 6766,
+      "sha256": "9f93f2ddc3e065507c905cdb4a0a64b5cba99ad834555fbe6faecd5694da0ade"
+    },
+    "assets/sfx-086/paper-2.wav": {
+      "bytes": 6766,
+      "sha256": "5959619f8e9fff3debe495ad96fdbe0c64256619c9d03db7155ce26b0ea54c35"
+    },
+    "assets/sfx-086/paper-3.wav": {
+      "bytes": 6002,
+      "sha256": "40bab1dbd2721363b78da3d3fff68677ce2a6757c18ebe14889c6168f4bbb399"
+    },
+    "assets/sfx-086/step-1.wav": {
+      "bytes": 5024,
+      "sha256": "d43045d5756837c6c70bc7184dbe16bae6397d124fdc9085b26c66e936034969"
+    },
+    "assets/sfx-086/step-2.wav": {
+      "bytes": 5106,
+      "sha256": "7e459df79ff85bd9ed894398ce80931fd87d2d26388f436d0cd0ac819cf09838"
+    },
+    "assets/sfx-086/step-3.wav": {
+      "bytes": 5352,
+      "sha256": "7cd3152ce7977eb472e118110271efe127cc55b611739d6c6d306c2d859014ad"
+    },
+    "assets/sfx-086/switch-1.wav": {
+      "bytes": 4740,
+      "sha256": "18dec65c143736bcc4783addd7cf4840288355e1d6b94bd20c0f1f1251dc3f59"
+    },
+    "assets/sfx-086/switch-2.wav": {
+      "bytes": 636,
+      "sha256": "9ed3cb0d87dff3f3aa0ad1e89c1e51778773634c1ab80d4458b5b58e45b49f99"
+    },
+    "assets/sfx-086/switch-3.wav": {
+      "bytes": 420,
+      "sha256": "fddfce7d709a5d7c5f48d414c23fe91afc7bfd107414db44bfca035d17b4e7b9"
+    },
+    "assets/sfx-086/wood-1.wav": {
+      "bytes": 12688,
+      "sha256": "46266661010962016076a8828b988c336805fe72a5dce9802914d41264547fd7"
+    },
+    "assets/sfx-086/wood-2.wav": {
+      "bytes": 12688,
+      "sha256": "2767ea9841f356fe821921b00c13536b724434f646f391fcb76c0a534d48baab"
+    },
+    "assets/sfx-086/wood-3.wav": {
+      "bytes": 12688,
+      "sha256": "a18e839a83cfa1fd0688f2b57f60e53816e2d724505d9dd389b906eb8bb99abe"
     },
     "assets/signals-end/Atkinson-OFL.txt": {
       "bytes": 4431,
@@ -864,8 +1056,8 @@
       "sha256": "c0cdfa457e967b4007ac85f12374c17d0c24911180113547dc2d7333cf73be0c"
     },
     "index.html": {
-      "bytes": 2145,
-      "sha256": "df17e0b82201894ae626025cde0d53e73a7985af24cfcd2869d84ad1e2012e77"
+      "bytes": 2220,
+      "sha256": "0164940a3d3252ae0723fd1bff85752459f9b62cc9d8e3a18e87742c8d327949"
     },
     "manifest.webmanifest": {
       "bytes": 581,
@@ -896,8 +1088,8 @@
       "sha256": "8380ecc6617a63f002d75e10c19359d8c1347db3f82900c4f7d19a81ab1aad4b"
     },
     "sw.js": {
-      "bytes": 12600,
-      "sha256": "cefcb4dac598abb56fbf5b19fb826fd7b5b369503376b0d873df09321ec8337d"
+      "bytes": 14403,
+      "sha256": "1b81daf6bd56c8453bc4f7cacdcc96ad93becb7a5a11dd03f6fdf9200f2c8138"
     },
     "v02/assets/atmosphere/camp-v02.jpg": {
       "bytes": 715858,
@@ -1204,56 +1396,56 @@
       "sha256": "44e2fa3140b0eefd23c42b34cc59aa460633f5e12f7485621cf9902e608be8a4"
     },
     "v07/app.js": {
-      "bytes": 67447,
-      "sha256": "191d5b2778f023bc4ebaf78693cb42070261ef8319593012868f226a1ad57f56"
+      "bytes": 68055,
+      "sha256": "fba43f1f6fcee34ff1f2ef47c0aa9ca33954d859b5375066071534e6087c5ca6"
     },
     "v07/art.js": {
-      "bytes": 11843,
-      "sha256": "f53a728812bbeb8a213e887f91e466a22a7251b26f2e3e60f80943f50ae0ba48"
+      "bytes": 12524,
+      "sha256": "085f7e84ca97520e02c273009903138648a9f8241093030f82644364049b910d"
     },
     "v07/brand.js": {
       "bytes": 1867,
       "sha256": "a293550a035aa701d205c11c9e754d0a1d7d4db711edbe0e845257f7c6127627"
     },
     "v07/cinematic-motion.js": {
-      "bytes": 5061,
-      "sha256": "6f8bdcf456b4c9f3eb695af1727be7e05e9e737c2780544fba4fe38a53b9d8ef"
+      "bytes": 5060,
+      "sha256": "9eeac8f93db2fa8a4780a3130ebdc5fffe8b5d54c4e66cf9d61a214b09f0f9fc"
     },
     "v07/conflict.js": {
-      "bytes": 10442,
-      "sha256": "f3e148094af549d91302ed47dee5b3fc2a95e8152069d72c8096199d31766333"
+      "bytes": 10532,
+      "sha256": "f66809a3c98675e01685ef2c60d544408326d163e49e23f912d5c59fd7f6ea47"
     },
     "v07/departure.css": {
       "bytes": 7776,
       "sha256": "563940a64443625145e24aba46df8da408a6dfa63518d19331bacbf4ecdda6a3"
     },
     "v07/departure.js": {
-      "bytes": 5937,
-      "sha256": "432d9f02acb1f09eee9343647c128d33715c6cd95f026e737732baa3c29a114a"
+      "bytes": 5935,
+      "sha256": "72663424394e024c10360cd1afdc37d0d89362d8ca85341dbd0aa6fb184643d7"
     },
     "v07/drive.js": {
       "bytes": 424,
       "sha256": "e0c9a538d3fb4f29dc4bcd2cbf24b9b4a20d5523eed3fdf0715054db57cf8296"
     },
     "v07/film.js": {
-      "bytes": 4375,
-      "sha256": "f6c1789e9a03584dcea775057f7ffd09906b3fe6f87aaa23076826706ba4a4af"
+      "bytes": 4374,
+      "sha256": "54b7ebcdcb94f2eb7ff3ccca00ca5cf934361e65ebd52973c27bbf697101cffe"
     },
     "v07/fishing.js": {
-      "bytes": 7454,
-      "sha256": "caa7fc21bc7e9c329d46b739356e35f21827a6117ab520efd3fe870867262370"
+      "bytes": 7863,
+      "sha256": "622cf0704e8480997530dca3d8016a0cedc23513f7a8e6db4f792cb5af68573b"
     },
     "v07/hunting-art.js": {
-      "bytes": 1951,
-      "sha256": "73dc11b0cb9fb2ec6d3b54afe0195e7582a49ffc23aa1ce16162d8d4ca155356"
+      "bytes": 1950,
+      "sha256": "39b79679b887b54d2c444ffee61e49585a76577d2b29b3c51b45b703aee2589a"
     },
     "v07/hunting.js": {
-      "bytes": 8695,
-      "sha256": "5d91fdbee0cb433718bc2698467d21511ecf59ea044c8bff97fb7c52e12b5549"
+      "bytes": 8693,
+      "sha256": "c95ec0bb75ba8001f417eaf3342fe6c6f3b2b6f880c27fee2f2ab0435bb90cf3"
     },
     "v07/identity.css": {
-      "bytes": 4177,
-      "sha256": "b9560d4579ca3b8053db66b987a9b2c7dfa23ee52201c48069693f152aeeda1f"
+      "bytes": 4746,
+      "sha256": "119e2b98101c15f48dbeb069f5077fef6f0b26452b67a4d0bbc586dc43882f03"
     },
     "v07/institutions.js": {
       "bytes": 5087,
@@ -1264,56 +1456,68 @@
       "sha256": "4d053fe039091274b789bc4df8121df90b26518dd9be770eb933595aac2170d0"
     },
     "v07/journey.js": {
-      "bytes": 9205,
-      "sha256": "939c2e8ab75698e8a47612f7d5f636c2f0d42403d3d7ea73f71c090fc756252d"
+      "bytes": 9389,
+      "sha256": "5d5aa4ced188d6969ccd63691103794ef179ec0e20d24d754ed9147d1c408cd6"
+    },
+    "v07/media.js": {
+      "bytes": 1957,
+      "sha256": "ffdca58d7e8c990d25715b3c812a37a19b6766f2ddda6781a70f393da1f8168c"
     },
     "v07/motion.js": {
-      "bytes": 5668,
-      "sha256": "7eea3601f4ed80cef648d4b858666567d4aa6b9f4d779c7ce739a43b812873ea"
+      "bytes": 5869,
+      "sha256": "2b27a57da9083653746c2522b23d6216724aae4ea336fe20ca50679bf929b402"
     },
     "v07/narrative.js": {
-      "bytes": 6669,
-      "sha256": "7da51701f7e7e972cd3f553652b97b5de31d969888fc93d84833b86993fdb322"
+      "bytes": 6668,
+      "sha256": "35dc3dddc9f0330d14edcf64fff48f5366b25a31f3c3eb4154df09f3faf33e4c"
     },
     "v07/opening-film.js": {
-      "bytes": 7313,
-      "sha256": "bb6c8638f6849e917f91d0d9bd69a0484f743ca4e516c817d2d19dbddd363c27"
+      "bytes": 7312,
+      "sha256": "0d494592b06cbf2dc4f8d8bcc8d6100f8b7ba5b3f085bc0943a595e42e55cc95"
     },
     "v07/opening-player.js": {
-      "bytes": 5968,
-      "sha256": "57dd1ae3ee5066695128e7a2f0612e9fb1f9b0f293a39951d650a2826650ffc3"
+      "bytes": 5989,
+      "sha256": "6b6a281a65266ae33cf66505d3d5d2135cd24aa9f546e07b2553d8cfeb5bf2dc"
     },
     "v07/opening.css": {
       "bytes": 2825,
       "sha256": "77bed9f760d761038b534d341782234797a2d4aa8a57b4e78993ee6229378a8b"
     },
     "v07/prologue.js": {
-      "bytes": 1919,
-      "sha256": "2e316a9f648c667fa234ecf59042923ba04aee254b2d599e342082e4af0da537"
+      "bytes": 1918,
+      "sha256": "c9f3f3a1828b56eb031c10fc2b644ba7269c1f32a6330a6c2a283cd58aefe155"
     },
     "v07/salvage.js": {
-      "bytes": 7029,
-      "sha256": "772265c0b6d97d40d413f0d52d3c5bd0c3c1420d0eaa73d48ae7b7d73cbcaefa"
+      "bytes": 7026,
+      "sha256": "5b5133b491a6cd37dbddd5a6a5de7c76decfcadc51ef48ff11f399090b372c1e"
+    },
+    "v07/scene-motion.js": {
+      "bytes": 5128,
+      "sha256": "ad608520b102c76370215b0799d8deef765809839a4f4428c82e8e7c23a10864"
     },
     "v07/scenes.js": {
-      "bytes": 6475,
-      "sha256": "17a26d7366b0535f44f2618c533213afd09dc151dd24b54a3811394695267168"
+      "bytes": 6164,
+      "sha256": "a1f7b04b78db27fe61e2898c4542b8100d2001747faeda04922d0ab4e422cd7b"
     },
     "v07/service-marks.js": {
-      "bytes": 2211,
-      "sha256": "dd4dc7e7e3830715aff2681f53754a99d8f4180e49bc694e6e21795d124637c9"
+      "bytes": 2210,
+      "sha256": "f49b9b02875fd57b695ded2090e5588536eee6cf51419ce530b00e24609ceaa1"
     },
     "v07/service-signage.js": {
-      "bytes": 3636,
-      "sha256": "5bda55f1fb955f147053dfcce429fbd3c8252f467f21213faac697590ab6c646"
+      "bytes": 3634,
+      "sha256": "6a67256717c1bc3f09b535d054e52b3a3e25f3ffd8cab74c063ede2f58b3d7c5"
     },
     "v07/sim.js": {
-      "bytes": 21791,
-      "sha256": "2067017631f8dd1b99adffbc300bb6915e913ba710176143516490b57b9eda0e"
+      "bytes": 22140,
+      "sha256": "443567438711bb79aabea2d4763a3b5542f432d436172ef74b8ab269ae578882"
+    },
+    "v07/sound-model.js": {
+      "bytes": 2487,
+      "sha256": "f9ee64374e3870a6b4cd03f88043f293ae5005839a1a86d2fe079a5370567a72"
     },
     "v07/sound.js": {
-      "bytes": 2475,
-      "sha256": "9f59946fc80701913afefd10f977d2e6ff45dc4a160677b112859cb0a3bba31a"
+      "bytes": 7693,
+      "sha256": "73926f6ac5012a78aae89873313a39e17c9dca69618d5dc6b72ac569816f5c45"
     },
     "v07/state.js": {
       "bytes": 1725,
@@ -1328,11 +1532,11 @@
       "sha256": "f9d13ea67cab9cc9d4edc750d63cab9da7ebd8b700a00edc6b5214e685b360e3"
     },
     "v07/world.js": {
-      "bytes": 13737,
-      "sha256": "e7b4388ddae12a7b91650d2f1e17bb8f96e97a2d87b57c555766b865b4f45574"
+      "bytes": 13736,
+      "sha256": "efffd563faba70741fe896080b19e37cc4821d34bf578f01ee143ff9a196ac10"
     }
   },
-  "validation": "First road Safety checkpoint, one-use permit, persistent plate consequences, held family aftermaths, honest fuel warnings and save-isolated preview. 160 simulation checks including both campaign admission paths; desktop, phone, landscape, save reload and simulated controller checked. No physical-device or human playtest claims",
+  "validation": "25 selected new images, single-use narrative reel, geographic waters, local scene motion and SFX-only opening. 175 simulation/media checks; desktop and WebKit phone media, sound, both campaign paths, Safety controller/save and landscape checks. No physical-device or human playtest claims",
   "nativeAppleBuild": false,
   "physicalAppleDeviceTested": false,
   "humanFunTested": false

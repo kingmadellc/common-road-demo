@@ -1,4 +1,4 @@
-import {currentCompanyCopy} from './institutions.js?v=0.8.5-safety-1';
+import {currentCompanyCopy} from './institutions.js?v=0.8.6-media-1';
 // Authoritative origin and discovery order. See Design/Signals-End-Canon.md.
 export const NARRATIVE_REVISION=5;
 export const RADIO_MESSAGE='For anyone still awake. East of the plains, the old wheels are turning. No accounts. No computers. Find the people who still fix things. Ask about Signals End.';

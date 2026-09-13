@@ -1,5 +1,6 @@
-import {spend,log,clamp,finish} from './state.js?v=0.8.5-safety-1';
-import {DEPOT_OFFER} from './narrative.js?v=0.8.5-safety-1';
+import {markIncidentArt} from './journey.js?v=0.8.6-media-1';
+import {spend,log,clamp,finish} from './state.js?v=0.8.6-media-1';
+import {DEPOT_OFFER} from './narrative.js?v=0.8.6-media-1';
 export function threatLabel(s){return s.threat.heat>1?'PURSUED':s.threat.identified?'PLATE RECORDED':'UNSEEN';}
 // The road costs still ahead matter: paying for a detour can strand the van later.
 export function checkpointFuel(s){return s.road?.duration?Math.max(0,s.road.fuel*(1-s.road.elapsed/s.road.duration)):0;}
@@ -41,7 +42,7 @@ export function resolveIncident(s,id){
    id==='escape'?{title:'The truck turns after you.',body:'The van clears the rear barrier. The scanner has your plate. A recovery truck follows onto the highway.',line:'Jack: “Everybody still here?” Annie: “Rusty ate my sandwich.”',image:'blocked'}:
    {title:'They keep the spare.',body:'The officer files the part as collateral. You can leave. Your plate stays on the watch list.',line:'Jack watches the part disappear into their truck. “Apparently that fixed our paperwork.”',image:'scanner'};
   s.incident.result={...result,choice:id,hours:s.hour-before.hour,fuel:before.fuel-s.fuel,damage:before.condition-s.condition,plate:s.threat.identified?'Plate recorded':'No plate record',pursuit:s.threat.heat>1?'Pursuit active':'No truck following'};
-  s.incident.image=result.image;
+  s.incident.image=result.image;markIncidentArt(s,s.incident);
   log(s,result.title,result.body+' '+result.line);
   return;
  }

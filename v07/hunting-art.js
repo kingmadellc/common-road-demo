@@ -1,4 +1,4 @@
-import {huntSight} from './hunting.js?v=0.8.5-safety-1';
+import {huntSight} from './hunting.js?v=0.8.6-media-1';
 export function drawHunting(ctx,w,h,s,ui,images){
  const g=s.activity;
  if(g.phase!=='field')return;
