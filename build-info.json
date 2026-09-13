@@ -1,11 +1,11 @@
 {
   "version": "0.7.6",
-  "assetRevision": "origin-2",
+  "assetRevision": "chrome-1",
   "title": "Signals End",
   "sourceRepository": "https://github.com/kingmadellc/common-road",
-  "sourceCommit": "31ba621ea7d9981b62b55a2e33bb8fc49dd4da1a",
-  "builtAt": "2026-09-13T15:14:15.990Z",
-  "bytes": 250016126,
+  "sourceCommit": "c40b473c44064c886dd48e7c4124a4231aa9406f",
+  "builtAt": "2026-09-13T15:25:27.475Z",
+  "bytes": 250015960,
   "files": {
     "assets/atmosphere/camp-v02.jpg": {
       "bytes": 715858,
@@ -660,8 +660,8 @@
       "sha256": "c0cdfa457e967b4007ac85f12374c17d0c24911180113547dc2d7333cf73be0c"
     },
     "index.html": {
-      "bytes": 2083,
-      "sha256": "3626c910bfcaf944b200e24c412795f05fcdc45a86947a792d48119025d4b28b"
+      "bytes": 2082,
+      "sha256": "38d96c130b024f2af696a89bfa68d84ea86dc8af59b80c9602bdad40c105d659"
     },
     "manifest.webmanifest": {
       "bytes": 581,
@@ -693,7 +693,7 @@
     },
     "sw.js": {
       "bytes": 10451,
-      "sha256": "ef0bbc2be086fdcef002a21e34c50673e69ecd0822ea5d1cb93341d01a3826ce"
+      "sha256": "5e74606085ec0b7271e8e580261884c0fa4f52bfb87157a3340fcbdb6bc8fa94"
     },
     "v02/assets/atmosphere/camp-v02.jpg": {
       "bytes": 715858,
@@ -1001,7 +1001,7 @@
     },
     "v07/app.js": {
       "bytes": 52495,
-      "sha256": "ec6f9a47f84c08a62af1c752541b57d4c66b1db9f6b9c0aa1bbb10ed3cf17d20"
+      "sha256": "d9c91c7a26070602e26822f95b00c65650d28be04aedc37f8efa4c299e6ff8e0"
     },
     "v07/art.js": {
       "bytes": 11802,
@@ -1056,12 +1056,12 @@
       "sha256": "e3200fc92f64024f0039fd197d78ff760971ee8a6198315cf965853c3655226d"
     },
     "v07/opening-player.js": {
-      "bytes": 5992,
-      "sha256": "c9d094c846328d665d1a5b7444bdabf437f47a1538c7608e547aadfbd5164a81"
+      "bytes": 5970,
+      "sha256": "8586ae7594d1466d61316f8e5ac96aace039021a3248506a3b78297e6880b78c"
     },
     "v07/opening.css": {
-      "bytes": 2968,
-      "sha256": "c51a36a6d7d4b652ce8b03b0e89a04e53de4ae0c1896e8c7bfaf6360f691a644"
+      "bytes": 2825,
+      "sha256": "77bed9f760d761038b534d341782234797a2d4aa8a57b4e78993ee6229378a8b"
     },
     "v07/prologue.js": {
       "bytes": 1859,
@@ -1100,7 +1100,7 @@
       "sha256": "751e600a8be2f6693e80898b166a87d7cf2f9d315d9c51cbbfa03b24f67a6783"
     }
   },
-  "validation": "Opening copy correction: Nine companies run the city. Without their services, you can’t live. Both 116-second movies, accessible captions, fallback, canon and kit script agree. Caption layout checked on desktop and phone. Existing timeline, sound, save schema and previous-viewer behavior retained. Five existing opening tests pass; actual movie playback and copy checked in both orientations. Prior gameplay and migration validation remains recorded for 0.7.6 origin-1. No new physical-device or real-player claim",
+  "validation": "Removed the studio label from the opening film overlay; Skip remains right-aligned. Actual desktop Chromium and phone WebKit playback, pause, sound, skip and replay checked with no browser errors. Five existing opening tests pass. Standard game client screenshot and state inspected. Existing 116-second movies and story are unchanged from origin-2. No new physical-device or real-player claim",
   "nativeAppleBuild": false,
   "physicalAppleDeviceTested": false,
   "humanFunTested": false

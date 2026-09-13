@@ -6,8 +6,7 @@ body.cinematic #sceneheading,body.cinematic #scenestatus,body.cinematic #scenehi
 #opening-video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#0c171b;opacity:0;pointer-events:none}
 #opening-video.is-playing{opacity:1}
 .opening-chrome{position:absolute;inset:0;pointer-events:none;color:#f1eadb;font-family:Road,sans-serif}
-.opening-top{position:absolute;inset:0 0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:max(16px,env(safe-area-inset-top)) max(24px,env(safe-area-inset-right)) 32px max(24px,env(safe-area-inset-left));background:linear-gradient(#0c171b90,transparent)}
-.opening-top>span{font-size:12px;letter-spacing:2px;text-transform:uppercase;text-shadow:0 1px 4px #000}
+.opening-top{position:absolute;inset:0 0 auto;display:flex;align-items:center;justify-content:flex-end;gap:20px;padding:max(16px,env(safe-area-inset-top)) max(24px,env(safe-area-inset-right)) 32px max(24px,env(safe-area-inset-left));background:linear-gradient(#0c171b90,transparent)}
 .opening-chrome button{pointer-events:auto;font:600 15px Road,sans-serif;min-width:64px;min-height:44px;padding:10px 15px;background:#0c171ba8;color:#f1eadb;border:1px solid #f1eadb55;border-radius:6px;box-shadow:none;touch-action:manipulation}
 .opening-chrome button:hover{background:#27372d}.opening-chrome button:focus-visible{outline:3px solid #d0b479;outline-offset:3px}
 .opening-bottom{position:absolute;inset:auto 0 0;padding:30px max(24px,env(safe-area-inset-right)) max(14px,env(safe-area-inset-bottom)) max(24px,env(safe-area-inset-left));background:linear-gradient(transparent,#0c171be0)}
@@ -16,5 +15,5 @@ body.cinematic #sceneheading,body.cinematic #scenestatus,body.cinematic #scenehi
 .opening-play{position:absolute;left:50%;top:47%;transform:translate(-50%,-50%);background:#d0b479!important;color:#17282b!important;min-width:150px!important}
 .opening-a11y{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
 .opening-chrome [hidden]{display:none!important}
-@media(max-width:700px){.opening-top{padding-inline: max(18px,env(safe-area-inset-left)) max(18px,env(safe-area-inset-right))}.opening-bottom{padding-inline: max(18px,env(safe-area-inset-left)) max(18px,env(safe-area-inset-right))}.opening-chrome button{font-size:14px}.opening-top>span{font-size:10px}}
+@media(max-width:700px){.opening-top{padding-inline: max(18px,env(safe-area-inset-left)) max(18px,env(safe-area-inset-right))}.opening-bottom{padding-inline: max(18px,env(safe-area-inset-left)) max(18px,env(safe-area-inset-right))}.opening-chrome button{font-size:14px}}
 @media(max-height:480px){.opening-top{padding-top:max(8px,env(safe-area-inset-top));padding-bottom:12px}.opening-bottom{padding-top:14px;padding-bottom:max(8px,env(safe-area-inset-bottom))}.opening-progress{margin-bottom:6px}}
