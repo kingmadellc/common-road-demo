@@ -1,10 +1,10 @@
-import {VERSION,SAVE_KEY,PACKING,PARTS,ROADS,CAMPAIGN,objective,admission,node,random,siteItems} from './world.js?v=0.7.0-eastbound-1';
-import {startFishing,fishingAction,updateFishing} from './fishing.js?v=0.7.0-eastbound-1';
-import {startSalvage,salvageAction,updateSalvage,saveSite} from './salvage.js?v=0.7.0-eastbound-1';
-import {showStory,roadShots,updateReel,ARRIVALS} from './journey.js?v=0.7.0-eastbound-1';
-import {clamp,log,slots,consumeFresh,spend,finish,hurt,shopStock,OFFERS} from './state.js?v=0.7.0-eastbound-1';
-import {makeIncident,resolveIncident} from './conflict.js?v=0.7.0-eastbound-1';
-import {advanceRoad} from './drive.js?v=0.7.0-eastbound-1';
+import {VERSION,SAVE_KEY,PACKING,PARTS,ROADS,CAMPAIGN,objective,admission,node,random,siteItems} from './world.js?v=0.7.1-opening-1';
+import {startFishing,fishingAction,updateFishing} from './fishing.js?v=0.7.1-opening-1';
+import {startSalvage,salvageAction,updateSalvage,saveSite} from './salvage.js?v=0.7.1-opening-1';
+import {showStory,roadShots,updateReel,ARRIVALS} from './journey.js?v=0.7.1-opening-1';
+import {clamp,log,slots,consumeFresh,spend,finish,hurt,shopStock,OFFERS} from './state.js?v=0.7.1-opening-1';
+import {makeIncident,resolveIncident} from './conflict.js?v=0.7.1-opening-1';
+import {advanceRoad} from './drive.js?v=0.7.1-opening-1';
 export {clamp,log,slots,consumeFresh,spend,finish};
 export function fresh(seed=42){return {version:VERSION,seed,mode:'packing',node:'yard',hour:0,deadline:CAMPAIGN.departureWindow,cash:240,fuel:34,meals:4,energy:88,health:100,condition:82,fan:false,packed:['cooler','spare','chair'],parts:{fan:[],relay:[],tire:[]},cargo:null,sponsor:false,visited:['yard'],sites:{},jobs:[],activity:null,road:null,incident:null,ending:null,home:{placed:[],spot:'window'},journal:[],flags:{},settings:{castMode:'tap',autoHook:false,toggleReel:false,reducedMotion:false,sound:false,mirror:false},effects:{handUntil:0},stocks:{},freshFood:[],fishSites:{},siteMemory:{},threat:{permitUsed:false,firstEncounter:false,identified:false,heat:0,encounters:0,relief:0},reel:{seen:[],gallery:[]},story:null,activeTime:0,stats:{fish:0,salvaged:0,repairs:0,miles:0,encounters:0},message:'',revision:0};}
 export function load(storage){try{const s=JSON.parse(storage.getItem(SAVE_KEY));if(s?.version===VERSION&&Number.isFinite(s.hour)&&s.parts&&s.effects&&s.stocks&&s.threat&&s.reel&&Number.isFinite(s.fuel)&&Array.isArray(s.journal))return s;}catch{}return null;}

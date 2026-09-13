@@ -1,9 +1,9 @@
-import {drawPrologue} from './prologue.js?v=0.7.0-eastbound-1';
-import {node} from './world.js?v=0.7.0-eastbound-1';
-import {drawRoad} from './motion.js?v=0.7.0-eastbound-1';
-import {drawSalvage,drawFishing} from './scenes.js?v=0.7.0-eastbound-1';
-import {filmPlayer,pauseFilms} from './video.js?v=0.7.0-eastbound-1';
-import {SHOTS} from './journey.js?v=0.7.0-eastbound-1';
+import {drawPrologue} from './prologue.js?v=0.7.1-opening-1';
+import {node} from './world.js?v=0.7.1-opening-1';
+import {drawRoad} from './motion.js?v=0.7.1-opening-1';
+import {drawSalvage,drawFishing} from './scenes.js?v=0.7.1-opening-1';
+import {filmPlayer,pauseFilms} from './video.js?v=0.7.1-opening-1';
+import {SHOTS} from './journey.js?v=0.7.1-opening-1';
 export const images={};
 export const sources={jackSprite:'assets/journey/jack-sprite.webp',collectorSprite:'assets/journey/collector-sprite.webp',collectorTruck:'assets/journey/collector-truck.webp',landscape:'assets/journey/road-landscape.webp',fuelYard:'assets/journey/fuel-yard.webp',catchPhoto:'assets/journey/catch.webp',yard:'assets/journey/yard.webp',cabin:'assets/journey/cabin.webp',familyPhoto:'assets/journey/family-photo.webp',dinner:'assets/journey/dinner.webp',roadside:'assets/journey/roadside.webp',collectors:'assets/journey/collectors.webp',vanBody:'assets/journey/van-body.webp',chair:'assets/pilgrimage/chair.png',road:'assets/atmosphere/road-v02.jpg',garage:'assets/atmosphere/garage-v02.jpg',camp:'assets/atmosphere/camp-v02.jpg',plateau:'assets/atmosphere/plateau-v02.jpg',van:'assets/atmosphere/van-v02.png',fishing:'assets/pilgrimage/fishing.jpg',gate:'assets/pilgrimage/gate.jpg',home:'assets/pilgrimage/home.jpg',family:'assets/pilgrimage/family.jpg'};
 for(const id of ['highway','logistics','prairie','storm','plaza','toll','campus','market','seized','basin','squad','scanner','inventory','blocked','mirror','repair-family','night-family','meal-family','transport-body','windshield'])sources[id]='assets/journey-v05/'+id+'.webp';
@@ -15,6 +15,8 @@ for(const id of ['departure','kitchen'])sources['intro-'+id]='assets/disconnecti
 for(const id of ['departure','crew'])sources['intro-'+id]='assets/candid-04/'+id+'.webp';
 for(const id of ['meal-family','repair-family','open-country'])sources[id]='assets/candid-04/'+id+'.webp';
 sources.basin='assets/eastbound-07/signals-end-basin.webp';
+sources['opening-radio']='assets/opening-08/radio.webp';
+sources['opening-mark']='assets/signals-end/signals-end-stacked-light.svg';
 sources.familyPhoto=sources['open-country'];
 for(const id of ['highway','viaduct','rain','overtake','scanner','barrier'])sources['poster-'+id]='assets/journey-v05/film-'+id+'-poster.webp';
 export const ready=Promise.all(Object.entries(sources).map(([id,url])=>new Promise(resolve=>{const im=new Image();im.onload=()=>resolve(id);im.onerror=()=>resolve(id);im.src=url;images[id]=im;})));

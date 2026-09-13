@@ -1,37 +1,28 @@
-import {BRAND} from './brand.js?v=0.7.0-eastbound-1';
-import {BEATS,INTRO_KEY,newPrologue,progressPrologue,movePrologue,restorePrologue,prologueState} from './prologue.js?v=0.7.0-eastbound-1';
-import {VERSION,SAVE_KEY,FAMILY,NODES,ROADS,PACKING,PARTS,CAMPAIGN,objective,admission,node,roads} from './world.js?v=0.7.0-eastbound-1';
-import {fresh,load,save,act,update,summary,slots,clamp} from './sim.js?v=0.7.0-eastbound-1';
-import {render,ready,HAZARDS,HOME_POINTS,sources} from './art.js?v=0.7.0-eastbound-1';
-import {castEndpoint} from './fishing.js?v=0.7.0-eastbound-1';
-import {yardView} from './scenes.js?v=0.7.0-eastbound-1';
-import {SITE_NAMES} from './salvage.js?v=0.7.0-eastbound-1';
-import {collectorOptions,incidentOptions,threatLabel} from './conflict.js?v=0.7.0-eastbound-1';
-import {hurt,shopStock,OFFERS} from './state.js?v=0.7.0-eastbound-1';
-import {SHOTS} from './journey.js?v=0.7.0-eastbound-1';
-import {enableAudio,soundFrame} from './sound.js?v=0.7.0-eastbound-1';
+import {BRAND} from './brand.js?v=0.7.1-opening-1';
+import {INTRO_KEY,newPrologue,prologueState,readOpeningHistory,rememberOpening,shouldAutoOpen} from './prologue.js?v=0.7.1-opening-1';
+import {OpeningPlayer} from './opening-player.js?v=0.7.1-opening-1';
+import {VERSION,SAVE_KEY,FAMILY,NODES,ROADS,PACKING,PARTS,CAMPAIGN,objective,admission,node,roads} from './world.js?v=0.7.1-opening-1';
+import {fresh,load,save,act,update,summary,slots,clamp} from './sim.js?v=0.7.1-opening-1';
+import {render,ready,HAZARDS,HOME_POINTS,sources} from './art.js?v=0.7.1-opening-1';
+import {castEndpoint} from './fishing.js?v=0.7.1-opening-1';
+import {yardView} from './scenes.js?v=0.7.1-opening-1';
+import {SITE_NAMES} from './salvage.js?v=0.7.1-opening-1';
+import {collectorOptions,incidentOptions,threatLabel} from './conflict.js?v=0.7.1-opening-1';
+import {hurt,shopStock,OFFERS} from './state.js?v=0.7.1-opening-1';
+import {SHOTS} from './journey.js?v=0.7.1-opening-1';
+import {enableAudio,soundFrame} from './sound.js?v=0.7.1-opening-1';
 const $=id=>document.getElementById(id),canvas=$('scene');
-let saved=load(localStorage),s=saved||fresh(Math.floor(Math.random()*100000)),manual=false,last=performance.now(),saveClock=0,panelKey='',statusKey='',resourceKey='';
+let saved=null;try{saved=load(localStorage);}catch{}
+let s=saved||fresh(Math.floor(Math.random()*100000)),manual=false,last=performance.now(),saveClock=0,panelKey='',statusKey='',resourceKey='';
 const ui={grip:null,title:true,paused:false,dialog:null,hits:[],drag:null,wire:null,cast:null,padCursor:null,prologue:null};
-let oldSave=null;try{oldSave=localStorage.getItem('common-road-pilgrimage-v6');ui.prologue=restorePrologue(localStorage.getItem(INTRO_KEY));}catch{}
-if(ui.prologue?.settings)s.settings={...s.settings,...ui.prologue.settings};
-if(!saved&&!ui.prologue?.settings&&matchMedia('(prefers-reduced-motion: reduce)').matches)s.settings.reducedMotion=true;
-function savePrologue(){if(ui.prologue)ui.prologue.settings={...s.settings};try{ui.prologue?localStorage.setItem(INTRO_KEY,JSON.stringify(ui.prologue)):localStorage.removeItem(INTRO_KEY);}catch{}}
-function beginPrologue(replay=false){const returnTitle=ui.title;resetInput();if($('dialog').open)closeModal();ui.prologue={...newPrologue(replay),returnTitle};ui.paused=false;savePrologue();drawUI(true);requestAnimationFrame(()=>$('intro-next')?.focus({preventScroll:true}));}
-function finishPrologue(){const p=ui.prologue;ui.prologue=null;savePrologue();if(!p.replay)finishNew();else{ui.title=p.returnTitle;drawUI(true);}}
-function prologueAction(type){const p=ui.prologue;if(!p)return;
- if(type==='introSkip'||type==='introFinish'){finishPrologue();return;}
- if(type==='introNext'){if(p.index===BEATS.length-1){finishPrologue();return;}movePrologue(p,1);}
- if(type==='introBack')movePrologue(p,-1);
- if(type==='introPause')p.paused=!p.paused;
- if(type==='introMotion'){s.settings.reducedMotion=!s.settings.reducedMotion;p.paused=s.settings.reducedMotion;}
- if(type==='introSound'){s.settings.sound=!s.settings.sound;enableAudio(s.settings.sound);}
- savePrologue();drawUI(true);
-}
-function drawOpeningFilm(force){const p=ui.prologue,b=BEATS[p.index];const key='prologue'+JSON.stringify([p.index,p.paused,s.settings.sound,s.settings.reducedMotion]);
- if(force||panelKey!==key){$('opening').innerHTML=`<div class="film-top"><span class="film-number">FIELD RECORDING / 0${p.index+1}</span><button data-action="introSkip">${p.replay?'Close film':'Skip intro'}</button></div><div class="film-copy"><div class="label">${b.eyebrow}</div><h1>${b.title}</h1><p>${b.body}</p><blockquote>${b.quote}<cite>${b.speaker}</cite></blockquote></div><div class="film-bottom"><div class="film-progress" aria-label="Opening chapter ${p.index+1} of ${BEATS.length}">${BEATS.map((_,i)=>`<i class="${i<p.index?'done':i===p.index?'current':''}"><b></b></i>`).join('')}</div><div class="film-controls"><button data-action="introBack" aria-label="Previous scene" ${p.index===0?'disabled':''}>←</button><button data-action="introPause" aria-pressed="${p.paused}">${p.paused?'Play':'Pause'}</button><button class="primary" id="intro-next" data-action="introNext">${p.index===BEATS.length-1?(p.replay?'Back to the journey':'Pack the van'):'Next →'}</button></div><div class="film-options"><button data-action="introSound" aria-pressed="${s.settings.sound}">Sound ${s.settings.sound?'on':'off'}</button><button data-action="introMotion" aria-pressed="${s.settings.reducedMotion}">${s.settings.reducedMotion?'Still frames · manual advance':'Motion on'}</button></div></div>`;panelKey=key;}
- const bar=$('opening').querySelector('.current b');if(bar)bar.style.width=(b.duration?Math.min(1,p.elapsed/b.duration)*100:100)+'%';
-}
+let oldSave=null,openingPlayer=null;try{oldSave=localStorage.getItem('common-road-pilgrimage-v6');}catch{}
+if(!saved&&matchMedia('(prefers-reduced-motion: reduce)').matches)s.settings.reducedMotion=true;
+function openingSeen(){let seen=null;try{seen=readOpeningHistory(localStorage);}catch{}if(!seen)try{seen=readOpeningHistory(sessionStorage);}catch{}return seen;}
+function recordOpening(status){try{rememberOpening(localStorage,status);}catch{}try{rememberOpening(sessionStorage,status);}catch{}}
+function beginPrologue(replay=true){const returnTitle=ui.title;resetInput();if($('dialog').open)closeModal();ui.prologue={...newPrologue(replay),returnTitle};ui.paused=false;drawUI(true);}
+function finishPrologue(status='skipped'){const p=ui.prologue;if(!p)return;recordOpening(status);openingPlayer?.destroy();openingPlayer=null;ui.prologue=null;ui.title=p.returnTitle;ui.paused=false;drawUI(true);requestAnimationFrame(()=>{const target=ui.title?$('start'):$('scene');target?.focus({preventScroll:true});});}
+function prologueAction(type){openingPlayer?.action(type);}
+function drawOpeningFilm(){if(!openingPlayer)openingPlayer=new OpeningPlayer($('opening'),ui.prologue,{onExit:finishPrologue,onSeen:()=>recordOpening('started'),reduced:s.settings.reducedMotion||matchMedia('(prefers-reduced-motion: reduce)').matches});else openingPlayer.updateUI();}
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const button=(type,id,label,small='',cls='',extra='')=>`<button data-action="${type}" ${id!==undefined?`data-id="${id}"`:''} class="${cls}" ${extra}>${label}${small?`<small>${small}</small>`:''}</button>`;
 const group=(title,content,wide=false)=>`<div class="actiongroup${wide?' wide':''}"><h2>${title}</h2>${content}</div>`;
@@ -40,7 +31,7 @@ const count=n=>Math.max(0,Math.round(n*10)/10);
 function persist(){if(ui.prologue||ui.title&&!saved)return;try{save(localStorage,s);saved=structuredClone(s);$('save-status').textContent='Saved on this device';}catch{$('save-status').textContent='Saving unavailable · keep this tab open';}}
 function resetInput(){ui.drag=null;ui.wire=null;ui.cast=null;ui.grip=null;pointer=null;if(s.activity){s.activity.reel=false;s.activity.carry=null;if(s.mode==='crossing')s.activity.speed=.65;}document.querySelectorAll('.held').forEach(x=>x.classList.remove('held'));}
 function dispatch(action){try{const beforeMode=s.mode;const next=structuredClone(s);act(next,action);s=next;if(!['reel','tune','steer','slow','fishAim'].includes(action.type))persist();drawUI();if(beforeMode!==s.mode&&!ui.paused)$('stage').scrollIntoView({block:'start',behavior:'instant'});}catch(e){s.message=e.message;$('notice').textContent=e.message;}}
-function startNew(){beginPrologue(false);}
+function startNew(){finishNew();}
 function finishNew(){const settings={...s.settings};resetInput();s=fresh(Math.floor(Math.random()*100000));s.settings=settings;ui.title=false;ui.dialog=null;ui.paused=false;if($('dialog').open)$('dialog').close();persist();drawUI(true);}
 function resume(){s=structuredClone(saved||s);resetInput();ui.title=false;drawUI(true);}
 function packCount(){return s.packed.reduce((v,id)=>v+PACKING.find(p=>p.id===id).slots,0);}
@@ -98,7 +89,7 @@ function drawUI(force=false){
  document.body.dataset.mode=ui.prologue?'prologue':ui.title?'title':s.mode;document.body.classList.toggle('cinematic',!!ui.prologue);document.body.classList.toggle('title',ui.title||!!ui.prologue);if(ui.prologue){$('opening').hidden=false;drawOpeningFilm(force);return;}document.body.classList.toggle('reduced',s.settings.reducedMotion);
  if($('grip')){const g=s.activity,show=!ui.title&&s.mode==='fishing'&&['aim','wait','bite','fight'].includes(g?.phase);$('grip').hidden=!show; if(show){$('grip').textContent=g.phase==='aim'?(s.settings.castMode==='pull'?'PULL BACK TO CAST':'TAP A RISE TO CAST'):g.phase==='bite'?'STRIKE':g.phase==='fight'?(g.reel?'REELING · SLIDE TO ANGLE':'HOLD TO REEL'):'WAIT FOR THE BITE';$('grip').classList.toggle('strike',g.phase==='bite');}}
  document.body.classList.toggle('title',ui.title);$('opening').hidden=!ui.title;
- if(ui.title){const key='title'+!!saved+!!oldSave;if(force||panelKey!==key){$('opening').innerHTML=`<div class="label">A MODERN SURVIVAL TRAIL</div><h1 class="title-wordmark${BRAND.mark?'':' title-type-pending'}">${BRAND.mark?`<img src="${BRAND.mark}" alt="${BRAND.title}">`:`<span>SIGNALS</span><span>END</span>`}</h1><p class="title-tagline">${BRAND.tagline}</p><p class="title-deck">Four people. One dog. A van too old to snitch.<br>San Francisco to the Ozarks. Five days to a key.</p><div class="buttons">${saved?button('resume',undefined,'Continue the journey','','primary'):''}${button('new',undefined,saved?'Start fresh':'Start the story','',saved?'':'primary','id="start"')}</div><div class="title-extras">${button('replayIntro',undefined,'Watch the opening') }<a href="brand/">Brand kit ↗</a></div><div class="legacy">PLAYTEST 07 · THE EASTBOUND JOURNEY<br><a href="v06/">Previous demo & saved journey</a></div>`;panelKey=key;}return;}
+ if(ui.title){const key='title'+!!saved+!!oldSave;if(force||panelKey!==key){$('opening').innerHTML=`<div class="label">A SURVIVAL TRAIL</div><h1 class="title-wordmark${BRAND.mark?'':' title-type-pending'}">${BRAND.mark?`<img src="${BRAND.mark}" alt="${BRAND.title}">`:`<span>SIGNALS</span><span>END</span>`}</h1><p class="title-tagline">${BRAND.tagline}</p><p class="title-deck">San Francisco → somewhere free.</p><div class="buttons">${saved?button('resume',undefined,'Continue the journey','','primary'):''}${button('new',undefined,saved?'Start fresh':'Make the run','',saved?'':'primary','id="start"')}</div><div class="title-extras">${button('replayIntro',undefined,'Replay opening') }<a href="brand/">Brand kit ↗</a></div><div class="legacy">PLAYTEST 07 · THE EASTBOUND JOURNEY<br><a href="v06/">Previous demo & saved journey</a></div>`;panelKey=key;}return;}
  const res=[['FUEL',count(s.fuel),'/ 50',s.fuel<12],['FOOD',count(s.meals*8),'hours',s.meals<1],['VAN',Math.round(s.condition),'%',s.condition<35],['FAMILY',hurt(s)?'Hurt':s.meals<.1?'Hungry':s.energy<25?'Weary':'Steady','',s.health<50||s.energy<25]];
  const rk=JSON.stringify(res);if(rk!==resourceKey){$('resources').innerHTML=res.map(([label,v,u,warn])=>`<div class="resource ${warn?'warn':''}"><span>${label}</span><strong>${v}</strong><small>${u}</small></div>`).join('');resourceKey=rk;}
  const g=s.activity;const key=JSON.stringify([s.mode,s.node,g?.phase,g?.selected,g?.connections,g?.notice,g?.catch,g?.working?.id,!!g?.player?.target,g?.player?.hiding,g?.patrol?.state,s.road?.shot?.id,s.story?.id,s.settings,s.packed,s.parts,s.cargo,s.sponsor,s.home,s.flags,s.cash,Math.floor(s.hour),s.threat.permitUsed,s.threat.heat,ui.wire?.index]);
@@ -118,7 +109,7 @@ function drawUI(force=false){
 }
 function modal(kind,content){resetInput();ui.paused=true;ui.dialog=kind;$('dialogbody').innerHTML=`<div class="modal-tools">${button('close',undefined,'← Back')}</div>`+content+`<div class="buttons">${button('close',undefined,'Back to the journey','','primary')}</div>`;if(!$('dialog').open)$('dialog').showModal();$('dialog').scrollTop=0;$('dialog').querySelector('button')?.focus({preventScroll:true});persist();}
 function closeModal(){if($('dialog').open)$('dialog').close();ui.paused=false;ui.dialog=null;drawUI(true);}
-function openPause(){modal('pause',`<div class="label">THE ROAD CAN WAIT</div><h2>Take a breath.</h2><p>Your journey is saved on this device. Time stops while this panel is open.</p><div class="buttons">${button('title',undefined,'Opening screen')}${button('replayIntro',undefined,'Watch the opening')}${button('world',undefined,'What is Signals End?')}${button('help',undefined,'Controls')}${button('sound',undefined,s.settings.sound?'Mute sound':'Enable sound')}${button('settings',undefined,'Touch & accessibility')}${button('fullscreen',undefined,'Full screen')}</div>${s.mode==='stop'?`<div class="buttons">${button('aid',undefined,'Ask for emergency help','Once per journey · 4 hours, if supplies are low.')}${button('rescueConfirm',undefined,'Call relief transport','Ends this attempt safely.','danger')}</div>`:''}`);}
+function openPause(){modal('pause',`<div class="label">THE ROAD CAN WAIT</div><h2>Take a breath.</h2><p>Your journey is saved on this device. Time stops while this panel is open.</p><div class="buttons">${button('title',undefined,'Opening screen')}${button('replayIntro',undefined,'Replay opening')}${button('world',undefined,'What is Signals End?')}${button('help',undefined,'Controls')}${button('sound',undefined,s.settings.sound?'Mute sound':'Enable sound')}${button('settings',undefined,'Touch & accessibility')}${button('fullscreen',undefined,'Full screen')}</div>${s.mode==='stop'?`<div class="buttons">${button('aid',undefined,'Ask for emergency help','Once per journey · 4 hours, if supplies are low.')}${button('rescueConfirm',undefined,'Call relief transport','Ends this attempt safely.','danger')}</div>`:''}`);}
 function showMap(){
  const current=node(s.node),complete=s.mode==='home'||s.ending?.owned;
  const chapters=[['The city','San Francisco Bay',['yard']],['The Sierra','Truckee, California',['river']],['The dry country','Wells, Nevada',['desert']],['The high country','Rawlins, Wyoming · via Utah',['divide']],['The paper network','North Platte, Nebraska',['plains']],['A way in','Kansas · Topeka or Salina',['pump','freight']],['A real key','Ava, Missouri',['ridge']],['Signals End','The Missouri–Arkansas Ozarks',['line']]];
@@ -136,7 +127,7 @@ function sound(){if(!audioOn)return;try{audioCtx??=new(window.AudioContext||wind
 function perform(type,id,target){
  if(type.startsWith('intro')){prologueAction(type);return;}
  if(type==='replayIntro'){beginPrologue(true);return;}
- if(type==='new'){if(saved)modal('new',`<h2>Start another pilgrimage?</h2><p>This replaces this edition’s journey after the opening. Earlier edition saves stay separate.</p>${button('confirmNew',undefined,'Start fresh','','danger')}`);else startNew();return;}
+ if(type==='new'){if(saved)modal('new',`<h2>Start another pilgrimage?</h2><p>This replaces this edition’s saved journey. Earlier edition saves stay separate.</p>${button('confirmNew',undefined,'Start fresh','','danger')}`);else startNew();return;}
  if(type==='newConfirm'){modal('new',`<h2>Take another road?</h2><p>The next pilgrimage replaces this local save.</p>${button('confirmNew',undefined,'Start fresh','','primary')}`);return;}
  if(type==='confirmNew'){startNew();return;}if(type==='resume'){resume();return;}
  if(type==='close'){closeModal();return;}if(type==='pause'){openPause();return;}
@@ -215,13 +206,13 @@ let heldControl=null;
 document.addEventListener('pointerdown',e=>{const b=e.target.closest('.hold');if(!b||ui.paused)return;heldControl=b;b.setPointerCapture(e.pointerId);b.classList.add('held');dispatch({type:b.dataset.action==='holdReel'?'reel':'slow',value:true});});
 function releaseHold(){if(heldControl){heldControl.classList.remove('held');dispatch({type:heldControl.dataset.action==='holdReel'?'reel':'slow',value:false});heldControl=null;}}
 document.addEventListener('pointerup',releaseHold);document.addEventListener('pointercancel',releaseHold);
-window.addEventListener('blur',()=>{if(ui.prologue){ui.prologue.paused=true;savePrologue();drawUI(true);return;}resetInput();if(!ui.title&&!ui.paused)openPause();});
-document.addEventListener('visibilitychange',()=>{if(document.hidden){if(ui.prologue){ui.prologue.paused=true;savePrologue();drawUI(true);return;}resetInput();if(!ui.title&&!ui.paused)openPause();persist();}});
-window.addEventListener('pagehide',()=>{savePrologue();if(!ui.title)persist();});
+window.addEventListener('blur',()=>{if(ui.prologue){openingPlayer?.pause();return;}resetInput();if(!ui.title&&!ui.paused)openPause();});
+document.addEventListener('visibilitychange',()=>{if(document.hidden){if(ui.prologue){openingPlayer?.pause();return;}resetInput();if(!ui.title&&!ui.paused)openPause();persist();}});
+window.addEventListener('pagehide',()=>{openingPlayer?.pause();if(!ui.title)persist();});
 function focusStep(dir){const root=$('dialog').open?$('dialog'):document;const choices=[...root.querySelectorAll('button:not(:disabled),a,input')].filter(e=>e.getClientRects().length);let i=choices.indexOf(document.activeElement);choices[(i+dir+choices.length)%choices.length]?.focus();}
 const keys=new Set();
 document.addEventListener('keydown',e=>{
- if(ui.prologue){if(['ArrowRight','ArrowLeft','Escape',' '].includes(e.key)){e.preventDefault();prologueAction(e.key==='ArrowRight'?'introNext':e.key==='ArrowLeft'?'introBack':'introPause');}return;}
+ if(ui.prologue){if(['ArrowRight','ArrowLeft','Escape',' '].includes(e.key)){e.preventDefault();prologueAction(e.key==='Escape'?'introSkip':e.key==='ArrowRight'?'introNext':e.key==='ArrowLeft'?'introBack':'introPause');}return;}
  if(e.key==='Escape'){e.preventDefault();ui.dialog?closeModal():!ui.title&&openPause();return;}
  if(e.key.toLowerCase()==='f'&&!['INPUT','TEXTAREA'].includes(e.target.tagName)){e.preventDefault();perform('fullscreen');return;}
  if(ui.paused||ui.title)return;
@@ -234,7 +225,7 @@ function gamepad(dt){
  const pad=[...(navigator.getGamepads?.()||[])].find(p=>p?.connected);
  if(!pad){if(prevButtons.length&&s.mode==='fishing')s.activity.reel=false;prevButtons=[];return;}
  const b=pad.buttons.map(x=>x.pressed),edge=i=>b[i]&&!prevButtons[i],ax=pad.axes[0]||0,ay=pad.axes[1]||0;
- if(ui.prologue){if(edge(9)||edge(1))prologueAction('introPause');if(edge(0)||edge(15))prologueAction('introNext');if(edge(14))prologueAction('introBack');prevButtons=b;return;}
+ if(ui.prologue){if(edge(1))prologueAction('introSkip');if(edge(9))prologueAction('introPause');if(edge(0))prologueAction(ui.prologue.source==='stills'?'introNext':'introPause');if(edge(15))prologueAction('introNext');if(edge(14))prologueAction('introBack');prevButtons=b;return;}
  if(edge(9)){ui.dialog?closeModal():openPause();prevButtons=b;return;}
  if(!ui.title&&!ui.paused&&s.mode==='fishing'){
   const g=s.activity,trigger=b[7]||b[0],before=prevButtons[7]||prevButtons[0];
@@ -262,10 +253,12 @@ function gamepad(dt){
  prevButtons=b;
 }
 let assetsLoaded=false;ready.then(()=>assetsLoaded=true);
-function tick(dt){if(ui.prologue){if(!assetsLoaded)return;if(progressPrologue(ui.prologue,dt,s.settings.reducedMotion))savePrologue();return;}if(!ui.title&&!ui.paused){update(s,dt);saveClock+=dt;if(saveClock>2){persist();saveClock=0;}}}
+function tick(dt){if(ui.prologue){if(!assetsLoaded)return;openingPlayer?.tick(dt);return;}if(!ui.title&&!ui.paused){update(s,dt);saveClock+=dt;if(saveClock>2){persist();saveClock=0;}}}
 function frame(now){const dt=Math.min(.05,(now-last)/1000);last=now;gamepad(dt);if(!manual){if(s.mode==='crossing'&&!ui.paused){const dir=(keys.has('ArrowRight')?1:0)-(keys.has('ArrowLeft')?1:0);s.activity.target=clamp(s.activity.target+dir*dt*.55,.12,.88);}tick(dt);}drawUI();render(canvas,s,ui);soundFrame(s,ui);requestAnimationFrame(frame);}
 window.render_game_to_text=()=>JSON.stringify({...summary(s),mode:ui.prologue?'prologue':ui.title?'intro':s.mode,prologue:prologueState(ui.prologue),title:BRAND.title,storedMode:s.mode,overlay:ui.dialog,paused:ui.paused,coordinates:'Scene x and y are normalized 0..1 from the top left; r is a CSS-pixel hit radius.',hitTargets:ui.hits,weatherRadio:s.packed.includes('radio'),controls:[...document.querySelectorAll('button:not(:disabled)')].filter(x=>x.getClientRects().length).map(x=>({action:x.dataset.action||x.id,id:x.dataset.id,label:x.innerText}))});
-window.advanceTime=ms=>{manual=true;for(let t=0;t<ms;t+=1000/60)tick(Math.min(1000/60,ms-t)/1000);drawUI();render(canvas,s,ui);if(!ui.title)persist();};
+window.advanceTime=ms=>{manual=true;if(ui.prologue){openingPlayer?.advance(ms/1000);drawUI();render(canvas,s,ui);return;}for(let t=0;t<ms;t+=1000/60)tick(Math.min(1000/60,ms-t)/1000);drawUI();render(canvas,s,ui);if(!ui.title)persist();};
 window.artReady=ready;
 drawFamily();drawUI(true);ready.then(()=>render(canvas,s,ui));requestAnimationFrame(frame);
+const startupURL=new URL(location.href),forceOpening=startupURL.searchParams.get('film')==='1';if(forceOpening){startupURL.searchParams.delete('film');history.replaceState(null,'',startupURL);}
+if(shouldAutoOpen({seen:!!openingSeen(),hasSave:!!saved||!!oldSave,reducedMotion:s.settings.reducedMotion||matchMedia('(prefers-reduced-motion: reduce)').matches,saveData:!!navigator.connection?.saveData,force:forceOpening}))beginPrologue(true);
 if('serviceWorker'in navigator&&!['localhost','127.0.0.1'].includes(location.hostname))navigator.serviceWorker.register('./sw.js').catch(()=>{$('save-status').textContent='Saved locally · offline cache unavailable';});

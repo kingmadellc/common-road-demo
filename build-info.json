@@ -1,11 +1,11 @@
 {
-  "version": "0.7.0",
-  "assetRevision": "eastbound-1",
+  "version": "0.7.1",
+  "assetRevision": "opening-1",
   "title": "Signals End",
   "sourceRepository": "https://github.com/kingmadellc/common-road",
-  "sourceCommit": "792298df4f816cd80b3e19317aee07217e8db525",
-  "builtAt": "2026-09-13T01:25:04.445Z",
-  "bytes": 103964250,
+  "sourceCommit": "bdf406cf79724966ca21def4fe2515a6419ea9b4",
+  "builtAt": "2026-09-13T04:29:07.417Z",
+  "bytes": 182960126,
   "files": {
     "assets/atmosphere/camp-v02.jpg": {
       "bytes": 715858,
@@ -347,6 +347,18 @@
       "bytes": 260974,
       "sha256": "0e71df3c12de992234965aa8ee5be2372adb0a1adce8aacc6552d1ed12aca2db"
     },
+    "assets/opening-08/radio.webp": {
+      "bytes": 311912,
+      "sha256": "e22c946b298f5cbce719b583b45f8415402321b9af120eb23cdcab8b6693d050"
+    },
+    "assets/opening-08/run-for-it-landscape.mp4": {
+      "bytes": 45108411,
+      "sha256": "7a5915c6925024504a0e45fe1084a38caef0a8d966234504ee96d460f8a6f4a3"
+    },
+    "assets/opening-08/run-for-it-portrait.mp4": {
+      "bytes": 33566220,
+      "sha256": "3a7b28d84dd0ff3971e753a4d66bc71ea08b2a7a6c6231d7376a434675bded95"
+    },
     "assets/pilgrimage/chair.png": {
       "bytes": 402383,
       "sha256": "9392914b66a5463896b9d13d1f182840a19926c85123a7ab55f397fbd928d9be"
@@ -556,8 +568,8 @@
       "sha256": "85287967f1ae7cb00ee578db38932ee86b2b8aa5b6181d2f210a553e4d52b33a"
     },
     "index.html": {
-      "bytes": 2092,
-      "sha256": "2be4c21bf74621b008e279c875ca7d17ac35846f97261af940efa986799f50b4"
+      "bytes": 2149,
+      "sha256": "ad76115ef3f36259b068da150f285460feec11a20a2888e1b66ffb1662337aff"
     },
     "manifest.webmanifest": {
       "bytes": 570,
@@ -588,8 +600,8 @@
       "sha256": "8380ecc6617a63f002d75e10c19359d8c1347db3f82900c4f7d19a81ab1aad4b"
     },
     "sw.js": {
-      "bytes": 9323,
-      "sha256": "beff7fd73d6985a83c47724b96ab156fba00571011d52edb4a9888528f52a212"
+      "bytes": 9739,
+      "sha256": "00fe68deb1c9ff115c0ba518ef70793c53af6786c69420f6a4e126ae72228514"
     },
     "v02/assets/atmosphere/camp-v02.jpg": {
       "bytes": 715858,
@@ -896,32 +908,32 @@
       "sha256": "44e2fa3140b0eefd23c42b34cc59aa460633f5e12f7485621cf9902e608be8a4"
     },
     "v07/app.js": {
-      "bytes": 52657,
-      "sha256": "3ae4413b5a4041d0d6133ffcc2907b748e9eb041601ce0a4ff76a3721ccd7113"
+      "bytes": 51391,
+      "sha256": "a0bcb71513ed0d7136c5491fcfa335126f82c20d8af0cf6e335d6e692bce71e9"
     },
     "v07/art.js": {
-      "bytes": 11503,
-      "sha256": "feb6a8170ec6879de7cba22a8c095dde1b4961bbfe3c178be4a8ac677f2e3998"
+      "bytes": 11624,
+      "sha256": "6d2e1e9cd107f4c9ff933ccf0847ad8f85666cb68a1a6de580fb5cfefcfdc962"
     },
     "v07/brand.js": {
       "bytes": 1874,
       "sha256": "d79041911bce2a6890ff1ad0bb1405f61cdf11ec3e1ac0a08f08ed9bf7c497bf"
     },
     "v07/conflict.js": {
-      "bytes": 7034,
-      "sha256": "e33b2773cd0cc6c36d1b9e9ef977005b9192b73858b996a3c4b45db9b12c8b93"
+      "bytes": 7032,
+      "sha256": "c90cb7cba94df949812d82eb2cdba847fe2f489ac4ace7d1d7a0d9b223e3f800"
     },
     "v07/drive.js": {
       "bytes": 424,
       "sha256": "e0c9a538d3fb4f29dc4bcd2cbf24b9b4a20d5523eed3fdf0715054db57cf8296"
     },
     "v07/film.js": {
-      "bytes": 4484,
-      "sha256": "ff8a47cc6ed15d678f8bd8ecb836d417a1e10cc3c61a304b37539843fb47ed9f"
+      "bytes": 4482,
+      "sha256": "7f9f200ec668ebb0cd7aeb7083254ccbd5a330afe10667a9d5f8f6a92c5ddfd3"
     },
     "v07/fishing.js": {
-      "bytes": 7457,
-      "sha256": "8e00c2c543288ca5f264004c845c6e6dadc5b0ba16428fc685c8c70c0b64d16a"
+      "bytes": 7455,
+      "sha256": "660bad094dfb190341ddb34b46f08929fdd7693600439057f19fea5662b2f33c"
     },
     "v07/identity.css": {
       "bytes": 4177,
@@ -936,28 +948,40 @@
       "sha256": "94064e56a72628addb396d5c2b730556af6a4130e9dba4072d9745c34dfd61c3"
     },
     "v07/motion.js": {
-      "bytes": 4961,
-      "sha256": "4a78a0bbd1a7bc022c264016abbe5d7361105283e353980974b8d3f36e34ddfb"
+      "bytes": 4957,
+      "sha256": "e98b0f7fcba6c837c66e48853300e60f972326d5ca7aa4ae69177556883596af"
+    },
+    "v07/opening-film.js": {
+      "bytes": 6927,
+      "sha256": "eca41c0bcc5f3209ea9bb278cc68bd3c028fa621be41240e210c7e64d1969be3"
+    },
+    "v07/opening-player.js": {
+      "bytes": 5700,
+      "sha256": "c4074834fd3b18bb6bc651552a9b433c6d02a18fd9e8d518c7086733ea506dca"
+    },
+    "v07/opening.css": {
+      "bytes": 2968,
+      "sha256": "c51a36a6d7d4b652ce8b03b0e89a04e53de4ae0c1896e8c7bfaf6360f691a644"
     },
     "v07/prologue.js": {
-      "bytes": 7098,
-      "sha256": "7d41c1d688957c2000ae64e9789fa54193b78b9a3109b46ce9e1ba4cbb606d1a"
+      "bytes": 1774,
+      "sha256": "203afcba809cff26c601293a3ac4132ed719a1b4244cb6f39b1b4bb54b66427c"
     },
     "v07/salvage.js": {
-      "bytes": 6936,
-      "sha256": "5f9fbebbbb968d520986168c2ff1dcf2010e119d9445c820f89905b38985133d"
+      "bytes": 6930,
+      "sha256": "0b31dcb4dc526d681783bbfe7163b94f7e6ed742ed98333dd6f370a70bc82193"
     },
     "v07/scenes.js": {
-      "bytes": 6481,
-      "sha256": "586d092038fd11ac8aa70c1e87082f457714c44293fa79b4d6e31b4ce50b6853"
+      "bytes": 6477,
+      "sha256": "b5d08e50f93413c170e9ada9697cb38998ff121478e68f9fc78156bf79131dbf"
     },
     "v07/sim.js": {
-      "bytes": 19927,
-      "sha256": "5bc7d851569693412b6e1bd6f18b8aac6c64d71611abd40ceb7ee71004bef1a3"
+      "bytes": 19913,
+      "sha256": "1221721d7502177ed22bfaee52dea5ab3e3644003512cdef5f07955a0a11f828"
     },
     "v07/sound.js": {
-      "bytes": 2241,
-      "sha256": "cea594e751ef5ecbfffb4a5fb02473705aaf5a100ab33418c23d0fd38c0ec98b"
+      "bytes": 2009,
+      "sha256": "5a72e3cdd7d9cda16303231bea8a05ed16a167b1c4d8119778c58283e8d65567"
     },
     "v07/state.js": {
       "bytes": 1688,
@@ -976,7 +1000,7 @@
       "sha256": "62c1593ce757002fa5d3e03579fe2d8a161adddac8e4b09cf606a4ffc677b6e0"
     }
   },
-  "validation": "Eight-chapter San Francisco-to-Ozarks campaign. Journey overview, region-specific conflicts, reservation-to-deed story, explicit analog charter and separate v7 saves. Automated simulation and browser coverage for both admission paths; Chromium desktop/landscape and WebKit touch. Existing art reused; no physical-device or human fun validation yet",
+  "validation": "96-second illustrated motion-graphics opening in landscape and portrait, minimal copy, original soundtrack. Real muted inline playback, Skip, remembered viewing, saved-game preservation, accessibility and media failure checks in Chromium/WebKit. Both eastbound campaign paths remain playable; v7 save schema stays 0.7.0. Physical-device and human engagement testing remain pending",
   "nativeAppleBuild": false,
   "physicalAppleDeviceTested": false,
   "humanFunTested": false

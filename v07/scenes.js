@@ -1,5 +1,5 @@
-import {YARD,layoutFor} from './salvage.js?v=0.7.0-eastbound-1';
-import {FISH_PROFILES,castEndpoint} from './fishing.js?v=0.7.0-eastbound-1';
+import {YARD,layoutFor} from './salvage.js?v=0.7.1-opening-1';
+import {FISH_PROFILES,castEndpoint} from './fishing.js?v=0.7.1-opening-1';
 export function yardView(w,h){const vw=Math.min(w,h*.78*16/9),vh=vw*9/16;return{x:(w-vw)/2,y:Math.max(h*.14,(h-vh)*.46),w:vw,h:vh};}
 function imageCover(c,im,x,y,w,h){if(!im?.naturalWidth)return;const k=Math.max(w/im.naturalWidth,h/im.naturalHeight);c.save();c.beginPath();c.rect(x,y,w,h);c.clip();c.drawImage(im,x+(w-im.naturalWidth*k)/2,y+(h-im.naturalHeight*k)/2,im.naturalWidth*k,im.naturalHeight*k);c.restore();}
 export function drawSalvage(c,w,h,s,ui,images){
