@@ -3,7 +3,7 @@
 export const DEPARTURE_ID='fourth-morning-1';
 export const DEPARTURE_SCENES=[
  {id:'refusal',seconds:7,image:'departure-workshop',focus:.5,kicker:'THE FOURTH MORNING · CORE WORKSHOP',speaker:'Jack',line:'“The cutoff’s broken. I’m not signing that.”'},
- {id:'dismissed',seconds:6,image:'departure-workshop',focus:.43,kicker:'11:42 · ACCESS WITHDRAWN',line:'By lunch, his pass no longer opened the door.'},
+ {id:'dismissed',seconds:6,image:'departure-workshop',focus:.43,kicker:'11:42 · CORE WORKSHOP',line:'Core fired Jack before lunch.',termination:true},
  {id:'account',seconds:9,image:'intro-attention',focus:.68,kicker:'THAT EVENING · THE MERCER APARTMENT',speaker:'Sarah',line:'“My pay’s in there too. They’ve frozen all of it.”',notice:true},
  {id:'appeal',seconds:7,image:'intro-attention',focus:.38,kicker:'ONE FLAG. EVERY LINKED ACCOUNT.',speaker:'Jack',line:'“Three days for an appeal. The flat wants us out tomorrow.”'},
  {id:'decision',seconds:0,image:'intro-attention',focus:.68,kicker:'BEA IS ACROSS THE BAY.',speaker:'Sarah',line:'“I’m still not trusting that radio. But we’re not waiting here. Get the kids.”'},
@@ -13,7 +13,7 @@ export const DEPARTURE_SCENES=[
  {id:'last-look',seconds:2,image:'departure-boarding',focus:.51,zoom:1.12,kicker:'',speaker:'Sarah',line:'“Obviously.”',loading:true}
 ];
 export const DECISION_INDEX=DEPARTURE_SCENES.findIndex(x=>x.id==='decision');
-export const NOTICE={issuer:'INDEX',title:'Household account restricted',items:[['Core report','Employment ended · refusal to certify'],['Index wallet','Joint funds held · contract charge disputed'],['Plenty order','Payment declined'],['Forma staff flat','Return keys by 06:00 tomorrow'],['Earliest appeal','In 72 hours']],detail:'Core has charged the household for ending its work contract. Index has frozen the joint wage wallet while that charge is disputed. Forma’s flat came with the job. Sarah is still employed; her pay enters the same frozen wallet. The family can appeal, but the housing deadline comes first. None of this proves the radio is telling the truth.'};
+export const NOTICE={issuer:'INDEX',title:'Household account restricted',items:[['Core report','Employment terminated · refusal to certify'],['Index standing','Restricted · adverse employer report'],['Index wallet','Joint funds held · contract charge disputed'],['Plenty order','Payment declined'],['Forma staff flat','Return keys by 06:00 tomorrow'],['Earliest appeal','In 72 hours']],detail:'Core has charged the household for ending its work contract. Index has frozen the joint wage wallet while that charge is disputed. Forma’s flat came with the job. Sarah is still employed; her pay enters the same frozen wallet. The family can appeal, but the housing deadline comes first. None of this proves the radio is telling the truth.'};
 export function startDeparture(s){s.mode='departure';s.departure={id:DEPARTURE_ID,index:0,elapsed:0,decided:false};s.flags.contractFlag=true;s.flags.accountRestricted=true;}
 export function departureScene(s){return DEPARTURE_SCENES[s.departure?.index||0];}
 export function finishDeparture(s){s.mode='packing';s.departure=null;s.flags.departureSeen=true;s.message='The basics are aboard. Six spaces left. Bea first.';}

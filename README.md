@@ -1,6 +1,6 @@
 # Signals End / King Made
 
-[Play the demo](https://kingmadellc.github.io/common-road-demo/?v=0.8.1) · [Watch the opening](https://kingmadellc.github.io/common-road-demo/?v=0.8.1&departure=1&film=1) · [World and brand kit](https://kingmadellc.github.io/common-road-demo/brand/?v=2&origin=1) · [Previous demo and save](https://kingmadellc.github.io/common-road-demo/v06/)
+[Play the demo](https://kingmadellc.github.io/common-road-demo/?v=0.8.2) · [Watch the opening](https://kingmadellc.github.io/common-road-demo/?v=0.8.2&departure=1&film=1) · [World and brand kit](https://kingmadellc.github.io/common-road-demo/brand/?v=2&origin=1) · [Previous demo and save](https://kingmadellc.github.io/common-road-demo/v06/)
 
 San Francisco, 2041. Nine technology corporations control everyday services. Cameras watch streets and homes. Rent, food, taxes and mandatory charges rise faster than wages; company contracts barely cover life.
 
@@ -8,7 +8,9 @@ Jack keeps checking work after his shift. Sarah repeats herself. Annie waits wit
 
 Follow contacts across the Sierra and the Plains toward an analog refuge in the Missouri-Arkansas Ozarks. Hunt, fish, salvage, repair, trade and evade. A witness and a private family reply gradually turn the rumor into an agreement. Repair a community pump or deliver filters to earn a way through. Beyond the Line: no phones, computers or digital products, including council equipment. Electricity, mechanical engines and analog radios remain. The reward is time and authority over ordinary life. The Collectors enforce debt and relocation orders; receiving a broadcast does not reveal the family’s location.
 
-Version 0.8.1 adds the personal conflict after the world/discovery film. A player-paced family decision leads to an eleven-second illustrated loading montage, then the six-space cargo choices. Pause, skip, reduced-motion stills and mid-chapter saves are supported. [Review the new departure](https://kingmadellc.github.io/common-road-demo/?v=0.8.1&departure=1) without replacing a saved journey. The fictional contract flag draws on documented shared blacklists and workplace surveillance, not a claim that a universal social score controls real contemporary societies.
+Version 0.8.2 replaces the early financial chart with an Index access-restriction notice: adverse employer report, restricted standing and blocked digital payments. Core’s dismissal now appears as an explicit termination notice naming Jack and its stated reason.
+
+Version 0.8.1 added the personal conflict after the world/discovery film. A player-paced family decision leads to an eleven-second illustrated loading montage, then the six-space cargo choices. Pause, skip, reduced-motion stills and mid-chapter saves are supported. [Review the new departure](https://kingmadellc.github.io/common-road-demo/?v=0.8.2&departure=1) without replacing a saved journey. The fictional contract flag draws on documented shared blacklists and workplace surveillance, not a claim that a universal social score controls real contemporary societies.
 
 Version 0.8.0 adds a first hunting playtest outside Truckee. Repair June’s stove for a borrowed rifle and three rounds. Use the lower aim pad to drag, steady and release; a controller uses the left stick and hold/release A or right trigger. A deer and a jackrabbit have different pauses and crossings. Misses spend ammunition and scare animals. Repeated noise can alert a highway patrol already nearby. Cook, preserve, pack limited fresh food or share the surplus for a later guide favor. Plenty supermarkets require authenticated digital payments; independent traders still take cash and useful work.
 

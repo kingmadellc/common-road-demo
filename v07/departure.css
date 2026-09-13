@@ -19,3 +19,5 @@ body.departure #opening{font-family:Road,system-ui,sans-serif;color:#f1eadb}
 body.departure #opening [hidden]{display:none!important}
 @media(max-width:600px){.departure-stage{padding:80px 24px max(24px,env(safe-area-inset-bottom))}.departure-line{font-size:28px!important}.departure-kicker{font-size:10px!important;margin-bottom:14px!important}.departure-notice{padding:16px;margin-bottom:12px}.departure-notice h2{font-size:22px}.departure-copy{padding-top:12px}.departure-actions{margin-top:18px}.departure-top{inset:14px 18px auto}.departure-notice dl{gap:3px;font-size:14px}}
 @media(max-height:580px) and (min-width:601px){.departure-stage{padding:70px 5vw 18px}.departure-stage.has-notice{padding-left:51vw}.departure-notice{position:absolute;left:5vw;top:75px;width:40vw;padding:14px}.departure-notice dl{font-size:12px;gap:0}.departure-notice h2{font-size:21px;margin-bottom:9px}.departure-line{font-size:27px!important}.departure-actions{margin-top:15px}}
+
+.termination-name{font:500 14px Road,sans-serif!important;color:#c6beac;margin:12px 0 0!important}.termination-notice{border-color:#798680}

@@ -1,6 +1,6 @@
-import {filmFrame} from './film.js?v=0.8.1-departure-1';
+import {filmFrame} from './film.js?v=0.8.2-account-1';
 // One editorial source drives the rendered film, captions and illustrated fallback.
-export const FILM_ID='run-for-it-4';
+export const FILM_ID='run-for-it-5';
 export const FILM_DURATION=116;
 export const FILM_SCENES=[
  {
@@ -18,8 +18,8 @@ export const FILM_SCENES=[
   "id": "payday",
   "image": "intro-attention",
   "focus": 0.38,
-  "line": "Rent. Food. Taxes.\nAnother shift tomorrow.",
-  "motion": "ledger"
+  "line": "Index: adverse employer report.\nAccount restricted. Digital payments blocked.",
+  "motion": "account"
  },
  {
   "start": 14,
@@ -190,6 +190,21 @@ export function captionLayout(c,w,h,scene){
  return {font,lines,leading,labelSize,labelGap,x:w*.085,y,height:blockHeight,width:w*.8};
 }
 
+export function drawAccountNotice(c,w,h,age,{still=false}={}){
+ const portrait=h>w,x=w*(portrait?.08:.075),y=h*(portrait?.25:.18),ww=w*(portrait?.84:.50),hh=portrait?ww*.86:h*.60,pad=ww*.075;
+ c.save();c.textAlign='left';c.textBaseline='top';c.shadowColor='#0008';c.shadowBlur=ww*.08;c.fillStyle='#101b1ff5';c.beginPath();c.roundRect(x,y,ww,hh,ww*.014);c.fill();c.shadowBlur=0;
+ c.strokeStyle='#697875';c.lineWidth=Math.max(1,w/1400);c.stroke();
+ c.fillStyle='#e8e4d8';c.font=`700 ${ww*.05}px Road,sans-serif`;c.fillText('INDEX',x+pad,y+pad);
+ c.font=`500 ${ww*.037}px Road,sans-serif`;c.fillStyle='#acb8b1';c.fillText('Account access',x+pad,y+hh*.23);
+ c.font=`600 ${ww*.075}px Road,sans-serif`;c.fillStyle='#f1eadb';c.fillText('Restricted',x+pad,y+hh*.30);
+ c.font=`500 ${ww*.043}px Road,sans-serif`;c.fillStyle='#d7c8b3';c.fillText('Adverse employer report',x+pad,y+hh*.45);
+ const row=y+hh*.59;c.strokeStyle='#465451';c.beginPath();c.moveTo(x+pad,row-ww*.023);c.lineTo(x+ww-pad,row-ww*.023);c.stroke();
+ c.font=`500 ${ww*.043}px Road,sans-serif`;c.fillStyle='#e8e4d8';c.fillText('Digital payments',x+pad,row);
+ c.textAlign='right';c.font=`700 ${ww*.043}px Road,sans-serif`;c.fillStyle='#e6a18e';c.globalAlpha=still?1:Math.min(1,Math.max(0,(age-.35)/.3));c.fillText('BLOCKED',x+ww-pad,row);c.globalAlpha=1;
+ c.textAlign='left';c.font=`500 ${ww*.037}px Road,sans-serif`;c.fillStyle='#acb8b1';c.fillText('Manual review required',x+pad,y+hh*.79);
+ c.restore();
+}
+
 export function drawOpeningFrame(c,w,h,time,images,{still=false,text=true}={}){
  const scene=filmSceneAt(time),age=clamp(time-scene.start,0,scene.end-scene.start),phase=age/(scene.end-scene.start),ease=phase*phase*(3-2*phase),portrait=h>w;
  c.save();c.fillStyle='#0c171b';c.fillRect(0,0,w,h);
@@ -198,13 +213,7 @@ export function drawOpeningFrame(c,w,h,time,images,{still=false,text=true}={}){
  c.fillStyle=['warm','dawn','title'].includes(scene.motion)?'#291b0815':'#07192235';c.fillRect(0,0,w,h);
  const scale=w/1920;
  if(!still&&scene.motion==='rain'){c.strokeStyle='#ceddde27';c.lineWidth=Math.max(1,scale);for(let i=0;i<100;i++){const x=(i*137+age*37)%w,y=(i*293+age*260)%h;c.beginPath();c.moveTo(x,y);c.lineTo(x-7*scale,y+23*scale);c.stroke();}}
- if(['grid','ledger','shutdown'].includes(scene.motion)){
-  const px=w*(portrait?.08:.07),py=h*(portrait&&scene.motion==='shutdown'?.4:.2),ww=w*(portrait?.84:.30),hh=h*(portrait?.24:.32);
-  c.fillStyle='#071417d4';c.fillRect(px,py,ww,hh);c.strokeStyle='#92b2ac55';c.lineWidth=2*scale;c.strokeRect(px,py,ww,hh);
-  c.font=`600 ${Math.max(w*.012,portrait?w*.026:0)}px Road,sans-serif`;c.fillStyle='#a9c5ba';c.textAlign='left';c.fillText('INDEX',px+ww*.08,py+hh*.16);
-  const labels=scene.motion==='ledger'?['RENT','FOOD','TAX']:['HOME','WORK','HEAT'];for(let i=0;i<3;i++){const y=py+hh*(.34+i*.2),amount=scene.motion==='shutdown'?1-clamp((age-i*.42)/1.8):clamp(phase*1.6-i*.14);c.fillStyle='#e1e6d7';c.fillText(labels[i],px+ww*.08,y);c.fillStyle=scene.motion==='shutdown'?'#c88068':'#9caa77';c.fillRect(px+ww*.40,y-hh*.03,ww*.48*amount,Math.max(2,hh*.017));}
-  if(scene.motion==='shutdown'&&age>2.2){c.fillStyle='#0a131acc';c.fillRect(px,py,ww,hh);c.strokeStyle='#c88068';c.lineWidth=3*scale;c.beginPath();c.moveTo(px+ww*.40,py+hh*.37);c.lineTo(px+ww*.60,py+hh*.64);c.moveTo(px+ww*.60,py+hh*.37);c.lineTo(px+ww*.40,py+hh*.64);c.stroke();}
- }
+ if(scene.motion==='account')drawAccountNotice(c,w,h,age,{still});
  if(scene.motion==='search'){
   const x=w*(.2+.65*(still?.5:phase)),g=c.createLinearGradient(x-w*.2,0,x+w*.2,0);g.addColorStop(0,'#d5e5ce00');g.addColorStop(.5,'#d5e5ce36');g.addColorStop(1,'#d5e5ce00');c.fillStyle=g;c.beginPath();c.moveTo(x-w*.035,h*.13);c.lineTo(x+w*.3,h*.78);c.lineTo(x-w*.32,h*.78);c.fill();
  }
@@ -219,7 +228,7 @@ export function drawOpeningFrame(c,w,h,time,images,{still=false,text=true}={}){
  const shade=c.createLinearGradient(0,h*.48,0,h);shade.addColorStop(0,'#08111400');shade.addColorStop(.68,'#081114a6');shade.addColorStop(1,'#081114ec');c.fillStyle=shade;c.fillRect(0,0,w,h);
  if(scene.motion==='title'){
   c.fillStyle='#0c171b9c';c.fillRect(0,0,w,h);const mark=images['opening-mark'];if(mark?.naturalWidth){const mw=w*(portrait?.8:.49),mh=mw*mark.naturalHeight/mark.naturalWidth,appear=still?1:clamp(age/.7);c.globalAlpha=appear;c.drawImage(mark,(w-mw)/2,(h-mh)/2,mw,mh);c.globalAlpha=1;}
- }else if(text){
+ }else if(text&&scene.motion!=='account'){
   const block=captionLayout(c,w,h,scene);c.textAlign='left';c.textBaseline='top';c.shadowColor='#000b';c.shadowBlur=9*scale;c.fillStyle='#f1eadb';c.globalAlpha=still?1:clamp((age-.35)/.55)*clamp((scene.end-time)/.3);
   if(scene.speaker){c.font=`600 ${block.labelSize}px Road,system-ui,sans-serif`;c.fillStyle='#d0b479';c.fillText(scene.speaker.toUpperCase(),block.x,block.y);}
   c.font=`600 ${block.font}px Road,system-ui,sans-serif`;c.fillStyle='#f1eadb';block.lines.forEach((line,i)=>c.fillText(line,block.x,block.y+block.labelGap+i*block.leading));c.globalAlpha=1;c.shadowBlur=0;

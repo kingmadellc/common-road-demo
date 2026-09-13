@@ -1,4 +1,4 @@
-import {RADIO_MESSAGE} from './narrative.js?v=0.8.1-departure-1';
+import {RADIO_MESSAGE} from './narrative.js?v=0.8.2-account-1';
 const shot=(image,title,line,extra={})=>({image,title,line,...extra});
 export const ARRIVALS={river:'sierra-letter',desert:'nevada-room',divide:'ben-wrench',plains:'frank-letter',ridge:'frank-key'};
 export const SHOTS={
