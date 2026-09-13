@@ -26,3 +26,15 @@ body.reduced *{transition:none!important;animation:none!important}
 /* Four readable essentials; contextual tools live in drawers. */
 #resources{grid-template-columns:repeat(4,1fr)}.resource strong{font-size:21px} .stop-actions>button{flex:1;min-width:180px}.target-strip{display:flex;gap:6px;overflow:auto;margin:0 0 10px}.target-strip button{flex:none;font-size:13px;min-height:44px;padding:8px 12px}.gallery img{aspect-ratio:16/9;object-fit:cover}#sceneheading .eyebrow{background:#081a20b8;padding:4px 7px;display:inline-block}.actiongroup p{font-size:16px}body[data-mode="stop"] #actions{display:block}body[data-mode="salvage"] #console{max-height:42dvh!important}body[data-mode="salvage"] .buttons>button{flex-basis:21%;min-width:120px}
 @media(max-width:700px){.resource strong{font-size:17px}.resource small{display:block;margin:1px 0}.stop-actions{display:grid;grid-template-columns:1fr}.stop-actions>button{min-height:64px}body[data-mode="salvage"] .target-strip{margin:0 0 6px}body[data-mode="salvage"] .buttons{grid-template-columns:1fr 1fr}body[data-mode="salvage"] #console{max-height:43dvh}body[data-mode="salvage"] #notice{font-size:13px}body[data-mode="incident"] #console{max-height:48dvh}body[data-mode="incident"] .buttons{display:grid;grid-template-columns:1fr}body[data-mode="incident"] #sceneheading{max-width:95%}}
+
+/* A quiet, thumb-first clearing. Menus remain outside the aiming surface. */
+body[data-mode="hunting"] #sceneheading h1{font-size:clamp(24px,3vw,36px)}
+body[data-mode="hunting"] #scenehint{font-size:11px}
+body[data-mode="hunting"] #notice{display:none}
+body[data-mode="hunting"] .harvest-actions{display:grid;grid-template-columns:1fr 1fr}
+body[data-mode="hunting"] .activity-copy{min-height:2.4em}
+body[data-mode="hunting"] #scenestatus{font-size:12px;max-width:92%}
+@media(max-width:700px){body[data-mode="hunting"] #sceneheading .eyebrow{font-size:10px}body[data-mode="hunting"][data-hunt-phase="harvest"] #console{max-height:48dvh!important}}
+
+body[data-mode="hunting"] #scenehint{display:none}
+body[data-mode="hunting"] #sceneheading .eyebrow{letter-spacing:.8px}

@@ -1,7 +1,8 @@
-import {RADIO_MESSAGE} from './narrative.js?v=0.7.6-origin-2';
+import {RADIO_MESSAGE} from './narrative.js?v=0.8.0-hunt-1';
 const shot=(image,title,line,extra={})=>({image,title,line,...extra});
 export const ARRIVALS={river:'sierra-letter',desert:'nevada-room',divide:'ben-wrench',plains:'frank-letter',ridge:'frank-key'};
 export const SHOTS={
+ 'hunt-dinner':shot('meal-family','A meal nobody can switch off','Sarah passes Jack a bowl. His hands are still shaking a little. Annie leaves room for Rusty. “Does June’s stove have an account?” Ben asks. “It has a knob,” Jack says. Nobody reaches for a screen.'),
  'bea-first':shot('intro-departure','Bea first','Sarah: “We hear her out. Then we decide.”'),
  broadcast:shot('opening-radio','Ben’s handwritten broadcast',RADIO_MESSAGE),
  'sierra-letter':shot('open-country','The first witness','June shows Sarah a recent photo of Uncle Frank beside a crooked fence. “He built that. No software could make it that bad.” Ben unfolds his radio note. Sarah checks the date twice. “He looks well.” For once, she has no next question.'),
