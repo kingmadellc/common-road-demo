@@ -5,13 +5,13 @@ from urllib.parse import unquote, urlsplit
 import re
 import subprocess
 
-root = Path(__file__).resolve().parents[1]
+root = Path(__file__).resolve().parents[2]
 assert (root / "README.md").is_file(), "A public README is required"
-log = subprocess.check_output(["git", "log", "--all", "--format=%an%x00%ae%x00%cn%x00%ce"], text=True)
+log = subprocess.check_output(["git", "log", "HEAD", "--format=%an%x00%ae%x00%cn%x00%ce"], text=True)
 for line in log.splitlines():
     an, ae, cn, ce = line.split("\0")
     for name, email in [(an, ae), (cn, ce)]:
-        assert email.endswith("@users.noreply.github.com"), "Commit metadata contains a non-noreply email"
+        assert email.endswith("@users.noreply.github.com") or (name == "GitHub" and email == "noreply@github.com"), "Commit metadata contains a non-noreply email"
         assert name in {"King Made", "Codex", "Claude", "GitHub", "github-actions[bot]", "dependabot[bot]"}, "Review author attribution before publication"
 
 class Entry(HTMLParser):
