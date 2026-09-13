@@ -11,8 +11,8 @@ export function arriveNarrative(s,id){
 export function knowledge(s){
  if(s.mode==='home'||s.ending?.owned)return {stage:'arrived',title:'A life we can switch off',text:'The broadcast was real. Work ends. The lights stay on. Nobody is watching for the next approval.'};
  if(s.flags.reservationConfirmed)return {stage:'confirmed',title:'Frank answered',text:'At North Platte, Frank answered Sarah’s private family question. He reserved a home. A witness or the filter delivery completes the agreement.'};
- if(s.flags.frankWitnessed)return {stage:'witness',title:'The first evidence',text:'June’s photograph puts Uncle Frank inside Signals End. Sarah’s inquiry is traveling through the freight network. Any reply will wait at North Platte.'};
- if(s.flags.inquirySent)return {stage:'inquiry',title:'Someone who still fixes things',text:'Bea sent Sarah’s inquiry through the freight network. June at Truckee may know where Uncle Frank went. The next Ava convoy leaves in five days.'};
+ if(s.flags.frankWitnessed)return {stage:'witness',title:'The first evidence',text:'June’s photograph puts Uncle Frank inside Signals End. Freight-radio relays carry Sarah’s question. A courier will record any answer at North Platte.'};
+ if(s.flags.inquirySent)return {stage:'inquiry',title:'Someone who still fixes things',text:'Bea’s freight contacts radioed Sarah’s private question. June at Truckee may know where Uncle Frank went. The next Ava convoy leaves in five days.'};
  return {stage:'rumor',title:'The voice Ben found',text:'A smuggled radio. A place called Signals End. No proof yet. Bea sent the receiver; she is the first person to ask.'};
 }
 export function migrateNarrative(s){

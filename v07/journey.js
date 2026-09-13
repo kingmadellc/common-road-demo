@@ -1,4 +1,4 @@
-import {RADIO_MESSAGE} from './narrative.js?v=0.7.2-canon-1';
+import {RADIO_MESSAGE} from './narrative.js?v=0.7.2-canon-2';
 const shot=(image,title,line,extra={})=>({image,title,line,...extra});
 export const ARRIVALS={river:'sierra-letter',desert:'nevada-room',divide:'ben-wrench',plains:'frank-letter',ridge:'frank-key'};
 export const SHOTS={
@@ -6,7 +6,7 @@ export const SHOTS={
  'sierra-letter':shot('open-country','The first witness','June shows Sarah a recent photo of Uncle Frank beside a crooked fence. “He built that. No software could make it that bad.” Ben unfolds his radio note. The first evidence. They still need Frank’s answer.'),
  'nevada-room':shot('plaza','A room without permission','Ruth hands Sarah a brass key. Sarah looks for the room camera. “Just a smoke alarm,” Ruth says. Sarah sits down. Her hand still reaches for a task queue that is not there.'),
  'ben-wrench':shot('repair-family','Something that stays fixed','Ben gets the headlamp working. No agent supplied the answer. Jack listens while he explains it. Ben grins for a moment, then tries to hide it. The skill belongs to him.'),
- 'frank-letter':shot('market','It is really him','The courier has Frank’s answer to the private question Sarah sent through Bea. Four people and Rusty. A house held until the convoy leaves. Glenn can witness the papers; the Pruitts can assign a filter delivery. The rumor is now an agreement.'),
+ 'frank-letter':shot('market','It is really him','The courier transcribed Frank’s radio reply. It answers the private question Sarah sent through Bea. Four people and Rusty. A house held until the convoy leaves. Glenn can witness the papers; the Pruitts can assign a filter delivery. The rumor is now an agreement.'),
  'frank-key':shot('basin','The man from the letter','Frank is older than Sarah remembers. He puts a key in her hand, then takes it back. “Evelyn finishes the papers. I just wanted you to know it’s real.” The storm is coming. One last crossing.'),
  'desert-view':shot('plateau','Nevada has room to spare','Ben: “All this space and we rented a cupboard.” Sarah: “The cupboard had excellent connectivity.”'),
  'divide-view':shot('open-country','Over the Divide','Wyoming wind. Miles of open country. Annie falls quiet, trying to fit it all into a drawing.'),

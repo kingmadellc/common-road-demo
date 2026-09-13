@@ -1,4 +1,4 @@
-import {knowledge} from './narrative.js?v=0.7.2-canon-1';
+import {knowledge} from './narrative.js?v=0.7.2-canon-2';
 export const VERSION='0.7.0';
 export const SAVE_KEY='signals-end-journey-v7';
 export const FAMILY=[
@@ -10,7 +10,7 @@ export const FAMILY=[
 ];
 // Fictional stops along a real eastbound corridor. Miles are rounded story estimates.
 export const NODES=[
- {id:'yard',name:'Bea’s East Bay yard',short:'San Francisco Bay',region:'CALIFORNIA · LEAVING THE CITY',chapter:1,art:'yard',x:.07,y:.65,desc:'Bea admits she hid the radio among the repair parts. “You heard that too?” She sends Sarah’s inquiry about Uncle Frank through the freight network: collect any reply at North Platte. June at Truckee is your first lead. An Ava convoy leaves in five days. First, fix the cooling fan.',purpose:'Recover and fit a cooling fan before climbing out of California.',fish:false,salvage:true,shop:true},
+ {id:'yard',name:'Bea’s East Bay yard',short:'San Francisco Bay',region:'CALIFORNIA · LEAVING THE CITY',chapter:1,art:'yard',x:.07,y:.65,desc:'Bea admits she hid the radio among the repair parts. “You heard that too?” Her freight contacts radio Sarah’s private question to Uncle Frank. A written reply will wait at North Platte if he answers. June at Truckee is your first lead. An Ava convoy leaves in five days. First, fix the cooling fan.',purpose:'Recover and fit a cooling fan before climbing out of California.',fish:false,salvage:true,shop:true},
  {id:'river',name:'Truckee river camp',short:'Truckee',region:'CALIFORNIA · THE SIERRA',chapter:2,art:'fishing',x:.19,y:.43,desc:'June Haines runs a camp beside the Truckee River. She has a recent photograph of Sarah’s missing uncle. “He got through. Sent me a photo of his terrible new fence.” The rumor has a witness. The next stretch is dry country.',purpose:'Catch dinner or trade for food; carry fuel into Nevada.',fish:true,salvage:true,shop:true},
  {id:'desert',name:'Wells motor court',short:'Wells',region:'NEVADA · THE GREAT BASIN',chapter:3,art:'plateau',x:.34,y:.44,desc:'The vacancy sign is dead. The brass keys work. Ruth Bell trades from the old motor court. “Executive suite comes with a bucket. The executive fills it.” Restock before crossing Utah into Wyoming.',purpose:'Replenish fuel and food before the long mountain leg.',fish:false,salvage:true,shop:true},
  {id:'divide',name:'Rawlins wind shelter',short:'Rawlins',region:'WYOMING · THE HIGH COUNTRY',chapter:4,art:'camp',x:.49,y:.34,desc:'Walt Bell, Ruth’s brother, waves you behind a snow fence. Ben repairs a loose headlamp himself. Sarah lets him keep the wrench. The van is becoming something the family understands.',purpose:'Rest and check the van before descending onto the Plains.',fish:false,salvage:true,shop:true},

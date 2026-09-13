@@ -1,4 +1,4 @@
-import {filmFrame} from './film.js?v=0.7.2-canon-1';
+import {filmFrame} from './film.js?v=0.7.2-canon-2';
 // One editorial source drives the rendered film, captions and illustrated fallback.
 export const FILM_ID='run-for-it-1';
 export const FILM_DURATION=96;
