@@ -1,15 +1,15 @@
-import {RADIO_MESSAGE} from './narrative.js?v=0.8.2-account-1';
+import {RADIO_MESSAGE} from './narrative.js?v=0.8.3-cinema-1';
 const shot=(image,title,line,extra={})=>({image,title,line,...extra});
 export const ARRIVALS={river:'sierra-letter',desert:'nevada-room',divide:'ben-wrench',plains:'frank-letter',ridge:'frank-key'};
 export const SHOTS={
  'hunt-dinner':shot('meal-family','A meal nobody can switch off','Sarah passes Jack a bowl. His hands are still shaking a little. Annie leaves room for Rusty. “Does June’s stove have an account?” Ben asks. “It has a knob,” Jack says. Nobody reaches for a screen.'),
  'bea-first':shot('intro-departure','Bea first','Sarah: “Bea gets us through tonight. The rest, we ask about.”'),
  broadcast:shot('opening-radio','Ben’s handwritten broadcast',RADIO_MESSAGE),
- 'sierra-letter':shot('open-country','The first witness','June shows Sarah a recent photo of Uncle Frank beside a crooked fence. “He built that. No software could make it that bad.” Ben unfolds his radio note. Sarah checks the date twice. “He looks well.” For once, she has no next question.'),
+ 'sierra-letter':shot('open-country','The first witness','June shows Sarah a recent photo of Uncle Frank beside a crooked fence. “He built that. No software could make it that bad.” Ben unfolds his radio note. Sarah checks the date twice. “He looks well. When did you see him?”'),
  'nevada-room':shot('plaza','A room without permission','Ruth hands Sarah a brass key. Sarah looks for the room camera. “Just a smoke alarm,” Ruth says. Sarah sits down. She turns the brass key twice, testing whether it really is hers.'),
  'ben-wrench':shot('repair-family','Something that stays fixed','Ben gets the headlamp working. No service license required. Jack listens while he explains it. Ben grins for a moment, then tries to hide it. The skill belongs to him.'),
  'frank-letter':shot('market','It is really him','The courier transcribed Frank’s radio reply. It answers the private question Sarah sent through Bea. Four people and Rusty. A house held until the convoy leaves. Glenn can witness the papers; the Pruitts can assign a filter delivery. The rumor is now an agreement.'),
- 'frank-key':shot('basin','The man from the letter','Frank is older than Sarah remembers. He puts a key in her hand, then takes it back. “Evelyn finishes the papers. I just wanted you to know it’s real.” The storm is coming. One last crossing.'),
+ 'frank-key':shot('basin','The man from the letter','Frank is older than Sarah remembers. He holds out a key for her to see. “Evelyn finishes the papers. I wanted you to know it’s real.” Sarah closes the distance between them. The storm is coming. One last crossing.'),
  'desert-view':shot('plateau','Nevada has room to spare','Ben: “All this space and we rented a cupboard.” Sarah: “The cupboard had excellent connectivity.”'),
  'divide-view':shot('open-country','Over the Divide','Wyoming wind. Miles of open country. Annie falls quiet, trying to fit it all into a drawing.'),
  'plains-view':shot('prairie','The country opens up','The grain elevators have numbers painted on them. Nobody has asked the van to authenticate for an hour.'),
@@ -39,6 +39,33 @@ export const SHOTS={
  'film-scanner':shot('scanner','White light across the window','Another household. Another scan. Keep looking forward.',{film:'scanner'}),
  'film-barrier':shot('blocked','A lane closes behind you','The barrier drops. Find the road that is still open.',{film:'barrier'})
 };
+// Timed road cuts last three seconds. Full passages remain available in the
+// journal/gallery and held story scenes, including the shared dinner scene.
+const roadLines={
+ 'bea-first':'Sarah: “Bea first. We’ll ask her.”',
+ 'desert-view':'Ben: “We paid rent for a cupboard.”',
+ 'divide-view':'Annie tries to fit Wyoming into one drawing.',
+ 'plains-view':'An hour without a scanner.',
+ wonder:'Annie: “Was all this here the whole time?”',
+ night:'Sarah: “Give it a minute.”',
+ mirror:'Amber lights. Wait for the county turn.',
+ market:'A relay buys more than an account here.',
+ repair:'Jack: “Finally. No help desk.”',
+ campus:'Sarah: “The building still remembers us.”',
+ dinner:'Sarah asks for seconds.',
+ inventory:'Keys, papers, shoes. One household.',
+ seized:'The family is in the transport behind.',
+ home:'Ben: “The old wheels. He said that.”',
+ toll:'Public roads, rented back by the mile.',
+ family:'Sarah: “Take that one. I want to remember.”',
+ 'film-highway':'Keep the van moving.',
+ 'film-viaduct':'The trains stopped. The road found a way.',
+ 'film-rain':'Rain reaches the shuttered yard.',
+ 'film-overtake':'Sarah eases off. Let them pass.',
+ 'film-scanner':'Another scan. Keep looking forward.',
+ 'film-barrier':'The barrier drops. One lane is still open.'
+};
+for(const [id,line] of Object.entries(roadLines)){SHOTS[id].journal=SHOTS[id].line;SHOTS[id].line=line;}
 export function showStory(s,id,returnMode='stop'){s.story={id,returnMode,elapsed:0};s.mode='story';if(!s.reel.seen.includes(id))s.reel.seen.push(id);if(!s.reel.gallery.includes(id))s.reel.gallery.push(id);}
 export function roadShots(s,r){const ids=r.id==='opening'?['bea-first','film-highway']:r.id==='desert-road'?['desert-view','night']:r.id==='divide-road'?['film-scanner','divide-view']:r.id==='plains-road'?['plains-view','wonder']:r.id==='r1'?['film-viaduct',s.threat.identified?'mirror':'wonder']:r.id==='r2'?['market','repair']:r.id==='r3'?['film-scanner','campus']:r.id==='r4'?['film-rain',s.flags.fishDinner?'dinner':'night']:r.id==='r5'?['film-overtake',s.threat.identified?'inventory':'seized']:r.id==='r6'?['film-barrier','home']:['toll','family'];return ids.map((id,i)=>({id,at:i?17:5,shown:false}));}
 export function updateReel(s,dt){const r=s.road;if(!r)return;if(r.shot){r.shot.elapsed+=dt;if(r.shot.elapsed>=3)r.shot=null;return;}const next=r.shots?.find(x=>!x.shown&&r.elapsed>=x.at);if(next){next.shown=true;r.shot={id:next.id,elapsed:0};if(!s.reel.gallery.includes(next.id))s.reel.gallery.push(next.id);}}

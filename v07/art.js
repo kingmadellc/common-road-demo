@@ -1,11 +1,11 @@
-import {drawDeparture} from './departure.js?v=0.8.2-account-1';
-import {drawHunting} from './hunting-art.js?v=0.8.2-account-1';
-import {drawPrologue} from './prologue.js?v=0.8.2-account-1';
-import {node} from './world.js?v=0.8.2-account-1';
-import {drawRoad} from './motion.js?v=0.8.2-account-1';
-import {drawSalvage,drawFishing} from './scenes.js?v=0.8.2-account-1';
-import {filmPlayer,pauseFilms} from './video.js?v=0.8.2-account-1';
-import {SHOTS} from './journey.js?v=0.8.2-account-1';
+import {drawDeparture} from './departure.js?v=0.8.3-cinema-1';
+import {drawHunting} from './hunting-art.js?v=0.8.3-cinema-1';
+import {drawPrologue} from './prologue.js?v=0.8.3-cinema-1';
+import {node} from './world.js?v=0.8.3-cinema-1';
+import {drawRoad} from './motion.js?v=0.8.3-cinema-1';
+import {drawSalvage,drawFishing} from './scenes.js?v=0.8.3-cinema-1';
+import {filmPlayer,pauseFilms} from './video.js?v=0.8.3-cinema-1';
+import {SHOTS} from './journey.js?v=0.8.3-cinema-1';
 export const images={};
 export const sources={jackSprite:'assets/journey/jack-sprite.webp',collectorSprite:'assets/journey/collector-sprite.webp',collectorTruck:'assets/journey/collector-truck.webp',landscape:'assets/journey/road-landscape.webp',fuelYard:'assets/journey/fuel-yard.webp',catchPhoto:'assets/journey/catch.webp',yard:'assets/journey/yard.webp',cabin:'assets/journey/cabin.webp',familyPhoto:'assets/journey/family-photo.webp',dinner:'assets/journey/dinner.webp',roadside:'assets/journey/roadside.webp',collectors:'assets/journey/collectors.webp',vanBody:'assets/journey/van-body.webp',chair:'assets/pilgrimage/chair.png',road:'assets/atmosphere/road-v02.jpg',garage:'assets/atmosphere/garage-v02.jpg',camp:'assets/atmosphere/camp-v02.jpg',plateau:'assets/atmosphere/plateau-v02.jpg',van:'assets/atmosphere/van-v02.png',fishing:'assets/pilgrimage/fishing.jpg',gate:'assets/pilgrimage/gate.jpg',home:'assets/pilgrimage/home.jpg',family:'assets/pilgrimage/family.jpg'};
 for(const id of ['highway','logistics','prairie','storm','plaza','toll','campus','market','seized','basin','squad','scanner','inventory','blocked','mirror','repair-family','night-family','meal-family','transport-body','windshield'])sources[id]='assets/journey-v05/'+id+'.webp';
@@ -26,6 +26,7 @@ sources.familyPhoto=sources['open-country'];
 for(const id of ['highway','viaduct','rain','overtake','scanner','barrier'])sources['poster-'+id]='assets/journey-v05/film-'+id+'-poster.webp';
 for(const id of ['clearing','deer','hare'])sources['hunt-'+id]='assets/hunting-08/'+id+'.webp';
 for(const id of ['workshop','loading','boarding'])sources['departure-'+id]='assets/departure-081/'+id+'.webp';
+for(const id of ["sarah-waiting", "radio-package", "ben-tuning", "radio-listening", "radio-note", "family-debate", "checkout", "dismissed", "sarah-bank", "sarah-questions", "ben-window", "dawn", "decision", "stairs", "van-rear", "radio-detail", "loading-night", "boarding-night"])sources['cine-'+id]='assets/cinematic-083/'+id+'.webp';
 export const ready=Promise.all(Object.entries(sources).map(([id,url])=>new Promise(resolve=>{const im=new Image();im.onload=()=>resolve(id);im.onerror=()=>resolve(id);im.src=url;images[id]=im;})));
 export const HAZARDS=[{x:.31,y:.37,w:.17,h:.045},{x:.55,y:.56,w:.16,h:.045},{x:.28,y:.73,w:.18,h:.04}];
 export const HOME_POINTS=[{id:'key',x:.13,y:.59,label:'Turn the key'},{id:'picture',x:.46,y:.37,label:'Hang our picture'},{id:'lamp',x:.7,y:.6,label:'Light the lamp'},{id:'table',x:.20,y:.63,label:'Set the table'}];
@@ -44,12 +45,7 @@ export function render(canvas,s,ui){
  const shot=s.mode==='story'?SHOTS[s.story.id]:s.mode==='travel'&&s.road.shot?SHOTS[s.road.shot.id]:s.mode==='incident'?{image:s.incident.image||'collectors'}:null;
  if(shot)art=shot.film?'poster-'+shot.film:shot.image;
  const movie=shot?.film&&!s.settings.reducedMotion&&!ui.title?filmPlayer(shot.film,s.road?.shot?.elapsed||0,ui.paused||document.hidden):null;if(!shot?.film||s.settings.reducedMotion||ui.title)pauseFilms();
- if(shot&&images[art]?.naturalWidth&&w<h*1.2){
-  const im=images[art],k=h/im.naturalHeight,iw=im.naturalWidth*k,elapsed=s.mode==='story'?s.story.elapsed:s.road.shot?.elapsed||0;
-  if(s.settings.reducedMotion){ctx.fillStyle='#102225';ctx.fillRect(0,0,w,h);const ch=w*im.naturalHeight/im.naturalWidth;ctx.drawImage(im,0,(h-ch)/2,w,ch);}
-  else if(art==='open-country'){ctx.fillStyle='#102225';ctx.fillRect(0,0,w,h);const ch=Math.min(h,w),scale=Math.max(w/im.naturalWidth,ch/im.naturalHeight),sw=w/scale,phase=Math.min(1,elapsed/(s.mode==='story'?9:3)),focus=.49+.13*phase,sx=Math.max(0,Math.min(im.naturalWidth-sw,im.naturalWidth*focus-sw/2));ctx.drawImage(im,sx,0,sw,im.naturalHeight,0,(h-ch)/2,w,ch);}
-  else {const ranges={'night-family':[.40,.56],'meal-family':[.36,.58],'repair-family':[.38,.62],mirror:[.42,.56]};const range=ranges[art]||[.30,.57],phase=Math.min(1,elapsed/(s.mode==='story'?9:4.6)),focus=range[0]+(range[1]-range[0])*(phase*phase*(3-2*phase));ctx.drawImage(im,Math.min(0,Math.max(w-iw,w*.5-iw*focus)),0,iw,h);}
- }else cover(images[art],ui.title&&w<h*1.2?.72:.5);
+ cover(images[art],ui.title&&w<h*1.2?.72:shot?.focus??.5);
  if(movie){const k=Math.max(w/movie.videoWidth,h/movie.videoHeight);ctx.drawImage(movie,(w-movie.videoWidth*k)/2,(h-movie.videoHeight*k)/2,movie.videoWidth*k,movie.videoHeight*k);}
  const shade=ctx.createLinearGradient(0,0,0,h);shade.addColorStop(0,'#041317a6');shade.addColorStop(.35,'#04131700');shade.addColorStop(.9,'#04131700');shade.addColorStop(1,'#0413178a');ctx.fillStyle=shade;ctx.fillRect(0,0,w,h);
  ui.hits=[];

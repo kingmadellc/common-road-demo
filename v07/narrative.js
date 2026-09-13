@@ -1,7 +1,9 @@
-import {currentCompanyCopy} from './institutions.js?v=0.8.2-account-1';
+import {currentCompanyCopy} from './institutions.js?v=0.8.3-cinema-1';
 // Authoritative origin and discovery order. See Design/Signals-End-Canon.md.
 export const NARRATIVE_REVISION=4;
 export const RADIO_MESSAGE='For anyone still awake. East of the plains, the old wheels are turning. No accounts. No computers. Find the people who still fix things. Ask about Signals End.';
+// The contractor pays physical cash; a corporate wage deposit would stay frozen.
+export const DEPOT_OFFER='An independent freight contractor at a Loop depot needs help to sort damaged freight. Four hours, $60 in cash, off the books. The depot’s sign-in camera still records your face and the van’s plate.';
 export const ORIGIN='San Francisco, 2041. Nine corporations put pay, food and housing behind linked accounts. Bea smuggled a radio in with repair parts. Ben heard about Signals End after midnight. For three nights, Jack and Sarah argued over whether a simpler life could be real. On the fourth morning, Core ordered Jack to certify a machine with a broken safety cutoff. He refused. Core fired him and filed a contract charge; Index froze their joint wage wallet. Sarah still had her job, but could not use her pay. Plenty declined their groceries. Their Forma staff flat had to be surrendered by 06:00; the earliest appeal was in 72 hours. That evening Sarah made the decision: get the children and ask Bea across the Bay. Ten minutes to load the basics. They had $240 from Jack’s parts tin, an old mechanical van, and no promise that the radio was telling the truth.';
 export const initialNarrativeFlags=()=>({narrativeRevision:NARRATIVE_REVISION,radioHeard:true,contractFlag:true,accountRestricted:true});
 export function arriveNarrative(s,id){
@@ -38,7 +40,7 @@ export function migrateNarrative(s){
  // A saved incident may still carry authored copy from the older origin.
  if(s.incident?.id==='orchestration-offer'){
   s.incident.title='Good pay. Small print.';
-  s.incident.body='A Loop depot needs workers to sort damaged freight the machines rejected. Four hours could buy fuel and food. Sign-in requires a face scan and the van’s plate.';
+  s.incident.body=DEPOT_OFFER;
   for(const o of s.incident.options||[])o.label=o.id==='careful'?'Take the depot shift':'Keep driving';
  }
  if(s.incident?.collectors)s.incident.body='Civic checks household debt and relocation orders. A recovery truck blocks the exit. A recorded plate can follow you; a county road may still get you clear.';
@@ -52,6 +54,7 @@ export function migrateNarrative(s){
 function refreshCompanyCopy(s){
  const rewrite=(record,fields)=>{if(record)for(const key of fields)if(typeof record[key]==='string')record[key]=currentCompanyCopy(record[key]);};
  rewrite(s,['message']);rewrite(s.incident,['title','body']);rewrite(s.activity,['notice']);
+ if(s.incident?.id==='orchestration-offer')s.incident.body=DEPOT_OFFER;
  for(const entry of s.journal||[])if(!entry.earlierStoryDraft)rewrite(entry,['title','body']);
  return s;
 }
