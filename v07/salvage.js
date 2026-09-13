@@ -1,6 +1,6 @@
-import {PARTS,random} from './world.js?v=0.7.4-film-2';
-import {clamp,log,hurt,slots} from './state.js?v=0.7.4-film-2';
-import {resolveCollector} from './conflict.js?v=0.7.4-film-2';
+import {PARTS,random} from './world.js?v=0.7.5-names-1';
+import {clamp,log,hurt,slots} from './state.js?v=0.7.5-names-1';
+import {resolveCollector} from './conflict.js?v=0.7.5-names-1';
 export const YARD={cover:{x:.71,y:.34,w:.28,h:.39},rear:{x:.8,y:.255},front:{x:.12,y:.83},hide:{x:.76,y:.29}};
 export const layoutFor=()=>YARD;
 export const SITE_NAMES={desert:'The motor court garage',divide:'The wind shelter workshop',plains:'The old rail depot',yard:'Bea’s service yard',river:'The shuttered fuel stop',pump:'Flooded maintenance shed',freight:'Roadside freight depot',ridge:'The abandoned county workshop'};
@@ -29,5 +29,5 @@ export function updateSalvage(s,dt){const g=s.activity;if(['intercept','exit'].i
  const p=g.patrol;p.elapsed+=dt;
  if(p.state==='warning'&&p.elapsed>=12){p.state='watch';p.elapsed=0;g.notice='The front gate is blocked. They are checking the machines. Ten seconds to get out or hide.';}
  if(p.state==='watch'&&p.elapsed>=8){p.state='search';p.elapsed=0;g.notice='The officer enters the shed. Hide or leave. They are sealing this site.';}
- if(p.state==='search'){p.seen=Math.max(0,p.seen+(g.player.hiding?-dt:dt*.45));if(p.seen>=1){g.phase='intercept';g.working=null;g.notice='“Mercer household. Your return order is active.” The plate scan matched a household relocation order. Bastion wants the family back in its assigned district.';s.threat.identified=true;s.threat.heat=Math.max(1,s.threat.heat);}else if(p.elapsed>=9){s.siteMemory[s.node]={sealed:true};g.phase='exit';p.state='gone';s.threat.relief=32;g.notice='They seal the workshop and leave. You slip out with the supplies already recovered.';}}
+ if(p.state==='search'){p.seen=Math.max(0,p.seen+(g.player.hiding?-dt:dt*.45));if(p.seen>=1){g.phase='intercept';g.working=null;g.notice='“Mercer household. Your return order is active.” The plate scan matched a household relocation order. Civic wants the family back in its assigned district.';s.threat.identified=true;s.threat.heat=Math.max(1,s.threat.heat);}else if(p.elapsed>=9){s.siteMemory[s.node]={sealed:true};g.phase='exit';p.state='gone';s.threat.relief=32;g.notice='They seal the workshop and leave. You slip out with the supplies already recovered.';}}
  saveSite(s);}

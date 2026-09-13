@@ -1,4 +1,4 @@
-import {filmFrame} from './film.js?v=0.7.4-film-2';
+import {filmFrame} from './film.js?v=0.7.5-names-1';
 // One editorial source drives the rendered film, captions and illustrated fallback.
 export const FILM_ID='run-for-it-2';
 export const FILM_DURATION=108;
@@ -46,7 +46,7 @@ export function drawOpeningFrame(c,w,h,time,images,{still=false,text=true}={}){
  if(['grid','ledger','shutdown'].includes(scene.motion)){
   const px=w*(portrait?.08:.07),py=h*(portrait&&scene.motion==='shutdown'?.4:.2),ww=w*(portrait?.84:.30),hh=h*(portrait?.24:.32);
   c.fillStyle='#071417d4';c.fillRect(px,py,ww,hh);c.strokeStyle='#92b2ac55';c.lineWidth=2*scale;c.strokeRect(px,py,ww,hh);
-  c.font=`600 ${Math.max(w*.012,portrait?w*.026:0)}px Road,sans-serif`;c.fillStyle='#a9c5ba';c.textAlign='left';c.fillText('CONTINUUM',px+ww*.08,py+hh*.16);
+  c.font=`600 ${Math.max(w*.012,portrait?w*.026:0)}px Road,sans-serif`;c.fillStyle='#a9c5ba';c.textAlign='left';c.fillText('INDEX',px+ww*.08,py+hh*.16);
   const labels=scene.motion==='ledger'?['RENT','FOOD','TAX']:['HOME','WORK','HEAT'];for(let i=0;i<3;i++){const y=py+hh*(.34+i*.2),amount=scene.motion==='shutdown'?1-clamp((age-i*.42)/1.8):clamp(phase*1.6-i*.14);c.fillStyle='#e1e6d7';c.fillText(labels[i],px+ww*.08,y);c.fillStyle=scene.motion==='shutdown'?'#c88068':'#9caa77';c.fillRect(px+ww*.40,y-hh*.03,ww*.48*amount,Math.max(2,hh*.017));}
   if(scene.motion==='shutdown'&&age>2.2){c.fillStyle='#0a131acc';c.fillRect(px,py,ww,hh);c.strokeStyle='#c88068';c.lineWidth=3*scale;c.beginPath();c.moveTo(px+ww*.40,py+hh*.37);c.lineTo(px+ww*.60,py+hh*.64);c.moveTo(px+ww*.60,py+hh*.37);c.lineTo(px+ww*.40,py+hh*.64);c.stroke();}
  }

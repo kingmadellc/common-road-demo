@@ -1,3 +1,4 @@
+import {currentCompanyCopy} from './institutions.js?v=0.7.5-names-1';
 // Authoritative origin and discovery order. See Design/Signals-End-Canon.md.
 export const NARRATIVE_REVISION=2;
 export const RADIO_MESSAGE='For anyone still awake. East of the plains, the old wheels are turning. No accounts. No computers. Find the people who still fix things. Ask about Signals End.';
@@ -16,7 +17,7 @@ export function knowledge(s){
  return {stage:'rumor',title:'The voice Ben found',text:'A smuggled radio. A place called Signals End. No proof yet. Bea sent the receiver; she is the first person to ask.'};
 }
 export function migrateNarrative(s){
- if(s.flags.narrativeRevision===NARRATIVE_REVISION)return s;
+ if(s.flags.narrativeRevision===NARRATIVE_REVISION)return refreshCompanyCopy(s);
  // Narrative-only migration: no clock, supplies, cargo, choices or save key reset.
  const passed=new Set(s.visited||[]);
  s.flags.narrativeRevision=NARRATIVE_REVISION;s.flags.radioHeard=true;
@@ -26,13 +27,20 @@ export function migrateNarrative(s){
  // A saved incident may still carry authored copy from the older origin.
  if(s.incident?.id==='orchestration-offer'){
   s.incident.title='Good pay. Small print.';
-  s.incident.body='A Relay depot needs workers to sort damaged freight the machines rejected. Four hours could buy fuel and food. Sign-in requires a face scan and the van’s plate.';
+  s.incident.body='A Loop depot needs workers to sort damaged freight the machines rejected. Four hours could buy fuel and food. Sign-in requires a face scan and the van’s plate.';
   for(const o of s.incident.options||[])o.label=o.id==='careful'?'Take the depot shift':'Keep driving';
  }
- if(s.incident?.collectors)s.incident.body='Bastion Civic checks household debt and relocation orders. A recovery truck blocks the exit. A recorded plate can follow you; a county road may still get you clear.';
- if(s.activity?.phase==='intercept'&&s.mode==='salvage')s.activity.notice='“Mercer household. Your return order is active.” The plate scan matched a relocation order. Bastion wants the family back in its assigned district.';
+ if(s.incident?.collectors)s.incident.body='Civic checks household debt and relocation orders. A recovery truck blocks the exit. A recorded plate can follow you; a county road may still get you clear.';
+ if(s.activity?.phase==='intercept'&&s.mode==='salvage')s.activity.notice='“Mercer household. Your return order is active.” The plate scan matched a relocation order. Civic wants the family back in its assigned district.';
  for(const entry of s.journal)entry.earlierStoryDraft=true;
  s.journal.unshift({hour:s.hour,title:'The story so far',body:ORIGIN+' '+knowledge(s).text});
  if(!s.reel.gallery.includes('broadcast'))s.reel.gallery.unshift('broadcast');
+ return refreshCompanyCopy(s);
+}
+
+function refreshCompanyCopy(s){
+ const rewrite=(record,fields)=>{if(record)for(const key of fields)if(typeof record[key]==='string')record[key]=currentCompanyCopy(record[key]);};
+ rewrite(s,['message']);rewrite(s.incident,['title','body']);rewrite(s.activity,['notice']);
+ for(const entry of s.journal||[])if(!entry.earlierStoryDraft)rewrite(entry,['title','body']);
  return s;
 }
