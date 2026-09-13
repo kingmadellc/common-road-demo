@@ -1,11 +1,11 @@
 {
   "version": "0.7.1",
-  "assetRevision": "opening-1",
+  "assetRevision": "analog-1",
   "title": "Signals End",
   "sourceRepository": "https://github.com/kingmadellc/common-road",
-  "sourceCommit": "bdf406cf79724966ca21def4fe2515a6419ea9b4",
-  "builtAt": "2026-09-13T04:29:07.417Z",
-  "bytes": 182960126,
+  "sourceCommit": "f982445fc1973c889dbe5cbdb5539e2090a4b92d",
+  "builtAt": "2026-09-13T05:12:26.824Z",
+  "bytes": 182959970,
   "files": {
     "assets/atmosphere/camp-v02.jpg": {
       "bytes": 715858,
@@ -568,8 +568,8 @@
       "sha256": "85287967f1ae7cb00ee578db38932ee86b2b8aa5b6181d2f210a553e4d52b33a"
     },
     "index.html": {
-      "bytes": 2149,
-      "sha256": "ad76115ef3f36259b068da150f285460feec11a20a2888e1b66ffb1662337aff"
+      "bytes": 2083,
+      "sha256": "1f40e358ad76e8141ad139f5b78d3e402eb4be70168fdf2353e031a9180532bf"
     },
     "manifest.webmanifest": {
       "bytes": 570,
@@ -600,8 +600,8 @@
       "sha256": "8380ecc6617a63f002d75e10c19359d8c1347db3f82900c4f7d19a81ab1aad4b"
     },
     "sw.js": {
-      "bytes": 9739,
-      "sha256": "00fe68deb1c9ff115c0ba518ef70793c53af6786c69420f6a4e126ae72228514"
+      "bytes": 9738,
+      "sha256": "7f9efd1ace2deccfdbcdb7b97b7c3473ba83a831e99bb6ca8f3abee50e1ca5bb"
     },
     "v02/assets/atmosphere/camp-v02.jpg": {
       "bytes": 715858,
@@ -908,16 +908,16 @@
       "sha256": "44e2fa3140b0eefd23c42b34cc59aa460633f5e12f7485621cf9902e608be8a4"
     },
     "v07/app.js": {
-      "bytes": 51391,
-      "sha256": "a0bcb71513ed0d7136c5491fcfa335126f82c20d8af0cf6e335d6e692bce71e9"
+      "bytes": 51309,
+      "sha256": "686d3625feb3a5859e6f38cce18d0ca9a5461e56adf2b911721e8b519b1fa5ef"
     },
     "v07/art.js": {
       "bytes": 11624,
       "sha256": "6d2e1e9cd107f4c9ff933ccf0847ad8f85666cb68a1a6de580fb5cfefcfdc962"
     },
     "v07/brand.js": {
-      "bytes": 1874,
-      "sha256": "d79041911bce2a6890ff1ad0bb1405f61cdf11ec3e1ac0a08f08ed9bf7c497bf"
+      "bytes": 1867,
+      "sha256": "a293550a035aa701d205c11c9e754d0a1d7d4db711edbe0e845257f7c6127627"
     },
     "v07/conflict.js": {
       "bytes": 7032,
