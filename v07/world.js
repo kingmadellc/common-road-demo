@@ -1,4 +1,4 @@
-import {knowledge} from './narrative.js?v=0.7.6-origin-1';
+import {knowledge} from './narrative.js?v=0.7.6-origin-2';
 export const VERSION='0.7.0';
 export const SAVE_KEY='signals-end-journey-v7';
 export const FAMILY=[

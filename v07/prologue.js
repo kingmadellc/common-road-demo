@@ -1,4 +1,4 @@
-import {FILM_ID,FILM_DURATION,FILM_SCENES,filmCaption,filmSceneAt,drawOpeningFrame} from './opening-film.js?v=0.7.6-origin-1';
+import {FILM_ID,FILM_DURATION,FILM_SCENES,filmCaption,filmSceneAt,drawOpeningFrame} from './opening-film.js?v=0.7.6-origin-2';
 export const INTRO_KEY='signals-end-opening-history';
 export const BEATS=FILM_SCENES;
 export function readOpeningHistory(storage){try{const value=JSON.parse(storage.getItem(INTRO_KEY));return [FILM_ID,'run-for-it-2','run-for-it-1'].includes(value?.id)&&['started','skipped','watched'].includes(value.status)?value:null;}catch{return null;}}

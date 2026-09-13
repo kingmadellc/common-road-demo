@@ -1,4 +1,4 @@
-import {filmFrame} from './film.js?v=0.7.6-origin-1';
+import {filmFrame} from './film.js?v=0.7.6-origin-2';
 // One editorial source drives the rendered film, captions and illustrated fallback.
 export const FILM_ID='run-for-it-3';
 export const FILM_DURATION=116;
@@ -9,7 +9,7 @@ export const FILM_SCENES=[
   "id": "city",
   "image": "intro-city",
   "focus": 0.62,
-  "line": "San Francisco, 2041.\nNine companies kept the city running.",
+  "line": "San Francisco, 2041.\nNine companies run the city.\nWithout their services, you can’t live.",
   "motion": "rain"
  },
  {

@@ -1,6 +1,6 @@
-import {PARTS,random} from './world.js?v=0.7.6-origin-1';
-import {clamp,log,hurt,slots} from './state.js?v=0.7.6-origin-1';
-import {resolveCollector} from './conflict.js?v=0.7.6-origin-1';
+import {PARTS,random} from './world.js?v=0.7.6-origin-2';
+import {clamp,log,hurt,slots} from './state.js?v=0.7.6-origin-2';
+import {resolveCollector} from './conflict.js?v=0.7.6-origin-2';
 export const YARD={cover:{x:.71,y:.34,w:.28,h:.39},rear:{x:.8,y:.255},front:{x:.12,y:.83},hide:{x:.76,y:.29}};
 export const layoutFor=()=>YARD;
 export const SITE_NAMES={desert:'The motor court garage',divide:'The wind shelter workshop',plains:'The old rail depot',yard:'Bea’s service yard',river:'The shuttered fuel stop',pump:'Flooded maintenance shed',freight:'Roadside freight depot',ridge:'The abandoned county workshop'};

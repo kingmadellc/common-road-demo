@@ -1,5 +1,5 @@
-import {VAN_LENGTH,WHEEL_RADIUS} from './drive.js?v=0.7.6-origin-1';
-import {landscapeFor} from './journey.js?v=0.7.6-origin-1';
+import {VAN_LENGTH,WHEEL_RADIUS} from './drive.js?v=0.7.6-origin-2';
+import {landscapeFor} from './journey.js?v=0.7.6-origin-2';
 const TAU=Math.PI*2,mod=(x,m)=>(x%m+m)%m;
 export function drawRoad(c,w,h,s,ui,images){
  const r=s.road,moving=s.mode==='travel'&&!s.settings.reducedMotion,t=s.settings.reducedMotion?0:r?.elapsed||0,width=Math.min(w*.7,h*1.12,730),ppm=width/VAN_LENGTH,distance=s.settings.reducedMotion?0:(r?.meters||0)*ppm;
