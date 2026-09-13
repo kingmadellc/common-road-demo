@@ -1,4 +1,4 @@
-import {drawRoad,drawVan} from './motion.js?v=0.7.1-opening-1';
+import {drawRoad,drawVan} from './motion.js?v=0.7.2-canon-1';
 export const FILMS=['highway','viaduct','rain','overtake','scanner','barrier'];
 const mod=(x,m)=>(x%m+m)%m;
 function cover(c,im,w,h,zoom=1,x=.5,y=.5){if(!im?.naturalWidth)return;const k=Math.max(w/im.naturalWidth,h/im.naturalHeight)*zoom;c.drawImage(im,w*.5-im.naturalWidth*k*x,h*.5-im.naturalHeight*k*y,im.naturalWidth*k,im.naturalHeight*k);}

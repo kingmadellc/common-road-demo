@@ -1,11 +1,11 @@
 {
-  "version": "0.7.1",
-  "assetRevision": "van-2",
+  "version": "0.7.2",
+  "assetRevision": "canon-1",
   "title": "Signals End",
   "sourceRepository": "https://github.com/kingmadellc/common-road",
-  "sourceCommit": "1396db2208297fc91748b33f4b96a622550f35f3",
-  "builtAt": "2026-09-13T05:42:19.072Z",
-  "bytes": 183609053,
+  "sourceCommit": "f184b0f892097c3eb210a4ee1a529b60b8c9822e",
+  "builtAt": "2026-09-13T06:31:41.921Z",
+  "bytes": 183616247,
   "files": {
     "assets/atmosphere/camp-v02.jpg": {
       "bytes": 715858,
@@ -572,12 +572,12 @@
       "sha256": "85287967f1ae7cb00ee578db38932ee86b2b8aa5b6181d2f210a553e4d52b33a"
     },
     "index.html": {
-      "bytes": 2080,
-      "sha256": "0b0f7fa3dfe29b2aac298de501a7b356246e4eefda8352977cf25916389d5d8d"
+      "bytes": 2082,
+      "sha256": "11bf5f49dd343cd52d2b7d21da6ebd925b632934abb280563465a3c6d2bca4cd"
     },
     "manifest.webmanifest": {
-      "bytes": 570,
-      "sha256": "019ff31027cf3cf09125c7e7a7832cfbc7800e313e56199b38aecf24e94dbc00"
+      "bytes": 581,
+      "sha256": "fb2168a020b38e57ce3d27e1b6f5745f54825009cfdff3cda275d260b5c0c133"
     },
     "names/index.html": {
       "bytes": 474,
@@ -604,8 +604,8 @@
       "sha256": "8380ecc6617a63f002d75e10c19359d8c1347db3f82900c4f7d19a81ab1aad4b"
     },
     "sw.js": {
-      "bytes": 9768,
-      "sha256": "c092c9d714cdebb0043bceb7e004a589d31711497d663429b5b2b406e0fd2c00"
+      "bytes": 9791,
+      "sha256": "47245ef59c31fa2ae4882477c44a1820f784773abbaa68c817853027dd7c0ee5"
     },
     "v02/assets/atmosphere/camp-v02.jpg": {
       "bytes": 715858,
@@ -912,32 +912,32 @@
       "sha256": "44e2fa3140b0eefd23c42b34cc59aa460633f5e12f7485621cf9902e608be8a4"
     },
     "v07/app.js": {
-      "bytes": 51297,
-      "sha256": "ecbd8ca09e76a849864a45564a630f0961ace4e1c6499cd611bacfb671696b59"
+      "bytes": 51896,
+      "sha256": "85d90b097d15ee379bf8c7093c9c2b94fa51170e104a71aa04ff2a0cf9f18cb1"
     },
     "v07/art.js": {
-      "bytes": 11679,
-      "sha256": "04c23a0d0ed8f0921d998ea95f729070b16c52cd273e591236cab6aa21fe4569"
+      "bytes": 11671,
+      "sha256": "1444f0007390e6cd06c3e5dd86edd54bc5b6a5bb372d77e451be4d7c6d2bb52a"
     },
     "v07/brand.js": {
       "bytes": 1867,
       "sha256": "a293550a035aa701d205c11c9e754d0a1d7d4db711edbe0e845257f7c6127627"
     },
     "v07/conflict.js": {
-      "bytes": 7032,
-      "sha256": "c90cb7cba94df949812d82eb2cdba847fe2f489ac4ace7d1d7a0d9b223e3f800"
+      "bytes": 8141,
+      "sha256": "4db00c7996384100fa9c9a8a777b5059ce671c6e2d92e8b27052cfadab99878e"
     },
     "v07/drive.js": {
       "bytes": 424,
       "sha256": "e0c9a538d3fb4f29dc4bcd2cbf24b9b4a20d5523eed3fdf0715054db57cf8296"
     },
     "v07/film.js": {
-      "bytes": 4482,
-      "sha256": "7f9f200ec668ebb0cd7aeb7083254ccbd5a330afe10667a9d5f8f6a92c5ddfd3"
+      "bytes": 4480,
+      "sha256": "a14cbc782dbc2198ad620d71837588b1375948c1381f5fbf9eab8e405c73d82c"
     },
     "v07/fishing.js": {
-      "bytes": 7455,
-      "sha256": "660bad094dfb190341ddb34b46f08929fdd7693600439057f19fea5662b2f33c"
+      "bytes": 7453,
+      "sha256": "88e9f1458a1124d928501a790320d85371f5873db6f85b67c1c5e230536100f8"
     },
     "v07/identity.css": {
       "bytes": 4177,
@@ -948,48 +948,52 @@
       "sha256": "4d053fe039091274b789bc4df8121df90b26518dd9be770eb933595aac2170d0"
     },
     "v07/journey.js": {
-      "bytes": 6673,
-      "sha256": "94064e56a72628addb396d5c2b730556af6a4130e9dba4072d9745c34dfd61c3"
+      "bytes": 7322,
+      "sha256": "7626f306588c3e41fca88d48597b705297cc56d25c4cea9ebb69b3a796f07b59"
     },
     "v07/motion.js": {
-      "bytes": 4957,
-      "sha256": "e98b0f7fcba6c837c66e48853300e60f972326d5ca7aa4ae69177556883596af"
+      "bytes": 4953,
+      "sha256": "09471cb0e9394626cad560cea82a32b4031a6054c1f5d6be439d69a0088d8541"
+    },
+    "v07/narrative.js": {
+      "bytes": 2979,
+      "sha256": "a3d0acc1a3f74bf55ba7481fc29611296dc6b063456cd81fa3c917cd62fb8195"
     },
     "v07/opening-film.js": {
-      "bytes": 7009,
-      "sha256": "3f40bc8238258e75dcd41f81766ce1839daf0adee6b13d86222652f72b2fbaf9"
+      "bytes": 7007,
+      "sha256": "641d6da29299d76d5f7655a088da797e29bbf49d8a945ddb78d2904dafbbb556"
     },
     "v07/opening-player.js": {
-      "bytes": 5866,
-      "sha256": "a58ab1620654a0419c8477d48c85b12ae231dd61b20f09d278fc8e8b4c1e75c4"
+      "bytes": 5868,
+      "sha256": "7b8eb3065b2ae92359924d68a2571ce2d40e2ce2b210b0f5fed078950a03c13d"
     },
     "v07/opening.css": {
       "bytes": 2968,
       "sha256": "c51a36a6d7d4b652ce8b03b0e89a04e53de4ae0c1896e8c7bfaf6360f691a644"
     },
     "v07/prologue.js": {
-      "bytes": 1770,
-      "sha256": "eac9d6bf833fa0e0578d5de88b92d2cb3309db0c1a892ac95d5fe9f1f233de14"
+      "bytes": 1772,
+      "sha256": "bccaf316606a5a01b5a140f16d02a03cfc97d79e9e77ba3c4021483497d2ed6b"
     },
     "v07/salvage.js": {
-      "bytes": 6930,
-      "sha256": "0b31dcb4dc526d681783bbfe7163b94f7e6ed742ed98333dd6f370a70bc82193"
+      "bytes": 7020,
+      "sha256": "550579abe649cc30a2862ea6b5929d64fdcd36f65d84be5e84e524eb66490d95"
     },
     "v07/scenes.js": {
-      "bytes": 6477,
-      "sha256": "b5d08e50f93413c170e9ada9697cb38998ff121478e68f9fc78156bf79131dbf"
+      "bytes": 6473,
+      "sha256": "29946ed1b35703fc19ef66c6de9c5d60966bb6faa17c040bfa7566a1f1dc437c"
     },
     "v07/sim.js": {
-      "bytes": 19913,
-      "sha256": "1221721d7502177ed22bfaee52dea5ab3e3644003512cdef5f07955a0a11f828"
+      "bytes": 20974,
+      "sha256": "729a11c60850d5e11ded3e96bd7702c31f3b39cd89811988df5fd3fe32b0fbb2"
     },
     "v07/sound.js": {
       "bytes": 2009,
       "sha256": "5a72e3cdd7d9cda16303231bea8a05ed16a167b1c4d8119778c58283e8d65567"
     },
     "v07/state.js": {
-      "bytes": 1688,
-      "sha256": "6abf2d9811e0646e3b49455c785d581382d414a3b8915e601302a82901d5e7f8"
+      "bytes": 1725,
+      "sha256": "fe11407ad36a206eacf31177acc88eb28686becec16062ca0707b3b55eb2321b"
     },
     "v07/style.css": {
       "bytes": 16203,
@@ -1000,11 +1004,11 @@
       "sha256": "8065e2abe998a65b1a1c3684535690f68722d6f05ec435483930cc027e5d9545"
     },
     "v07/world.js": {
-      "bytes": 12115,
-      "sha256": "62c1593ce757002fa5d3e03579fe2d8a161adddac8e4b09cf606a4ffc677b6e0"
+      "bytes": 12767,
+      "sha256": "351bd6c6086f5c6d8eeea177351379803b3a7e4b8c36907cea8626252739a078"
     }
   },
-  "validation": "96-second illustrated motion-graphics opening in landscape and portrait, minimal copy, original soundtrack. Real muted inline playback, Skip, remembered viewing, saved-game preservation, accessibility and media failure checks in Chromium/WebKit. Both eastbound campaign paths remain playable; v7 save schema stays 0.7.0. Physical-device and human engagement testing remain pending",
+  "validation": "Orchestration/radio canon integrated across the playable journey, staged evidence, family, encounters and arrival. Narrative-only migration preserves v7 game progress. 128 simulation tests, both complete desktop/touch WebKit journeys, and dedicated narrative UI checks. Existing 96-second illustrated film is unchanged; its revised 92-second script awaits production. Save schema remains 0.7.0. Physical-device and real-player engagement testing remain pending",
   "nativeAppleBuild": false,
   "physicalAppleDeviceTested": false,
   "humanFunTested": false

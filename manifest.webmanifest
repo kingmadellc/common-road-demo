@@ -1,5 +1,5 @@
 {
-  "name": "Signals End \u2014 A Survival Trail",
+  "name": "Signals End",
   "short_name": "Signals End",
   "start_url": "./",
   "display": "standalone",
@@ -19,5 +19,5 @@
       "purpose": "any maskable"
     }
   ],
-  "description": "A survival pilgrimage toward a place of your own."
+  "description": "Escape the orchestration queues. Follow a forbidden broadcast toward an analog life."
 }
