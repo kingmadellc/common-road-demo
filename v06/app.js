@@ -1,15 +1,15 @@
-import {BRAND} from './brand.js?v=0.6.0-candid-04';
-import {BEATS,INTRO_KEY,newPrologue,progressPrologue,movePrologue,restorePrologue,prologueState} from './prologue.js?v=0.6.0-candid-04';
-import {VERSION,SAVE_KEY,FAMILY,NODES,ROADS,PACKING,PARTS,node,roads} from './world.js?v=0.6.0-candid-04';
-import {fresh,load,save,act,update,summary,slots,clamp} from './sim.js?v=0.6.0-candid-04';
-import {render,ready,HAZARDS,HOME_POINTS,sources} from './art.js?v=0.6.0-candid-04';
-import {castEndpoint} from './fishing.js?v=0.6.0-candid-04';
-import {yardView} from './scenes.js?v=0.6.0-candid-04';
-import {SITE_NAMES} from './salvage.js?v=0.6.0-candid-04';
-import {collectorOptions,incidentOptions,threatLabel} from './conflict.js?v=0.6.0-candid-04';
-import {hurt,shopStock,OFFERS} from './state.js?v=0.6.0-candid-04';
-import {SHOTS} from './journey.js?v=0.6.0-candid-04';
-import {enableAudio,soundFrame} from './sound.js?v=0.6.0-candid-04';
+import {BRAND} from './brand.js?v=0.6.0-signals-end-02';
+import {BEATS,INTRO_KEY,newPrologue,progressPrologue,movePrologue,restorePrologue,prologueState} from './prologue.js?v=0.6.0-signals-end-02';
+import {VERSION,SAVE_KEY,FAMILY,NODES,ROADS,PACKING,PARTS,node,roads} from './world.js?v=0.6.0-signals-end-02';
+import {fresh,load,save,act,update,summary,slots,clamp} from './sim.js?v=0.6.0-signals-end-02';
+import {render,ready,HAZARDS,HOME_POINTS,sources} from './art.js?v=0.6.0-signals-end-02';
+import {castEndpoint} from './fishing.js?v=0.6.0-signals-end-02';
+import {yardView} from './scenes.js?v=0.6.0-signals-end-02';
+import {SITE_NAMES} from './salvage.js?v=0.6.0-signals-end-02';
+import {collectorOptions,incidentOptions,threatLabel} from './conflict.js?v=0.6.0-signals-end-02';
+import {hurt,shopStock,OFFERS} from './state.js?v=0.6.0-signals-end-02';
+import {SHOTS} from './journey.js?v=0.6.0-signals-end-02';
+import {enableAudio,soundFrame} from './sound.js?v=0.6.0-signals-end-02';
 const $=id=>document.getElementById(id),canvas=$('scene');
 let saved=load(localStorage),s=saved||fresh(Math.floor(Math.random()*100000)),manual=false,last=performance.now(),saveClock=0,panelKey='',statusKey='',resourceKey='';
 const ui={grip:null,title:true,paused:false,dialog:null,hits:[],drag:null,wire:null,cast:null,padCursor:null,prologue:null};
@@ -97,7 +97,7 @@ function drawUI(force=false){
  document.body.dataset.mode=ui.prologue?'prologue':ui.title?'title':s.mode;document.body.classList.toggle('cinematic',!!ui.prologue);document.body.classList.toggle('title',ui.title||!!ui.prologue);if(ui.prologue){$('opening').hidden=false;drawOpeningFilm(force);return;}document.body.classList.toggle('reduced',s.settings.reducedMotion);
  if($('grip')){const g=s.activity,show=!ui.title&&s.mode==='fishing'&&['aim','wait','bite','fight'].includes(g?.phase);$('grip').hidden=!show; if(show){$('grip').textContent=g.phase==='aim'?(s.settings.castMode==='pull'?'PULL BACK TO CAST':'TAP A RISE TO CAST'):g.phase==='bite'?'STRIKE':g.phase==='fight'?(g.reel?'REELING · SLIDE TO ANGLE':'HOLD TO REEL'):'WAIT FOR THE BITE';$('grip').classList.toggle('strike',g.phase==='bite');}}
  document.body.classList.toggle('title',ui.title);$('opening').hidden=!ui.title;
- if(ui.title){const key='title'+!!saved+!!oldSave;if(force||panelKey!==key){$('opening').innerHTML=`<div class="label">A MODERN SURVIVAL TRAIL</div><h1 class="title-wordmark"><img src="${BRAND.mark}" alt="${BRAND.title}"></h1><p class="title-tagline">${BRAND.tagline}</p><p class="title-deck">Four people. One dog. A van too old to snitch.<br>Forty-eight hours to a place of your own.</p><div class="buttons">${saved?button('resume',undefined,'Continue the journey','','primary'):oldSave?button('importV5',undefined,'Continue your v0.5 journey','Copies your save into this edition.','primary'):''}${button('new',undefined,saved?'Start fresh':'Start the story','',saved||oldSave?'':'primary','id="start"')}</div><div class="title-extras">${button('replayIntro',undefined,'Watch the opening') }<a href="names/">Names & wordmarks ↗</a></div><div class="legacy">PLAYTEST 06 · WORKING TITLE<br><a href="v05/">Earlier edition & original v0.5 save</a></div>`;panelKey=key;}return;}
+ if(ui.title){const key='title'+!!saved+!!oldSave;if(force||panelKey!==key){$('opening').innerHTML=`<div class="label">A MODERN SURVIVAL TRAIL</div><h1 class="title-wordmark${BRAND.mark?'':' title-type-pending'}">${BRAND.mark?`<img src="${BRAND.mark}" alt="${BRAND.title}">`:`<span>SIGNALS</span><span>END</span>`}</h1><p class="title-tagline">${BRAND.tagline}</p><p class="title-deck">Four people. One dog. A van too old to snitch.<br>Forty-eight hours to a place of your own.</p><div class="buttons">${saved?button('resume',undefined,'Continue the journey','','primary'):oldSave?button('importV5',undefined,'Continue your v0.5 journey','Copies your save into this edition.','primary'):''}${button('new',undefined,saved?'Start fresh':'Start the story','',saved||oldSave?'':'primary','id="start"')}</div><div class="title-extras">${button('replayIntro',undefined,'Watch the opening') }<a href="brand/">Five identity directions ↗</a></div><div class="legacy">PLAYTEST 06 · IDENTITY IN DEVELOPMENT<br><a href="v05/">Earlier edition & original v0.5 save</a></div>`;panelKey=key;}return;}
  const res=[['FUEL',count(s.fuel),'/ 50',s.fuel<12],['FOOD',count(s.meals*8),'hours',s.meals<1],['VAN',Math.round(s.condition),'%',s.condition<35],['FAMILY',hurt(s)?'Hurt':s.meals<.1?'Hungry':s.energy<25?'Weary':'Steady','',s.health<50||s.energy<25]];
  const rk=JSON.stringify(res);if(rk!==resourceKey){$('resources').innerHTML=res.map(([label,v,u,warn])=>`<div class="resource ${warn?'warn':''}"><span>${label}</span><strong>${v}</strong><small>${u}</small></div>`).join('');resourceKey=rk;}
  const g=s.activity;const key=JSON.stringify([s.mode,s.node,g?.phase,g?.selected,g?.connections,g?.notice,g?.catch,g?.working?.id,!!g?.player?.target,g?.player?.hiding,g?.patrol?.state,s.road?.shot?.id,s.story?.id,s.settings,s.packed,s.parts,s.cargo,s.sponsor,s.home,s.flags,s.cash,Math.floor(s.hour),s.threat.permitUsed,s.threat.heat,ui.wire?.index]);
