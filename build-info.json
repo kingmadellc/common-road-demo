@@ -1,10 +1,10 @@
 {
   "version": "0.7.2",
-  "assetRevision": "canon-2",
+  "assetRevision": "canon-3",
   "title": "Signals End",
   "sourceRepository": "https://github.com/kingmadellc/common-road",
-  "sourceCommit": "832fb10cea696d932d016c712078c10e9694bb25",
-  "builtAt": "2026-09-13T06:37:00.935Z",
+  "sourceCommit": "ed11d9a6819e23a14ff0474f4cfa6796a382fd0a",
+  "builtAt": "2026-09-13T06:40:53.838Z",
   "bytes": 183616497,
   "files": {
     "assets/atmosphere/camp-v02.jpg": {
@@ -573,7 +573,7 @@
     },
     "index.html": {
       "bytes": 2082,
-      "sha256": "561b5b2f91cdf3904ea9ba864aef5f368a33d86dd0dd5d8a39370f196356cc4c"
+      "sha256": "27d359cdb2c8fd65bfc145017b46372e09e38729d048c055fe9b94b3a2e7f9ba"
     },
     "manifest.webmanifest": {
       "bytes": 581,
@@ -605,7 +605,7 @@
     },
     "sw.js": {
       "bytes": 9791,
-      "sha256": "1b5aa02c968bb600d4a0a3a8479d550357abf68bb2bad9cf53c8347069bd82d0"
+      "sha256": "8ab1108151c374421c8d5e6ff23347d57da926573df844c0b70407d97d6aa6a7"
     },
     "v02/assets/atmosphere/camp-v02.jpg": {
       "bytes": 715858,
@@ -913,7 +913,7 @@
     },
     "v07/app.js": {
       "bytes": 52102,
-      "sha256": "2e78bcb53c3fa0aea8d9c1fc1130ee3277d6859c7a411870e39705e86c40f969"
+      "sha256": "281e942a4f4178a0275104e4941c01b28fd3b8d395b681256dd1035a4cc59342"
     },
     "v07/art.js": {
       "bytes": 11671,
@@ -985,7 +985,7 @@
     },
     "v07/sim.js": {
       "bytes": 20974,
-      "sha256": "269c9898879c2cce18d61b9a272d387c6512243efce84e8a3396833240ab149d"
+      "sha256": "ff91680578fd52bd4068685be7170396d95367f35134a1f51ba42429739e6fe8"
     },
     "v07/sound.js": {
       "bytes": 2009,
@@ -1008,7 +1008,7 @@
       "sha256": "43f144b25ac9e2adb108c6ff8a59cb98325ee0ca8ad7d9cbce92eea735a047fc"
     }
   },
-  "validation": "Orchestration/radio canon integrated across the playable journey, staged evidence, family, encounters and arrival. Narrative-only migration preserves v7 game progress. 128 simulation tests, both complete desktop/touch WebKit journeys, and dedicated narrative UI checks. Existing 96-second illustrated film is unchanged; its revised 92-second script awaits production. Save schema remains 0.7.0. Physical-device and real-player engagement testing remain pending",
+  "validation": "Orchestration/radio canon integrated across the playable journey, staged evidence, family, encounters and arrival. Narrative-only migration preserves v7 game progress. 129 simulation tests, both complete desktop/touch WebKit journeys, and dedicated narrative UI checks. Existing 96-second illustrated film is unchanged; its revised 92-second script awaits production. Save schema remains 0.7.0. Physical-device and real-player engagement testing remain pending",
   "nativeAppleBuild": false,
   "physicalAppleDeviceTested": false,
   "humanFunTested": false

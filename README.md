@@ -12,4 +12,4 @@ The current opening remains the earlier 96-second illustrated motion-graphics fi
 
 Touch first, with controller and keyboard support. New v0.7 saves remain separate from v0.6. This is a browser playtest, not a native Apple release or evidence of human-tested fun.
 
-Validation covers both complete admission paths, 128 simulation tests, touch play, staged story knowledge, paid and declined orchestration choices, and save migration. Build provenance is in build-info.json. The full source is private; this repository contains the public playable payload.
+Validation covers both complete admission paths, 129 simulation tests, touch play, staged story knowledge, paid and declined orchestration choices, and save migration. Build provenance is in build-info.json. The full source is private; this repository contains the public playable payload.
