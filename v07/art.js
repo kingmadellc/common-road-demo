@@ -1,4 +1,4 @@
-import {drawHunting} from './hunting-art.js?v=0.8.0-hunt-1';
+import {drawHunting} from './hunting-art.js?v=0.8.0-scale-1';
 import {drawPrologue} from './prologue.js?v=0.8.0-hunt-1';
 import {node} from './world.js?v=0.8.0-hunt-1';
 import {drawRoad} from './motion.js?v=0.8.0-hunt-1';

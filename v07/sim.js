@@ -1,4 +1,4 @@
-import {startHunting,huntingAction,updateHunting,migrateHunting} from './hunting.js?v=0.8.0-hunt-1';
+import {startHunting,huntingAction,updateHunting,migrateHunting} from './hunting.js?v=0.8.0-scale-1';
 import {VERSION,SAVE_KEY,PACKING,PARTS,ROADS,CAMPAIGN,objective,admission,node,random,siteItems} from './world.js?v=0.8.0-hunt-1';
 import {startFishing,fishingAction,updateFishing} from './fishing.js?v=0.8.0-hunt-1';
 import {startSalvage,salvageAction,updateSalvage,saveSite} from './salvage.js?v=0.8.0-hunt-1';

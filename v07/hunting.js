@@ -21,7 +21,12 @@ export function startHunting(s){
  if(s.activity.phase==='field')s.hunting.outings++;
  placeAnimals(s);
 }
-export function animalSize(an,aspect=1.5){const width=Math.min(an.id==='deer'?.26:.17,(an.id==='deer'?.40:.25)/aspect);return {width,height:width*aspect,rx:width*.28,ry:width*aspect*.14};}
+export function animalSize(an,aspect=1.5){
+ // One scene scale keeps the species in proportion as the viewport changes.
+ // The nearer jackrabbit is still only a third of the doe's full silhouette.
+ const deerWidth=Math.min(.24,.34/aspect),width=deerWidth*(an.id==='deer'?1:.33);
+ return {width,height:width*aspect,rx:width*.28,ry:width*aspect*.14};
+}
 export function placeAnimals(s){
  const g=s.activity,t=g.elapsed,offset=(s.seed%13)*.11;
  g.animals=Object.entries(HUNT_ANIMALS).filter(([id])=>!s.hunting.taken.includes(id)).map(([id,p])=>{
