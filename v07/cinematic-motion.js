@@ -1,3 +1,4 @@
+import {drawService} from './service-marks.js?v=0.8.4-apps-1';
 // Fixed photographic framing. Motion belongs to objects/light, never a zoomed still.
 const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
 export function fixedShot(c,im,w,h,focus=.5){
@@ -36,16 +37,16 @@ export function sceneMotion(c,w,h,age,kind,frame,{still=false,region}={}){
 }
 
 // A clean modern service screen, visibly distinct from the Mercers' later joint wallet.
-export function drawCheckoutDenial(c,w,h,age,{still=false,brand='Index'}={}){
+export function drawCheckoutDenial(c,w,h,age,{still=false,brand='Food'}={}){
  const portrait=h>w,ww=w*(portrait?.88:.43),hh=Math.min(h*.60,ww*1.12),x=portrait?(w-ww)/2:w*.065,y=h*(portrait?.23:.16),p=ww*.075;
  c.save();c.textAlign='left';c.textBaseline='top';c.shadowColor='#0008';c.shadowBlur=ww*.09;
  c.fillStyle='#111923fa';c.beginPath();c.roundRect(x,y,ww,hh,ww*.037);c.fill();c.shadowBlur=0;c.strokeStyle='#547080';c.lineWidth=Math.max(1,w/1500);c.stroke();
  const font=(size,weight=500)=>{c.font=`${weight} ${ww*size}px Road,sans-serif`;};
- c.fillStyle='#f7f9fc';font(.055,700);c.fillText(brand,x+p,y+p);
+ c.fillStyle='#f7f9fc';font(.055,700);drawService(c,"food",x+p,y+p,ww*.07);c.fillText(brand,x+p+ww*.10,y+p);
  c.fillStyle='#8dabc1';font(.029);c.fillText('CHECKOUT · VISITOR ACCOUNT',x+p,y+hh*.18);
  const active=still||age>1.05;
  c.fillStyle=active?'#ffafa2':'#a9cfff';font(.079,650);c.fillText(active?'Payment declined':'Checking access…',x+p,y+hh*.28);
- c.fillStyle='#d6e0e9';font(.041);c.fillText(active?'Your account is restricted.':'Connecting to your account.',x+p,y+hh*.40);
+ c.fillStyle='#d6e0e9';font(.041);c.fillText(active?'Cash has restricted this account.':'Connecting to your account.',x+p,y+hh*.40);
  c.fillStyle='#7995a9';c.fillRect(x+p,y+hh*.50,ww-2*p,1);
  c.fillStyle='#a8bdcc';font(.032);c.fillText('Available payment methods',x+p,y+hh*.55);
  c.fillStyle=active?'#ffafa2':'#b8cad9';font(.047,650);c.fillText(active?'None available':'Verifying…',x+p,y+hh*.63);

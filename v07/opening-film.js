@@ -1,6 +1,6 @@
-import {fixedShot,sceneMotion,drawCheckoutDenial,drawQuestionPaper} from './cinematic-motion.js?v=0.8.3-cinema-1';
+import {fixedShot,sceneMotion,drawCheckoutDenial,drawQuestionPaper} from './cinematic-motion.js?v=0.8.4-apps-1';
 // One editorial source drives the rendered film, captions and illustrated fallback.
-export const FILM_ID='run-for-it-6';
+export const FILM_ID='run-for-it-7';
 export const FILM_DURATION=116;
 export const FILM_SCENES=[
  {
@@ -9,7 +9,7 @@ export const FILM_SCENES=[
   "id": "city",
   "image": "intro-city",
   "focus": 0.62,
-  "line": "San Francisco, 2041.\nNine companies run the city.\nWithout their services, you can’t live.",
+  "line": "San Francisco, 2041.\nThe government runs on AI.\nYour life runs through nine apps.",
   "motion": "rain",
   "region": [
    0,

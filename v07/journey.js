@@ -1,4 +1,4 @@
-import {RADIO_MESSAGE} from './narrative.js?v=0.8.3-cinema-1';
+import {RADIO_MESSAGE} from './narrative.js?v=0.8.4-apps-1';
 const shot=(image,title,line,extra={})=>({image,title,line,...extra});
 export const ARRIVALS={river:'sierra-letter',desert:'nevada-room',divide:'ben-wrench',plains:'frank-letter',ridge:'frank-key'};
 export const SHOTS={
@@ -18,12 +18,12 @@ export const SHOTS={
  dinner:shot('meal-family','Food we caught ourselves','Ben: “Food from a river. Terms and conditions: cook it.” Sarah checks no price, no rating, no account. She asks for seconds.'),
  family:shot('open-country','Something worth keeping','Sarah: “Take that one. I want to remember there was more than the road.”'),
  wonder:shot('open-country','More sky than we remembered','Annie: “Was all this here the whole time?”'),
- collectors:shot('squad','Workforce recovery','Civic calls it household recovery. Debt and unauthorized relocation give its Collectors the paperwork. The people in the transport call it being dragged home.'),
+ collectors:shot('squad','Workforce recovery','Safety calls it household recovery. Debt and unauthorized relocation give its Collectors the paperwork. The people in the transport call it being dragged home.'),
  relief:shot('mirror','No lights behind us','Sarah: “They took the other road. Breathe.”'),
  home:shot('basin','The basin keeps its own lights on','Water turns the wheels. Mechanical switches run the lights. No phones or computers beyond the Line. Ben has carried those words since the night he found them.'),
  plaza:shot('plaza','The last service stall','Old pumps. One working lamp. Someone who knows how to fix things.'),
  toll:shot('toll','The road remembers your plate','A private gantry. Public roads, rented back by the mile.'),
- campus:shot('campus','Your future has been discontinued','Loop’s billboard promises “Your potential. Connected.” Beneath it, a Halo camera counts faces. Sarah: “Lovely. The building still remembers us.”'),
+ campus:shot('campus','Your future has been discontinued','Work’s billboard says “Your next assignment is ready.” Beneath it, a ID camera counts faces. Sarah: “Lovely. The building still remembers us.”'),
  market:shot('market','A different kind of currency','A working relay buys more respect here than a verified account.'),
  seized:shot('seized','They take the home, too','The camper is being towed back toward a company city. Its owners are in the transport behind it. Their debt has acquired a transport fee.'),
  scanner:shot('scanner','A name in the registry','The scan stays on file. It does not tell them which road you take next.'),

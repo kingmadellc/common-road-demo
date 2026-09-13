@@ -1,10 +1,11 @@
-import {fixedShot,sceneMotion} from './cinematic-motion.js?v=0.8.3-cinema-1';
+import {drawService} from './service-marks.js?v=0.8.4-apps-1';
+import {fixedShot,sceneMotion} from './cinematic-motion.js?v=0.8.4-apps-1';
 // The film supplies the possibility. This playable chapter supplies the reason to leave.
-// A contract flag is fictional corporate coercion, not a universal real-world social score.
+// A contract flag is fictional automated coercion, not a universal real-world social score.
 export const DEPARTURE_ID='fourth-morning-1';
 export const DEPARTURE_SCENES=[
- {id:'refusal',seconds:7,image:'departure-workshop',focus:.5,motion:'screen',region:[.04,.22,.15,.22],kicker:'THE FOURTH MORNING · CORE WORKSHOP',speaker:'Jack',line:'“The cutoff’s broken. I’m not signing that.”'},
- {id:'dismissed',seconds:6,image:'cine-dismissed',focus:.54,motion:'screen',region:[.68,.28,.09,.1],kicker:'11:42 · CORE WORKSHOP',line:'Core fired Jack before lunch.',termination:true},
+ {id:'refusal',seconds:7,image:'departure-workshop',focus:.5,motion:'screen',region:[.04,.22,.15,.22],kicker:'THE FOURTH MORNING · CONTRACTOR WORKSHOP',speaker:'Jack',line:'“The cutoff’s broken. I’m not signing that.”'},
+ {id:'dismissed',seconds:6,image:'cine-dismissed',focus:.54,motion:'screen',region:[.68,.28,.09,.1],kicker:'11:42 · CONTRACTOR WORKSHOP',line:'Jack’s employer fired him before lunch.',termination:true},
  {id:'account',seconds:9,image:'cine-sarah-bank',focus:.58,motion:'screen',region:[.1,.44,.35,.3],kicker:'THAT EVENING · THE MERCER APARTMENT',speaker:'Sarah',line:'“My pay’s in there too.”',notice:true},
  {id:'appeal',seconds:7,image:null,focus:.5,motion:'deadline',kicker:'ONE FLAG. EVERY LINKED ACCOUNT.',speaker:'Jack',line:'“Three days for an appeal. The flat wants us out tomorrow.”'},
  {id:'decision',seconds:0,image:'cine-decision',focus:.51,motion:'dust',kicker:'BEA IS ACROSS THE BAY.',speaker:'Sarah',line:'“I’m still not trusting that radio. But we’re not waiting here. Get the kids.”'},
@@ -14,7 +15,7 @@ export const DEPARTURE_SCENES=[
  {id:'last-look',seconds:2,image:'cine-van-rear',focus:.51,motion:'loading',kicker:'',speaker:'Sarah',line:'“Obviously.”',loading:true}
 ];
 export const DECISION_INDEX=DEPARTURE_SCENES.findIndex(x=>x.id==='decision');
-export const NOTICE={issuer:'INDEX',title:'Household account restricted',items:[['Core report','Employment terminated · refusal to certify'],['Index standing','Restricted · adverse employer report'],['Index wallet','Joint funds held · contract charge disputed'],['Plenty order','Payment declined'],['Forma staff flat','Return keys by 06:00 tomorrow'],['Earliest appeal','In 72 hours']],detail:'Core has charged the household for ending its work contract. Index has frozen the joint wage wallet while that charge is disputed. Forma’s flat came with the job. Sarah is still employed; her pay enters the same frozen wallet. The family can appeal, but the housing deadline comes first. None of this proves the radio is telling the truth.'};
+export const NOTICE={issuer:'Cash',title:'Household account restricted',items:[['Work report','Employment terminated · refusal to certify'],['ID record','Restricted · adverse employer report'],['Cash wallet','Joint funds held · contract charge disputed'],['Food order','Payment declined'],['Home staff flat','Return keys by 06:00 tomorrow'],['Earliest appeal','In 72 hours']],detail:'The workshop employer filed a disputed contract charge through Work. Cash automatically froze the joint wage wallet under shared government rules. Home applies the job-linked occupancy rule. Sarah is still employed; her pay enters the same frozen wallet. The family can appeal, but the housing deadline comes first. None of this proves the radio is telling the truth.'};
 export function startDeparture(s){s.mode='departure';s.departure={id:DEPARTURE_ID,index:0,elapsed:0,decided:false};s.flags.contractFlag=true;s.flags.accountRestricted=true;}
 export function departureScene(s){return DEPARTURE_SCENES[s.departure?.index||0];}
 export function finishDeparture(s){s.mode='packing';s.departure=null;s.flags.departureSeen=true;s.message='The basics are aboard. Six spaces left. Bea first.';}
@@ -45,9 +46,9 @@ export function drawDeparture(c,w,h,s,images){
 function drawDeadline(c,w,h,age,still){
  const portrait=h>w,ww=w*(portrait?.88:.48),x=(w-ww)/2,hh=Math.min(h*.17,ww*.3),top=h*.17;
  c.save();c.textAlign='left';c.textBaseline='top';
- for(const [i,brand,title,line] of [[0,'FORMA · STAFF FLAT','Return keys by 06:00','Tomorrow morning'],[1,'INDEX · CASE REVIEW','Review in 72 hours','Your request is in the queue']]){
+ for(const [i,brand,title,line] of [[0,'Home · STAFF FLAT','Return keys by 06:00','Tomorrow morning'],[1,'Cash · CASE REVIEW','Review in 72 hours','Your request is in the queue']]){
   const a=still?1:Math.max(0,Math.min(1,(age-i*.7)/.35)),y=top+i*(hh+18)+(still?0:(1-a)*10);c.globalAlpha=a;
-  c.fillStyle='#edf1f5';c.beginPath();c.roundRect(x,y,ww,hh,12);c.fill();c.fillStyle=i?'#354e65':'#8d3231';c.font=`650 ${ww*.036}px Road,sans-serif`;c.fillText(brand,x+ww*.065,y+hh*.15);
+  c.fillStyle='#edf1f5';c.beginPath();c.roundRect(x,y,ww,hh,12);c.fill();c.fillStyle=i?'#354e65':'#8d3231';c.font=`650 ${ww*.036}px Road,sans-serif`;drawService(c,i?"account":"home",x+ww*.065,y+hh*.12,ww*.048,{color:"#183044"});c.fillText(brand,x+ww*.13,y+hh*.15);
   c.font=`650 ${ww*.06}px Road,sans-serif`;c.fillText(title,x+ww*.065,y+hh*.40);c.font=`400 ${ww*.038}px Road,sans-serif`;c.fillStyle='#526675';c.fillText(line,x+ww*.065,y+hh*.73);
  }
  c.restore();

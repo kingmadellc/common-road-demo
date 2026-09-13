@@ -38,3 +38,6 @@ body[data-mode="hunting"] #scenestatus{font-size:12px;max-width:92%}
 
 body[data-mode="hunting"] #scenehint{display:none}
 body[data-mode="hunting"] #sceneheading .eyebrow{letter-spacing:.8px}
+/* Mandatory public-service chrome stays plain; the game's display face stays human. */
+.service-badge{display:inline-flex;align-items:center;gap:.55em;vertical-align:middle;font-family:Road,system-ui,sans-serif;white-space:nowrap}.service-badge svg{width:32px;height:32px;flex:none}.service-badge strong{font:650 20px/1 Road,system-ui,sans-serif}.notice-appbar .service-badge strong{font-size:23px;letter-spacing:-.5px}.lore .service-badge{margin:8px 10px 8px 0}
+@media(max-height:580px) and (min-width:601px){.notice-appbar{padding-bottom:6px}.notice-appbar .service-badge svg{width:22px;height:22px}.notice-appbar .service-badge strong{font-size:20px}}

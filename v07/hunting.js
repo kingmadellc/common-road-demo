@@ -1,5 +1,5 @@
-import {clamp,log,spend} from './state.js?v=0.8.3-cinema-1';
-import {showStory} from './journey.js?v=0.8.3-cinema-1';
+import {clamp,log,spend} from './state.js?v=0.8.4-apps-1';
+import {showStory} from './journey.js?v=0.8.4-apps-1';
 
 export const HUNT_SITE='river';
 export const HUNT_SECONDS=75;
@@ -17,7 +17,7 @@ export function startHunting(s){
  migrateHunting(s);
  if(s.hunting.outfitted&&(!s.hunting.ammo||s.hunting.taken.length>=2))throw Error('The clearing is spent. Try the river or trade for food.');
  s.mode='hunting';s.message='';
- s.activity={type:'hunting',phase:s.hunting.outfitted?'field':'brief',elapsed:0,left:HUNT_SECONDS,aim:{x:.5,y:.54},aiming:false,steady:0,shots:0,flash:0,scared:0,patrol:!!s.threat.identified||s.threat.heat>1,warning:0,animals:[],pending:0,harvested:0,cooked:false,kept:0,preserved:0,shared:0,notice:s.hunting.outfitted?'Take only what you can use.':'Plenty’s shelves are full. Your Index account is locked. June’s camp takes work instead.'};
+ s.activity={type:'hunting',phase:s.hunting.outfitted?'field':'brief',elapsed:0,left:HUNT_SECONDS,aim:{x:.5,y:.54},aiming:false,steady:0,shots:0,flash:0,scared:0,patrol:!!s.threat.identified||s.threat.heat>1,warning:0,animals:[],pending:0,harvested:0,cooked:false,kept:0,preserved:0,shared:0,notice:s.hunting.outfitted?'Take only what you can use.':'Food’s shelves are full. Your Cash account is locked. June’s camp takes work instead.'};
  if(s.activity.phase==='field')s.hunting.outings++;
  placeAnimals(s);
 }
@@ -50,7 +50,7 @@ export function huntingAction(s,a){
   spend(s,1);if(s.mode==='ending')return true;
   h.outfitted=true;h.ammo=3;h.outings++;s.energy=clamp(s.energy-5);g.phase='field';
   g.notice='Three rounds. Drag the lower pad to aim. Hold still, then release.';
-  log(s,'Work for supper','Jack repairs June’s stove. She lends him an old rifle, three rounds and a lesson in the clearing. Sarah stays at camp with the children. The Plenty checkout wanted an Index account. June wanted a stove that worked.');
+  log(s,'Work for supper','Jack repairs June’s stove. She lends him an old rifle, three rounds and a lesson in the clearing. Sarah stays at camp with the children. The Food checkout wanted a Cash account. June wanted a stove that worked.');
  }else if(a.type==='huntViewport'){
   if(Number.isFinite(a.aspect)&&a.aspect>0){g.aspect=clamp(a.aspect,.4,5);placeAnimals(s);}
  }else if(a.type==='huntAim'){
