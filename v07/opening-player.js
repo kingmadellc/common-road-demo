@@ -1,17 +1,17 @@
-import {FILM_DURATION,FILM_SCENES,filmCaption,setFilmTime,movePrologue} from './prologue.js?v=0.7.5-names-1';
+import {FILM_DURATION,FILM_SCENES,filmCaption,setFilmTime,movePrologue} from './prologue.js?v=0.7.6-origin-1';
 // Keep button text nodes stable while a pointer is down (notably in WebKit).
 const setLabel=(element,text)=>{if(element.textContent!==text)element.textContent=text;};
 export class OpeningPlayer {
  constructor(root,state,{onExit,onSeen,reduced=false}){
   this.root=root;this.state=state;this.onExit=onExit;this.onSeen=onSeen;this.dead=false;this.seen=false;
   this.format=innerHeight>innerWidth?'portrait':'landscape';
-  root.innerHTML=`<video id="opening-video" muted playsinline preload="auto" aria-label="Signals End: Keep listening. A ${FILM_DURATION}-second opening film." disablepictureinpicture></video><div class="opening-chrome"><div class="opening-top"><span>King Made</span><button data-action="introSkip" aria-label="Skip opening film">Skip ×</button></div><button class="opening-play" data-action="introPlay" hidden>Play film</button><div class="opening-bottom"><span class="opening-a11y" aria-live="polite" id="opening-caption"></span><div class="opening-progress" role="progressbar" aria-label="Opening film progress" aria-valuemin="0" aria-valuemax="${FILM_DURATION}"><i></i></div><div class="opening-controls"><button data-action="introPause" aria-label="Pause film">Pause</button><button data-action="introSound" aria-label="Enable film sound">Sound on</button><span class="opening-time">${Math.floor(FILM_DURATION/60)}:${String(FILM_DURATION%60).padStart(2,'0')}</span><button data-action="introBack" hidden>←</button><button data-action="introNext" hidden>Next →</button></div></div></div>`;
+  root.innerHTML=`<video id="opening-video" muted playsinline preload="auto" aria-label="Signals End: Bea first. A ${FILM_DURATION}-second opening film." disablepictureinpicture></video><div class="opening-chrome"><div class="opening-top"><span>King Made</span><button data-action="introSkip" aria-label="Skip opening film">Skip ×</button></div><button class="opening-play" data-action="introPlay" hidden>Play film</button><div class="opening-bottom"><span class="opening-a11y" aria-live="polite" id="opening-caption"></span><div class="opening-progress" role="progressbar" aria-label="Opening film progress" aria-valuemin="0" aria-valuemax="${FILM_DURATION}"><i></i></div><div class="opening-controls"><button data-action="introPause" aria-label="Pause film">Pause</button><button data-action="introSound" aria-label="Enable film sound">Sound on</button><span class="opening-time">${Math.floor(FILM_DURATION/60)}:${String(FILM_DURATION%60).padStart(2,'0')}</span><button data-action="introBack" hidden>←</button><button data-action="introNext" hidden>Next →</button></div></div></div>`;
   this.video=root.querySelector('video');const v=this.video;v.muted=true;v.defaultMuted=true;v.playsInline=true;
   v.addEventListener('playing',()=>{if(this.dead)return;if(state.source!=='video'&&state.time>.25&&Math.abs(v.currentTime-state.time)>.4)v.currentTime=state.time;state.source='video';state.paused=false;state.blocked=false;this.mark();this.updateUI();});
   v.addEventListener('ended',()=>{if(!this.dead)this.onExit('watched');});
   v.addEventListener('error',()=>this.fallback());
   v.addEventListener('pause',()=>{if(!this.dead&&state.source==='video'&&!v.ended){state.paused=true;this.updateUI();}});
-  if(reduced){state.source='stills';state.paused=true;setFilmTime(state,.8);v.preload='none';}else{v.src=`assets/opening-08/run-for-it-${this.format}.mp4?cut=2&names=1`;this.play();}
+  if(reduced){state.source='stills';state.paused=true;setFilmTime(state,.8);v.preload='none';}else{v.src=`assets/opening-08/run-for-it-${this.format}.mp4?cut=3&origin=1`;this.play();}
   this.updateUI();
  }
  mark(){if(!this.seen){this.seen=true;this.onSeen();}}

@@ -1,4 +1,4 @@
-import {spend,log,clamp,finish} from './state.js?v=0.7.5-names-1';
+import {spend,log,clamp,finish} from './state.js?v=0.7.6-origin-1';
 export function threatLabel(s){return s.threat.heat>1?'PURSUED':s.threat.identified?'PLATE RECORDED':'UNSEEN';}
 export function collectorOptions(s){const radio=s.packed.includes('radio');const options=[
  {id:'detour',label:radio?'Follow the radio’s service lane':'Take the county lane',detail:`${radio?'1 hour · 2 fuel':'2 hours · 4 fuel'} · 4% van · stay off the scanner`,disabled:s.fuel<(radio?2:4)},

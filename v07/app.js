@@ -1,18 +1,18 @@
-import {CORPORATIONS} from './institutions.js?v=0.7.5-names-1';
-import {BRAND} from './brand.js?v=0.7.5-names-1';
-import {INTRO_KEY,newPrologue,prologueState,readOpeningHistory,rememberOpening,shouldAutoOpen} from './prologue.js?v=0.7.5-names-1';
-import {OpeningPlayer} from './opening-player.js?v=0.7.5-names-1';
-import {VERSION,SAVE_KEY,FAMILY,NODES,ROADS,PACKING,PARTS,CAMPAIGN,objective,admission,node,roads} from './world.js?v=0.7.5-names-1';
-import {fresh,load,save,act,update,summary,slots,clamp} from './sim.js?v=0.7.5-names-1';
-import {render,ready,HAZARDS,HOME_POINTS,sources} from './art.js?v=0.7.5-names-1';
-import {castEndpoint} from './fishing.js?v=0.7.5-names-1';
-import {yardView} from './scenes.js?v=0.7.5-names-1';
-import {SITE_NAMES} from './salvage.js?v=0.7.5-names-1';
-import {collectorOptions,incidentOptions,threatLabel} from './conflict.js?v=0.7.5-names-1';
-import {hurt,shopStock,OFFERS} from './state.js?v=0.7.5-names-1';
-import {SHOTS} from './journey.js?v=0.7.5-names-1';
-import {enableAudio,soundFrame} from './sound.js?v=0.7.5-names-1';
-import {knowledge,ORIGIN,RADIO_MESSAGE} from './narrative.js?v=0.7.5-names-1';
+import {CORPORATIONS} from './institutions.js?v=0.7.6-origin-1';
+import {BRAND} from './brand.js?v=0.7.6-origin-1';
+import {INTRO_KEY,newPrologue,prologueState,readOpeningHistory,rememberOpening,shouldAutoOpen} from './prologue.js?v=0.7.6-origin-1';
+import {OpeningPlayer} from './opening-player.js?v=0.7.6-origin-1';
+import {VERSION,SAVE_KEY,FAMILY,NODES,ROADS,PACKING,PARTS,CAMPAIGN,objective,admission,node,roads} from './world.js?v=0.7.6-origin-1';
+import {fresh,load,save,act,update,summary,slots,clamp} from './sim.js?v=0.7.6-origin-1';
+import {render,ready,HAZARDS,HOME_POINTS,sources} from './art.js?v=0.7.6-origin-1';
+import {castEndpoint} from './fishing.js?v=0.7.6-origin-1';
+import {yardView} from './scenes.js?v=0.7.6-origin-1';
+import {SITE_NAMES} from './salvage.js?v=0.7.6-origin-1';
+import {collectorOptions,incidentOptions,threatLabel} from './conflict.js?v=0.7.6-origin-1';
+import {hurt,shopStock,OFFERS} from './state.js?v=0.7.6-origin-1';
+import {SHOTS} from './journey.js?v=0.7.6-origin-1';
+import {enableAudio,soundFrame} from './sound.js?v=0.7.6-origin-1';
+import {knowledge,ORIGIN,RADIO_MESSAGE} from './narrative.js?v=0.7.6-origin-1';
 const $=id=>document.getElementById(id),canvas=$('scene');
 let saved=null;try{saved=load(localStorage);}catch{}
 let s=saved||fresh(Math.floor(Math.random()*100000)),manual=false,last=performance.now(),saveClock=0,panelKey='',statusKey='',resourceKey='';
@@ -41,7 +41,7 @@ function portrait(id,cls=''){const i=FAMILY.findIndex(p=>p.id===id);return `<spa
 function drawFamily(){ $('family').innerHTML=FAMILY.map(p=>`<button class="person" data-action="person" data-id="${p.id}" aria-label="${p.full}, ${p.role}">${portrait(p.id)}<span><strong>${p.name}</strong><small>${p.id==='rusty'?'Good company':'Mercer'}</small></span></button>`).join('');}
 function panel(){
  const g=s.activity,n=node(s.node);
- if(s.mode==='packing')return group(`Six spaces. What comes with you? <span class="pill">${packCount()} / 6</span>`,`<p>Tools, a fishing rod, blankets and Ben’s written broadcast are aboard. Choose the rest.</p><div class="packing">${PACKING.map(i=>button('pack',i.id,`${i.icon} ${i.name} · ${i.slots}`,i.text,s.packed.includes(i.id)?'selected':'',`aria-pressed="${s.packed.includes(i.id)}"`)).join('')}</div>`,true)+group('Go east. Get your life back.',`<p>Ben heard Signals End on the radio Bea smuggled in. A life beyond cameras, accounts and permission screens. No proof yet. First: find Bea in the East Bay.</p>`,false)+group('Keep one another going',`<div class="buttons">${button('depart',undefined,'Begin the pilgrimage','Leave San Francisco. Find Bea. Fix the fan.','primary')}</div>`);
+ if(s.mode==='packing')return group(`Six spaces. What comes with you? <span class="pill">${packCount()} / 6</span>`,`<p>Tools, a fishing rod, blankets and Ben’s written broadcast are aboard. Choose the rest.</p><div class="packing">${PACKING.map(i=>button('pack',i.id,`${i.icon} ${i.name} · ${i.slots}`,i.text,s.packed.includes(i.id)?'selected':'',`aria-pressed="${s.packed.includes(i.id)}"`)).join('')}</div>`,true)+group('Bea first.',`<p>Jack wants to go. Sarah wants answers. After three nights of arguing, they agree to ask Bea across the Bay. Pack for the longer trip if her lead holds up.</p>`,false)+group('Keep one another going',`<div class="buttons">${button('depart',undefined,'Go ask Bea','Cross the Bay. Ask your questions. Fix the fan.','primary')}</div>`);
  if(s.mode==='stop'){
   let main;
   if(n.id==='yard')main=!s.fan?button(s.siteMemory.yard?.sealed&&!s.parts.fan.length?'shop':'activity',s.parts.fan.length?'repair':'salvage',s.parts.fan.length?'Fit the cooling fan':s.siteMemory.yard?.sealed?'Trade for a cooling fan':'Recover a cooling fan','Stop the extra fuel burn.','primary'):button('supplies',undefined,'Check the van','Running well. Pack for the road.');

@@ -1,24 +1,180 @@
-import {filmFrame} from './film.js?v=0.7.5-names-1';
+import {filmFrame} from './film.js?v=0.7.6-origin-1';
 // One editorial source drives the rendered film, captions and illustrated fallback.
-export const FILM_ID='run-for-it-2';
-export const FILM_DURATION=108;
+export const FILM_ID='run-for-it-3';
+export const FILM_DURATION=116;
 export const FILM_SCENES=[
- {start:0,end:6,id:'late-payment',image:'intro-kitchen',focus:.64,line:'The fridge was fine.\nThe payment was late.',motion:'shutdown'},
- {start:6,end:13,id:'city',image:'intro-city',focus:.62,line:'San Francisco, 2041.\nNine companies ran almost everything.',motion:'rain'},
- {start:13,end:21,id:'payday',image:'intro-kitchen',focus:.38,line:'Every payday, rent, food and taxes got there first.',motion:'ledger'},
- {start:21,end:28,id:'home-camera',image:'intro-kitchen',focus:.52,line:'Even at home, they had learned to lower their voices.',motion:'quiet'},
- {start:28,end:36,id:'smuggled',image:'opening-radio',focus:.85,portraitFocus:.78,landscapeZoom:1.42,line:'Bea smuggled a radio in with Jack’s repair parts.',motion:'warm'},
- {start:36,end:43,id:'ben-finds',image:'opening-radio',focus:.53,portraitFocus:.55,landscapeZoom:1.20,line:'Their son Ben found it after midnight.',motion:'radio'},
- {start:43,end:49,id:'sarah-listens',image:'opening-radio',focus:.20,portraitFocus:.28,landscapeZoom:1.32,line:'Sarah came to switch it off.\nThen someone spoke.',motion:'quiet'},
- {start:49,end:54,id:'broadcast-awake',image:'opening-radio',focus:.85,portraitFocus:.85,landscapeZoom:1.42,speaker:'Radio',line:'For anyone still awake.',motion:'radio'},
- {start:54,end:61,id:'broadcast-east',image:'opening-radio',focus:.61,portraitFocus:.58,speaker:'Radio',line:'East of the plains, the old wheels are turning.',motion:'warm'},
- {start:61,end:66,id:'broadcast-accounts',image:'opening-radio',focus:.22,portraitFocus:.28,landscapeZoom:1.30,speaker:'Radio',line:'No accounts. No computers.',motion:'quiet'},
- {start:66,end:74,id:'broadcast-place',image:'opening-radio',focus:.85,portraitFocus:.78,landscapeZoom:1.35,speaker:'Radio',line:'Find the people who still fix things.\nAsk about Signals End.',motion:'radio'},
- {start:74,end:82,id:'ben-name',image:'opening-radio',focus:.54,portraitFocus:.56,landscapeZoom:1.22,speaker:'Ben',line:'“It doesn’t know my name.”',motion:'warm'},
- {start:82,end:87,id:'keep-listening',image:'opening-radio',focus:.20,portraitFocus:.28,landscapeZoom:1.32,speaker:'Sarah',line:'“Keep listening.”',motion:'quiet'},
- {start:87,end:96,id:'the-bridge',image:'repair-family',focus:.5,portraitFocus:.4,line:'Sarah: “Will the van make it?”\nJack: “It’ll get us across the bridge.”',motion:'warm'},
- {start:96,end:104,id:'departure',image:'intro-departure',focus:.51,portraitFocus:.73,line:'They left before dawn.\nThey didn’t know if it was real.',motion:'dawn'},
- {start:104,end:108,id:'title',image:'intro-departure',focus:.43,line:'Signals End',motion:'title'}
+ {
+  "start": 0,
+  "end": 7,
+  "id": "city",
+  "image": "intro-city",
+  "focus": 0.62,
+  "line": "San Francisco, 2041.\nNine companies kept the city running.",
+  "motion": "rain"
+ },
+ {
+  "start": 7,
+  "end": 14,
+  "id": "payday",
+  "image": "intro-attention",
+  "focus": 0.38,
+  "line": "Rent. Food. Taxes.\nAnother shift tomorrow.",
+  "motion": "ledger"
+ },
+ {
+  "start": 14,
+  "end": 22,
+  "id": "still-checking",
+  "image": "intro-attention",
+  "focus": 0.38,
+  "portraitFocus": 0.34,
+  "line": "Jack was home.\nHe was still checking work.",
+  "motion": "quiet"
+ },
+ {
+  "start": 22,
+  "end": 28,
+  "id": "sarah-waiting",
+  "image": "intro-attention",
+  "focus": 0.68,
+  "portraitFocus": 0.68,
+  "speaker": "Sarah",
+  "line": "“I’m talking to you.”",
+  "motion": "quiet"
+ },
+ {
+  "start": 28,
+  "end": 36,
+  "id": "smuggled",
+  "image": "opening-radio",
+  "focus": 0.85,
+  "portraitFocus": 0.78,
+  "landscapeZoom": 1.42,
+  "line": "Bea smuggled a radio in with Jack’s repair parts.",
+  "motion": "warm"
+ },
+ {
+  "start": 36,
+  "end": 43,
+  "id": "ben-finds",
+  "image": "opening-radio",
+  "focus": 0.53,
+  "portraitFocus": 0.55,
+  "landscapeZoom": 1.2,
+  "line": "Ben liked taking things apart.\nThat night, he tried the dial.",
+  "motion": "radio"
+ },
+ {
+  "start": 43,
+  "end": 48,
+  "id": "broadcast-awake",
+  "image": "opening-radio",
+  "focus": 0.85,
+  "portraitFocus": 0.85,
+  "landscapeZoom": 1.42,
+  "speaker": "Radio",
+  "line": "For anyone still awake.",
+  "motion": "radio"
+ },
+ {
+  "start": 48,
+  "end": 55,
+  "id": "broadcast-east",
+  "image": "opening-radio",
+  "focus": 0.61,
+  "portraitFocus": 0.58,
+  "speaker": "Radio",
+  "line": "East of the plains, the old wheels are turning.",
+  "motion": "warm"
+ },
+ {
+  "start": 55,
+  "end": 60,
+  "id": "broadcast-accounts",
+  "image": "opening-radio",
+  "focus": 0.22,
+  "portraitFocus": 0.28,
+  "landscapeZoom": 1.3,
+  "speaker": "Radio",
+  "line": "No accounts. No computers.",
+  "motion": "quiet"
+ },
+ {
+  "start": 60,
+  "end": 68,
+  "id": "broadcast-place",
+  "image": "opening-radio",
+  "focus": 0.85,
+  "portraitFocus": 0.78,
+  "landscapeZoom": 1.35,
+  "speaker": "Radio",
+  "line": "Find the people who still fix things.\nAsk about Signals End.",
+  "motion": "radio"
+ },
+ {
+  "start": 68,
+  "end": 77,
+  "id": "jack-wants",
+  "image": "intro-attention",
+  "focus": 0.38,
+  "portraitFocus": 0.34,
+  "speaker": "Jack",
+  "line": "“I’d like to come home and actually be here.”",
+  "motion": "warm"
+ },
+ {
+  "start": 77,
+  "end": 85,
+  "id": "sarah-doubts",
+  "image": "intro-attention",
+  "focus": 0.68,
+  "portraitFocus": 0.68,
+  "speaker": "Sarah",
+  "line": "“And you believe some guy on the radio?”",
+  "motion": "quiet"
+ },
+ {
+  "start": 85,
+  "end": 93,
+  "id": "ben-wonders",
+  "image": "opening-radio",
+  "focus": 0.54,
+  "portraitFocus": 0.56,
+  "landscapeZoom": 1.22,
+  "speaker": "Ben",
+  "line": "“What if he’s telling the truth?”",
+  "motion": "warm"
+ },
+ {
+  "start": 93,
+  "end": 101,
+  "id": "three-nights",
+  "image": "intro-attention",
+  "focus": 0.53,
+  "portraitFocus": 0.68,
+  "line": "They argued for three nights.\nSarah started a list of questions.",
+  "motion": "quiet"
+ },
+ {
+  "start": 101,
+  "end": 110,
+  "id": "departure",
+  "image": "intro-departure",
+  "focus": 0.51,
+  "portraitFocus": 0.73,
+  "speaker": "Sarah",
+  "line": "“Bea first.\nWe ask her in person.”",
+  "motion": "dawn"
+ },
+ {
+  "start": 110,
+  "end": 116,
+  "id": "title",
+  "image": "intro-departure",
+  "focus": 0.43,
+  "line": "Signals End",
+  "motion": "title"
+ }
 ];
 export const filmCaption=scene=>scene.speaker?`${scene.speaker}: ${scene.line}`:scene.line;
 export const filmSceneAt=time=>FILM_SCENES.find(s=>time>=s.start&&time<s.end)||FILM_SCENES.at(-1);
