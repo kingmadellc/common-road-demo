@@ -1,11 +1,11 @@
 {
-  "version": "0.6.0",
-  "assetRevision": "human-nature-1",
+  "version": "0.7.0",
+  "assetRevision": "eastbound-1",
   "title": "Signals End",
   "sourceRepository": "https://github.com/kingmadellc/common-road",
-  "sourceCommit": "71f09b069c31e6a08440de9a44d4ed6d2ac5bd02",
-  "builtAt": "2026-09-13T00:56:56.955Z",
-  "bytes": 103363720,
+  "sourceCommit": "792298df4f816cd80b3e19317aee07217e8db525",
+  "builtAt": "2026-09-13T01:25:04.445Z",
+  "bytes": 103964250,
   "files": {
     "assets/atmosphere/camp-v02.jpg": {
       "bytes": 715858,
@@ -74,6 +74,10 @@
     "assets/disconnection/the-quiet-republic.webp": {
       "bytes": 292834,
       "sha256": "0f2d111174a2a52dd3205e87b1beda843c0c24876757b82b0c1594cfcb9ed4c7"
+    },
+    "assets/eastbound-07/signals-end-basin.webp": {
+      "bytes": 416588,
+      "sha256": "fa8910faedb857f49e4a912d60bb625021d6746a61e6f33a786ce0a5db575fbc"
     },
     "assets/family-02/crew.webp": {
       "bytes": 403542,
@@ -552,8 +556,8 @@
       "sha256": "85287967f1ae7cb00ee578db38932ee86b2b8aa5b6181d2f210a553e4d52b33a"
     },
     "index.html": {
-      "bytes": 2076,
-      "sha256": "727a6e7190228ae8496e34ed32544816bc024317ec01afaf73213808a1661034"
+      "bytes": 2092,
+      "sha256": "2be4c21bf74621b008e279c875ca7d17ac35846f97261af940efa986799f50b4"
     },
     "manifest.webmanifest": {
       "bytes": 570,
@@ -584,8 +588,8 @@
       "sha256": "8380ecc6617a63f002d75e10c19359d8c1347db3f82900c4f7d19a81ab1aad4b"
     },
     "sw.js": {
-      "bytes": 8898,
-      "sha256": "8db2d3487724052de7109a3e1f01ee77a8b02a03e1d05b68a910c19fe9e7b37d"
+      "bytes": 9323,
+      "sha256": "beff7fd73d6985a83c47724b96ab156fba00571011d52edb4a9888528f52a212"
     },
     "v02/assets/atmosphere/camp-v02.jpg": {
       "bytes": 715858,
@@ -839,6 +843,10 @@
       "bytes": 2283,
       "sha256": "cba33c4a7cbf7c31c3b66767e4765b63ad8f00826f12856a5826b353e5d1fb00"
     },
+    "v06/index.html": {
+      "bytes": 2094,
+      "sha256": "babfbf1fa9ea5508c30cf9cf990b3c850794ba4bb60f13fd852e7b4a1af461d3"
+    },
     "v06/intro.css": {
       "bytes": 6658,
       "sha256": "4d053fe039091274b789bc4df8121df90b26518dd9be770eb933595aac2170d0"
@@ -886,9 +894,89 @@
     "v06/world.js": {
       "bytes": 7220,
       "sha256": "44e2fa3140b0eefd23c42b34cc59aa460633f5e12f7485621cf9902e608be8a4"
+    },
+    "v07/app.js": {
+      "bytes": 52657,
+      "sha256": "3ae4413b5a4041d0d6133ffcc2907b748e9eb041601ce0a4ff76a3721ccd7113"
+    },
+    "v07/art.js": {
+      "bytes": 11503,
+      "sha256": "feb6a8170ec6879de7cba22a8c095dde1b4961bbfe3c178be4a8ac677f2e3998"
+    },
+    "v07/brand.js": {
+      "bytes": 1874,
+      "sha256": "d79041911bce2a6890ff1ad0bb1405f61cdf11ec3e1ac0a08f08ed9bf7c497bf"
+    },
+    "v07/conflict.js": {
+      "bytes": 7034,
+      "sha256": "e33b2773cd0cc6c36d1b9e9ef977005b9192b73858b996a3c4b45db9b12c8b93"
+    },
+    "v07/drive.js": {
+      "bytes": 424,
+      "sha256": "e0c9a538d3fb4f29dc4bcd2cbf24b9b4a20d5523eed3fdf0715054db57cf8296"
+    },
+    "v07/film.js": {
+      "bytes": 4484,
+      "sha256": "ff8a47cc6ed15d678f8bd8ecb836d417a1e10cc3c61a304b37539843fb47ed9f"
+    },
+    "v07/fishing.js": {
+      "bytes": 7457,
+      "sha256": "8e00c2c543288ca5f264004c845c6e6dadc5b0ba16428fc685c8c70c0b64d16a"
+    },
+    "v07/identity.css": {
+      "bytes": 4177,
+      "sha256": "b9560d4579ca3b8053db66b987a9b2c7dfa23ee52201c48069693f152aeeda1f"
+    },
+    "v07/intro.css": {
+      "bytes": 6658,
+      "sha256": "4d053fe039091274b789bc4df8121df90b26518dd9be770eb933595aac2170d0"
+    },
+    "v07/journey.js": {
+      "bytes": 6673,
+      "sha256": "94064e56a72628addb396d5c2b730556af6a4130e9dba4072d9745c34dfd61c3"
+    },
+    "v07/motion.js": {
+      "bytes": 4961,
+      "sha256": "4a78a0bbd1a7bc022c264016abbe5d7361105283e353980974b8d3f36e34ddfb"
+    },
+    "v07/prologue.js": {
+      "bytes": 7098,
+      "sha256": "7d41c1d688957c2000ae64e9789fa54193b78b9a3109b46ce9e1ba4cbb606d1a"
+    },
+    "v07/salvage.js": {
+      "bytes": 6936,
+      "sha256": "5f9fbebbbb968d520986168c2ff1dcf2010e119d9445c820f89905b38985133d"
+    },
+    "v07/scenes.js": {
+      "bytes": 6481,
+      "sha256": "586d092038fd11ac8aa70c1e87082f457714c44293fa79b4d6e31b4ce50b6853"
+    },
+    "v07/sim.js": {
+      "bytes": 19927,
+      "sha256": "5bc7d851569693412b6e1bd6f18b8aac6c64d71611abd40ceb7ee71004bef1a3"
+    },
+    "v07/sound.js": {
+      "bytes": 2241,
+      "sha256": "cea594e751ef5ecbfffb4a5fb02473705aaf5a100ab33418c23d0fd38c0ec98b"
+    },
+    "v07/state.js": {
+      "bytes": 1688,
+      "sha256": "6abf2d9811e0646e3b49455c785d581382d414a3b8915e601302a82901d5e7f8"
+    },
+    "v07/style.css": {
+      "bytes": 16203,
+      "sha256": "d7040de5cc2d2ff42f2205dfa5b8518b1c28cbd779104dcfa1d5ad0c64c90638"
+    },
+    "v07/video.js": {
+      "bytes": 816,
+      "sha256": "8065e2abe998a65b1a1c3684535690f68722d6f05ec435483930cc027e5d9545"
+    },
+    "v07/world.js": {
+      "bytes": 12115,
+      "sha256": "62c1593ce757002fa5d3e03579fe2d8a161adddac8e4b09cf606a4ffc677b6e0"
     }
   },
-  "validation": "Human Nature selected: outlined identity, custom OFL display derivative, readable UI font, app icons, full downloadable kit and game integration. Desktop/phone/landscape typography, opening, saved drive, offline assets and download integrity checks. Gameplay rules unchanged.",
+  "validation": "Eight-chapter San Francisco-to-Ozarks campaign. Journey overview, region-specific conflicts, reservation-to-deed story, explicit analog charter and separate v7 saves. Automated simulation and browser coverage for both admission paths; Chromium desktop/landscape and WebKit touch. Existing art reused; no physical-device or human fun validation yet",
   "nativeAppleBuild": false,
   "physicalAppleDeviceTested": false,
   "humanFunTested": false
