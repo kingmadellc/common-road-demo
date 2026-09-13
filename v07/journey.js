@@ -1,9 +1,9 @@
-import {RADIO_MESSAGE} from './narrative.js?v=0.8.0-hunt-1';
+import {RADIO_MESSAGE} from './narrative.js?v=0.8.1-departure-1';
 const shot=(image,title,line,extra={})=>({image,title,line,...extra});
 export const ARRIVALS={river:'sierra-letter',desert:'nevada-room',divide:'ben-wrench',plains:'frank-letter',ridge:'frank-key'};
 export const SHOTS={
  'hunt-dinner':shot('meal-family','A meal nobody can switch off','Sarah passes Jack a bowl. His hands are still shaking a little. Annie leaves room for Rusty. “Does June’s stove have an account?” Ben asks. “It has a knob,” Jack says. Nobody reaches for a screen.'),
- 'bea-first':shot('intro-departure','Bea first','Sarah: “We hear her out. Then we decide.”'),
+ 'bea-first':shot('intro-departure','Bea first','Sarah: “Bea gets us through tonight. The rest, we ask about.”'),
  broadcast:shot('opening-radio','Ben’s handwritten broadcast',RADIO_MESSAGE),
  'sierra-letter':shot('open-country','The first witness','June shows Sarah a recent photo of Uncle Frank beside a crooked fence. “He built that. No software could make it that bad.” Ben unfolds his radio note. Sarah checks the date twice. “He looks well.” For once, she has no next question.'),
  'nevada-room':shot('plaza','A room without permission','Ruth hands Sarah a brass key. Sarah looks for the room camera. “Just a smoke alarm,” Ruth says. Sarah sits down. She turns the brass key twice, testing whether it really is hers.'),

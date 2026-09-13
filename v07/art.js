@@ -1,10 +1,11 @@
-import {drawHunting} from './hunting-art.js?v=0.8.0-scale-1';
-import {drawPrologue} from './prologue.js?v=0.8.0-hunt-1';
-import {node} from './world.js?v=0.8.0-hunt-1';
-import {drawRoad} from './motion.js?v=0.8.0-hunt-1';
-import {drawSalvage,drawFishing} from './scenes.js?v=0.8.0-hunt-1';
-import {filmPlayer,pauseFilms} from './video.js?v=0.8.0-hunt-1';
-import {SHOTS} from './journey.js?v=0.8.0-hunt-1';
+import {drawDeparture} from './departure.js?v=0.8.1-departure-1';
+import {drawHunting} from './hunting-art.js?v=0.8.1-departure-1';
+import {drawPrologue} from './prologue.js?v=0.8.1-departure-1';
+import {node} from './world.js?v=0.8.1-departure-1';
+import {drawRoad} from './motion.js?v=0.8.1-departure-1';
+import {drawSalvage,drawFishing} from './scenes.js?v=0.8.1-departure-1';
+import {filmPlayer,pauseFilms} from './video.js?v=0.8.1-departure-1';
+import {SHOTS} from './journey.js?v=0.8.1-departure-1';
 export const images={};
 export const sources={jackSprite:'assets/journey/jack-sprite.webp',collectorSprite:'assets/journey/collector-sprite.webp',collectorTruck:'assets/journey/collector-truck.webp',landscape:'assets/journey/road-landscape.webp',fuelYard:'assets/journey/fuel-yard.webp',catchPhoto:'assets/journey/catch.webp',yard:'assets/journey/yard.webp',cabin:'assets/journey/cabin.webp',familyPhoto:'assets/journey/family-photo.webp',dinner:'assets/journey/dinner.webp',roadside:'assets/journey/roadside.webp',collectors:'assets/journey/collectors.webp',vanBody:'assets/journey/van-body.webp',chair:'assets/pilgrimage/chair.png',road:'assets/atmosphere/road-v02.jpg',garage:'assets/atmosphere/garage-v02.jpg',camp:'assets/atmosphere/camp-v02.jpg',plateau:'assets/atmosphere/plateau-v02.jpg',van:'assets/atmosphere/van-v02.png',fishing:'assets/pilgrimage/fishing.jpg',gate:'assets/pilgrimage/gate.jpg',home:'assets/pilgrimage/home.jpg',family:'assets/pilgrimage/family.jpg'};
 for(const id of ['highway','logistics','prairie','storm','plaza','toll','campus','market','seized','basin','squad','scanner','inventory','blocked','mirror','repair-family','night-family','meal-family','transport-body','windshield'])sources[id]='assets/journey-v05/'+id+'.webp';
@@ -24,6 +25,7 @@ sources['opening-mark']='assets/signals-end/signals-end-stacked-light.svg';
 sources.familyPhoto=sources['open-country'];
 for(const id of ['highway','viaduct','rain','overtake','scanner','barrier'])sources['poster-'+id]='assets/journey-v05/film-'+id+'-poster.webp';
 for(const id of ['clearing','deer','hare'])sources['hunt-'+id]='assets/hunting-08/'+id+'.webp';
+for(const id of ['workshop','loading','boarding'])sources['departure-'+id]='assets/departure-081/'+id+'.webp';
 export const ready=Promise.all(Object.entries(sources).map(([id,url])=>new Promise(resolve=>{const im=new Image();im.onload=()=>resolve(id);im.onerror=()=>resolve(id);im.src=url;images[id]=im;})));
 export const HAZARDS=[{x:.31,y:.37,w:.17,h:.045},{x:.55,y:.56,w:.16,h:.045},{x:.28,y:.73,w:.18,h:.04}];
 export const HOME_POINTS=[{id:'key',x:.13,y:.59,label:'Turn the key'},{id:'picture',x:.46,y:.37,label:'Hang our picture'},{id:'lamp',x:.7,y:.6,label:'Light the lamp'},{id:'table',x:.20,y:.63,label:'Set the table'}];
@@ -32,6 +34,7 @@ export function render(canvas,s,ui){
  const ctx=canvas.getContext('2d'),w=canvas.clientWidth,h=canvas.clientHeight,dpr=Math.min(devicePixelRatio||1,2);
  if(canvas.width!==Math.round(w*dpr)||canvas.height!==Math.round(h*dpr)){canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);}ctx.setTransform(dpr,0,0,dpr,0,0);
  if(ui.prologue){ui.hits=[];pauseFilms();drawPrologue(ctx,w,h,ui.prologue,images,s.settings.reducedMotion);return;}
+ if(s.mode==='departure'&&!ui.title){ui.hits=[];pauseFilms();drawDeparture(ctx,w,h,s,images);return;}
  const rect=(x,y,rw,rh,color,stroke)=>{ctx.fillStyle=color;ctx.beginPath();ctx.roundRect(x*w,y*h,rw*w,rh*h,5);ctx.fill();if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=2;ctx.stroke();}};
  const circle=(x,y,r,color,stroke)=>{ctx.beginPath();ctx.arc(x*w,y*h,r,0,Math.PI*2);ctx.fillStyle=color;ctx.fill();if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=2;ctx.stroke();}};
  const line=(x1,y1,x2,y2,color,width=2)=>{ctx.strokeStyle=color;ctx.lineWidth=width;ctx.beginPath();ctx.moveTo(x1*w,y1*h);ctx.lineTo(x2*w,y2*h);ctx.stroke();};

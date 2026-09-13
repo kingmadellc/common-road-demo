@@ -1,6 +1,6 @@
-import {filmFrame} from './film.js?v=0.8.0-hunt-1';
+import {filmFrame} from './film.js?v=0.8.1-departure-1';
 // One editorial source drives the rendered film, captions and illustrated fallback.
-export const FILM_ID='run-for-it-3';
+export const FILM_ID='run-for-it-4';
 export const FILM_DURATION=116;
 export const FILM_SCENES=[
  {
@@ -159,18 +159,17 @@ export const FILM_SCENES=[
   "start": 101,
   "end": 110,
   "id": "departure",
-  "image": "intro-departure",
+  "image": "intro-attention",
   "focus": 0.51,
   "portraitFocus": 0.73,
-  "speaker": "Sarah",
-  "line": "“Bea first.\nWe ask her in person.”",
+  "line": "By the fourth morning,\nthere was still no plan.",
   "motion": "dawn"
  },
  {
   "start": 110,
   "end": 116,
   "id": "title",
-  "image": "intro-departure",
+  "image": "intro-attention",
   "focus": 0.43,
   "line": "Signals End",
   "motion": "title"
