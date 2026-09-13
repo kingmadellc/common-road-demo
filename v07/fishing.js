@@ -1,4 +1,4 @@
-import {random} from './world.js?v=0.7.3-world-2';
+import {random} from './world.js?v=0.7.4-film-2';
 const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
 export const FISH_PROFILES={
  small:{name:'River fish',portions:4,stamina:8,speed:.027,run:1.5,recover:3.4},

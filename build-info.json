@@ -1,11 +1,11 @@
 {
-  "version": "0.7.3",
-  "assetRevision": "world-2",
+  "version": "0.7.4",
+  "assetRevision": "film-2",
   "title": "Signals End",
   "sourceRepository": "https://github.com/kingmadellc/common-road",
-  "sourceCommit": "5dda8068a06351050f79424fc06efb6743a5ce89",
-  "builtAt": "2026-09-13T07:15:24.744Z",
-  "bytes": 256363842,
+  "sourceCommit": "72b5a6685764d4713997a4361abf5ff410834d3d",
+  "builtAt": "2026-09-13T07:35:24.837Z",
+  "bytes": 251508793,
   "files": {
     "assets/atmosphere/camp-v02.jpg": {
       "bytes": 715858,
@@ -412,12 +412,12 @@
       "sha256": "e22c946b298f5cbce719b583b45f8415402321b9af120eb23cdcab8b6693d050"
     },
     "assets/opening-08/run-for-it-landscape.mp4": {
-      "bytes": 44812943,
-      "sha256": "01b91a9db74fd19b0beeb72420bb496bc4480978f1d6b746a2cfe4a9b9a65a53"
+      "bytes": 39469801,
+      "sha256": "af467326b4a2857963ebf3d802562de678aa156de3d667c5527dd262972f4231"
     },
     "assets/opening-08/run-for-it-portrait.mp4": {
-      "bytes": 34058257,
-      "sha256": "c0eca37bea14ecc47885071738a786572dd9bd8cad94a75ac5eaef6ebffcd3e8"
+      "bytes": 34541010,
+      "sha256": "65c89c36af7992037a98ddeae3b7071c9cac1fdd8fe915d7c906602ffc50b5e5"
     },
     "assets/pilgrimage/chair.png": {
       "bytes": 402383,
@@ -560,16 +560,16 @@
       "sha256": "657a60ef010380f3d7c06f6ac3f746adab873d1395927a0682f98845a0dca07e"
     },
     "brand/downloads/Signals-End-Brand-Guide.pdf": {
-      "bytes": 24256291,
-      "sha256": "817ae55ab44f03621096c0040081f70aa0752ff7c177e33aafe649a651460ee8"
+      "bytes": 24257207,
+      "sha256": "96b28257bc7a40624904018233c0ba27d325bc0564c69e24a9abaa646c017efe"
     },
     "brand/downloads/Signals-End-Brand-Kit-v1.zip": {
       "bytes": 33824589,
       "sha256": "42059f58fb0b33153f527c828030a6c75c4f2fe44ce02030b098a07372d6c4a4"
     },
     "brand/downloads/Signals-End-Brand-Kit-v2.zip": {
-      "bytes": 60218179,
-      "sha256": "3c9ef9b7594dc3918743de9a6978da4f8bf7b7fe6928dac19369f30e9a2106cc"
+      "bytes": 60219746,
+      "sha256": "98629eb2c03cf1f91c3380404c228452a39d57df7814f286506cfff0396ca2b4"
     },
     "brand/downloads/signals-end-app-icon-1024.png": {
       "bytes": 27147,
@@ -620,12 +620,12 @@
       "sha256": "b38aba64ae45629797ac2889edbf54e10d4d69d612573c116b7c01e4dc14a7bd"
     },
     "brand/guide.html": {
-      "bytes": 19446,
-      "sha256": "a21865534291ef2d62ff0f4f1eb23085985ac84a1b47ce500ea2f69db8f48ddc"
+      "bytes": 19516,
+      "sha256": "9e1322fd690665d8a1b9801267c8607562e2969d237388f1cb130d7d5e28ff6f"
     },
     "brand/index.html": {
-      "bytes": 14224,
-      "sha256": "c17dec7f8ac70ec36b4d954a499239d954fb763359ee4ec4b386e78cf93ac2b8"
+      "bytes": 14293,
+      "sha256": "bcd0c7152059ff5a346946ce3e7642f356b19e62954aee5e060c755b26126a5f"
     },
     "brand/kit.css": {
       "bytes": 14169,
@@ -652,8 +652,8 @@
       "sha256": "c0cdfa457e967b4007ac85f12374c17d0c24911180113547dc2d7333cf73be0c"
     },
     "index.html": {
-      "bytes": 2082,
-      "sha256": "13e2076a2b6200f0892073d105249f3f08c565dc7e23af480a4d49a5e208c37e"
+      "bytes": 2081,
+      "sha256": "812449b7f2e03b1085e7afa56038afa9f6a93a67571aa5345b4c3e26a3575e04"
     },
     "manifest.webmanifest": {
       "bytes": 581,
@@ -684,8 +684,8 @@
       "sha256": "8380ecc6617a63f002d75e10c19359d8c1347db3f82900c4f7d19a81ab1aad4b"
     },
     "sw.js": {
-      "bytes": 10371,
-      "sha256": "2d0c05b3920262d47c13395caac56937508a2c949192ab5e36c7dc79da90a410"
+      "bytes": 10370,
+      "sha256": "80f1d023353cecfb8ab5842d94d4b10f1dbc87d671254262a5c1c90688cebeed"
     },
     "v02/assets/atmosphere/camp-v02.jpg": {
       "bytes": 715858,
@@ -992,32 +992,32 @@
       "sha256": "44e2fa3140b0eefd23c42b34cc59aa460633f5e12f7485621cf9902e608be8a4"
     },
     "v07/app.js": {
-      "bytes": 52504,
-      "sha256": "dcd7c795fbda2c855fae6c9f4b99014ab201f28c623743163cb8564ba303ebb6"
+      "bytes": 52489,
+      "sha256": "87b3c8c96b3a514b9f1a34f89c50cd70658c36be0a5eb5d18c8149bdd387d3d2"
     },
     "v07/art.js": {
-      "bytes": 11730,
-      "sha256": "d4c0836ed3e97977a2b73cd922d96343f26f828a3f14e59e8896f479a76dda5d"
+      "bytes": 11724,
+      "sha256": "8d56a6d7fe8c7a4eeb91bf646bfd6a47841410f58b28f9042cdaf04680791417"
     },
     "v07/brand.js": {
       "bytes": 1867,
       "sha256": "a293550a035aa701d205c11c9e754d0a1d7d4db711edbe0e845257f7c6127627"
     },
     "v07/conflict.js": {
-      "bytes": 8073,
-      "sha256": "bfad0e54b9984c65150b39a83460b1d657fe85d614546f76fa4da93fbdd06db4"
+      "bytes": 8072,
+      "sha256": "ae4a10d3a1c42c09f4a6583adfdaebda8e3d43c598b294496fa763018a5e3afe"
     },
     "v07/drive.js": {
       "bytes": 424,
       "sha256": "e0c9a538d3fb4f29dc4bcd2cbf24b9b4a20d5523eed3fdf0715054db57cf8296"
     },
     "v07/film.js": {
-      "bytes": 4480,
-      "sha256": "137d53e27b36fcf325ec51c9e1ec4ce6c10a14ee738d5407d3b05a43f7164b82"
+      "bytes": 4479,
+      "sha256": "8e5b8a0597ce98a8e868941eb8f77cdc3dfb541c037bf8ecf249f8ed241151df"
     },
     "v07/fishing.js": {
-      "bytes": 7453,
-      "sha256": "b52e2bf71e5a4589ed75904a0bbc6282bfb052c26b7b2de7fc9b7f52103072e4"
+      "bytes": 7452,
+      "sha256": "256ea18dc70e8d4ca7806d48065718077fdc84f2f4b21bf2a9136903718bac95"
     },
     "v07/identity.css": {
       "bytes": 4177,
@@ -1032,44 +1032,44 @@
       "sha256": "4d053fe039091274b789bc4df8121df90b26518dd9be770eb933595aac2170d0"
     },
     "v07/journey.js": {
-      "bytes": 7358,
-      "sha256": "0bd006d9e84452e69adf8c4f6e925e0ebc5d72448eafcba8cdb0d77c2e76d46a"
+      "bytes": 7357,
+      "sha256": "7e0eb6d70fe063124dbe4d7236bda919a4c5bfff987d12034a991a97d5a2c8c1"
     },
     "v07/motion.js": {
-      "bytes": 4953,
-      "sha256": "bffc9e36baaec1726bf85401d1fc67b2bf579382c01a5afb48bf65c415f521d4"
+      "bytes": 5664,
+      "sha256": "40a26bd105d17ff658eaf09127504977e0999d833f8d975cee1e8565150c9363"
     },
     "v07/narrative.js": {
       "bytes": 4008,
       "sha256": "fb3a4a7f27e05331b6cb61e47ed832e3567b8b06570aa1bdeb2642c14cf9f1d3"
     },
     "v07/opening-film.js": {
-      "bytes": 7007,
-      "sha256": "d63fdb1a3bbc1726d13c684cf4453b5f6dbfda256ebc745a7a094f9c46f50fd6"
+      "bytes": 8867,
+      "sha256": "2c90257a77611982f44924b331a81ca5ef17cac7cc751536473e64f202378981"
     },
     "v07/opening-player.js": {
-      "bytes": 5868,
-      "sha256": "a3b3436f4b86199625db3138627f38e61f529ade1d198a29654b9f8dba05c869"
+      "bytes": 5986,
+      "sha256": "baeadb1ba68b57cebfc0984eaac1c128fb5881d8f9537679a9406c4bd29a5bde"
     },
     "v07/opening.css": {
       "bytes": 2968,
       "sha256": "c51a36a6d7d4b652ce8b03b0e89a04e53de4ae0c1896e8c7bfaf6360f691a644"
     },
     "v07/prologue.js": {
-      "bytes": 1772,
-      "sha256": "0d21abf792a555aeb0b4c4f2e300b51325ec6d88b534245a31e1efd0c213bf2b"
+      "bytes": 1842,
+      "sha256": "c4b2ee45d8d206fc1092b361c6b3195f09aa79fbe998d91b63c0495507b12312"
     },
     "v07/salvage.js": {
-      "bytes": 7027,
-      "sha256": "8df22e5d1af6880710a8f59fa6b1fa1a161378d38145caf22dad7109bb382435"
+      "bytes": 7024,
+      "sha256": "1d2cdce958e87da9bbf1a3bbba0d18d894aead9cefd4a8cf7a10e6355100bc86"
     },
     "v07/scenes.js": {
-      "bytes": 6473,
-      "sha256": "b3a72d35de8899a73043cb5b88a8d5d22689426d4c677437b7a011e2e623c7c6"
+      "bytes": 6471,
+      "sha256": "b45b7d26619eb0794d5e99ce64e3d931b9cd5723740287be197de54f1a4464eb"
     },
     "v07/sim.js": {
-      "bytes": 20977,
-      "sha256": "c184f69b7c8a114935a1ab79739054c5c2a730a63899158813bba97aafe448fc"
+      "bytes": 20969,
+      "sha256": "b6030b8e256d72a3cbbc80851fcadc429265fdf35ac6384aedccd7605eb46181"
     },
     "v07/sound.js": {
       "bytes": 2009,
@@ -1088,11 +1088,11 @@
       "sha256": "8065e2abe998a65b1a1c3684535690f68722d6f05ec435483930cc027e5d9545"
     },
     "v07/world.js": {
-      "bytes": 12721,
-      "sha256": "bb1566b4734a62d8e5a4d7a4dd9b03b30ee33758d7bf0b3e8080dbc58572b64a"
+      "bytes": 12720,
+      "sha256": "2524df7bde47d41644cae00bec8fc698b4daeb3b77516a7508d29fdbf168d6a1"
     }
   },
-  "validation": "Corporate-surveillance canon and nine fictional institutions; radio discovery and staged evidence preserved. Edition 02 brand kit, 15-page PDF, source-resolution art inspection, 4K campaign layouts and silent 1080p title reveal. 130 simulations, desktop and touch WebKit narrative checks, both complete admission paths and responsive brand checks. Save schema remains 0.7.0. The earlier 96-second movie remains; the revised story film is still a production brief. No physical-device or real-player engagement claim",
+  "validation": "108-second Keep listening opening in landscape and portrait, Atkinson Hyperlegible Next captions, exact canonical radio broadcast and uncertain departure. Rear-tailpipe exhaust replaces hood smoke. 131 simulations; actual media and controls in desktop Chromium and touch WebKit, caption safe-area and driving checks. Previous viewing preferences and save schema 0.7.0 preserved. Brand guide and kit references synchronized. Illustrated motion with original sound design; no voiced performances, physical-device testing or real-player engagement claim",
   "nativeAppleBuild": false,
   "physicalAppleDeviceTested": false,
   "humanFunTested": false
