@@ -1,11 +1,11 @@
 {
   "version": "0.7.1",
-  "assetRevision": "analog-1",
+  "assetRevision": "van-1",
   "title": "Signals End",
   "sourceRepository": "https://github.com/kingmadellc/common-road",
-  "sourceCommit": "f982445fc1973c889dbe5cbdb5539e2090a4b92d",
-  "builtAt": "2026-09-13T05:12:26.824Z",
-  "bytes": 182959970,
+  "sourceCommit": "08e9692e5be45d8cb5f0cee5b7f9eceb4a0b066b",
+  "builtAt": "2026-09-13T05:33:48.473Z",
+  "bytes": 183608893,
   "files": {
     "assets/atmosphere/camp-v02.jpg": {
       "bytes": 715858,
@@ -352,12 +352,12 @@
       "sha256": "e22c946b298f5cbce719b583b45f8415402321b9af120eb23cdcab8b6693d050"
     },
     "assets/opening-08/run-for-it-landscape.mp4": {
-      "bytes": 45108411,
-      "sha256": "7a5915c6925024504a0e45fe1084a38caef0a8d966234504ee96d460f8a6f4a3"
+      "bytes": 44812943,
+      "sha256": "01b91a9db74fd19b0beeb72420bb496bc4480978f1d6b746a2cfe4a9b9a65a53"
     },
     "assets/opening-08/run-for-it-portrait.mp4": {
-      "bytes": 33566220,
-      "sha256": "3a7b28d84dd0ff3971e753a4d66bc71ea08b2a7a6c6231d7376a434675bded95"
+      "bytes": 34058257,
+      "sha256": "c0eca37bea14ecc47885071738a786572dd9bd8cad94a75ac5eaef6ebffcd3e8"
     },
     "assets/pilgrimage/chair.png": {
       "bytes": 402383,
@@ -491,6 +491,10 @@
       "bytes": 198486,
       "sha256": "f3d85f3f1835ad03e02afd647a7ecd584487b26184dbb03186e2f1aae705888e"
     },
+    "assets/van-09/departure.webp": {
+      "bytes": 452200,
+      "sha256": "ffd93c163a193bc9f3eeebf45df0c756f11c789450260cab6de4d08e34a68941"
+    },
     "brand/directions.js": {
       "bytes": 2279,
       "sha256": "657a60ef010380f3d7c06f6ac3f746adab873d1395927a0682f98845a0dca07e"
@@ -568,8 +572,8 @@
       "sha256": "85287967f1ae7cb00ee578db38932ee86b2b8aa5b6181d2f210a553e4d52b33a"
     },
     "index.html": {
-      "bytes": 2083,
-      "sha256": "1f40e358ad76e8141ad139f5b78d3e402eb4be70168fdf2353e031a9180532bf"
+      "bytes": 2080,
+      "sha256": "379c15e9834f52f4a78697ab04e90cee7eb4d2c78d58d00a881689c1932baf48"
     },
     "manifest.webmanifest": {
       "bytes": 570,
@@ -600,8 +604,8 @@
       "sha256": "8380ecc6617a63f002d75e10c19359d8c1347db3f82900c4f7d19a81ab1aad4b"
     },
     "sw.js": {
-      "bytes": 9738,
-      "sha256": "7f9efd1ace2deccfdbcdb7b97b7c3473ba83a831e99bb6ca8f3abee50e1ca5bb"
+      "bytes": 9768,
+      "sha256": "10431afc463d8ef2abfa2a59eee008976659be5c0f874b14676cb881c90103a1"
     },
     "v02/assets/atmosphere/camp-v02.jpg": {
       "bytes": 715858,
@@ -908,12 +912,12 @@
       "sha256": "44e2fa3140b0eefd23c42b34cc59aa460633f5e12f7485621cf9902e608be8a4"
     },
     "v07/app.js": {
-      "bytes": 51309,
-      "sha256": "686d3625feb3a5859e6f38cce18d0ca9a5461e56adf2b911721e8b519b1fa5ef"
+      "bytes": 51297,
+      "sha256": "d6eee49fef79f8d235081e089d664e4e3ba109083daeff2077a645545be6f134"
     },
     "v07/art.js": {
-      "bytes": 11624,
-      "sha256": "6d2e1e9cd107f4c9ff933ccf0847ad8f85666cb68a1a6de580fb5cfefcfdc962"
+      "bytes": 11679,
+      "sha256": "04c23a0d0ed8f0921d998ea95f729070b16c52cd273e591236cab6aa21fe4569"
     },
     "v07/brand.js": {
       "bytes": 1867,
@@ -952,20 +956,20 @@
       "sha256": "e98b0f7fcba6c837c66e48853300e60f972326d5ca7aa4ae69177556883596af"
     },
     "v07/opening-film.js": {
-      "bytes": 6927,
-      "sha256": "eca41c0bcc5f3209ea9bb278cc68bd3c028fa621be41240e210c7e64d1969be3"
+      "bytes": 7009,
+      "sha256": "3f40bc8238258e75dcd41f81766ce1839daf0adee6b13d86222652f72b2fbaf9"
     },
     "v07/opening-player.js": {
-      "bytes": 5700,
-      "sha256": "c4074834fd3b18bb6bc651552a9b433c6d02a18fd9e8d518c7086733ea506dca"
+      "bytes": 5706,
+      "sha256": "c205be931fab562bd0ad09a74f72c1d0fd2b4622b1f22d212e40661e7be0084f"
     },
     "v07/opening.css": {
       "bytes": 2968,
       "sha256": "c51a36a6d7d4b652ce8b03b0e89a04e53de4ae0c1896e8c7bfaf6360f691a644"
     },
     "v07/prologue.js": {
-      "bytes": 1774,
-      "sha256": "203afcba809cff26c601293a3ac4132ed719a1b4244cb6f39b1b4bb54b66427c"
+      "bytes": 1770,
+      "sha256": "eac9d6bf833fa0e0578d5de88b92d2cb3309db0c1a892ac95d5fe9f1f233de14"
     },
     "v07/salvage.js": {
       "bytes": 6930,

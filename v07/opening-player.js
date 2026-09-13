@@ -1,4 +1,4 @@
-import {FILM_DURATION,FILM_SCENES,setFilmTime,movePrologue} from './prologue.js?v=0.7.1-opening-1';
+import {FILM_DURATION,FILM_SCENES,setFilmTime,movePrologue} from './prologue.js?v=0.7.1-van-1';
 export class OpeningPlayer {
  constructor(root,state,{onExit,onSeen,reduced=false}){
   this.root=root;this.state=state;this.onExit=onExit;this.onSeen=onSeen;this.dead=false;this.seen=false;
@@ -9,7 +9,7 @@ export class OpeningPlayer {
   v.addEventListener('ended',()=>{if(!this.dead)this.onExit('watched');});
   v.addEventListener('error',()=>this.fallback());
   v.addEventListener('pause',()=>{if(!this.dead&&state.source==='video'&&!v.ended){state.paused=true;this.updateUI();}});
-  if(reduced){state.source='stills';state.paused=true;setFilmTime(state,.8);v.preload='none';}else{v.src=`assets/opening-08/run-for-it-${this.format}.mp4`;this.play();}
+  if(reduced){state.source='stills';state.paused=true;setFilmTime(state,.8);v.preload='none';}else{v.src=`assets/opening-08/run-for-it-${this.format}.mp4?art=van-1`;this.play();}
   this.updateUI();
  }
  mark(){if(!this.seen){this.seen=true;this.onSeen();}}

@@ -8,7 +8,7 @@ export const FILM_SCENES=[
  {start:11,end:17,id:'convenience',image:'campus',focus:.54,line:'They made everything convenient.',motion:'grid'},
  {start:17,end:23,id:'mandatory',image:'toll',focus:.61,line:'Then they made it mandatory.',motion:'ledger'},
  {start:23,end:30,id:'penalty',image:'squad',focus:.54,line:'Even leaving had a penalty.',motion:'search'},
- {start:30,end:36,id:'few',image:'intro-departure',focus:.42,line:'A few stopped asking permission.',motion:'rain'},
+ {start:30,end:36,id:'few',image:'intro-departure',focus:.42,portraitFocus:.74,line:'A few stopped asking permission.',motion:'rain'},
  {start:36,end:42,id:'engines',image:'repair-family',focus:.49,line:'Old engines. Real keys.',motion:'warm'},
  {start:42,end:48,id:'repair',image:'intro-garage',focus:.46,line:'Things you can fix.',motion:'warm'},
  {start:48,end:54,id:'off',image:'plaza',focus:.50,line:'Things they can’t switch off.',motion:'unplug'},
@@ -16,7 +16,7 @@ export const FILM_SCENES=[
  {start:60,end:67,id:'ozarks',image:'open-country',focus:.53,line:'Somewhere in the Ozarks.',motion:'paper'},
  {start:67,end:74,id:'analog',image:'basin',focus:.67,line:'No phones. No computers.',motion:'warm'},
  {start:74,end:81,id:'home',image:'home',focus:.45,line:'A home nobody can log you out of.',motion:'warm'},
- {start:81,end:87,id:'maybe',image:'intro-departure',focus:.43,line:'If the place is real…',motion:'dawn'},
+ {start:81,end:87,id:'maybe',image:'intro-departure',focus:.43,portraitFocus:.74,line:'If the place is real…',motion:'dawn'},
  {start:87,end:92,id:'run',image:'highway',focus:.55,line:'…we could still make a run for it.',motion:'road'},
  {start:92,end:96,id:'title',image:'intro-departure',focus:.43,line:'Signals End',motion:'title'}
 ];
@@ -27,7 +27,7 @@ function wrap(c,line,max){const words=line.split(' '),lines=[];let row='';for(co
 export function drawOpeningFrame(c,w,h,time,images,{still=false,text=true}={}){
  const scene=filmSceneAt(time),age=clamp(time-scene.start,0,scene.end-scene.start),phase=age/(scene.end-scene.start),ease=phase*phase*(3-2*phase),portrait=h>w;
  c.save();c.fillStyle='#0c171b';c.fillRect(0,0,w,h);
- const drift=still?0:(ease-.5)*.035;cover(c,images[scene.image],w,h,scene.focus+drift,still?1:1.035+ease*.045);
+ const drift=still?0:(ease-.5)*.035;cover(c,images[scene.image],w,h,(portrait?(scene.portraitFocus??scene.focus):scene.focus)+drift,still?1:1.035+ease*.045);
  // The city is cold and unstable; warm, repairable places gradually fill the frame.
  c.fillStyle=['warm','dawn','title'].includes(scene.motion)?'#291b0815':'#07192235';c.fillRect(0,0,w,h);
  const scale=w/1920;

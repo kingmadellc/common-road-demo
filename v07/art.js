@@ -1,4 +1,4 @@
-import {drawPrologue} from './prologue.js?v=0.7.1-opening-1';
+import {drawPrologue} from './prologue.js?v=0.7.1-van-1';
 import {node} from './world.js?v=0.7.1-opening-1';
 import {drawRoad} from './motion.js?v=0.7.1-opening-1';
 import {drawSalvage,drawFishing} from './scenes.js?v=0.7.1-opening-1';
@@ -15,6 +15,7 @@ for(const id of ['departure','kitchen'])sources['intro-'+id]='assets/disconnecti
 for(const id of ['departure','crew'])sources['intro-'+id]='assets/candid-04/'+id+'.webp';
 for(const id of ['meal-family','repair-family','open-country'])sources[id]='assets/candid-04/'+id+'.webp';
 sources.basin='assets/eastbound-07/signals-end-basin.webp';
+sources['intro-departure']='assets/van-09/departure.webp';
 sources['opening-radio']='assets/opening-08/radio.webp';
 sources['opening-mark']='assets/signals-end/signals-end-stacked-light.svg';
 sources.familyPhoto=sources['open-country'];
