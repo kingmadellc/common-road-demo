@@ -1,0 +1,126 @@
+{
+  "version": 1,
+  "apps": [
+    {
+      "id": "watch",
+      "name": "ID",
+      "domain": "Identity & access",
+      "promise": "You, verified.",
+      "control": "One government record links your face, household and service access. Cameras check who is present; missing data can start a review. Its coverage has gaps.",
+      "presence": "Identity administration · Transbay",
+      "clue": "The same face check at a front door and a station gate."
+    },
+    {
+      "id": "account",
+      "name": "Cash",
+      "domain": "Money & payments",
+      "promise": "Everything in one place.",
+      "control": "Wages, payments and deductions pass through a joint wallet. An employer’s disputed charge, filed through Work, can automatically hold household funds before a person reviews it.",
+      "presence": "Payments administration · Financial District",
+      "clue": "The balance is still there. Available to spend: $0.00."
+    },
+    {
+      "id": "home",
+      "name": "Home",
+      "domain": "Housing & domestic devices",
+      "promise": "Welcome home.",
+      "control": "Occupancy, rent and chipped appliances share the household record. A job-linked flat can expire before the appeal about that job is heard.",
+      "presence": "Housing administration · Mission Bay",
+      "clue": "Return keys by 06:00. Appeal available in 72 hours."
+    },
+    {
+      "id": "food",
+      "name": "Food",
+      "domain": "Groceries & distribution",
+      "promise": "Your daily essentials.",
+      "control": "Stocked stores accept Cash payments authenticated through ID. A held wallet means no groceries. Independent traders outside the system still accept paper money, work and barter.",
+      "presence": "Distribution administration · South of Market",
+      "clue": "A full shelf beyond a checkout that cannot take your money."
+    },
+    {
+      "id": "work",
+      "name": "Work",
+      "domain": "Jobs, assignments & wages",
+      "promise": "Your next assignment is ready.",
+      "control": "Private employers report jobs, hours and disputes here. Government rules turn those reports into service decisions. The supervisor has gone home; the consequences keep arriving.",
+      "presence": "Employment administration · South of Market",
+      "clue": "Employment ended. Other services have been notified."
+    },
+    {
+      "id": "care",
+      "name": "Health",
+      "domain": "Care & prescriptions",
+      "promise": "Care, coordinated.",
+      "control": "Contracted clinics must check automated eligibility before treatment. Sarah can see what a patient needs and still be unable to authorize it.",
+      "presence": "Care administration · Mission Bay",
+      "clue": "The medicine is in stock. The person is not eligible."
+    },
+    {
+      "id": "power",
+      "name": "Power",
+      "domain": "Utilities & machine permissions",
+      "promise": "Ready when you are.",
+      "control": "Utilities and licensed machinery require active permissions. A repairable pump can be disabled because its service contract expired.",
+      "presence": "Utilities administration · Potrero Point",
+      "clue": "An intact machine waiting for an account to say yes."
+    },
+    {
+      "id": "travel",
+      "name": "Travel",
+      "domain": "Transport & district access",
+      "promise": "Keep moving.",
+      "control": "Transit, tolls and travel permissions use ID. A camera can close the fast lane to your van; an unmonitored county road may still be open.",
+      "presence": "Transport administration · Embarcadero",
+      "clue": "Your exit disappears after a plate scan."
+    },
+    {
+      "id": "enforcement",
+      "name": "Safety",
+      "domain": "Enforcement & recovery",
+      "promise": "For your protection.",
+      "control": "Automated debt and relocation orders are enforced by contracted Collector crews. Human contractors put people in vehicles; the order arrives through an app.",
+      "presence": "Recovery administration · Hunters Point",
+      "clue": "A clean shield on a truck taking a family back to compulsory work."
+    }
+  ],
+  "paths": {
+    "watch": [
+      "M5 8V5H8 M16 5H19V8 M19 16V19H16 M8 19H5V16",
+      "M14.5 10A2.5 2.5 0 1 1 9.5 10A2.5 2.5 0 1 1 14.5 10",
+      "M8 16C8 12.8 16 12.8 16 16"
+    ],
+    "account": [
+      "M4 7H18V10 M4 7V18H20V10H4V7L16 4V7",
+      "M15 13H20V16H15Z"
+    ],
+    "home": [
+      "M4 11L12 4L20 11 M6 10V20H10V14H14V20H18V10"
+    ],
+    "food": [
+      "M4 12H20C19.5 18 16.5 20 12 20C7.5 20 4.5 18 4 12Z",
+      "M7 4V8 M12 3V8 M17 4V8"
+    ],
+    "work": [
+      "M4 8H20V20H4Z M9 8V4H15V8 M4 12L12 15L20 12 M12 14V17"
+    ],
+    "care": [
+      "M9 4H15V9H20V15H15V20H9V15H4V9H9Z"
+    ],
+    "power": [
+      "M12 3V11",
+      "M7 6A8 8 0 1 0 17 6"
+    ],
+    "travel": [
+      "M8 3L3 21 M16 3L21 21 M12 4V7 M12 11V14 M12 18V21"
+    ],
+    "enforcement": [
+      "M12 3L20 6V12C20 16 17 19 12 21C7 19 4 16 4 12V6Z",
+      "M9 12L11 14L15 10"
+    ]
+  },
+  "colors": {
+    "ink": "#183044",
+    "light": "#edf3f7",
+    "accent": "#88aac4"
+  }
+}
