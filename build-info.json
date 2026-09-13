@@ -1,11 +1,11 @@
 {
   "version": "0.7.1",
-  "assetRevision": "van-1",
+  "assetRevision": "van-2",
   "title": "Signals End",
   "sourceRepository": "https://github.com/kingmadellc/common-road",
-  "sourceCommit": "08e9692e5be45d8cb5f0cee5b7f9eceb4a0b066b",
-  "builtAt": "2026-09-13T05:33:48.473Z",
-  "bytes": 183608893,
+  "sourceCommit": "1396db2208297fc91748b33f4b96a622550f35f3",
+  "builtAt": "2026-09-13T05:42:19.072Z",
+  "bytes": 183609053,
   "files": {
     "assets/atmosphere/camp-v02.jpg": {
       "bytes": 715858,
@@ -573,7 +573,7 @@
     },
     "index.html": {
       "bytes": 2080,
-      "sha256": "379c15e9834f52f4a78697ab04e90cee7eb4d2c78d58d00a881689c1932baf48"
+      "sha256": "0b0f7fa3dfe29b2aac298de501a7b356246e4eefda8352977cf25916389d5d8d"
     },
     "manifest.webmanifest": {
       "bytes": 570,
@@ -605,7 +605,7 @@
     },
     "sw.js": {
       "bytes": 9768,
-      "sha256": "10431afc463d8ef2abfa2a59eee008976659be5c0f874b14676cb881c90103a1"
+      "sha256": "c092c9d714cdebb0043bceb7e004a589d31711497d663429b5b2b406e0fd2c00"
     },
     "v02/assets/atmosphere/camp-v02.jpg": {
       "bytes": 715858,
@@ -913,7 +913,7 @@
     },
     "v07/app.js": {
       "bytes": 51297,
-      "sha256": "d6eee49fef79f8d235081e089d664e4e3ba109083daeff2077a645545be6f134"
+      "sha256": "ecbd8ca09e76a849864a45564a630f0961ace4e1c6499cd611bacfb671696b59"
     },
     "v07/art.js": {
       "bytes": 11679,
@@ -960,8 +960,8 @@
       "sha256": "3f40bc8238258e75dcd41f81766ce1839daf0adee6b13d86222652f72b2fbaf9"
     },
     "v07/opening-player.js": {
-      "bytes": 5706,
-      "sha256": "c205be931fab562bd0ad09a74f72c1d0fd2b4622b1f22d212e40661e7be0084f"
+      "bytes": 5866,
+      "sha256": "a58ab1620654a0419c8477d48c85b12ae231dd61b20f09d278fc8e8b4c1e75c4"
     },
     "v07/opening.css": {
       "bytes": 2968,

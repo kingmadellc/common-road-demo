@@ -1,6 +1,6 @@
 import {BRAND} from './brand.js?v=0.7.1-analog-1';
 import {INTRO_KEY,newPrologue,prologueState,readOpeningHistory,rememberOpening,shouldAutoOpen} from './prologue.js?v=0.7.1-van-1';
-import {OpeningPlayer} from './opening-player.js?v=0.7.1-van-1';
+import {OpeningPlayer} from './opening-player.js?v=0.7.1-van-2';
 import {VERSION,SAVE_KEY,FAMILY,NODES,ROADS,PACKING,PARTS,CAMPAIGN,objective,admission,node,roads} from './world.js?v=0.7.1-opening-1';
 import {fresh,load,save,act,update,summary,slots,clamp} from './sim.js?v=0.7.1-opening-1';
 import {render,ready,HAZARDS,HOME_POINTS,sources} from './art.js?v=0.7.1-van-1';
