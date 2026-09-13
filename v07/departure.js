@@ -1,5 +1,5 @@
-import {drawService} from './service-marks.js?v=0.8.4-apps-1';
-import {fixedShot,sceneMotion} from './cinematic-motion.js?v=0.8.4-apps-1';
+import {drawService} from './service-marks.js?v=0.8.5-safety-1';
+import {fixedShot,sceneMotion} from './cinematic-motion.js?v=0.8.5-safety-1';
 // The film supplies the possibility. This playable chapter supplies the reason to leave.
 // A contract flag is fictional automated coercion, not a universal real-world social score.
 export const DEPARTURE_ID='fourth-morning-1';

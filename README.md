@@ -2,7 +2,7 @@
 
 San Francisco, 2041. Nine mandatory apps control ordinary life. Private companies built the system; the government made it compulsory and handed more decisions to AI. One disputed employment report can close a household's access to money, food and housing before anyone hears an appeal.
 
-**[Play the demo](https://kingmadellc.github.io/common-road-demo/?v=0.8.4)** · **[Watch the opening and departure](https://kingmadellc.github.io/common-road-demo/?v=0.8.4&departure=1&film=1)** · **[World and brand kit](https://kingmadellc.github.io/common-road-demo/brand/?v=0.8.4)**
+**[Play the demo](https://kingmadellc.github.io/common-road-demo/?v=0.8.5)** · **[Watch the opening and departure](https://kingmadellc.github.io/common-road-demo/?v=0.8.5&departure=1&film=1)** · **[World and brand kit](https://kingmadellc.github.io/common-road-demo/brand/?v=0.8.5)**
 
 ## The current demo
 
@@ -14,7 +14,9 @@ Travel from San Francisco through Richmond, Truckee, Wells, Rawlins, North Platt
 
 Signals End prohibits phones, computers and digital products, including council equipment. Electricity, mechanical machines and analog radio remain. Entry requires a choice about its charter. The reward is a life that no longer needs account permission: work ends, a machine stays fixed, and an evening belongs to the family.
 
-Version 0.8.4 integrates ID, Cash, Home, Food, Work, Health, Power, Travel and Safety throughout current story copy, software notices, signs, road films and the brand kit. The apps share original functional symbols and plain typography. The game retains its approved Human Nature identity. The kit includes a 17-page guide, outlined service logos, 1024 px tiles, licensed fonts and native-size scene art.
+Version 0.8.5 strengthens the first Safety checkpoint. Bea’s one-use repair permit gets you through but records the plate. A county detour costs fuel, time and wear; carrying the radio reduces that cost. A held aftermath shows the outcome and the family’s reaction. Existing saves retain their journey. [Try the checkpoint](https://kingmadellc.github.io/common-road-demo/?v=0.8.5&safety=1) without changing your saved campaign.
+
+The world integrates ID, Cash, Home, Food, Work, Health, Power, Travel and Safety throughout current story copy, software notices, signs, road films and the brand kit. The apps share original functional symbols and plain typography. The game retains its approved Human Nature identity. The kit includes a 17-page guide, outlined service logos, 1024 px tiles, licensed fonts and native-size scene art.
 
 Touch is primary; controller and keyboard support remain. Opening playback is skippable and remembers viewing history. Reduced-motion and data-saver settings avoid automatic video; missing media uses illustrated scenes. Existing v0.7 saves keep their resources and progress. The [previous demo](https://kingmadellc.github.io/common-road-demo/v06/) retains its own save.
 

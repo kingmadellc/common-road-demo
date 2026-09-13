@@ -1,4 +1,4 @@
-import {FILM_DURATION,FILM_SCENES,filmCaption,setFilmTime,movePrologue} from './prologue.js?v=0.8.4-apps-1';
+import {FILM_DURATION,FILM_SCENES,filmCaption,setFilmTime,movePrologue} from './prologue.js?v=0.8.5-safety-1';
 // Keep button text nodes stable while a pointer is down (notably in WebKit).
 const setLabel=(element,text)=>{if(element.textContent!==text)element.textContent=text;};
 export class OpeningPlayer {

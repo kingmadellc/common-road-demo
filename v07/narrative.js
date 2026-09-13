@@ -1,4 +1,4 @@
-import {currentCompanyCopy} from './institutions.js?v=0.8.4-apps-1';
+import {currentCompanyCopy} from './institutions.js?v=0.8.5-safety-1';
 // Authoritative origin and discovery order. See Design/Signals-End-Canon.md.
 export const NARRATIVE_REVISION=5;
 export const RADIO_MESSAGE='For anyone still awake. East of the plains, the old wheels are turning. No accounts. No computers. Find the people who still fix things. Ask about Signals End.';
@@ -7,7 +7,7 @@ export const DEPOT_OFFER='An independent freight contractor at a Travel depot ne
 export const ORIGIN='San Francisco, 2041. Nine mandatory apps put pay, food and housing behind one ID. Private companies built them; the government made them compulsory and handed more decisions to AI. Bea smuggled a radio in with repair parts. Ben heard about Signals End after midnight. For three nights, Jack and Sarah argued over whether a simpler life could be real. On the fourth morning, his workshop supervisor ordered Jack to certify a machine with a broken safety cutoff. He refused. His employer fired him and filed a disputed charge through Work. Cash automatically froze their joint wage wallet under the shared government rules. Sarah still had her job, but could not use her pay. Food declined their groceries. Home said their job-linked flat had to be surrendered by 06:00; the earliest appeal was in 72 hours. That evening Sarah made the decision: get the children and ask Bea across the Bay. Ten minutes to load the basics. They had $240 from Jack’s parts tin, an old mechanical van, and no promise that the radio was telling the truth.';
 export const initialNarrativeFlags=()=>({narrativeRevision:NARRATIVE_REVISION,radioHeard:true,contractFlag:true,accountRestricted:true});
 export function arriveNarrative(s,id){
- if(id==='yard'){s.flags.inquirySent=true;s.flags.convoyKnown=true;}
+ if(id==='yard'){s.flags.inquirySent=true;s.flags.convoyKnown=true;if(!s.flags.permitExplained){s.flags.permitExplained=true;s.journal.unshift({hour:s.hour,title:'Bea’s paper permit',body:'Bea signs a county repair-transfer permit. Older county rules still allow one passage to a repair stop, even with a relocation order. Present it and the scanner records the plate; use a side road and keep it. “Paper buys you one argument,” she says. “Not two.”'});}}
  if(id==='river')s.flags.frankWitnessed=true;
  if(id==='plains')s.flags.reservationConfirmed=true;
 }

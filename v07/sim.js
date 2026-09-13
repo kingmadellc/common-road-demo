@@ -1,12 +1,12 @@
-import {startHunting,huntingAction,updateHunting,migrateHunting} from './hunting.js?v=0.8.4-apps-1';
-import {VERSION,SAVE_KEY,PACKING,PARTS,ROADS,CAMPAIGN,objective,admission,node,random,siteItems} from './world.js?v=0.8.4-apps-1';
-import {startFishing,fishingAction,updateFishing} from './fishing.js?v=0.8.4-apps-1';
-import {startSalvage,salvageAction,updateSalvage,saveSite} from './salvage.js?v=0.8.4-apps-1';
-import {showStory,roadShots,updateReel,ARRIVALS} from './journey.js?v=0.8.4-apps-1';
-import {clamp,log,slots,consumeFresh,spend,finish,hurt,shopStock,OFFERS} from './state.js?v=0.8.4-apps-1';
-import {makeIncident,resolveIncident} from './conflict.js?v=0.8.4-apps-1';
-import {advanceRoad} from './drive.js?v=0.8.4-apps-1';
-import {initialNarrativeFlags,arriveNarrative,migrateNarrative,knowledge,ORIGIN,RADIO_MESSAGE} from './narrative.js?v=0.8.4-apps-1';
+import {startHunting,huntingAction,updateHunting,migrateHunting} from './hunting.js?v=0.8.5-safety-1';
+import {VERSION,SAVE_KEY,PACKING,PARTS,ROADS,CAMPAIGN,objective,admission,node,random,siteItems} from './world.js?v=0.8.5-safety-1';
+import {startFishing,fishingAction,updateFishing} from './fishing.js?v=0.8.5-safety-1';
+import {startSalvage,salvageAction,updateSalvage,saveSite} from './salvage.js?v=0.8.5-safety-1';
+import {showStory,roadShots,updateReel,ARRIVALS} from './journey.js?v=0.8.5-safety-1';
+import {clamp,log,slots,consumeFresh,spend,finish,hurt,shopStock,OFFERS} from './state.js?v=0.8.5-safety-1';
+import {makeIncident,resolveIncident} from './conflict.js?v=0.8.5-safety-1';
+import {advanceRoad} from './drive.js?v=0.8.5-safety-1';
+import {initialNarrativeFlags,arriveNarrative,migrateNarrative,knowledge,ORIGIN,RADIO_MESSAGE} from './narrative.js?v=0.8.5-safety-1';
 export {clamp,log,slots,consumeFresh,spend,finish};
 export function fresh(seed=42){return {version:VERSION,seed,mode:'packing',node:'yard',hour:0,deadline:CAMPAIGN.departureWindow,cash:240,fuel:34,meals:4,energy:88,health:100,condition:82,fan:false,packed:['cooler','spare','chair'],parts:{fan:[],relay:[],tire:[]},cargo:null,sponsor:false,visited:['yard'],sites:{},jobs:[],activity:null,road:null,incident:null,ending:null,home:{placed:[],spot:'window'},journal:[{hour:0,title:'Why we left',body:ORIGIN},{hour:0,title:'Ben’s handwritten broadcast',body:RADIO_MESSAGE}],flags:initialNarrativeFlags(),settings:{castMode:'tap',autoHook:false,toggleReel:false,reducedMotion:false,sound:false,mirror:false},effects:{handUntil:0},stocks:{},freshFood:[],fishSites:{},hunting:{outfitted:false,ammo:0,taken:[],shots:0,outings:0,shared:false},siteMemory:{},threat:{permitUsed:false,firstEncounter:false,identified:false,heat:0,encounters:0,relief:0},reel:{seen:[],gallery:['broadcast']},story:null,activeTime:0,stats:{hunts:0,fish:0,salvaged:0,repairs:0,miles:0,encounters:0},message:'',revision:0};}
 export function load(storage){try{const s=JSON.parse(storage.getItem(SAVE_KEY));if(s?.version===VERSION&&Number.isFinite(s.hour)&&s.parts&&s.effects&&s.stocks&&s.threat&&s.reel&&Number.isFinite(s.fuel)&&Array.isArray(s.journal))return migrateHunting(migrateNarrative(s));}catch{}return null;}
@@ -57,7 +57,8 @@ export function act(s,a){
  case 'hideout':if(s.mode!=='stop'||s.node!=='ridge')throw Error('The safe contact is at the ridge.');if(s.flags.hideout)throw Error('The quiet approach is already marked.');if(!s.flags.safeContact&&s.cash<15)throw Error('The guide needs $15 for fuel.');if(!s.flags.safeContact)s.cash-=15;spend(s,s.flags.safeContact?2:3);s.threat.heat=0;s.threat.relief=60;s.flags.hideout=true;log(s,'The truck takes the wrong road','A local guide moves the van through a covered service tunnel. Your plate remains recorded; the pursuit loses your route.');break;
  case 'aid':if(s.mode!=='stop'||s.flags.aid)throw Error('The road network’s emergency supplies are already used.');if(s.cash>20&&s.fuel>8&&s.meals>1)throw Error('Keep the emergency supplies for a household in trouble.');s.flags.aid=true;s.fuel+=8;s.meals+=2;spend(s,4);log(s,'A costly kindness','The nearest road contact found a little fuel and food. Four hours lost arranging it. Make this chance count.');break;
  case 'travel':{if(s.mode!=='stop')throw Error('Finish your stop first.');const r=ROADS.find(r=>r.id===a.id&&r.from===s.node);if(!r)throw Error('That road does not leave here.');if(s.fuel<r.fuel+(!s.fan?2:0))throw Error('Not enough fuel for this leg. Trade, recover supplies, or seek help.');if(s.condition<=5)throw Error('The van cannot move. Repair the running gear.');s.road={...r,fuel:r.fuel+(!s.fan?2:0),wear:r.wear+(!s.fan?6:0),elapsed:0,meters:0,wheelAngle:0,mph:0,duration:24,eventDone:false,pace:a.pace||'steady',startFuel:s.fuel};s.road.shots=roadShots(s,r);s.road.shot=null;s.mode='travel';s.message='';break;}
- case 'incident':{if(s.mode!=='incident')throw Error('No road encounter.');resolveIncident(s,a.id);if(s.mode==='ending')break;if(s.condition<=0||s.health<=0){finish(s,'stranded','The road asked too much.','Road volunteers brought the family to a county shelter. The run is over; everyone is alive.');break;}s.mode='travel';s.incident=null;s.road.shot=null;break;}
+ case 'incident':{if(s.mode!=='incident')throw Error('No road encounter.');resolveIncident(s,a.id);if(s.mode==='ending')break;if(s.condition<=0||s.health<=0){finish(s,'stranded','The road asked too much.','Road volunteers brought the family to a county shelter. The run is over; everyone is alive.');break;}if(!s.incident.result){s.mode='travel';s.incident=null;s.road.shot=null;}break;}
+ case 'incidentContinue':if(s.mode!=='incident'||!s.incident?.result)throw Error('Choose a way through first.');s.mode='travel';s.incident=null;s.road.shot=null;s.message='';break;
  case 'storyContinue':if(s.mode!=='story')throw Error('No story to continue.');s.mode=s.story.returnMode;s.story=null;break;
  case 'skipShot':if(s.mode==='travel')s.road.shot=null;break;
  case 'setting':if(!['castMode','autoHook','toggleReel','reducedMotion','sound','mirror'].includes(a.id))throw Error('Unknown setting.');s.settings[a.id]=a.id==='castMode'?(a.value==='tap'?'tap':'pull'):!!a.value;break;
@@ -76,7 +77,7 @@ export function act(s,a){
  return s;
 }
 export function update(s,dt){
- if(!Number.isFinite(dt)||dt<0)return;
+ if(!Number.isFinite(dt)||dt<0||s.mode==='incident')return;
  s.activeTime+=dt;s.threat.relief=Math.max(0,s.threat.relief-dt);
  if(s.mode==='story'){s.story.elapsed+=dt;return;}
  if(s.mode==='hunting'){updateHunting(s,dt);return;}

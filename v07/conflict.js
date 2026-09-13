@@ -1,20 +1,23 @@
-import {spend,log,clamp,finish} from './state.js?v=0.8.4-apps-1';
-import {DEPOT_OFFER} from './narrative.js?v=0.8.4-apps-1';
+import {spend,log,clamp,finish} from './state.js?v=0.8.5-safety-1';
+import {DEPOT_OFFER} from './narrative.js?v=0.8.5-safety-1';
 export function threatLabel(s){return s.threat.heat>1?'PURSUED':s.threat.identified?'PLATE RECORDED':'UNSEEN';}
+// The road costs still ahead matter: paying for a detour can strand the van later.
+export function checkpointFuel(s){return s.road?.duration?Math.max(0,s.road.fuel*(1-s.road.elapsed/s.road.duration)):0;}
 export function collectorOptions(s){const radio=s.packed.includes('radio');const options=[
- {id:'detour',label:radio?'Follow the radio’s service lane':'Take the county lane',detail:`${radio?'1 hour · 2 fuel':'2 hours · 4 fuel'} · 4% van · stay off the scanner`,disabled:s.fuel<(radio?2:4)},
- !s.threat.permitUsed?{id:'papers',label:'Use the county permit',detail:'45 minutes · exemption used · your plate is recorded'}:{id:'escape',label:'Break through the rear lane',detail:'2 fuel · 12% van · they will pursue',disabled:s.fuel<2},
+ {id:'detour',label:radio?'Follow the radio’s service lane':'Take the county lane',detail:`${radio?'1 hour · 2 fuel':'2 hours · 4 fuel'} · 4% van · no new scan`,disabled:s.fuel<(radio?2:4)},
+ !s.threat.permitUsed?{id:'papers',label:'Hand over Bea’s permit',detail:'45 minutes · one-use pass spent · plate recorded'}:{id:'escape',label:'Break through the rear lane',detail:'30 minutes · 2 fuel · 12% van · pursued',disabled:s.fuel<2},
  ...(s.threat.permitUsed?Object.keys(s.parts).filter(k=>s.parts[k].length).slice(0,1).map(part=>({id:'trade:'+part,label:'Surrender the '+part,detail:'Lose one spare · 2 hours · leave under watch'})):[])
  ];if(options.every(o=>o.disabled))options.push({id:'surrender',label:'Keep the family safe',detail:'Lose the van · forced return to the city · end this attempt'});return options;}
 export function resolveCollector(s,id){const available=collectorOptions(s).find(o=>o.id===id);if(!available||available.disabled)throw Error('That way out is unavailable.');
  if(id==='surrender'){finish(s,'stranded','The family stays together.','The Collectors take the van and escort the household back to the city. Housing debt becomes a compulsory company contract. Everyone survives; the cameras are waiting.');return;}
  if(id==='detour'){const radio=s.packed.includes('radio');s.fuel-=radio?2:4;s.condition=clamp(s.condition-4);spend(s,radio?1:2);s.threat.heat=Math.max(0,s.threat.heat-1);log(s,'Off the camera grid',radio?'The road network’s radio warning put you on the service lane before the scanner.':'The county lane cost fuel and a hard scrape. They did not get a new scan.');}
- else if(id==='papers'){s.threat.permitUsed=true;s.threat.identified=true;s.threat.heat=1;spend(s,.75);log(s,'One exemption. Used.','The officer checks your household’s debt and relocation order, then stamps VOID across the county permit. “Next time, you return with us.” Your plate is in the registry.');}
+ else if(id==='papers'){s.threat.permitUsed=true;s.threat.identified=true;s.threat.heat=1;spend(s,.75);log(s,'One exemption. Used.','The officer checks Bea’s county repair-transfer permit against the relocation order. One supervised passage is still allowed. He stamps VOID across it. “Next time, you return with us.” The scanner keeps the plate.');}
  else if(id==='escape'){s.fuel-=2;s.condition=clamp(s.condition-12);s.threat.identified=true;s.threat.heat=2;spend(s,.5);log(s,'The barrier gives way','Sarah takes the rear lane. The van loses paint and fuel. A recovery truck is following the route.');}
  else {const part=id.split(':')[1];s.parts[part].shift();s.threat.identified=true;s.threat.heat=1;spend(s,2);log(s,'Property retained',`They take your spare ${part} as collateral. You leave, watched. That part cannot repair the van now.`);}
  s.threat.firstEncounter=true;s.threat.relief=32;s.threat.encounters++;s.stats.encounters++;s.flags.lastConflict='collectors';
 }
 export function makeIncident(s,r){
+ if(r.id==='r1'&&!s.flags.checkpointMet&&!s.visited.includes('river'))return {id:'collectors',collectors:true,checkpoint:true,title:'The camper ahead is going back.',body:s.threat.identified?'The screen finds your plate. A Collector points toward a transport. Sarah spots the county lane before the barrier.':'A tow truck takes the camper ahead. Its family boards a Safety transport. Your turn is next. Sarah spots a lane before the scanner.',image:'squad'};
  if(r.id==='desert-road')return {id:'dry-pumps',title:'Fuel available. Account required.',body:'The Nevada pump recognizes the money and rejects the people. Jack can hand-pump the underground reserve, but the gantry camera still has power.',image:'toll',options:[{id:'careful',label:'Hand-pump a reserve',detail:'2 hours · gain 8 fuel · plate recorded',hours:2,gainFuel:8,identified:true},{id:'push',label:'Leave before it scans',detail:'Keep your fuel · no new plate record'}]};
  if(r.id==='divide-road')return {id:'collectors',collectors:true,title:'Salt Lake: the account lanes',body:'The interstate skirts the city. Collectors check the household registry: unauthorized relocation, debt outstanding. County road signs still point toward Wyoming.',image:'scanner'};
  if(r.id==='plains-road')return {id:'crosswind',title:'The wind wants the van',body:'East of Rawlins, a crosswind shoves the van toward the barrier. Jack sees a sheltered service road. Ben has already found it in the atlas.',image:'repair-family',options:[{id:'careful',label:'Follow Ben’s service road',detail:'1.5 hours · protect the van',hours:1.5},{id:'push',label:'Fight through the crosswind',detail:'10% van · 8% rest · save time',damage:10,energy:8}]};
@@ -27,4 +30,20 @@ export function makeIncident(s,r){
  return {id:'neighbor',title:'A family at the closed pumps',body:'A father holds up an empty can. His radio still works. He knows which roads the Collectors are using.',image:'market',options:[{id:'careful',label:'Share 3 fuel',detail:'3 fuel · 30 minutes · a safe contact at the ridge',fuel:3,hours:.5,intel:true},{id:'push',label:'Keep the reserve',detail:'No cost · leave the family at the pumps'}]};
 }
 export function incidentOptions(s){return s.incident.collectors?collectorOptions(s):s.incident.options.map(o=>({...o,disabled:s.fuel<(o.fuel||0)}));}
-export function resolveIncident(s,id){if(s.incident.collectors){resolveCollector(s,id);return;}const o=incidentOptions(s).find(x=>x.id===id);if(!o||o.disabled)throw Error('You cannot afford that choice.');s.fuel=Math.min(50,s.fuel-(o.fuel||0)+(o.gainFuel||0));s.cash+=o.gainCash||0;if(o.gainCash)s.flags.orchestratedAgain=true;if(o.identified){s.threat.identified=true;s.threat.heat=Math.max(1,s.threat.heat);}s.condition=clamp(s.condition-(o.damage||0));s.energy=clamp(s.energy-(o.energy||0));if(s.cargo)s.cargo.condition=clamp(s.cargo.condition-(o.cargo||0));if(o.intel)s.flags.safeContact=true;spend(s,o.hours||0);log(s,s.incident.title,`${o.label}. ${o.gainCash?'The contractor pays Sarah $60 in notes, outside the frozen wallet. The depot camera keeps the new plate record.':s.incident.id==='orchestration-offer'?'The sign-in camera watches the gate. You keep your time.':o.intel?'The family gives you a ridge contact and a quiet approach.':'The choice follows you down the road.'}`);s.flags.lastConflict=s.incident.id;}
+export function resolveIncident(s,id){
+ if(s.incident.result)throw Error('This decision is already settled.');
+ if(s.incident.collectors){
+  const before={hour:s.hour,fuel:s.fuel,condition:s.condition,identified:s.threat.identified};
+  resolveCollector(s,id);if(s.mode==='ending')return;
+  s.flags.checkpointMet=true;
+  const result=id==='papers'?{title:'“Next time, you return with us.”',body:'The permit comes back stamped VOID. The barrier lifts. Your plate stays in the registry.',line:'Sarah folds the paper. “Keep it. I want to remember what permission looks like.”',image:'scanner'}:
+   id==='detour'?{title:'The lights stay on the highway.',body:s.packed.includes('radio')?'A driver’s radio warning leads to the service lane. Gravel scrapes the van. Nobody follows.':'Sarah takes the county lane. Branches scrape the van. At the next bend, the amber lights disappear.',line:'Ben: “Does that mean we’re all right?” Sarah: “It means we’re here.”',image:'mirror'}:
+   id==='escape'?{title:'The truck turns after you.',body:'The van clears the rear barrier. The scanner has your plate. A recovery truck follows onto the highway.',line:'Jack: “Everybody still here?” Annie: “Rusty ate my sandwich.”',image:'blocked'}:
+   {title:'They keep the spare.',body:'The officer files the part as collateral. You can leave. Your plate stays on the watch list.',line:'Jack watches the part disappear into their truck. “Apparently that fixed our paperwork.”',image:'scanner'};
+  s.incident.result={...result,choice:id,hours:s.hour-before.hour,fuel:before.fuel-s.fuel,damage:before.condition-s.condition,plate:s.threat.identified?'Plate recorded':'No plate record',pursuit:s.threat.heat>1?'Pursuit active':'No truck following'};
+  s.incident.image=result.image;
+  log(s,result.title,result.body+' '+result.line);
+  return;
+ }
+ const o=incidentOptions(s).find(x=>x.id===id);if(!o||o.disabled)throw Error('You cannot afford that choice.');s.fuel=Math.min(50,s.fuel-(o.fuel||0)+(o.gainFuel||0));s.cash+=o.gainCash||0;if(o.gainCash)s.flags.orchestratedAgain=true;if(o.identified){s.threat.identified=true;s.threat.heat=Math.max(1,s.threat.heat);}s.condition=clamp(s.condition-(o.damage||0));s.energy=clamp(s.energy-(o.energy||0));if(s.cargo)s.cargo.condition=clamp(s.cargo.condition-(o.cargo||0));if(o.intel)s.flags.safeContact=true;spend(s,o.hours||0);log(s,s.incident.title,`${o.label}. ${o.gainCash?'The contractor pays Sarah $60 in notes, outside the frozen wallet. The depot camera keeps the new plate record.':s.incident.id==='orchestration-offer'?'The sign-in camera watches the gate. You keep your time.':o.intel?'The family gives you a ridge contact and a quiet approach.':'The choice follows you down the road.'}`);s.flags.lastConflict=s.incident.id;
+}

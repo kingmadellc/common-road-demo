@@ -1,4 +1,4 @@
-import {fixedShot,sceneMotion,drawCheckoutDenial,drawQuestionPaper} from './cinematic-motion.js?v=0.8.4-apps-1';
+import {fixedShot,sceneMotion,drawCheckoutDenial,drawQuestionPaper} from './cinematic-motion.js?v=0.8.5-safety-1';
 // One editorial source drives the rendered film, captions and illustrated fallback.
 export const FILM_ID='run-for-it-7';
 export const FILM_DURATION=116;

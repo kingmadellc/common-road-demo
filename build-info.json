@@ -1,11 +1,11 @@
 {
-  "version": "0.8.4",
-  "assetRevision": "apps-1",
+  "version": "0.8.5",
+  "assetRevision": "safety-1",
   "title": "Signals End",
   "sourceRepository": "https://github.com/kingmadellc/common-road",
-  "sourceCommit": "9b25f8ac8ddc9f1b58089b686a9b36652cf4d17f",
-  "builtAt": "2026-09-13T21:56:12.693Z",
-  "bytes": 252902929,
+  "sourceCommit": "e847239eb379dcd46c7303997493f114fd33c110",
+  "builtAt": "2026-09-13T22:51:05.263Z",
+  "bytes": 252910840,
   "files": {
     "assets/apps-084/cash-icon.svg": {
       "bytes": 351,
@@ -780,8 +780,8 @@
       "sha256": "42059f58fb0b33153f527c828030a6c75c4f2fe44ce02030b098a07372d6c4a4"
     },
     "brand/downloads/Signals-End-Brand-Kit-v2.zip": {
-      "bytes": 84816806,
-      "sha256": "a372aa73e47ec9fdbed4bc90af03a985c10dc5579d2c6e64efba03470313c3f2"
+      "bytes": 84817213,
+      "sha256": "fd314d3531f9fdfa3b3bf7261e3f14820d27ba9f8ae10106d5911d38b8410d39"
     },
     "brand/downloads/signals-end-app-icon-1024.png": {
       "bytes": 27147,
@@ -837,7 +837,7 @@
     },
     "brand/index.html": {
       "bytes": 14756,
-      "sha256": "0bb03a534e7e3ac9ae8daced487e6371e859455ff2793ca687a189741c434681"
+      "sha256": "4e18775745916e85ec0ef54219f023d2417f8cc34e721a00fe2ab6cc38baede5"
     },
     "brand/kit.css": {
       "bytes": 14966,
@@ -864,8 +864,8 @@
       "sha256": "c0cdfa457e967b4007ac85f12374c17d0c24911180113547dc2d7333cf73be0c"
     },
     "index.html": {
-      "bytes": 2133,
-      "sha256": "81217c77e81fd0c25dde30252f47d9d91a62815f74545d35cda347865c71ab22"
+      "bytes": 2145,
+      "sha256": "df17e0b82201894ae626025cde0d53e73a7985af24cfcd2869d84ad1e2012e77"
     },
     "manifest.webmanifest": {
       "bytes": 581,
@@ -896,8 +896,8 @@
       "sha256": "8380ecc6617a63f002d75e10c19359d8c1347db3f82900c4f7d19a81ab1aad4b"
     },
     "sw.js": {
-      "bytes": 12598,
-      "sha256": "93761844c35e7c8707f5c158f2838d73a5ea4af11be78d7919d9e22c3dc57777"
+      "bytes": 12600,
+      "sha256": "cefcb4dac598abb56fbf5b19fb826fd7b5b369503376b0d873df09321ec8337d"
     },
     "v02/assets/atmosphere/camp-v02.jpg": {
       "bytes": 715858,
@@ -1204,52 +1204,52 @@
       "sha256": "44e2fa3140b0eefd23c42b34cc59aa460633f5e12f7485621cf9902e608be8a4"
     },
     "v07/app.js": {
-      "bytes": 65509,
-      "sha256": "2bf51ee579c9a67b9eff1ac1ae821c54c799b4d501ced8c8fdca39667295beef"
+      "bytes": 67447,
+      "sha256": "191d5b2778f023bc4ebaf78693cb42070261ef8319593012868f226a1ad57f56"
     },
     "v07/art.js": {
-      "bytes": 11825,
-      "sha256": "f953c7f641d2f8d452ca48862bfc3cfc43e571f1ac823ed01f257554977c4c0e"
+      "bytes": 11843,
+      "sha256": "f53a728812bbeb8a213e887f91e466a22a7251b26f2e3e60f80943f50ae0ba48"
     },
     "v07/brand.js": {
       "bytes": 1867,
       "sha256": "a293550a035aa701d205c11c9e754d0a1d7d4db711edbe0e845257f7c6127627"
     },
     "v07/cinematic-motion.js": {
-      "bytes": 5059,
-      "sha256": "1dfd2f559484044184138b6eb8e683a0ace1497bed820dcb6eb4602fb9ce42a4"
+      "bytes": 5061,
+      "sha256": "6f8bdcf456b4c9f3eb695af1727be7e05e9e737c2780544fba4fe38a53b9d8ef"
     },
     "v07/conflict.js": {
-      "bytes": 7978,
-      "sha256": "1844c982c3583c3808f6facf69d3d955c8d022fc03ebdcbdb5f507b81c159914"
+      "bytes": 10442,
+      "sha256": "f3e148094af549d91302ed47dee5b3fc2a95e8152069d72c8096199d31766333"
     },
     "v07/departure.css": {
       "bytes": 7776,
       "sha256": "563940a64443625145e24aba46df8da408a6dfa63518d19331bacbf4ecdda6a3"
     },
     "v07/departure.js": {
-      "bytes": 5933,
-      "sha256": "746966ba3f6fdb7702da70c802773518d1ea120c76534c1713ea218f0e229b7d"
+      "bytes": 5937,
+      "sha256": "432d9f02acb1f09eee9343647c128d33715c6cd95f026e737732baa3c29a114a"
     },
     "v07/drive.js": {
       "bytes": 424,
       "sha256": "e0c9a538d3fb4f29dc4bcd2cbf24b9b4a20d5523eed3fdf0715054db57cf8296"
     },
     "v07/film.js": {
-      "bytes": 4373,
-      "sha256": "a3bb90c3783ad2c32d7170a589d7002608fbbca3f019ba944001e4e742f7bff9"
+      "bytes": 4375,
+      "sha256": "f6c1789e9a03584dcea775057f7ffd09906b3fe6f87aaa23076826706ba4a4af"
     },
     "v07/fishing.js": {
-      "bytes": 7452,
-      "sha256": "4b0943880361690a34a5f11c0d008b10936198d8e0ef5021f7c873b6a58022e4"
+      "bytes": 7454,
+      "sha256": "caa7fc21bc7e9c329d46b739356e35f21827a6117ab520efd3fe870867262370"
     },
     "v07/hunting-art.js": {
-      "bytes": 1949,
-      "sha256": "f7d6644fe38a524e297ae5c07f033726438db42b03c50ab069f192984d02d6ca"
+      "bytes": 1951,
+      "sha256": "73dc11b0cb9fb2ec6d3b54afe0195e7582a49ffc23aa1ce16162d8d4ca155356"
     },
     "v07/hunting.js": {
-      "bytes": 8691,
-      "sha256": "52ecb30ba49e9d96bbe2e175857ad1973853ad894298f6464ee3fa06d19d3eb7"
+      "bytes": 8695,
+      "sha256": "5d91fdbee0cb433718bc2698467d21511ecf59ea044c8bff97fb7c52e12b5549"
     },
     "v07/identity.css": {
       "bytes": 4177,
@@ -1264,52 +1264,52 @@
       "sha256": "4d053fe039091274b789bc4df8121df90b26518dd9be770eb933595aac2170d0"
     },
     "v07/journey.js": {
-      "bytes": 9203,
-      "sha256": "9895a49849aa462b9ffbd67eb46a89163681ed650550dab4e51cf28dd4587b19"
+      "bytes": 9205,
+      "sha256": "939c2e8ab75698e8a47612f7d5f636c2f0d42403d3d7ea73f71c090fc756252d"
     },
     "v07/motion.js": {
-      "bytes": 5664,
-      "sha256": "c84142eebf07d79e8c9bc9b698b37476d6e7cdadccd48f7d1139d087a3928d02"
+      "bytes": 5668,
+      "sha256": "7eea3601f4ed80cef648d4b858666567d4aa6b9f4d779c7ce739a43b812873ea"
     },
     "v07/narrative.js": {
-      "bytes": 6270,
-      "sha256": "3c603c106dc5308c424c99c4e355b83a1acbcca2d946c1b337fcc4279e57e842"
+      "bytes": 6669,
+      "sha256": "7da51701f7e7e972cd3f553652b97b5de31d969888fc93d84833b86993fdb322"
     },
     "v07/opening-film.js": {
-      "bytes": 7311,
-      "sha256": "a42da7e0080cde1a68ac230eb3708fa3cbba619f36eef48e296edd5448bafc2e"
+      "bytes": 7313,
+      "sha256": "bb6c8638f6849e917f91d0d9bd69a0484f743ca4e516c817d2d19dbddd363c27"
     },
     "v07/opening-player.js": {
-      "bytes": 5966,
-      "sha256": "1d5c54e95b65fda7cc7ee119e92235417782ce51bf90ad991f2a11d3c14fb180"
+      "bytes": 5968,
+      "sha256": "57dd1ae3ee5066695128e7a2f0612e9fb1f9b0f293a39951d650a2826650ffc3"
     },
     "v07/opening.css": {
       "bytes": 2825,
       "sha256": "77bed9f760d761038b534d341782234797a2d4aa8a57b4e78993ee6229378a8b"
     },
     "v07/prologue.js": {
-      "bytes": 1917,
-      "sha256": "def778e46ce29674f25758df438a3e124781c171a5305c79daccd4704146d1bb"
+      "bytes": 1919,
+      "sha256": "2e316a9f648c667fa234ecf59042923ba04aee254b2d599e342082e4af0da537"
     },
     "v07/salvage.js": {
-      "bytes": 7023,
-      "sha256": "a82a643ed7e128d832147181e92160dd3a4c54d27046a2a789caa9e5223cc4ab"
+      "bytes": 7029,
+      "sha256": "772265c0b6d97d40d413f0d52d3c5bd0c3c1420d0eaa73d48ae7b7d73cbcaefa"
     },
     "v07/scenes.js": {
-      "bytes": 6471,
-      "sha256": "a48c9106c7289b3e3fe22f6f46141f7b90a441bd1682eb6c9772a4de08bd0911"
+      "bytes": 6475,
+      "sha256": "17a26d7366b0535f44f2618c533213afd09dc151dd24b54a3811394695267168"
     },
     "v07/service-marks.js": {
-      "bytes": 2209,
-      "sha256": "2c74809e23a2e618accb867309eb9cb27acbce354a40b73cf3065f5a83aa1958"
+      "bytes": 2211,
+      "sha256": "dd4dc7e7e3830715aff2681f53754a99d8f4180e49bc694e6e21795d124637c9"
     },
     "v07/service-signage.js": {
-      "bytes": 3632,
-      "sha256": "d993507637127d0fa0bdef9edb088d4639342ae249f19e571606d655941f026a"
+      "bytes": 3636,
+      "sha256": "5bda55f1fb955f147053dfcce429fbd3c8252f467f21213faac697590ab6c646"
     },
     "v07/sim.js": {
-      "bytes": 21547,
-      "sha256": "c94b6e015cb23c040318e02bf68417b33e0cbf74414faeca3ebcd97ffa368d0b"
+      "bytes": 21791,
+      "sha256": "2067017631f8dd1b99adffbc300bb6915e913ba710176143516490b57b9eda0e"
     },
     "v07/sound.js": {
       "bytes": 2475,
@@ -1320,19 +1320,19 @@
       "sha256": "fe11407ad36a206eacf31177acc88eb28686becec16062ca0707b3b55eb2321b"
     },
     "v07/style.css": {
-      "bytes": 17630,
-      "sha256": "38f39dc0d4785b045d589ab30a785990313a53e22e910c69537a31e3225536c4"
+      "bytes": 20011,
+      "sha256": "1b5b1ce98cc300235f6a5b7acc71e2e5f9b60bc50b3506c7d67389e0cdcf447f"
     },
     "v07/video.js": {
       "bytes": 824,
       "sha256": "f9d13ea67cab9cc9d4edc750d63cab9da7ebd8b700a00edc6b5214e685b360e3"
     },
     "v07/world.js": {
-      "bytes": 13735,
-      "sha256": "31904b3f913da66245d27ac351040a65e986228ef6dd8f4feaff22f241a49027"
+      "bytes": 13737,
+      "sha256": "e7b4388ddae12a7b91650d2f1e17bb8f96e97a2d87b57c555766b865b4f45574"
     }
   },
-  "validation": "Nine mandatory government apps, original symbols and physical signage, coherent employer-to-household lockout, updated opening films and brand kit. Opening, departure, save and controller regressions checked in browser automation. Phone and desktop visuals inspected. No physical-device or human playtest claims",
+  "validation": "First road Safety checkpoint, one-use permit, persistent plate consequences, held family aftermaths, honest fuel warnings and save-isolated preview. 160 simulation checks including both campaign admission paths; desktop, phone, landscape, save reload and simulated controller checked. No physical-device or human playtest claims",
   "nativeAppleBuild": false,
   "physicalAppleDeviceTested": false,
   "humanFunTested": false
