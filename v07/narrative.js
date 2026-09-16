@@ -1,10 +1,17 @@
-import {currentCompanyCopy} from './institutions.js?v=0.8.6-media-1';
+import {currentCompanyCopy} from './institutions.js?v=0.8.7-intro-1';
 // Authoritative origin and discovery order. See Design/Signals-End-Canon.md.
-export const NARRATIVE_REVISION=5;
-export const RADIO_MESSAGE='For anyone still awake. East of the plains, the old wheels are turning. No accounts. No computers. Find the people who still fix things. Ask about Signals End.';
+export const NARRATIVE_REVISION=6;
+export const RADIO_LINES=Object.freeze([
+ 'Ozark relay. For anyone still awake.',
+ 'Your score doesn’t follow you here. You can work, buy, and sell without a screen saying yes.',
+ 'Fix a pump. Grow something. Teach a kid. Take cash, trade, charge for your work. What you know is worth something here.',
+ 'Taxes are low. They’re posted at the hall. There’s land to buy or lease, and lots you can build on.',
+ 'No phones. No computers. Bring what you know. Ask the people who still fix things about Signals End.'
+]);
+export const RADIO_MESSAGE=RADIO_LINES.join(' ');
 // The contractor pays physical cash; a corporate wage deposit would stay frozen.
 export const DEPOT_OFFER='An independent freight contractor at a Travel depot needs help to sort damaged freight. Four hours, $60 in cash, off the books. The depot’s sign-in camera still records your face and the van’s plate.';
-export const ORIGIN='San Francisco, 2041. Nine mandatory apps put pay, food and housing behind one ID. Private companies built them; the government made them compulsory and handed more decisions to AI. Bea smuggled a radio in with repair parts. Ben heard about Signals End after midnight. For three nights, Jack and Sarah argued over whether a simpler life could be real. On the fourth morning, his workshop supervisor ordered Jack to certify a machine with a broken safety cutoff. He refused. His employer fired him and filed a disputed charge through Work. Cash automatically froze their joint wage wallet under the shared government rules. Sarah still had her job, but could not use her pay. Food declined their groceries. Home said their job-linked flat had to be surrendered by 06:00; the earliest appeal was in 72 hours. That evening Sarah made the decision: get the children and ask Bea across the Bay. Ten minutes to load the basics. They had $240 from Jack’s parts tin, an old mechanical van, and no promise that the radio was telling the truth.';
+export const ORIGIN='San Francisco, 2041. Nine mandatory apps put pay, food and housing behind one ID and a social credit score. Private companies built them; the government made them compulsory and handed more decisions to AI. A low score can stop someone buying dinner even with money in the account. Bea hid an unconnected shortwave radio among repair parts. Ben smuggled it past inspections and building cameras, then cleaned a battery contact and secured its aerial lead. After midnight, he and Sarah heard a voice claiming to come from the Ozarks: work, trade and land without a screen deciding who was allowed. For three nights, Jack saw a future and Sarah questioned the promise. She wanted somewhere safe first; they could make a plan once they were there. On the fourth morning, Jack refused to certify a machine with a broken safety cutoff. His employer fired him and filed an adverse compliance report through Work. The shared household score fell below the access threshold. Cash held their joint funds. Sarah still had her job, but could not spend her wages. Food declined their groceries. Home demanded the staff-flat keys by 06:00; an appeal would take at least 72 hours. Work offered restoration shifts and a score review. Sarah chose to leave: get the children and ask Bea across the Bay. Ten minutes to load the basics. They had $240 from Jack’s parts tin, an old workshop van that could run mechanically, and no proof that Signals End existed.';
 export const initialNarrativeFlags=()=>({narrativeRevision:NARRATIVE_REVISION,radioHeard:true,contractFlag:true,accountRestricted:true});
 export function arriveNarrative(s,id){
  if(id==='yard'){s.flags.inquirySent=true;s.flags.convoyKnown=true;if(!s.flags.permitExplained){s.flags.permitExplained=true;s.journal.unshift({hour:s.hour,title:'Bea’s paper permit',body:'Bea signs a county repair-transfer permit. Older county rules still allow one passage to a repair stop, even with a relocation order. Present it and the scanner records the plate; use a side road and keep it. “Paper buys you one argument,” she says. “Not two.”'});}}
@@ -16,19 +23,22 @@ export function knowledge(s){
  if(s.flags.reservationConfirmed)return {stage:'confirmed',title:'Frank answered',text:'At North Platte, Frank answered Sarah’s private family question. He reserved a home. A witness or the filter delivery completes the agreement.'};
  if(s.flags.frankWitnessed)return {stage:'witness',title:'The first evidence',text:'June’s photograph puts Uncle Frank inside Signals End. Freight-radio relays carry Sarah’s question. A courier will record any answer at North Platte.'};
  if(s.flags.inquirySent)return {stage:'inquiry',title:'Someone who still fixes things',text:'Bea’s freight contacts radioed Sarah’s private question. June at Truckee may know where Uncle Frank went. The next Ava convoy leaves in five days.'};
- return {stage:'rumor',title:'Bea first',text:'Ben heard a place called Signals End on Bea’s smuggled radio. Jack wants to go. Sarah wants answers. After three nights of arguing, Jack’s employer fires him and Cash freezes their joint wallet. Their housing deadline comes before an appeal. They load the van and go to Bea. Nothing beyond that is confirmed.'};
+ return {stage:'rumor',title:'Bea first',text:'Ben smuggled Bea’s radio home and got it working. He and Sarah heard a voice claiming there was work, trade and land in the Ozarks without a score deciding who could take part. Sarah is not convinced. Jack’s employer report has now pushed their household score below the access threshold: money held, groceries refused, a flat to leave before an appeal. They are going to Bea to get safe and make a plan. The broadcast still needs proof.'};
 }
 export function migrateNarrative(s){
  if(s.flags.narrativeRevision===NARRATIVE_REVISION)return refreshCompanyCopy(s);
  // These revisions already have the correct evidence order. Preserve progress.
- if([2,3,4].includes(s.flags.narrativeRevision)){
+ if([2,3,4,5].includes(s.flags.narrativeRevision)){
   s.flags.narrativeRevision=NARRATIVE_REVISION;s.flags.contractFlag=true;s.flags.accountRestricted=true;
+  let replacedBroadcast=false;
   for(const entry of s.journal||[]){
    if(entry.earlierStoryDraft)continue;
    if(['The night the radio came on','Three nights before the road'].includes(entry.title)){entry.earlierStoryDraft=true;}
    if(entry.title==='Why we left'){entry.earlierStoryDraft=true;}
+   if(entry.title==='Ben’s handwritten broadcast'&&entry.body!==RADIO_MESSAGE){entry.earlierStoryDraft=true;replacedBroadcast=true;}
    if(entry.title==='The story so far')entry.body=ORIGIN+' '+knowledge(s).text;
   }
+  if(replacedBroadcast)s.journal.unshift({hour:s.hour,title:'Ben’s handwritten broadcast',body:RADIO_MESSAGE});
   s.journal.unshift({hour:s.hour,title:'Why we left',body:ORIGIN});
   return refreshCompanyCopy(s);
  }

@@ -14,12 +14,21 @@ export function transitionSounds(p,n){
  if(n.mode==='travel'&&p.mode==='packing')cues.push('start');
  if(n.mode==='repair'&&n.phase==='done'&&p.phase!=='done')cues.push('start');
  if(n.mode==='story'&&(p.mode!=='story'||p.story!==n.story))cues.push(['nevada-room','frank-key'].includes(n.story)?'key':n.story==='hunt-dinner'||n.story==='dinner'?'bowl':n.story==='ben-wrench'?'switch':n.story==='pump-work'?'start':'paper');
- if(n.mode==='departure'&&p.departure!==n.departure)cues.push(n.departure>=7?'stow':'switch');
+ // Departure has its own timed scene clips; do not double them with generic cues.
  return cues;
 }
 export function soundMix(s,ui={}){
- const audible=!!s.settings.sound&&!ui.paused&&!ui.title&&!ui.prologue&&!ui.hidden;
+ const audible=!!s.settings.sound&&!ui.paused&&!ui.title&&!ui.prologue&&!ui.hidden&&!ui.dialog;
  const g=s.activity||{},travel=s.mode==='travel'&&!s.road?.shot,water=s.mode==='fishing',storm=s.road?.kind==='storm'||s.mode==='crossing';
  const working=s.mode==='repair'&&['steady','tune','done'].includes(g.phase);
  return {audible,engine:travel?.19:s.mode==='crossing'?.11:working?.045:0,tires:travel?.20:0,wind:storm?.095:travel?.04:['stop','salvage','hunting'].includes(s.mode)?.026:0,water:water?.30:s.mode==='home'?.016:0,rain:storm?.17:0,reel:water&&g.phase==='fight'&&(g.reel||g.behavior==='run'),working:s.mode==='salvage'&&!!g.working||s.mode==='repair'&&g.phase==='steady',danger:s.mode==='salvage'&&['watch','search'].includes(g.patrol?.state),rpm:travel?42+(s.road.mph||0)*.65:working?32+(g.tune||.3)*35:36,sfx:Math.max(0,Math.min(1,s.settings.sfxVolume??.8)),ambience:Math.max(0,Math.min(1,s.settings.ambienceVolume??.7))};
+}
+
+export const DEPARTURE_SOUND_SCENES=Object.freeze(['refusal','dismissed','account','appeal','decision','bag','load','children','last-look']);
+// Decision ambience and manual reduced-motion scenes use their own audio clock.
+// Timed scenes always restart at the simulation's current elapsed position.
+export function departureAudioPlan(s,ui={}){
+ const scene=s.mode==='departure'&&s.departure?DEPARTURE_SOUND_SCENES[s.departure.index]:null;
+ if(!scene)return null;
+ return {scene,elapsed:Math.max(0,Number.isFinite(s.departure.elapsed)?s.departure.elapsed:0),loop:scene==='decision',followClock:scene!=='decision'&&!s.settings.reducedMotion,audible:soundMix(s,ui).audible};
 }
