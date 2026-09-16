@@ -1,4 +1,4 @@
-import {FILM_DURATION,FILM_SCENES,filmCaption,setFilmTime,movePrologue} from './prologue.js?v=0.8.8-story-1';
+import {FILM_DURATION,FILM_SCENES,filmCaption,setFilmTime,movePrologue} from './prologue.js?v=0.8.9-sequence-1';
 // Keep button text nodes stable while a pointer is down (notably in WebKit).
 const setLabel=(element,text)=>{if(element.textContent!==text)element.textContent=text;};
 export class OpeningPlayer {
@@ -11,7 +11,7 @@ export class OpeningPlayer {
   v.addEventListener('ended',()=>{if(!this.dead)this.onExit('watched');});
   v.addEventListener('error',()=>this.fallback());
   v.addEventListener('pause',()=>{if(!this.dead&&state.source==='video'&&!v.ended){state.paused=true;this.updateUI();}});
-  if(reduced){state.source='stills';state.paused=true;setFilmTime(state,.8);v.preload='none';}else{v.src=`assets/opening-087/signals-end-${this.format}.mp4?cut=8&sfx=1`;this.play();}
+  if(reduced){state.source='stills';state.paused=true;setFilmTime(state,.8);v.preload='none';}else{v.src=`assets/opening-087/signals-end-${this.format}.mp4?cut=9&sfx=1`;this.play();}
   this.updateUI();
  }
  mark(){if(!this.seen){this.seen=true;this.onSeen();}}

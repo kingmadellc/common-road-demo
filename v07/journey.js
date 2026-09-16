@@ -1,12 +1,12 @@
-import {STILL_ROADS,claimNarrative,mediaMemory,narrativeKey} from './media.js?v=0.8.8-story-1';
-import {RADIO_MESSAGE} from './narrative.js?v=0.8.8-story-1';
+import {STILL_ROADS,claimNarrative,mediaMemory,narrativeKey} from './media.js?v=0.8.9-sequence-1';
+import {RADIO_MESSAGE} from './narrative.js?v=0.8.9-sequence-1';
 const shot=(image,title,line,extra={})=>({image,title,line,...extra});
 export const ARRIVALS={river:'sierra-letter',desert:'nevada-room',divide:'ben-wrench',plains:'frank-letter',ridge:'frank-key'};
 export const SHOTS={
  'pump-work':shot('pump-work','The water keeps running','Glenn signs the papers. Ben leaves his hand on the pipe, feeling the water move. “You can hear when it’s working,” he says. Jack nods. No progress bar needed.'),
  'filter-load':shot('filter-delivery','Something useful to carry','Wes checks the manifest while Linda helps Ben settle the filters. “If a road looks bad, it is,” she says. Jack adds another strap.'),
  'hunt-dinner':shot('hunt-meal','A meal nobody can switch off','Sarah passes Jack a bowl. His hands are still shaking a little. Annie leaves room for Rusty. “Does June’s stove have an account?” Ben asks. “It has a knob,” Jack says. Nobody reaches for a screen.'),
- 'bea-first':shot('bea-road','Bea first','Sarah: “Bea gets us through tonight. The rest, we ask about.”'),
+ 'bea-first':shot('bea-road','Back to Bea','Sarah: “She gave Ben the radio. She might know more. First, we get everyone there.”'),
  broadcast:shot('opening-radio','Ben’s handwritten broadcast',RADIO_MESSAGE),
  'sierra-letter':shot('witness','The first witness','June shows Sarah a recent photo of Uncle Frank beside a crooked fence. “He built that. No software could make it that bad.” Ben unfolds his radio note. Sarah checks the date twice. “He looks well. When did you see him?”'),
  'nevada-room':shot('room-key','A room without permission','Ruth hands Sarah a brass key. Sarah looks for the room camera. “Just a smoke alarm,” Ruth says. Sarah turns the key twice. “Could we stay?” Ruth looks toward the highway. “I own the lock. Safety still owns the road.”'),
@@ -45,7 +45,7 @@ export const SHOTS={
 // Timed road cuts last three seconds. Full passages remain available in the
 // journal/gallery and held story scenes, including the shared dinner scene.
 const roadLines={
- 'bea-first':'Sarah: “Bea first. We’ll ask her.”',
+ 'bea-first':'Sarah: “Back to Bea. She gave him the radio.”',
  'desert-view':'Ben: “We paid rent for a cupboard.”',
  'divide-view':'Annie tries to fit Wyoming into one drawing.',
  'plains-view':'An hour without a scanner.',

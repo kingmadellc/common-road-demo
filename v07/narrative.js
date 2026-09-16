@@ -1,6 +1,6 @@
-import {currentCompanyCopy} from './institutions.js?v=0.8.8-story-1';
+import {currentCompanyCopy} from './institutions.js?v=0.8.9-sequence-1';
 // Authoritative origin and discovery order. See Design/Signals-End-Canon.md.
-export const NARRATIVE_REVISION=7;
+export const NARRATIVE_REVISION=8;
 export const RADIO_LINES=Object.freeze([
  'Ozark relay. For anyone still awake.',
  'Your score doesn’t follow you here. You can work, buy, and sell without a screen saying yes.',
@@ -11,7 +11,7 @@ export const RADIO_LINES=Object.freeze([
 export const RADIO_MESSAGE=RADIO_LINES.join(' ');
 // The contractor pays physical cash; a corporate wage deposit would stay frozen.
 export const DEPOT_OFFER='An independent freight contractor at a Travel depot needs help to sort damaged freight. Four hours, $60 in cash, off the books. The depot’s sign-in camera still records your face and the van’s plate.';
-export const ORIGIN='San Francisco, 2041. Nine mandatory apps put pay, food and housing behind one ID and a social credit score. Private companies built them; the government made them compulsory and handed more decisions to AI. A low score can stop someone buying dinner even with money in the account. Bea hid an unconnected shortwave radio among repair parts. Ben smuggled it past inspections and building cameras, then cleaned a battery contact and secured its aerial lead. After midnight, he and Sarah heard a voice claiming to come from the Ozarks: work, trade and land without a screen deciding who was allowed. For three nights, Jack saw a future and Sarah questioned the promise. She wanted somewhere safe first; they could make a plan once they were there. On the fourth morning, Jack refused to certify a machine with a broken safety cutoff. His employer fired him and filed an adverse compliance report through Work. The shared household score fell below the access threshold. Cash held their joint funds. Sarah still had her job, but could not spend her wages. Food declined their groceries. Home demanded the staff-flat keys by 06:00; an appeal would take at least 72 hours. Work offered restoration shifts and a score review. Sarah chose to leave: get the children and ask Bea across the Bay. Ten minutes to load the basics. They had $240 from Jack’s parts tin, an old workshop van that could run mechanically, and no proof that Signals End existed.';
+export const ORIGIN='San Francisco, 2041. Nine mandatory apps put pay, food and housing behind one ID and a social credit score. Private companies built them; the government made them compulsory and handed more decisions to AI. A low score can stop someone buying dinner even with money in the account. On Ben’s routine parts pickup for Jack, Bea hid an unconnected shortwave radio among the scrap. Ben smuggled it past inspections and building cameras, then cleaned a battery contact and secured its aerial lead. After midnight, he and Sarah heard a voice claiming to come from the Ozarks: work, trade and land without a screen deciding who was allowed. For three nights, Jack saw a future and Sarah questioned the promise. She wanted somewhere safe first; they could make a plan once they were there. After three nights of debate, Jack refused to certify a machine with a broken safety cutoff. His employer fired him and filed an adverse compliance report through Work. The shared household score fell below the access threshold. Cash held their joint funds. Sarah still had her job, but could not spend her wages. Food declined their groceries. Home demanded the staff-flat keys by 06:00; an appeal would take at least 72 hours. Work offered restoration shifts and a score review. Sarah chose to leave: get the children and return to Bea across the Bay. She supplied the receiver and might know more. Ten minutes to load the basics. They had $240 from Jack’s parts tin, an old workshop van that could run mechanically, and no proof that Signals End existed.';
 export const initialNarrativeFlags=()=>({narrativeRevision:NARRATIVE_REVISION,radioHeard:true,contractFlag:true,accountRestricted:true});
 export function arriveNarrative(s,id){
  if(id==='yard'){s.flags.inquirySent=true;s.flags.convoyKnown=true;if(!s.flags.permitExplained){s.flags.permitExplained=true;s.journal.unshift({hour:s.hour,title:'Bea’s paper permit',body:'Bea signs a county repair-transfer permit. Older county rules still allow one passage to a repair stop, even with a relocation order. Present it and the scanner records the plate; use a side road and keep it. “Paper buys you one argument,” she says. “Not two.”'});}}
@@ -23,13 +23,13 @@ export function knowledge(s){
  if(s.flags.reservationConfirmed)return {stage:'confirmed',title:'Frank answered',text:'At North Platte, Frank answered Sarah’s private family question. He reserved a home. A witness or the filter delivery completes the agreement.'};
  if(s.flags.frankWitnessed)return {stage:'witness',title:'The first evidence',text:'June’s photograph puts Uncle Frank inside Signals End. Freight-radio relays carry Sarah’s question. A courier will record any answer at North Platte.'};
  if(s.flags.inquirySent)return {stage:'inquiry',title:'Someone who still fixes things',text:'Bea’s freight contacts radioed Sarah’s private question. June at Truckee may know where Uncle Frank went. The next Ava convoy leaves in five days.'};
- return {stage:'rumor',title:'Bea first',text:'Ben smuggled Bea’s radio home and got it working. He and Sarah heard a voice claiming there was work, trade and land in the Ozarks without a score deciding who could take part. Sarah is not convinced. Jack’s employer report has now pushed their household score below the access threshold: money held, groceries refused, a flat to leave before an appeal. They are going to Bea to get safe and make a plan. The broadcast still needs proof.'};
+ return {stage:'rumor',title:'Back to Bea',text:'Ben smuggled Bea’s radio home and got it working. He and Sarah heard a voice claiming there was work, trade and land in the Ozarks without a score deciding who could take part. Sarah is not convinced. Jack’s employer report has now pushed their household score below the access threshold: money held, groceries refused, a flat to leave before an appeal. They are returning to Bea, who supplied the receiver, to get safe and make a plan. The broadcast still needs proof.'};
 }
 export function migrateNarrative(s){
  if(s.flags.narrativeRevision===NARRATIVE_REVISION)return refreshCompanyCopy(s);
- // The approved opening is unchanged. Revision six needs downstream copy only;
+ // The origin and evidence gates are retained. Revisions six and seven need contextual copy only;
  // do not archive its correct origin or infer new progress from visited nodes.
- if(s.flags.narrativeRevision===6){s.flags.narrativeRevision=NARRATIVE_REVISION;return refreshCompanyCopy(s);}
+ if([6,7].includes(s.flags.narrativeRevision)){s.flags.narrativeRevision=NARRATIVE_REVISION;return refreshCompanyCopy(s);}
  // These revisions already have the correct evidence order. Preserve progress.
  if([2,3,4,5].includes(s.flags.narrativeRevision)){
   s.flags.narrativeRevision=NARRATIVE_REVISION;s.flags.contractFlag=true;s.flags.accountRestricted=true;
@@ -68,6 +68,10 @@ export function migrateNarrative(s){
 // Exact authored phrases only. Never alter a choice, its costs, a timestamp or
 // an archived earlier draft while bringing a suspended journey up to date.
 const JOURNEY_COPY=[
+ ['On the fourth morning,','After three nights of debate,'],
+ ['Bea hid an unconnected shortwave radio among repair parts.','On Ben’s routine parts pickup for Jack, Bea hid an unconnected shortwave radio among the scrap.'],
+ ['Sarah chose to leave: get the children and ask Bea across the Bay.','Sarah chose to leave: get the children and return to Bea across the Bay. She supplied the receiver and might know more.'],
+ ['Bea first; then a plan.','Back to Bea, who gave Ben the radio; then a plan.'],
  ['Debt and unauthorized relocation give its Collectors the paperwork.','A restricted household leaving its assigned district gives the Collectors their paperwork.'],
  ['Their debt has acquired a transport fee.','Their return order has acquired a transport fee.'],
  ['unauthorized relocation, debt outstanding','restricted standing, unauthorized relocation'],

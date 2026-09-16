@@ -1,7 +1,7 @@
-import {FILM_ID,FILM_DURATION,FILM_SCENES,filmCaption,filmSceneAt,drawOpeningFrame} from './opening-film.js?v=0.8.8-story-1';
+import {FILM_ID,FILM_DURATION,FILM_SCENES,filmCaption,filmSceneAt,drawOpeningFrame} from './opening-film.js?v=0.8.9-sequence-1';
 export const INTRO_KEY='signals-end-opening-history';
 export const BEATS=FILM_SCENES;
-export function readOpeningHistory(storage){try{const value=JSON.parse(storage.getItem(INTRO_KEY));return [FILM_ID,'run-for-it-7','run-for-it-6','run-for-it-5','run-for-it-4','run-for-it-3','run-for-it-2','run-for-it-1'].includes(value?.id)&&['started','skipped','watched'].includes(value.status)?value:null;}catch{return null;}}
+export function readOpeningHistory(storage){try{const value=JSON.parse(storage.getItem(INTRO_KEY));return [FILM_ID,'run-for-it-8','run-for-it-7','run-for-it-6','run-for-it-5','run-for-it-4','run-for-it-3','run-for-it-2','run-for-it-1'].includes(value?.id)&&['started','skipped','watched'].includes(value.status)?value:null;}catch{return null;}}
 export function rememberOpening(storage,status){try{const old=readOpeningHistory(storage),rank={started:1,skipped:2,watched:3};if(old?.id===FILM_ID&&rank[old.status]>rank[status])return;storage.setItem(INTRO_KEY,JSON.stringify({id:FILM_ID,status,at:Date.now()}));}catch{}}
 export function shouldAutoOpen({seen=false,hasSave=false,reducedMotion=false,saveData=false,force=false}){return force||(!seen&&!hasSave&&!reducedMotion&&!saveData);}
 export function newPrologue(replay=false){return {id:FILM_ID,time:0,index:0,elapsed:0,paused:false,replay,muted:true,source:'loading',blocked:false};}

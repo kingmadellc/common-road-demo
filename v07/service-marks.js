@@ -1,6 +1,6 @@
 // Original 24-unit symbols, shared by software, signage and downloadable vectors.
 // The uniform public system deliberately feels more impersonal than the game identity.
-import {APPS} from './institutions.js?v=0.8.8-story-1';
+import {APPS} from './institutions.js?v=0.8.9-sequence-1';
 export const SERVICE_INK='#183044',SERVICE_LIGHT='#edf3f7',SERVICE_ACCENT='#88aac4';
 export const SERVICE_PATHS={
  watch:['M5 8V5H8 M16 5H19V8 M19 16V19H16 M8 19H5V16','M14.5 10A2.5 2.5 0 1 1 9.5 10A2.5 2.5 0 1 1 14.5 10','M8 16C8 12.8 16 12.8 16 16'],

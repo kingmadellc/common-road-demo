@@ -1,6 +1,6 @@
-import {markIncidentArt} from './journey.js?v=0.8.8-story-1';
-import {spend,log,clamp,finish} from './state.js?v=0.8.8-story-1';
-import {DEPOT_OFFER} from './narrative.js?v=0.8.8-story-1';
+import {markIncidentArt} from './journey.js?v=0.8.9-sequence-1';
+import {spend,log,clamp,finish} from './state.js?v=0.8.9-sequence-1';
+import {DEPOT_OFFER} from './narrative.js?v=0.8.9-sequence-1';
 export function threatLabel(s){return s.threat.heat>1?'PURSUED':s.threat.identified?'PLATE RECORDED':'UNSEEN';}
 // The road costs still ahead matter: paying for a detour can strand the van later.
 export function checkpointFuel(s){return s.road?.duration?Math.max(0,s.road.fuel*(1-s.road.elapsed/s.road.duration)):0;}

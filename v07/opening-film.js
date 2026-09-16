@@ -1,15 +1,15 @@
-import {fixedFilmShot,sceneMotion,drawCheckoutDenial,drawIntroServiceNotice,drawFilmNote} from './cinematic-motion.js?v=0.8.8-story-1';
+import {fixedFilmShot,sceneMotion,drawCheckoutDenial,drawIntroServiceNotice,drawFilmNote} from './cinematic-motion.js?v=0.8.9-sequence-1';
 
 // The 22 approved storyboard shots are the edit. Caption segments do not move
 // the camera or restart a physical shot; they also make every line available
 // in the reduced-motion, step-through version.
-export const FILM_ID='run-for-it-8';
+export const FILM_ID='run-for-it-9';
 export const FILM_DURATION=232;
 const cue=(at,line='',speaker,extra={})=>({at,line,...(speaker?{speaker}:{}),...extra});
 const shot=(number,id,start,end,image,motion,cues,extra={})=>({number,id,start,end,image:image&&'film087-'+image,motion,focus:.5,portraitBand:true,cues,...extra});
 export const FILM_SHOTS=[
  shot(1,'city',0,8,'city','rain',[
-  cue(0,'San Francisco, 2041.')
+  cue(0,'San Francisco, 2041.\nNine apps. One government score.')
  ],{description:'A stocked grocery beneath a city of screens. Cameras watch the evening queue.',region:[0,0,1,.78]}),
  shot(2,'payday',8,20,'checkout','screen',[
   cue(0,'“There’s money in there.”','Customer'),
@@ -26,26 +26,27 @@ export const FILM_SHOTS=[
   cue(7)
  ],{screen:'restore',description:'Ordinary workers queue under cameras for remedial shifts and an access review.',region:[0,.05,1,.22]}),
  shot(5,'still-checking',45,56,'dinner','screen',[
-  cue(0,'“Jack. You’ve been home an hour.”','Sarah'),
+  cue(0,'“Jack. You’ve been home an hour.”','Sarah',{heading:'The Mercer apartment · most evenings'}),
   cue(6,'“I know.”','Jack')
  ],{description:'Jack checks Work at dinner. Annie lowers the drawing he has not noticed.',region:[.23,.35,.24,.22]}),
  shot(6,'smuggled',56,68,'bea-reveal','dust',[
-  cue(0,'“Where’s its computer?”','Ben'),
-  cue(6,'“It hasn’t got one.”','Bea')
- ],{description:'Bea reveals a shortwave receiver among rejected repair parts, checking the doorway before she speaks.',region:[.12,.24,.7,.45]}),
+  cue(0,'“Parts for your dad.\nThis one’s for you.”','Bea',{heading:'Next afternoon · Bea’s repair yard'}),
+  cue(4,'“Where’s its computer?”','Ben'),
+  cue(8,'“It hasn’t got one.”','Bea')
+ ],{description:'On a routine parts pickup for Jack, Ben visits Bea, Jack’s former coworker. She reveals a shortwave receiver. The family has not heard of Signals End or decided to leave.',region:[.12,.24,.7,.45]}),
  shot(7,'concealed',68,80,'bea-conceals','dust',[
   cue(0,'“Can it work like that?”','Ben'),
   cue(5,'“It used to.\nDon’t let them see it.”','Bea')
  ],{description:'Bea conceals the radio beneath cables and scrap, leaving a diagram beside its corroded battery contact.',region:[.12,.3,.7,.42]}),
  shot(8,'inspection',80,92,'ben-walkway','rain',[
-  cue(0),
+  cue(0,'',undefined,{heading:'On the way home'}),
   cue(5,'“Stay here for review.”','Inspector',{image:'film087-inspection',motion:'inspection',region:[.06,.18,.87,.62]})
  ],{description:'Ben passes an equipment inspection with the closed parts bag held close. Another resident’s unregistered machine is confiscated.',region:[0,0,1,.7]}),
  shot(9,'radio-home',92,102,'ben-home','entry',[
-  cue(0)
+  cue(0,'',undefined,{heading:'Home · that evening'})
  ],{description:'Ben has brought the concealed radio home. Behind the closed apartment door, he finally loosens his grip.',region:[.07,.08,.4,.38]}),
  shot(10,'ben-finds',102,112,'radio-dead','dust',[
-  cue(0),
+  cue(0,'',undefined,{heading:'After midnight'}),
   cue(5,'“Come on.”','Ben')
  ],{description:'After midnight, Ben tries the switch. Nothing happens. He turns the receiver over beside Bea’s diagram.',region:[.12,.27,.75,.36]}),
  shot(11,'repair-contact',112,125,'radio-contact','dust',[
@@ -82,7 +83,7 @@ export const FILM_SHOTS=[
   cue(5.7,'“Keep listening.”','Sarah')
  ],{description:'The voice is gone. Ben’s wonder and Sarah’s skepticism share the same quiet room.',region:[.15,.28,.7,.4]}),
  shot(19,'jack-wants',197,209,'jack-listening','radio',[
-  cue(0,'“We could fix things.\nBuild something.”','Jack'),
+  cue(0,'“We could fix things.\nBuild something.”','Jack',{heading:'The following evening'}),
   cue(5.5,'“We don’t know who’s talking.\nIt could be a trap.”','Sarah')
  ],{description:'The next evening Jack listens with his family, his Work screen facedown.',region:[.2,.4,.6,.25]}),
  shot(20,'three-nights',209,223,'argument','window',[
@@ -91,7 +92,7 @@ export const FILM_SHOTS=[
   cue(9,'“Then we make a plan.”','Sarah',{image:'film087-ben-friends',motion:'screen',portraitBand:false,region:[.29,.33,.26,.2]})
  ],{description:'Three nights of quiet argument. Sarah lists immediate needs. Ben looks at his friends’ messages. Their first destination is somewhere safe.',region:[0,0,.38,.6]}),
  shot(21,'departure',223,228,'fourth-morning','dawn',[
-  cue(0,'The fourth morning.')
+  cue(0,'The next morning.')
  ],{description:'Jack leaves for work. The radio, Ben’s note and Sarah’s list remain on the table. The van is not packed.',region:[0,0,1,.8]}),
  shot(22,'title',228,232,null,'title',[
   cue(0,'Signals End')
@@ -106,7 +107,7 @@ export const FILM_SCENES=FILM_SHOTS.flatMap(shot=>{
   return {id:index?`${shot.id}-${index+1}`:shot.id,shot:shot.number,shotId:shot.id,shotStart:shot.start,cutStart,start:shot.start+cue.at,end:shot.start+(shot.cues[index+1]?.at??shot.end-shot.start),...view,line:cue.line,speaker:cue.speaker,description:shot.description};
  });
 });
-export const filmCaption=scene=>scene.speaker?`${scene.speaker}: ${scene.line}`:scene.line||scene.description||'';
+export const filmCaption=scene=>[scene.heading,scene.speaker?`${scene.speaker}: ${scene.line}`:scene.line||scene.description||''].filter(Boolean).join(' — ');
 export const filmSceneAt=time=>FILM_SCENES.find(s=>Math.max(0,Number.isFinite(time)?time:0)>=s.start&&time<s.end)||(time>=FILM_DURATION?FILM_SCENES.at(-1):FILM_SCENES[0]);
 const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
 function wrap(c,line,max){const lines=[];for(const paragraph of line.split('\n')){let row='';for(const word of paragraph.split(/\s+/)){const next=row?row+' '+word:word;if(row&&c.measureText(next).width>max){lines.push(row);row=word;}else row=next;}if(row)lines.push(row);}return lines;}

@@ -51,3 +51,5 @@ body[data-mode="hunting"] #sceneheading .eyebrow{letter-spacing:.8px}
 @media(max-height:540px) and (min-width:701px){body[data-mode="incident"] #game{grid-template-columns:1fr 46%}body[data-mode="incident"] #actions h2{display:none}body[data-mode="incident"] .checkpoint-authority{margin-bottom:6px}body[data-mode="incident"] .checkpoint-authority span:last-child{font-size:12px}body[data-mode="incident"] .actiongroup p{font-size:14px;line-height:1.35;margin:6px 0 10px}body[data-mode="incident"] .buttons{display:grid;grid-template-columns:1fr}body[data-mode="incident"] .buttons>button{padding:8px 12px;min-height:60px}body[data-mode="incident"] .checkpoint-line{font-size:14px}}
 
 body[data-mode="incident"] #actions h2{display:none}
+
+.recap-image{display:block;width:100%;height:clamp(130px,22vh,220px);object-fit:cover;margin:20px 0;border-radius:3px}
