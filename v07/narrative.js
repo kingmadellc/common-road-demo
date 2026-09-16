@@ -1,6 +1,6 @@
-import {currentCompanyCopy} from './institutions.js?v=0.8.7-intro-1';
+import {currentCompanyCopy} from './institutions.js?v=0.8.8-story-1';
 // Authoritative origin and discovery order. See Design/Signals-End-Canon.md.
-export const NARRATIVE_REVISION=6;
+export const NARRATIVE_REVISION=7;
 export const RADIO_LINES=Object.freeze([
  'Ozark relay. For anyone still awake.',
  'Your score doesn’t follow you here. You can work, buy, and sell without a screen saying yes.',
@@ -27,6 +27,9 @@ export function knowledge(s){
 }
 export function migrateNarrative(s){
  if(s.flags.narrativeRevision===NARRATIVE_REVISION)return refreshCompanyCopy(s);
+ // The approved opening is unchanged. Revision six needs downstream copy only;
+ // do not archive its correct origin or infer new progress from visited nodes.
+ if(s.flags.narrativeRevision===6){s.flags.narrativeRevision=NARRATIVE_REVISION;return refreshCompanyCopy(s);}
  // These revisions already have the correct evidence order. Preserve progress.
  if([2,3,4,5].includes(s.flags.narrativeRevision)){
   s.flags.narrativeRevision=NARRATIVE_REVISION;s.flags.contractFlag=true;s.flags.accountRestricted=true;
@@ -54,7 +57,7 @@ export function migrateNarrative(s){
   s.incident.body=DEPOT_OFFER;
   for(const o of s.incident.options||[])o.label=o.id==='careful'?'Take the depot shift':'Keep driving';
  }
- if(s.incident?.collectors)s.incident.body='Safety checks household debt and relocation orders. A recovery truck blocks the exit. A recorded plate can follow you; a county road may still get you clear.';
+ if(s.incident?.collectors)s.incident.body='Safety checks restricted standing and relocation orders. A recovery truck blocks the exit. A recorded plate can follow you; a county road may still get you clear.';
  if(s.activity?.phase==='intercept'&&s.mode==='salvage')s.activity.notice='“Mercer household. Your return order is active.” The plate scan matched a relocation order. Safety wants the family back in its assigned district.';
  for(const entry of s.journal)entry.earlierStoryDraft=true;
  s.journal.unshift({hour:s.hour,title:'The story so far',body:ORIGIN+' '+knowledge(s).text});
@@ -62,9 +65,25 @@ export function migrateNarrative(s){
  return refreshCompanyCopy(s);
 }
 
+// Exact authored phrases only. Never alter a choice, its costs, a timestamp or
+// an archived earlier draft while bringing a suspended journey up to date.
+const JOURNEY_COPY=[
+ ['Debt and unauthorized relocation give its Collectors the paperwork.','A restricted household leaving its assigned district gives the Collectors their paperwork.'],
+ ['Their debt has acquired a transport fee.','Their return order has acquired a transport fee.'],
+ ['unauthorized relocation, debt outstanding','restricted standing, unauthorized relocation'],
+ ['Rent arrears are the return warrant.','Restricted standing and unauthorized relocation are enough for a return order.'],
+ ['Safety checks household debt and relocation orders.','Safety checks restricted standing and relocation orders.'],
+ ['Housing debt becomes a compulsory company contract. Everyone survives; the cameras are waiting.','Restoration shifts come before another access review. Everyone survives; the cameras are waiting.'],
+ ['Evelyn releases their household reservation.','Evelyn records their agreement and clears them to cross.'],
+ ['Ben recognizes the old water wheels from the broadcast. This time he is here.','Ben reads his paper note: “What you know is worth something here.” Jack puts his wrench on the kitchen shelf. Tomorrow someone will need it. Tonight can wait.'],
+ ['Ben: “The old wheels. He said that.”','Ben: “No screens. He meant it.”'],
+ ['Sarah checks the family password in the margin.','Sarah checks his answer to the private family question she sent through Bea.'],
+ ['Four hours of sleep; nobody docked their pay.','Four hours of sleep; nobody asked them to account for it.']
+];
 function refreshCompanyCopy(s){
- const rewrite=(record,fields)=>{if(record)for(const key of fields)if(typeof record[key]==='string')record[key]=currentCompanyCopy(record[key]);};
+ const rewrite=(record,fields)=>{if(record)for(const key of fields)if(typeof record[key]==='string')record[key]=JOURNEY_COPY.reduce((text,[before,after])=>text.replaceAll(before,after),currentCompanyCopy(record[key]));};
  rewrite(s,['message']);rewrite(s.incident,['title','body']);rewrite(s.activity,['notice']);
+ rewrite(s.ending,['title','text']);
  if(s.incident?.id==='orchestration-offer')s.incident.body=DEPOT_OFFER;
  for(const entry of s.journal||[])if(!entry.earlierStoryDraft)rewrite(entry,['title','body']);
  return s;

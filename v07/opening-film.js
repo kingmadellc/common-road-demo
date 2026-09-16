@@ -1,4 +1,4 @@
-import {fixedFilmShot,sceneMotion,drawCheckoutDenial,drawIntroServiceNotice,drawFilmNote} from './cinematic-motion.js?v=0.8.7-intro-1';
+import {fixedFilmShot,sceneMotion,drawCheckoutDenial,drawIntroServiceNotice,drawFilmNote} from './cinematic-motion.js?v=0.8.8-story-1';
 
 // The 22 approved storyboard shots are the edit. Caption segments do not move
 // the camera or restart a physical shot; they also make every line available

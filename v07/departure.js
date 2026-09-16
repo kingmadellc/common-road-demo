@@ -1,5 +1,5 @@
-import {drawService} from './service-marks.js?v=0.8.7-intro-1';
-import {fixedShot,sceneMotion} from './cinematic-motion.js?v=0.8.7-intro-1';
+import {drawService} from './service-marks.js?v=0.8.8-story-1';
+import {fixedShot,sceneMotion} from './cinematic-motion.js?v=0.8.8-story-1';
 // The film supplies the possibility. This playable chapter supplies the reason to leave.
 // In this fictional 2041 system, an adverse work report restricts the linked household score.
 export const DEPARTURE_ID='fourth-morning-1';

@@ -1,5 +1,5 @@
-import {soundSnapshot,transitionSounds,soundMix,departureAudioPlan} from './sound-model.js?v=0.8.7-intro-1';
-import {createDepartureAudio} from './departure-audio.js?v=0.8.7-intro-1';
+import {soundSnapshot,transitionSounds,soundMix,departureAudioPlan} from './sound-model.js?v=0.8.8-story-1';
+import {createDepartureAudio} from './departure-audio.js?v=0.8.8-story-1';
 const GROUPS={metal:3,cloth:3,wood:3,step:3,latch:2,paper:3,switch:3};
 let ac,master,foley,ambient,music,limiter,engine,engineHarmonic,noise,meter,previous,enabled=false,loading,departureAudio;
 const buffers={},layers={},voices=new Set(),recent=[],next={tool:0,reel:0,step:0},variants={};

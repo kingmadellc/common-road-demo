@@ -1,5 +1,5 @@
-import {STILL_ROADS,claimNarrative,mediaMemory,narrativeKey} from './media.js?v=0.8.7-intro-1';
-import {RADIO_MESSAGE} from './narrative.js?v=0.8.7-intro-1';
+import {STILL_ROADS,claimNarrative,mediaMemory,narrativeKey} from './media.js?v=0.8.8-story-1';
+import {RADIO_MESSAGE} from './narrative.js?v=0.8.8-story-1';
 const shot=(image,title,line,extra={})=>({image,title,line,...extra});
 export const ARRIVALS={river:'sierra-letter',desert:'nevada-room',divide:'ben-wrench',plains:'frank-letter',ridge:'frank-key'};
 export const SHOTS={
@@ -9,9 +9,9 @@ export const SHOTS={
  'bea-first':shot('bea-road','Bea first','Sarah: “Bea gets us through tonight. The rest, we ask about.”'),
  broadcast:shot('opening-radio','Ben’s handwritten broadcast',RADIO_MESSAGE),
  'sierra-letter':shot('witness','The first witness','June shows Sarah a recent photo of Uncle Frank beside a crooked fence. “He built that. No software could make it that bad.” Ben unfolds his radio note. Sarah checks the date twice. “He looks well. When did you see him?”'),
- 'nevada-room':shot('room-key','A room without permission','Ruth hands Sarah a brass key. Sarah looks for the room camera. “Just a smoke alarm,” Ruth says. Sarah sits down. She turns the brass key twice, testing whether it really is hers.'),
+ 'nevada-room':shot('room-key','A room without permission','Ruth hands Sarah a brass key. Sarah looks for the room camera. “Just a smoke alarm,” Ruth says. Sarah turns the key twice. “Could we stay?” Ruth looks toward the highway. “I own the lock. Safety still owns the road.”'),
  'ben-wrench':shot('headlamp','Something that stays fixed','Ben gets the headlamp working. No service license required. Jack listens while he explains it. Ben grins for a moment, then tries to hide it. The skill belongs to him.'),
- 'frank-letter':shot('reply','It is really him','The courier transcribed Frank’s radio reply. It answers the private question Sarah sent through Bea. Four people and Rusty. A house held until the convoy leaves. Glenn can witness the papers; the Pruitts can assign a filter delivery. The rumor is now an agreement.'),
+ 'frank-letter':shot('reply','It is really him','The courier transcribed Frank’s radio reply. It answers the private question Sarah sent through Bea. Four people and Rusty. The homestead fund has bought an empty house from a willing seller. Frank has reserved it for this intake. Glenn can witness the papers; the Pruitts can assign a filter delivery. The rumor is now an agreement.'),
  'frank-key':shot('reunion','The man from the letter','Frank is older than Sarah remembers. He holds out a key for her to see. “Evelyn finishes the papers. I wanted you to know it’s real.” Sarah closes the distance between them. The storm is coming. One last crossing.'),
  'desert-view':shot('plateau','Nevada has room to spare','Ben: “All this space and we rented a cupboard.” Sarah: “The cupboard had excellent connectivity.”'),
  'divide-view':shot('annie-sky','Over the Divide','Wyoming wind. Miles of open country. Annie falls quiet, trying to fit it all into a drawing.'),
@@ -21,14 +21,14 @@ export const SHOTS={
  dinner:shot('meal-family','Food we caught ourselves','Ben: “Food from a river. Terms and conditions: cook it.” Sarah checks no price, no rating, no account. She asks for seconds.'),
  family:shot('open-country','Something worth keeping','Sarah: “Take that one. I want to remember there was more than the road.”'),
  wonder:shot('annie-sky','More sky than we remembered','Annie: “Was all this here the whole time?”'),
- collectors:shot('squad','Workforce recovery','Safety calls it household recovery. Debt and unauthorized relocation give its Collectors the paperwork. The people in the transport call it being dragged home.'),
+ collectors:shot('squad','Workforce recovery','Safety calls it household recovery. A restricted household leaving its assigned district gives the Collectors their paperwork. The people in the transport call it being dragged home.'),
  relief:shot('mirror','No lights behind us','Sarah: “They took the other road. Breathe.”'),
  home:shot('basin','The basin keeps its own lights on','Water turns the wheels. Mechanical switches run the lights. No phones or computers beyond the Line. Ben has carried those words since the night he found them.'),
  plaza:shot('plaza','The last service stall','Old pumps. One working lamp. Someone who knows how to fix things.'),
  toll:shot('toll','The road remembers your plate','A private gantry. Public roads, rented back by the mile.'),
- campus:shot('campus','Your future has been discontinued','Work’s billboard says “Your next assignment is ready.” Beneath it, a ID camera counts faces. Sarah: “Lovely. The building still remembers us.”'),
+ campus:shot('campus','Your future has been discontinued','Work’s billboard says “Your next assignment is ready.” Beneath it, an ID camera counts faces. Sarah: “Lovely. The building still remembers us.”'),
  market:shot('market','A different kind of currency','A working relay buys more respect here than a verified account.'),
- seized:shot('seized','They take the home, too','The camper is being towed back toward a company city. Its owners are in the transport behind it. Their debt has acquired a transport fee.'),
+ seized:shot('seized','They take the home, too','The camper is being towed back toward a company city. Its owners are in the transport behind it. Their return order has acquired a transport fee.'),
  scanner:shot('scanner','A name in the registry','The scan stays on file. It does not tell them which road you take next.'),
  inventory:shot('inventory','Property retained','Keys, papers, shoes. An entire household reduced to an inventory.'),
  blocked:shot('blocked','The exit is occupied','The truck shuts down. The white work lights stay on.'),
@@ -58,7 +58,7 @@ const roadLines={
  dinner:'Sarah asks for seconds.',
  inventory:'Keys, papers, shoes. One household.',
  seized:'The family is in the transport behind.',
- home:'Ben: “The old wheels. He said that.”',
+ home:'Ben: “No screens. He meant it.”',
  toll:'Public roads, rented back by the mile.',
  family:'Sarah: “Take that one. I want to remember.”',
  'film-highway':'Keep the van moving.',

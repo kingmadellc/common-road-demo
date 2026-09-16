@@ -2,9 +2,9 @@
 
 A family, an old van, and a forbidden broadcast. Leave San Francisco and follow a rumor toward the Ozarks in **Signals End**, an illustrated road-trip survival prototype by King Made.
 
-**[Play the demo — v0.8.7](https://kingmadellc.github.io/common-road-demo/?v=0.8.7)** · [Opening and departure](https://kingmadellc.github.io/common-road-demo/?v=0.8.7&departure=1&film=1) · [World and brand kit](https://kingmadellc.github.io/common-road-demo/brand/)
+**[Play the demo — v0.8.8](https://kingmadellc.github.io/common-road-demo/?v=0.8.8)** · [Opening and departure](https://kingmadellc.github.io/common-road-demo/?v=0.8.8&departure=1&film=1) · [World and brand kit](https://kingmadellc.github.io/common-road-demo/brand/)
 
-[![Signals End cover: the Human Nature wordmark beside a family van overlooking a dark San Francisco skyline](brand/downloads/signals-end-cover-1920x1080.png)](https://kingmadellc.github.io/common-road-demo/?v=0.8.7)
+[![Signals End cover: the Human Nature wordmark beside a family van overlooking a dark San Francisco skyline](brand/downloads/signals-end-cover-1920x1080.png)](https://kingmadellc.github.io/common-road-demo/?v=0.8.8)
 
 ## The journey
 
@@ -16,7 +16,7 @@ Travel through Richmond, Truckee, Wells, Rawlins, North Platte, Kansas, and Ava.
 
 Touch is the primary input; keyboard and controller input are also implemented. The 232-second illustrated opening can be skipped and remembers viewing history. Use **SFX** in the header; Pause includes separate effects and environment levels. Reduced motion freezes scene overlays.
 
-The v0.8.7 build adds 26 distinct illustrations, 22 storyboard shots, 44 timed caption segments, separate portrait framing, and scene-specific sound for the account lockout and hurried packing. Ben carries the forbidden radio home, repairs it, and hears an offer of work, trade and land with Sarah. The family argues for three nights before their own crisis forces the decision to leave. Existing v0.7 journeys retain progress. The [previous demo](https://kingmadellc.github.io/common-road-demo/v06/) keeps its own save.
+The v0.8.8 build aligns the journey and refuge with the approved 232-second opening: 26 distinct illustrations, 22 storyboard shots, 44 timed caption segments, portrait framing, and scene-specific sound for the account lockout and hurried packing. Ben carries the forbidden radio home, repairs it, and hears an offer of work, trade and land with Sarah. The family argues for three nights before their own crisis forces the decision to leave. Downstream scenes now connect the household restriction, Collector return order, independent cash trading, Frank’s authenticated reply and voluntary charter. The ending fulfills the broadcast’s promise of useful work, land and low posted taxes. Existing v0.7 journeys retain progress. The [previous demo](https://kingmadellc.github.io/common-road-demo/v06/) keeps its own save.
 
 This is a browser concept playtest. Illustrations and local scene motion are not articulated character animation or voiced performances. Automated browser checks do not establish physical-device performance or human playtest results.
 
